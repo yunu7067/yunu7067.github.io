@@ -5,7 +5,7 @@ paginate: 5
 title: YUNU7067
 
 # Change it to your Disqus shortname before using
-disqusShortname: yunu7067
+disqusShortname: 
 
 # GA Tracking ID
 googleAnalytics:
@@ -48,12 +48,12 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: utterances
 
         utterances:
-            repo:
+            repo: yunu7067/yunu7067.github.io
             issueTerm: pathname
-            label:
+            label: comments
 
         remark42:
             host:
