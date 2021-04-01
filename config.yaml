@@ -34,7 +34,7 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 👨‍💻
+        emoji:
         subtitle: 블로그 테스트
         avatar:
             local: true
