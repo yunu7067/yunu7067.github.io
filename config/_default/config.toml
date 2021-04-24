@@ -1,6 +1,5 @@
-baseurl = "http://localhost:1313/"
-canonifyURLs = true
-publishDir = "/"
+baseurl = "/"
+canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
