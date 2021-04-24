@@ -25,3 +25,8 @@ _testmain.go
 /public
 /themes
 .DS_Store
+
+# Node.js
+# Dependency directories
+node_modules/
+jspm_packages/
