@@ -1,1 +1,4 @@
-# Doks child theme
+# GitHub Pages
+
+Hugo  
+Doks child theme

@@ -1,32 +1,6 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
-
-# Folders
-_obj
-_test
-
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
-
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
-
-_testmain.go
-
-*.exe
-*.test
-
-/public
-/themes
-.DS_Store
-
-# Node.js
-# Dependency directories
-node_modules/
-jspm_packages/
+functions
+node_modules
+public
+resources
+# Local Netlify folder
+.netlify
