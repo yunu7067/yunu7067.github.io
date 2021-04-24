@@ -1,5 +1,5 @@
 exports.handler = (event, context, callback) => {
-  callback (null, {
+  callback(null, {
     statusCode: 200,
     headers: {
       'Content-Type': 'application/json',
@@ -8,4 +8,4 @@ exports.handler = (event, context, callback) => {
       message: 'Hi from Lambda.',
     }),
   });
-}
+};

@@ -9,3 +9,5 @@ weight: 50
 images: ["say-hello-to-doks.png"]
 contributors: ["Henk Verlinde"]
 ---
+
+{{< img src="say-hello-to-doks.png" alt="Rectangle" caption="<em>Rectangle</em>" class="border-0" >}}

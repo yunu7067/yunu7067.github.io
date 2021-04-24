@@ -9,7 +9,7 @@ images: []
 menu:
   docs:
     parent: "prologue"
-weight: 110
+weight: 1
 toc: true
 ---
 
@@ -27,8 +27,8 @@ Create a new site, change directories, install dependencies, and start developme
 
 Doks is available as a child theme, and a starter theme:
 
-- Use the Doks child theme, if you do __not__ plan to customize a lot, and/or need future Doks updates.
-- Use the Doks starter theme, if you plan to customize a lot, and/or do __not__ need future Doks updates.
+- Use the Doks child theme, if you do **not** plan to customize a lot, and/or need future Doks updates.
+- Use the Doks starter theme, if you plan to customize a lot, and/or do **not** need future Doks updates.
 
 Not quite sure? Use the Doks child theme.
 

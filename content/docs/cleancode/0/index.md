@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "서론"
 description: ""
 lead: ""
 date: 2021-04-24T22:41:26+09:00
@@ -9,8 +9,8 @@ images: []
 menu:
   docs:
     parent: "cleancode"
-weight: 2
-toc: true
+weight: 10000
+toc: false
 ---
 
-trest
+서론
