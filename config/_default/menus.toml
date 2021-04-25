@@ -1,6 +1,6 @@
 [[docs]]
   name = "Clean Code"
-  weight = 10
+  weight = 100
   identifier = "cleancode"
   url = "/docs/cleancode/"
 

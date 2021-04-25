@@ -14,5 +14,3 @@ toc: false
 ---
 
 {{< img src="wtfm.jpg" alt="Rectangle" caption="https://www.osnews.com/story/19266/wtfsm/" class="border-0" >}}
-
-서론
