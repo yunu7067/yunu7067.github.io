@@ -1,7 +1,7 @@
 {
   "name": "yunu7067.github.io",
   "description": "yunu7067's gh-pages",
-  "version": "0.0.1",
+  "version": "0.2.3",
   "hugo-bin": {
     "buildTags": "extended"
   },
