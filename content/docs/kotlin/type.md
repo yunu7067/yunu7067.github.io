@@ -1,6 +1,6 @@
 ---
-title: "Type"
-description: "타입"
+title: "자료형"
+description: "Type"
 lead: ""
 date: 2021-04-27T15:00:53+09:00
 lastmod: 2021-04-27T16:29:53+09:00
