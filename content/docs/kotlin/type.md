@@ -420,4 +420,4 @@ var arr = IntArray(5) { it * 1 }
 
 ## Etc
 
-- Unit : 리턴값 없음
+- `Unit` : 리턴값 없음. Java에서 `void`에 대응된다.
