@@ -419,5 +419,5 @@ var arr = IntArray(5) { it * 1 }
 ```
 
 ## Etc
-
-- `Unit` : 리턴값 없음. Java에서 `void`에 대응된다.
+- [`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/) : 클래스의 최상위 객체. 코틀린에서 `Any`는 모든 클래스의 수퍼 클래스이다.
+- [`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/) : 리턴값 없음. Java에서 `void`에 대응된다.
