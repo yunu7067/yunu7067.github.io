@@ -1,4 +1,10 @@
 [[docs]]
+  name = "Kotlin"
+  weight = 101
+  identifier = "kotlin"
+  url = "/docs/kotlin/"
+
+[[docs]]
   name = "Clean Code"
   weight = 100
   identifier = "cleancode"
