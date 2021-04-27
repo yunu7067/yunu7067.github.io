@@ -3,7 +3,7 @@ title: "Type"
 description: "타입"
 lead: ""
 date: 2021-04-27T15:00:53+09:00
-lastmod: 2021-04-27T15:00:53+09:00
+lastmod: 2021-04-27T16:29:53+09:00
 draft: false
 images: []
 menu:
@@ -199,10 +199,10 @@ _Unsigned integers_
 {{< alert icon="⚠️" text="이 기능은 코틀린 1.3 이상만 사용이 가능하며, 아직 베타 상태입니다." >}}
 </a>
 
-- UByte: 8 비트 부호 없는 정수형, 0 ~ 255
-- UShort: 16 비트 부호 없는 정수형, 0 ~ 65535
-- UInt: 32 비트 부호 없는 정수형, 0 ~ 2^32 - 1
-- ULong: 64 비트 부호 없는 정수형, 0 ~ 2^64 - 1
+- `UByte`: 8 비트 부호 없는 정수형, 0 ~ 255
+- `UShort`: 16 비트 부호 없는 정수형, 0 ~ 65535
+- `UInt`: 32 비트 부호 없는 정수형, 0 ~ 2^32 - 1
+- `ULong`: 64 비트 부호 없는 정수형, 0 ~ 2^64 - 1
 
 부호가 없는 자료형도 부호가 있는 자료형의 대부분의 연산을 지원한다.. 부호가 없는 자료형은 아직 안정적이지 않기 때문에 inline class로 구현된다.
 
@@ -212,10 +212,10 @@ _Unsigned arrays and ranges_
 
 원래 자료형과 마찬가지로 부호가 없는 자료형을 나타내는 배열이 있다.
 
-- UByteArray: 부호가 없는 Byte의 배열
-- UShortArray: 부호가 없는 Short의 배열
-- UIntArray: 부호가 없는 Int의 배열
-- ULongArray: 부호가 없는 Long의 배열
+- `UByteArray`: 부호가 없는 Byte의 배열
+- `UShortArray`: 부호가 없는 Short의 배열
+- `UIntArray`: 부호가 없는 Int의 배열
+- `ULongArray`: 부호가 없는 Long의 배열
 
 정수 배열과 마찬가지로 boxing 오버헤드가 없는 `Array`와 유사한 API를 제공한다.. 또한 range 함수(`a..b`)도 지원한다.
 
