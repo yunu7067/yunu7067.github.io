@@ -75,7 +75,6 @@ abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, altern
 | relation<br>(관계)      | isVersionOf, isReferencedBy, isReplacedBy, isRequiredBy, isPartOf, inReferencedBy, isFormatOf, conformsTo, hasVersion, replaces, requires, hasPart, references, hasFormat |                                               |
 | coverage<br>(범위)      | spatial, temporal                                                                                                                                                         | Box, Point, Period, ISO3166, TGN, W3DCTF      |
 | rights<br>(저작권)      | accessRights, rightsHolder, license                                                                                                                                       |                                               |
-
 {.table-striped}
 
 ### Dublin Core™ Metadata Element Set
