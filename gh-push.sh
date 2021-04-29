@@ -20,7 +20,7 @@ exit 0
 [ -z "$1" ] && help
 
 # Body
-if [ -n $message];
+if [ -n $message ];
 then
   echo "커밋 메시지를 입력해 주세요"
 else
