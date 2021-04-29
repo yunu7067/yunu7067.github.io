@@ -20,11 +20,11 @@ exit 0
 [ -z "$1" ] && help
 
 # Body
-if [ -n $message ];
+if [ "$message" != "" ];
 then
-  echo "커밋 메시지를 입력해 주세요"
-else
   git add .
   git commit -m "$message"
   git push
+else
+  echo "커밋 메시지를 입력해 주세요"
 fi
