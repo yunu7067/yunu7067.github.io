@@ -64,7 +64,7 @@ Source:
 
 (function(){
 
-  var index = new FlexSearch({
+/*   var index = new FlexSearch({
     preset: 'score',
     cache: true,
     doc: {
@@ -84,7 +84,29 @@ Source:
     tokenize: function(str){
         return str.replace(/[\x00-\x7F]/g, "").split("");
   }
-  });
+  }); */
+
+  var index = FlexSearch.create({
+    preset: 'score',
+    cache: true,
+    doc: {
+      id: 'id',
+      field: [
+        'title',
+        'description',
+        'content',
+      ],
+      store: [
+        'href',
+        'title',
+        'description',
+      ],
+    },
+    encode: false,
+    tokenize: function(str){
+        return str.replace(/[\x00-\x7F]/g, "").split("");
+    }
+});
 
   var docs = [
     {{ range $index, $page := (where .Site.Pages "Section" "docs") -}}

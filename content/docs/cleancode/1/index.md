@@ -1,6 +1,6 @@
 ---
 title: "1. 깨끗한 코드"
-description: "Doks comes with commands for common tasks."
+description: "Clean Code 1장 깨끗한 코드"
 lead: ""
 date: 2020-10-13T15:21:01+02:00
 lastmod: 2020-10-13T15:21:01+02:00
