@@ -1,8 +1,8 @@
 ---
 title: "Dublin Core™ Metadata Initiative"
 description: "표준화된 메타데이터 요소 집합"
-date: "2021-04-28 13:20:03 +09:00"
-lastmod: "2021-04-28 13:20:03 +09:00"
+date: "2021-04-28T13:20:03+0900"
+lastmod: "2021-04-28T13:20:03+0900"
 image: dublin_core_block.png
 draft: false
 categories:
