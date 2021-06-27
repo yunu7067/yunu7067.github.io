@@ -1,15 +1,15 @@
 ---
 title: "Dublin Core™ Metadata Initiative"
 description: "표준화된 메타데이터 요소 집합"
-date: 2021-04-28T13:20:03+09:00
-lastmod: 2021-04-28T13:20:03+09:00
+date: 2021-04-28 13:20:03+09:00
+lastmod: 2021-04-28 13:20:03+09:00
 image: dublin_core_block.png
 draft: false
 categories:
-    - 
+  -
 tags:
-    - 
-    - 
+  -
+  -
 ---
 
 - [DCMI Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
@@ -74,7 +74,6 @@ abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, altern
 | coverage<br>(범위)      | spatial, temporal                                                                                                                                                         | Box, Point, Period, ISO3166, TGN, W3DCTF      |
 | rights<br>(저작권)      | accessRights, rightsHolder, license                                                                                                                                       |                                               |
 
-
 ### Dublin Core™ Metadata Element Set
 
 초기의 더블린 코어 요소. 15개의 요소로 구성되어 있고 모든 요소가 평면적이기 때문에 계층성이 없고, 선택적(Optional)이며 반복 가능하고 어떤 순서로든 사용할 수 있다.
@@ -83,6 +82,7 @@ abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, altern
 ![https://librarian.nl.go.kr/LI/contents/L10202000000.do](dublin_core_block.png)
 
 - Content (내용)
+
   - [Title (표제)](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/title/) :
     자원에 부여된 이름
   - [Description (설명)](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/description/) :
@@ -98,6 +98,7 @@ abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, altern
     자원의 내용물의 수량이나 범위
 
 - Intellectual Property (지적재산권)
+
   - [Creator (제작자)](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/creator/) :
     자원의 내용물을 만드는 데 일차적인 책임을 가지는 개체(엔티티)
   - [Publisher (발행처)](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/publisher/) :
