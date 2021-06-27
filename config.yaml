@@ -30,8 +30,8 @@ params:
     customText:
 
   dateFormat:
-    published: Mon, 02 Jan 2006 15:04 MST
-    lastUpdated: Mon, 02 Jan 2006 15:04 MST
+    published: 2006년 01월 02일 15:04 MST
+    lastUpdated: 2006년 01월 02일 15:04 MST
 
   sidebar:
     emoji:
