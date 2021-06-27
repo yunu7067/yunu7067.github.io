@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 27 Jun 2021 15:40:14 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Hugo Memo" />&lt;h2 id="hugo-메모">Hugo 메모&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>site 생성
+&lt;code>hugo new site site_name&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>theme 추가 (atack 테마 기준)
+&lt;code>git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>(선택사항)&lt;/p>
+&lt;ul>
+&lt;li>config.toml 삭제&lt;/li>
+&lt;li>themes/themename/exampleSite 내용물을 site 폴더로 복사&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>포스트 추가
+&lt;code>hugo new post/first-post/index.md&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure style="flex-grow: 66; flex-basis: 160px">
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg" data-size="667x1000">&lt;img src="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
+srcset="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w"
+width="667"
+height="1000"
+loading="lazy"
+alt="Photo by Florian Klauer on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Florian Klauer on Unsplash&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 149; flex-basis: 359px">
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg" data-size="1000x667">&lt;img src="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
+srcset="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w"
+width="1000"
+height="667"
+loading="lazy"
+alt="Photo by Luca Bravo on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Luca Bravo on Unsplash&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 133; flex-basis: 320px">
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" data-size="1000x750">&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
+srcset="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w"
+width="1000"
+height="750"
+loading="lazy"
+alt="Photo by Helena Hertz on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Helena Hertz on Unsplash&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 66; flex-basis: 160px">
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg" data-size="667x1000">&lt;img src="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
+srcset="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w"
+width="667"
+height="1000"
+loading="lazy"
+alt="Photo by Hudai Gayiran on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Hudai Gayiran on Unsplash&lt;/figcaption>
+&lt;/figure>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
+&lt;p>&lt;figure style="flex-grow: 2775; flex-basis: 6660px">
+&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png" data-size="888x32">&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png"
+srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_2.png 1024w"
+width="888"
+height="32"
+loading="lazy"
+alt="에러 메시지">
+&lt;/a>
+&lt;figcaption>에러 메시지&lt;/figcaption>
+&lt;/figure>
+Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:https://example.com (&amp;ldquo;script-src&amp;rdquo;)&lt;/p>
+&lt;h2 id="해결방안">해결방안&lt;/h2>
+&lt;p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 &lt;code>worker-src blob:&lt;/code>을 추가해주면 된다.&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 504; flex-basis: 1210px">
+&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" data-size="600x119">&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png"
+srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_2.png 1024w"
+width="600"
+height="119"
+loading="lazy"
+alt="nginx config에 추가">
+&lt;/a>
+&lt;figcaption>nginx config에 추가&lt;/figcaption>
+&lt;/figure>&lt;/p></description></item><item><title>Dublin Core™ Metadata Initiative</title><link>https://yunu7067.github.io/p/dublin-core-metadata-initiative/</link><pubDate>Wed, 28 Apr 2021 13:20:03 +0900</pubDate><guid>https://yunu7067.github.io/p/dublin-core-metadata-initiative/</guid><description>&lt;img src="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png" alt="Featured image of post Dublin Core™ Metadata Initiative" />&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/" target="_blank" rel="noopener"
+>DCMI Terms&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://librarian.nl.go.kr/LI/contents/L10201000000.do" target="_blank" rel="noopener"
+>문화체육관광부 - 국립중앙도서관 더블린 코어 소개&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>이하 내용은 DCIM 공식 문서 및 문화체육관광부 국립중앙도서관 더블린 코어 페이지에서 발췌한 내용입니다.&lt;/p>
+&lt;hr>
+&lt;h2 id="attributes">Attributes&lt;/h2>
+&lt;h3 id="필수-속성">필수 속성&lt;/h3>
+&lt;ul>
+&lt;li>이름(Name) - 기계가 처리할 수 있는 용어에 할당된 고유한 이름&lt;/li>
+&lt;li>URI - 해당 속성에 대한 웹상에서 적용 가능한 고유 식별자&lt;/li>
+&lt;li>레이블(Label) - 용어의 다른 형태의 이름. 사람이 읽고 이해하기 쉬운 이름으로, 기계 가독을 위한 이름(Name) 특성과 구분&lt;/li>
+&lt;li>정의(Definition) - 용어의 개념과 특성에 대한 설명&lt;/li>
+&lt;li>용어유형(Type of Term) - 용어의 유형으로 DCMI에서 정의된 어휘만 사용&lt;/li>
+&lt;/ul>
+&lt;h3 id="부가적인-속성">부가적인 속성&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>주석 (Comment) - 해당 용어의 사용에 관한 부가 정보&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>참조 (See) - 해당 속성에 관한 문서&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>참조정보 (References) - ‘정의’ 나 ‘참조’ 항목에서 참조된 자원&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>상위 속성 (Refines) - 해당 용어가 속한 상위 속성&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>상위 클래스 (Broader Than) - 해당 용어가 속한 상위클래스&lt;/p>
+&lt;p>* DCMI 클래스는 &amp;lt;Agent&amp;gt;, &amp;lt;AgentClass&amp;gt;, &amp;lt;BibliographicResource&amp;gt; 등 22개로 구성
+(&lt;a href="http://www.dublincore.org/documents/dcmi-terms/#section-6">http://www.dublincore.org/documents/dcmi-terms/#section-6&lt;/a> 를 참고하세요.)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>하위 클래스 (Narrower Than) - 해당 용어에 속한 하위클래스&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>사용 도메인 (Has Domain) - 해당 용어가 사용되는 상위 도메인(인스턴스)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>값 영역 (Has Range) - 해당 용어의 값을 입력하는데 사용 가능한 형식 또는 범위&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>해당 어휘집 (Member Of) - 해당 용어가 정의된 어휘 인코딩 체계&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>해당 인스턴스 (Instance Of) - 해당 용어가 속한 인스턴스&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>버전 (Version) - 해당 용어의 이력&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>유사 속성 (Equivalent Property) - 해당 용어와 유사하게 사용되는 용어&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="properties">Properties&lt;/h2>
+&lt;p>abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, alternative, audience, available, bibliographicCitation, conformsTo, &lt;strong>&lt;em>contributor&lt;/em>&lt;/strong>, &lt;strong>&lt;em>coverage&lt;/em>&lt;/strong>, created, &lt;strong>&lt;em>creator&lt;/em>&lt;/strong>, &lt;strong>&lt;em>date&lt;/em>&lt;/strong>, dateAccepted, dateCopyrighted, dateSubmitted, &lt;strong>&lt;em>description&lt;/em>&lt;/strong>, educationLevel, extent, &lt;strong>&lt;em>format&lt;/em>&lt;/strong>, hasFormat, hasPart, hasVersion, &lt;strong>&lt;em>identifier&lt;/em>&lt;/strong>, instructionalMethod, isFormatOf, isPartOf, isReferencedBy, isReplacedBy, isRequiredBy, issued, isVersionOf, &lt;strong>&lt;em>language&lt;/em>&lt;/strong>, license, mediator, medium, modified, provenance, &lt;strong>&lt;em>publisher&lt;/em>&lt;/strong>, references, &lt;strong>&lt;em>relation&lt;/em>&lt;/strong>, replaces, requires, &lt;strong>&lt;em>rights&lt;/em>&lt;/strong>, rightsHolder, &lt;strong>&lt;em>source&lt;/em>&lt;/strong>, spatial, &lt;strong>&lt;em>subject&lt;/em>&lt;/strong>, tableOfContents, temporal, &lt;strong>&lt;em>title&lt;/em>&lt;/strong>, &lt;strong>&lt;em>type&lt;/em>&lt;/strong>, valid&lt;/p>
+&lt;p>굵은 글씨는 DCMES(Dublin Core™ Metadata Element Set)의 용어. 총 15개.&lt;/p>
+&lt;h3 id="통제-어휘-controlled-vocabulary">통제 어휘 (Controlled Vocabulary)&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">요소&lt;/th>
+&lt;th style="text-align:left">상세구문&lt;/th>
+&lt;th style="text-align:left">인코딩 스킴&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">Title&lt;!-- raw HTML omitted -->(주제)&lt;/td>
+&lt;td style="text-align:left">alternative&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">creator&lt;!-- raw HTML omitted -->(제작자)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">subject&lt;!-- raw HTML omitted -->(주제)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">DDC, LCC, LCSH, NLM, UDC, MESH&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">description&lt;!-- raw HTML omitted -->(설명)&lt;/td>
+&lt;td style="text-align:left">abstract, tableOfContents, provenance&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">publisher&lt;!-- raw HTML omitted -->(출판사)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">contributor&lt;!-- raw HTML omitted -->(기여자)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">date&lt;!-- raw HTML omitted -->(날짜)&lt;/td>
+&lt;td style="text-align:left">created, valid, issued, modified, dateCopyrighted, dateSubmitted, available, dateAccepted&lt;/td>
+&lt;td style="text-align:left">W3CDTF&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">type&lt;!-- raw HTML omitted -->(유형)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">DCMIType&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">format&lt;!-- raw HTML omitted -->(형식)&lt;/td>
+&lt;td style="text-align:left">extent, medium&lt;/td>
+&lt;td style="text-align:left">IMT&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">identifier&lt;!-- raw HTML omitted -->(식별자)&lt;/td>
+&lt;td style="text-align:left">bibliographicCitation&lt;/td>
+&lt;td style="text-align:left">URI&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">source&lt;!-- raw HTML omitted -->(출처)&lt;/td>
+&lt;td style="text-align:left">URI&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">language&lt;!-- raw HTML omitted -->(언어)&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;td style="text-align:left">RFC4646, ISO639-2, ISO639-3, RFC1766, RFC3066&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">relation&lt;!-- raw HTML omitted -->(관계)&lt;/td>
+&lt;td style="text-align:left">isVersionOf, isReferencedBy, isReplacedBy, isRequiredBy, isPartOf, inReferencedBy, isFormatOf, conformsTo, hasVersion, replaces, requires, hasPart, references, hasFormat&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">coverage&lt;!-- raw HTML omitted -->(범위)&lt;/td>
+&lt;td style="text-align:left">spatial, temporal&lt;/td>
+&lt;td style="text-align:left">Box, Point, Period, ISO3166, TGN, W3DCTF&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">rights&lt;!-- raw HTML omitted -->(저작권)&lt;/td>
+&lt;td style="text-align:left">accessRights, rightsHolder, license&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="dublin-core-metadata-element-set">Dublin Core™ Metadata Element Set&lt;/h3>
+&lt;p>초기의 더블린 코어 요소. 15개의 요소로 구성되어 있고 모든 요소가 평면적이기 때문에 계층성이 없고, 선택적(Optional)이며 반복 가능하고 어떤 순서로든 사용할 수 있다.
+해당 속성(Property)는 &lt;code>/elements/1.1/&lt;/code> 네임스페이스에 기술되어 있다.&lt;/p>
+&lt;p>&lt;figure style="flex-grow: 163; flex-basis: 391px">
+&lt;a href="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png" data-size="770x472">&lt;img src="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png"
+srcset="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_1024x0_resize_box_2.png 1024w"
+width="770"
+height="472"
+loading="lazy"
+alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
+&lt;/a>
+&lt;figcaption>&lt;a href="https://librarian.nl.go.kr/LI/contents/L10202000000.do">https://librarian.nl.go.kr/LI/contents/L10202000000.do&lt;/a>&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Content (내용)&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/title/" target="_blank" rel="noopener"
+>Title (표제)&lt;/a> :
+자원에 부여된 이름&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/description/" target="_blank" rel="noopener"
+>Description (설명)&lt;/a> :
+자원의 내용물에 대한 설명&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/type/" target="_blank" rel="noopener"
+>Type (유형)&lt;/a> : 자원의 내용물의 성격&amp;gt;이나 장르&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/subject/" target="_blank" rel="noopener"
+>Subject (주제)&lt;/a> :
+자원의 주제. 통상적으로 주제는 핵심어나 핵심어구, 분류기호 등이 포함되며, 통제 어휘로 사용할 것을 권고함&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/source/" target="_blank" rel="noopener"
+>Source (출처)&lt;/a> :
+기술 대상 자원이 파생된 (원) 자원&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/relation/" target="_blank" rel="noopener"
+>Relation (관계)&lt;/a> :
+관련 자원에 대한 참조&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/coverage/" target="_blank" rel="noopener"
+>Coverage (범위)&lt;/a> :
+자원의 내용물의 수량이나 범위&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Intellectual Property (지적재산권)&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/creator/" target="_blank" rel="noopener"
+>Creator (제작자)&lt;/a> :
+자원의 내용물을 만드는 데 일차적인 책임을 가지는 개체(엔티티)&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/publisher/" target="_blank" rel="noopener"
+>Publisher (발행처)&lt;/a> :
+자원 접근(이용)에 책임이 있는 개체. 발행처에는 개인, 기관, 서비스 등이 포함됨&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/rights/" target="_blank" rel="noopener"
+>Rights (이용조건)&lt;/a> :
+자원의 저작권 정보. 통상적으로 저작권 정보에는 지적 재산권과 같이 자원과 관련된 재산권 내용을 기술함&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/contributor/" target="_blank" rel="noopener"
+>Contributor (기여자)&lt;/a> : 자원&amp;gt;에 기여한 책임이 있는 개체. 사람, 기관, 서비스 등이 해당됨&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Instantiation (인스턴스화)&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/date/" target="_blank" rel="noopener"
+>Date (발행일자)&lt;/a> :
+자원이 현재의 형태로써 이용 가능하게 된 날짜&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/format/" target="_blank" rel="noopener"
+>Format (형식)&lt;/a> :
+자원의 파일 형식이나 물리적 매체. 경우에 따라 크기나 재생시간을 포함할 수 있으며, MIME과 같은 통제어휘의 사용을 권고함&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/identifier/" target="_blank" rel="noopener"
+>Identifier (식별자)&lt;/a> :
+특정 환경 내에서의 자원의 참조 정보. 공식적인 식별 체계를 준용한 문자열을 사용할 것을 권고함&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/elements11/language/" target="_blank" rel="noopener"
+>Language (언어)&lt;/a> :
+자원의 지적 내용의 언어&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="용어">용어&lt;/h3>
+&lt;p>작성중&lt;/p></description></item><item><title>Markdown Syntax Guide</title><link>https://yunu7067.github.io/p/markdown-syntax-guide/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://yunu7067.github.io/p/markdown-syntax-guide/</guid><description>&lt;img src="https://yunu7067.github.io/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" />&lt;p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p>
+&lt;h2 id="headings">Headings&lt;/h2>
+&lt;p>The following HTML &lt;code>&amp;lt;h1&amp;gt;&lt;/code>—&lt;code>&amp;lt;h6&amp;gt;&lt;/code> elements represent six levels of section headings. &lt;code>&amp;lt;h1&amp;gt;&lt;/code> is the highest section level while &lt;code>&amp;lt;h6&amp;gt;&lt;/code> is the lowest.&lt;/p>
+&lt;h1 id="h1">H1&lt;/h1>
+&lt;h2 id="h2">H2&lt;/h2>
+&lt;h3 id="h3">H3&lt;/h3>
+&lt;h4 id="h4">H4&lt;/h4>
+&lt;h5 id="h5">H5&lt;/h5>
+&lt;h6 id="h6">H6&lt;/h6>
+&lt;h2 id="paragraph">Paragraph&lt;/h2>
+&lt;p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p>
+&lt;p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p>
+&lt;h2 id="blockquotes">Blockquotes&lt;/h2>
+&lt;p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code>footer&lt;/code> or &lt;code>cite&lt;/code> element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p>
+&lt;h4 id="blockquote-without-attribution">Blockquote without attribution&lt;/h4>
+&lt;blockquote>
+&lt;p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+&lt;strong>Note&lt;/strong> that you can use &lt;em>Markdown syntax&lt;/em> within a blockquote.&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="blockquote-with-attribution">Blockquote with attribution&lt;/h4>
+&lt;blockquote>
+&lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;!-- raw HTML omitted -->
+— &lt;!-- raw HTML omitted -->Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="tables">Tables&lt;/h2>
+&lt;p>Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th>Age&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Bob&lt;/td>
+&lt;td>27&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Alice&lt;/td>
+&lt;td>23&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="inline-markdown-within-tables">Inline Markdown within tables&lt;/h4>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Italics&lt;/th>
+&lt;th>Bold&lt;/th>
+&lt;th>Code&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;em>italics&lt;/em>&lt;/td>
+&lt;td>&lt;strong>bold&lt;/strong>&lt;/td>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="code-blocks">Code Blocks&lt;/h2>
+&lt;h4 id="code-block-with-backticks">Code block with backticks&lt;/h4>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Example HTML5 Document&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Test&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="code-block-indented-with-four-spaces">Code block indented with four spaces&lt;/h4>
+&lt;pre>&lt;code>&amp;lt;!doctype html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h4 id="code-block-with-hugos-internal-highlight-shortcode">Code block with Hugo&amp;rsquo;s internal highlight shortcode&lt;/h4>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Example HTML5 Document&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Test&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="list-types">List Types&lt;/h2>
+&lt;h4 id="ordered-list">Ordered List&lt;/h4>
+&lt;ol>
+&lt;li>First item&lt;/li>
+&lt;li>Second item&lt;/li>
+&lt;li>Third item&lt;/li>
+&lt;/ol>
+&lt;h4 id="unordered-list">Unordered List&lt;/h4>
+&lt;ul>
+&lt;li>List item&lt;/li>
+&lt;li>Another item&lt;/li>
+&lt;li>And another item&lt;/li>
+&lt;/ul>
+&lt;h4 id="nested-list">Nested list&lt;/h4>
+&lt;ul>
+&lt;li>Fruit
+&lt;ul>
+&lt;li>Apple&lt;/li>
+&lt;li>Orange&lt;/li>
+&lt;li>Banana&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Dairy
+&lt;ul>
+&lt;li>Milk&lt;/li>
+&lt;li>Cheese&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark&lt;/h2>
+&lt;p>&lt;!-- raw HTML omitted -->GIF&lt;!-- raw HTML omitted --> is a bitmap image format.&lt;/p>
+&lt;p>H&lt;!-- raw HTML omitted -->2&lt;!-- raw HTML omitted -->O&lt;/p>
+&lt;p>X&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted --> + Y&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted --> = Z&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;p>Press &lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->CTRL&lt;!-- raw HTML omitted -->+&lt;!-- raw HTML omitted -->ALT&lt;!-- raw HTML omitted -->+&lt;!-- raw HTML omitted -->Delete&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted --> to end the session.&lt;/p>
+&lt;p>Most &lt;!-- raw HTML omitted -->salamanders&lt;!-- raw HTML omitted --> are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p>
+&lt;section class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1" role="doc-endnote">
+&lt;p>The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a class="link" href="https://www.youtube.com/watch?v=PAAkCSZUG1c" target="_blank" rel="noopener"
+>talk&lt;/a> during Gopherfest, November 18, 2015.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/section></description></item><item><title>Rich Content</title><link>https://yunu7067.github.io/p/rich-content/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>https://yunu7067.github.io/p/rich-content/</guid><description>&lt;p>Hugo ships with several &lt;a class="link" href="https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes" target="_blank" rel="noopener"
+>Built-in Shortcodes&lt;/a> for rich content, along with a &lt;a class="link" href="https://gohugo.io/about/hugo-and-gdpr/" target="_blank" rel="noopener"
+>Privacy Config&lt;/a> and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p>
+&lt;hr>
+&lt;h2 id="youtube-privacy-enhanced-shortcode">YouTube Privacy Enhanced Shortcode&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/ZJthWmvUzzc"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;h2 id="twitter-simple-shortcode">Twitter Simple Shortcode&lt;/h2>
+&lt;style type="text/css">
+.twitter-tweet {
+font: 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+border-left: 4px solid #2b7bb9;
+padding-left: 1.5em;
+color: #555;
+}
+.twitter-tweet a {
+color: #2b7bb9;
+text-decoration: none;
+}
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
+text-decoration: underline;
+}
+&lt;/style>
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">“In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”&lt;br>— Jan Tschichold &lt;a href="https://t.co/gcv7SrhvJb">pic.twitter.com/gcv7SrhvJb&lt;/a>&lt;/p>&amp;mdash; Graphic Design History (@DesignReviewed) &lt;a href="https://twitter.com/DesignReviewed/status/1085870671291310081?ref_src=twsrc%5Etfw">January 17, 2019&lt;/a>&lt;/blockquote>
+&lt;!-- raw HTML omitted -->
+&lt;hr>
+&lt;h2 id="vimeo-simple-shortcode">Vimeo Simple Shortcode&lt;/h2>
+&lt;style>
+.__h_video {
+position: relative;
+padding-bottom: 56.23%;
+height: 0;
+overflow: hidden;
+width: 100%;
+background: #000;
+}
+.__h_video img {
+width: 100%;
+height: auto;
+color: #000;
+}
+.__h_video .play {
+height: 72px;
+width: 72px;
+left: 50%;
+top: 50%;
+margin-left: -36px;
+margin-top: -36px;
+position: absolute;
+cursor: pointer;
+}
+&lt;/style>
+&lt;div class="s_video_simple __h_video">
+&lt;a href="https://vimeo.com/4.8912912e&amp;#43;07" rel="noopener" target="_blank">
+&lt;img src="https://i.vimeocdn.com/video/337401969_640" srcset="https://i.vimeocdn.com/video/337401969_640 1x, https://i.vimeocdn.com/video/337401969_640 2x" alt="Sing Jan Swing - Kinetic Type">
+&lt;div class="play">&lt;svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 61">&lt;circle cx="30.5" cy="30.5" r="30.5" opacity=".8" fill="#000">&lt;/circle>&lt;path d="M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z" fill="#fff">&lt;/path>&lt;/svg>&lt;/div>&lt;/a>&lt;/div></description></item><item><title>Math Typesetting</title><link>https://yunu7067.github.io/p/math-typesetting/</link><pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate><guid>https://yunu7067.github.io/p/math-typesetting/</guid><description>&lt;p>Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p>
+&lt;p>In this example we will be using &lt;a class="link" href="https://katex.org/" target="_blank" rel="noopener"
+>KaTeX&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>Create a partial under &lt;code>/layouts/partials/math.html&lt;/code>&lt;/li>
+&lt;li>Within this partial reference the &lt;a class="link" href="https://katex.org/docs/autorender.html" target="_blank" rel="noopener"
+>Auto-render Extension&lt;/a> or host these scripts locally.&lt;/li>
+&lt;li>Include the partial in your templates like so:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="o">{{&lt;/span> &lt;span class="k">if&lt;/span> or .Params.math .Site.Params.math &lt;span class="o">}}&lt;/span>
+&lt;span class="o">{{&lt;/span> partial &lt;span class="s2">&amp;#34;math.html&amp;#34;&lt;/span> . &lt;span class="o">}}&lt;/span>
+&lt;span class="o">{{&lt;/span> end &lt;span class="o">}}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>To enable KaTex globally set the parameter &lt;code>math&lt;/code> to &lt;code>true&lt;/code> in a project&amp;rsquo;s configuration&lt;/li>
+&lt;li>To enable KaTex on a per page basis include the parameter &lt;code>math: true&lt;/code> in content files&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Note:&lt;/strong> Use the online reference of &lt;a class="link" href="https://katex.org/docs/supported.html" target="_blank" rel="noopener"
+>Supported TeX Functions&lt;/a>&lt;/p>
+&lt;h3 id="examples">Examples&lt;/h3>
+&lt;p>Block math:
+$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;/p></description></item><item><title>Emoji Support</title><link>https://yunu7067.github.io/p/emoji-support/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>https://yunu7067.github.io/p/emoji-support/</guid><description>&lt;img src="https://yunu7067.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" />&lt;p>Emoji can be enabled in a Hugo project in a number of ways.&lt;/p>
+&lt;p>The &lt;a class="link" href="https://gohugo.io/functions/emojify/" target="_blank" rel="noopener"
+>&lt;code>emojify&lt;/code>&lt;/a> function can be called directly in templates or &lt;a class="link" href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes" target="_blank" rel="noopener"
+>Inline Shortcodes&lt;/a>.&lt;/p>
+&lt;p>To enable emoji globally, set &lt;code>enableEmoji&lt;/code> to &lt;code>true&lt;/code> in your site&amp;rsquo;s &lt;a class="link" href="https://gohugo.io/getting-started/configuration/" target="_blank" rel="noopener"
+>configuration&lt;/a> and then you can type emoji shorthand codes directly in content files; e.g.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>The &lt;a class="link" href="http://www.emoji-cheat-sheet.com/" target="_blank" rel="noopener"
+>Emoji cheat sheet&lt;/a> is a useful reference for emoji shorthand codes.&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>N.B.&lt;/strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.&lt;/p>
+&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">.emoji {
+font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+}&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

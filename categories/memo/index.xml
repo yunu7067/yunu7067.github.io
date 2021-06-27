@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Memo on YUN</title><link>https://yunu7067.github.io/categories/memo/</link><description>Recent content in Memo on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 27 Jun 2021 15:40:14 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/categories/memo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>Hugo 메모 site 생성 hugo new site site_name
+theme 추가 (atack 테마 기준) git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack
+(선택사항)
+config.toml 삭제 themes/themename/exampleSite 내용물을 site 폴더로 복사 포스트 추가 hugo new post/first-post/index.md
+Photo by Florian Klauer on Unsplash Photo by Luca Bravo on Unsplash
+Photo by Helena Hertz on Unsplash Photo by Hudai Gayiran on Unsplash</description></item></channel></rss>
