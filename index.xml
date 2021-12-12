@@ -20,49 +20,79 @@
 &lt;code>hugo new post/first-post/index.md&lt;/code>&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;figure style="flex-grow: 66; flex-basis: 160px">
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg" data-size="667x1000">&lt;img src="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
-srcset="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w"
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 66;
+flex-basis: 160px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg" data-size="667x1000">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
 width="667"
 height="1000"
+srcset="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w"
 loading="lazy"
 alt="Photo by Florian Klauer on Unsplash">
 &lt;/a>
 &lt;figcaption>Photo by Florian Klauer on Unsplash&lt;/figcaption>
-&lt;/figure> &lt;figure style="flex-grow: 149; flex-basis: 359px">
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg" data-size="1000x667">&lt;img src="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
-srcset="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w"
+&lt;/figure> &lt;figure
+class="gallery-image"
+style="
+flex-grow: 149;
+flex-basis: 359px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg" data-size="1000x667">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
 width="1000"
 height="667"
+srcset="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w"
 loading="lazy"
 alt="Photo by Luca Bravo on Unsplash">
 &lt;/a>
 &lt;figcaption>Photo by Luca Bravo on Unsplash&lt;/figcaption>
 &lt;/figure>&lt;/p>
-&lt;p>&lt;figure style="flex-grow: 133; flex-basis: 320px">
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" data-size="1000x750">&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
-srcset="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w"
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 133;
+flex-basis: 320px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" data-size="1000x750">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
 width="1000"
 height="750"
+srcset="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w"
 loading="lazy"
 alt="Photo by Helena Hertz on Unsplash">
 &lt;/a>
 &lt;figcaption>Photo by Helena Hertz on Unsplash&lt;/figcaption>
-&lt;/figure> &lt;figure style="flex-grow: 66; flex-basis: 160px">
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg" data-size="667x1000">&lt;img src="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
-srcset="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w"
+&lt;/figure> &lt;figure
+class="gallery-image"
+style="
+flex-grow: 66;
+flex-basis: 160px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg" data-size="667x1000">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
 width="667"
 height="1000"
+srcset="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w"
 loading="lazy"
 alt="Photo by Hudai Gayiran on Unsplash">
 &lt;/a>
 &lt;figcaption>Photo by Hudai Gayiran on Unsplash&lt;/figcaption>
 &lt;/figure>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
-&lt;p>&lt;figure style="flex-grow: 2775; flex-basis: 6660px">
-&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png" data-size="888x32">&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png"
-srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_2.png 1024w"
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 2775;
+flex-basis: 6660px"
+>
+&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png" data-size="888x32">
+&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_msg.png"
 width="888"
 height="32"
+srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_3.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="에러 메시지">
 &lt;/a>
@@ -71,11 +101,17 @@ alt="에러 메시지">
 Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:https://example.com (&amp;ldquo;script-src&amp;rdquo;)&lt;/p>
 &lt;h2 id="해결방안">해결방안&lt;/h2>
 &lt;p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 &lt;code>worker-src blob:&lt;/code>을 추가해주면 된다.&lt;/p>
-&lt;p>&lt;figure style="flex-grow: 504; flex-basis: 1210px">
-&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" data-size="600x119">&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png"
-srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_2.png 1024w"
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 504;
+flex-basis: 1210px"
+>
+&lt;a href="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" data-size="600x119">
+&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png"
 width="600"
 height="119"
+srcset="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_3.png 480w, https://yunu7067.github.io/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="nginx config에 추가">
 &lt;/a>
@@ -114,7 +150,8 @@ alt="nginx config에 추가">
 &lt;li>
 &lt;p>상위 클래스 (Broader Than) - 해당 용어가 속한 상위클래스&lt;/p>
 &lt;p>* DCMI 클래스는 &amp;lt;Agent&amp;gt;, &amp;lt;AgentClass&amp;gt;, &amp;lt;BibliographicResource&amp;gt; 등 22개로 구성
-(&lt;a href="http://www.dublincore.org/documents/dcmi-terms/#section-6">http://www.dublincore.org/documents/dcmi-terms/#section-6&lt;/a> 를 참고하세요.)&lt;/p>
+(&lt;a class="link" href="http://www.dublincore.org/documents/dcmi-terms/#section-6" target="_blank" rel="noopener"
+>http://www.dublincore.org/documents/dcmi-terms/#section-6&lt;/a> 를 참고하세요.)&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>하위 클래스 (Narrower Than) - 해당 용어에 속한 하위클래스&lt;/p>
@@ -231,11 +268,17 @@ alt="nginx config에 추가">
 &lt;h3 id="dublin-core-metadata-element-set">Dublin Core™ Metadata Element Set&lt;/h3>
 &lt;p>초기의 더블린 코어 요소. 15개의 요소로 구성되어 있고 모든 요소가 평면적이기 때문에 계층성이 없고, 선택적(Optional)이며 반복 가능하고 어떤 순서로든 사용할 수 있다.
 해당 속성(Property)는 &lt;code>/elements/1.1/&lt;/code> 네임스페이스에 기술되어 있다.&lt;/p>
-&lt;p>&lt;figure style="flex-grow: 163; flex-basis: 391px">
-&lt;a href="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png" data-size="770x472">&lt;img src="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png"
-srcset="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_480x0_resize_box_2.png 480w, https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_1024x0_resize_box_2.png 1024w"
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 163;
+flex-basis: 391px"
+>
+&lt;a href="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png" data-size="770x472">
+&lt;img src="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block.png"
 width="770"
 height="472"
+srcset="https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_480x0_resize_box_3.png 480w, https://yunu7067.github.io/p/dublin-core-metadata-initiative/dublin_core_block_hufc19414258e6ca60cda3fc71ebafc805_27666_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
 &lt;/a>
@@ -365,7 +408,7 @@ alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
 &lt;/table>
 &lt;h2 id="code-blocks">Code Blocks&lt;/h2>
 &lt;h4 id="code-block-with-backticks">Code block with backticks&lt;/h4>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
@@ -388,7 +431,7 @@ alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
 &amp;lt;/html&amp;gt;
 &lt;/code>&lt;/pre>
 &lt;h4 id="code-block-with-hugos-internal-highlight-shortcode">Code block with Hugo&amp;rsquo;s internal highlight shortcode&lt;/h4>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
@@ -504,7 +547,7 @@ cursor: pointer;
 &lt;/style>
 &lt;div class="s_video_simple __h_video">
 &lt;a href="https://vimeo.com/4.8912912e&amp;#43;07" rel="noopener" target="_blank">
-&lt;img src="https://i.vimeocdn.com/video/337401969_640" srcset="https://i.vimeocdn.com/video/337401969_640 1x, https://i.vimeocdn.com/video/337401969_640 2x" alt="Sing Jan Swing - Kinetic Type">
+&lt;img src="https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640" srcset="https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640 1x, https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640 2x" alt="Sing Jan Swing - Kinetic Type">
 &lt;div class="play">&lt;svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 61">&lt;circle cx="30.5" cy="30.5" r="30.5" opacity=".8" fill="#000">&lt;/circle>&lt;path d="M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z" fill="#fff">&lt;/path>&lt;/svg>&lt;/div>&lt;/a>&lt;/div></description></item><item><title>Math Typesetting</title><link>https://yunu7067.github.io/p/math-typesetting/</link><pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate><guid>https://yunu7067.github.io/p/math-typesetting/</guid><description>&lt;p>Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p>
 &lt;p>In this example we will be using &lt;a class="link" href="https://katex.org/" target="_blank" rel="noopener"
 >KaTeX&lt;/a>&lt;/p>
@@ -514,7 +557,7 @@ cursor: pointer;
 >Auto-render Extension&lt;/a> or host these scripts locally.&lt;/li>
 &lt;li>Include the partial in your templates like so:&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="o">{{&lt;/span> &lt;span class="k">if&lt;/span> or .Params.math .Site.Params.math &lt;span class="o">}}&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="o">{{&lt;/span> &lt;span class="k">if&lt;/span> or .Params.math .Site.Params.math &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> partial &lt;span class="s2">&amp;#34;math.html&amp;#34;&lt;/span> . &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> end &lt;span class="o">}}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;ul>
@@ -538,6 +581,6 @@ $$&lt;/p></description></item><item><title>Emoji Support</title><link>https://yu
 >Emoji cheat sheet&lt;/a> is a useful reference for emoji shorthand codes.&lt;/p>
 &lt;hr>
 &lt;p>&lt;strong>N.B.&lt;/strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.&lt;/p>
-&lt;div class="highlight">&lt;pre class="chroma">&lt;code class="language-html" data-lang="html">.emoji {
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">.emoji {
 font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
 }&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

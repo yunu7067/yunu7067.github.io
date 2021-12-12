@@ -1,9 +1,154 @@
-<!doctype html><html lang=ko-kr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><title>Content Security Policy</title><link rel=canonical href=https://yunu7067.github.io/p/content-security-policy/><link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Content Security Policy"><meta property="og:description" content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><meta property="og:url" content="https://yunu7067.github.io/p/content-security-policy/"><meta property="og:site_name" content="YUN"><meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Nginx"><meta property="article:tag" content="Error"><meta property="article:published_time" content="2021-04-29T10:13:01+09:00"><meta property="article:modified_time" content="2021-04-29T10:13:01+09:00"><meta property="og:image" content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png"><meta name=twitter:title content="Content Security Policy"><meta name=twitter:description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png"></head><body class="article-page has-toc"><script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script><div class="container main-container flex
-extended"><div id=article-toolbar><a href=https://yunu7067.github.io class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg><span>Back</span></a></div><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/content-security-policy/><img src=/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_2.png srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_2.png 800w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1600x0_resize_box_2.png 1600w" width=800 height=159 loading=lazy alt="Featured image of post Content Security Policy"></a></div><div class=article-details><header class=article-category><a href=/categories/web/>Web</a></header><h2 class=article-title><a href=/p/content-security-policy/>Content Security Policy</a></h2><h3 class=article-subtitle>Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨</h3><footer class=article-time><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg><time class=article-time--published>2021년 04월 29일 10:13 +0900</time></footer></div></header><section class=article-content><h2 id=문제점>문제점</h2><p><figure style=flex-grow:2775;flex-basis:6660px><a href=/p/content-security-policy/blob_err_msg.png data-size=888x32><img src=/p/content-security-policy/blob_err_msg.png srcset="/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_2.png 480w, /p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_2.png 1024w" width=888 height=32 loading=lazy alt="에러 메시지"></a><figcaption>에러 메시지</figcaption></figure>Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:https://example.com (&ldquo;script-src&rdquo;)</p><h2 id=해결방안>해결방안</h2><p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 <code>worker-src blob:</code>을 추가해주면 된다.</p><p><figure style=flex-grow:504;flex-basis:1210px><a href=/p/content-security-policy/blob_err_resolve.png data-size=600x119><img src=/p/content-security-policy/blob_err_resolve.png srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_2.png 480w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_2.png 1024w" width=600 height=119 loading=lazy alt="nginx config에 추가"></a><figcaption>nginx config에 추가</figcaption></figure></p></section><footer class=article-footer><section class=article-tags><a href=/tags/nginx/>Nginx</a>
-<a href=/tags/error/>Error</a></section><section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg><span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-contents--wrapper></aside><script src=https://utteranc.es/client.js repo issue-term=pathname crossorigin=anonymous async></script><style>.utterances{max-width:unset}</style><script>function setUtterancesTheme(b){let a=document.querySelector('.utterances iframe');a&&a.contentWindow.postMessage({type:'set-theme',theme:`github-${b}`},'https://utteranc.es')}addEventListener('message',a=>{if(a.origin!=='https://utteranc.es')return;setUtterancesTheme(document.documentElement.dataset.scheme)}),window.addEventListener('onColorSchemeChange',a=>{setUtterancesTheme(a.detail)})</script><footer class=site-footer><section class=copyright>&copy;
+<!doctype html><html lang=ko-kr>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><title>Content Security Policy</title>
+<link rel=canonical href=https://yunu7067.github.io/p/content-security-policy/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Content Security Policy">
+<meta property="og:description" content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨">
+<meta property="og:url" content="https://yunu7067.github.io/p/content-security-policy/">
+<meta property="og:site_name" content="YUN">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Nginx"><meta property="article:tag" content="Error"><meta property="article:published_time" content="2021-04-29T10:13:01+09:00"><meta property="article:modified_time" content="2021-04-29T10:13:01+09:00"><meta property="og:image" content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png">
+<meta name=twitter:title content="Content Security Policy">
+<meta name=twitter:description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png">
+</head>
+<body class="article-page has-toc">
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex
+extended">
+<div id=article-toolbar>
+<a href=/ class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+<span>뒤로가기</span>
+</a>
+</div>
+<main class="main full-width">
+<article class="has-image main-article">
+<header class=article-header>
+<div class=article-image>
+<a href=/p/content-security-policy/>
+<img src=/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_3.png srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_3.png 800w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1600x0_resize_box_3.png 1600w" width=800 height=159 loading=lazy alt="Featured image of post Content Security Policy">
+</a>
+</div>
+<div class=article-details>
+<header class=article-category>
+<a href=/categories/web/>
+Web
+</a>
+</header>
+<h2 class=article-title>
+<a href=/p/content-security-policy/>Content Security Policy</a>
+</h2>
+<h3 class=article-subtitle>
+Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨
+</h3>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2021년 04월 29일 10:13 +0900</time>
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>
+1 분 정도
+</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h2 id=문제점>문제점</h2>
+<p><figure class=gallery-image style=flex-grow:2775;flex-basis:6660px>
+<a href=/p/content-security-policy/blob_err_msg.png data-size=888x32>
+<img src=/p/content-security-policy/blob_err_msg.png width=888 height=32 srcset="/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_3.png 480w, /p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_3.png 1024w" loading=lazy alt="에러 메시지">
+</a>
+<figcaption>에러 메시지</figcaption>
+</figure>
+Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:https://example.com (&ldquo;script-src&rdquo;)</p>
+<h2 id=해결방안>해결방안</h2>
+<p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 <code>worker-src blob:</code>을 추가해주면 된다.</p>
+<p><figure class=gallery-image style=flex-grow:504;flex-basis:1210px>
+<a href=/p/content-security-policy/blob_err_resolve.png data-size=600x119>
+<img src=/p/content-security-policy/blob_err_resolve.png width=600 height=119 srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_3.png 480w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_3.png 1024w" loading=lazy alt="nginx config에 추가">
+</a>
+<figcaption>nginx config에 추가</figcaption>
+</figure></p>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/nginx/>Nginx</a>
+<a href=/tags/error/>Error</a>
+</section>
+<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span>
+</section>
+</footer>
+</article>
+<aside class=related-contents--wrapper>
+</aside>
+<script src=https://giscus.app/client.js data-repo=yunu7067/yunu7067.github.io data-repo-id="MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ=" data-category=giscus data-category-id=DIC_kwDOFQ_uFM4CADJ2 data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=light crossorigin=anonymous async></script>
+<script>function setGiscusTheme(b){let a=document.querySelector('iframe.giscus-frame');a&&a.contentWindow.postMessage({giscus:{setConfig:{theme:b}}},"https://giscus.app")}(function(){addEventListener('message',b=>{if(event.origin!=='https://giscus.app')return;a()}),window.addEventListener('onColorSchemeChange',a);function a(){document.documentElement.dataset.scheme==="light"?setGiscusTheme('light'):setGiscusTheme('dark')}})()</script>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
 2020 -
-2021 YUN</section><section class=powerby><a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>로 만듦<br><a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>의 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=2.4.0>Stack</a></b> 테마 사용 중</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+2021 YUN
+</section>
+<section class=powerby>
+<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>로 만듦 <br>
+<a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>의 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.5.0>Stack</a></b> 테마 사용 중
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous></main><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#문제점>문제점</a></li><li><a href=#해결방안>해결방안</a></li></ol></nav></div></section></aside></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script></body></html>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
+</main>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">목차</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#문제점>문제점</a></li>
+<li><a href=#해결방안>해결방안</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>
