@@ -189,77 +189,77 @@ alt="nginx config에 추가">
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align:left">Title&lt;!-- raw HTML omitted -->(주제)&lt;/td>
+&lt;td style="text-align:left">Title&lt;br>(주제)&lt;/td>
 &lt;td style="text-align:left">alternative&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">creator&lt;!-- raw HTML omitted -->(제작자)&lt;/td>
+&lt;td style="text-align:left">creator&lt;br>(제작자)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">subject&lt;!-- raw HTML omitted -->(주제)&lt;/td>
+&lt;td style="text-align:left">subject&lt;br>(주제)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">DDC, LCC, LCSH, NLM, UDC, MESH&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">description&lt;!-- raw HTML omitted -->(설명)&lt;/td>
+&lt;td style="text-align:left">description&lt;br>(설명)&lt;/td>
 &lt;td style="text-align:left">abstract, tableOfContents, provenance&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">publisher&lt;!-- raw HTML omitted -->(출판사)&lt;/td>
+&lt;td style="text-align:left">publisher&lt;br>(출판사)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">contributor&lt;!-- raw HTML omitted -->(기여자)&lt;/td>
+&lt;td style="text-align:left">contributor&lt;br>(기여자)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">date&lt;!-- raw HTML omitted -->(날짜)&lt;/td>
+&lt;td style="text-align:left">date&lt;br>(날짜)&lt;/td>
 &lt;td style="text-align:left">created, valid, issued, modified, dateCopyrighted, dateSubmitted, available, dateAccepted&lt;/td>
 &lt;td style="text-align:left">W3CDTF&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">type&lt;!-- raw HTML omitted -->(유형)&lt;/td>
+&lt;td style="text-align:left">type&lt;br>(유형)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">DCMIType&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">format&lt;!-- raw HTML omitted -->(형식)&lt;/td>
+&lt;td style="text-align:left">format&lt;br>(형식)&lt;/td>
 &lt;td style="text-align:left">extent, medium&lt;/td>
 &lt;td style="text-align:left">IMT&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">identifier&lt;!-- raw HTML omitted -->(식별자)&lt;/td>
+&lt;td style="text-align:left">identifier&lt;br>(식별자)&lt;/td>
 &lt;td style="text-align:left">bibliographicCitation&lt;/td>
 &lt;td style="text-align:left">URI&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">source&lt;!-- raw HTML omitted -->(출처)&lt;/td>
+&lt;td style="text-align:left">source&lt;br>(출처)&lt;/td>
 &lt;td style="text-align:left">URI&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">language&lt;!-- raw HTML omitted -->(언어)&lt;/td>
+&lt;td style="text-align:left">language&lt;br>(언어)&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;td style="text-align:left">RFC4646, ISO639-2, ISO639-3, RFC1766, RFC3066&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">relation&lt;!-- raw HTML omitted -->(관계)&lt;/td>
+&lt;td style="text-align:left">relation&lt;br>(관계)&lt;/td>
 &lt;td style="text-align:left">isVersionOf, isReferencedBy, isReplacedBy, isRequiredBy, isPartOf, inReferencedBy, isFormatOf, conformsTo, hasVersion, replaces, requires, hasPart, references, hasFormat&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">coverage&lt;!-- raw HTML omitted -->(범위)&lt;/td>
+&lt;td style="text-align:left">coverage&lt;br>(범위)&lt;/td>
 &lt;td style="text-align:left">spatial, temporal&lt;/td>
 &lt;td style="text-align:left">Box, Point, Period, ISO3166, TGN, W3DCTF&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align:left">rights&lt;!-- raw HTML omitted -->(저작권)&lt;/td>
+&lt;td style="text-align:left">rights&lt;br>(저작권)&lt;/td>
 &lt;td style="text-align:left">accessRights, rightsHolder, license&lt;/td>
 &lt;td style="text-align:left">&lt;/td>
 &lt;/tr>
@@ -366,8 +366,8 @@ alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
 &lt;/blockquote>
 &lt;h4 id="blockquote-with-attribution">Blockquote with attribution&lt;/h4>
 &lt;blockquote>
-&lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;!-- raw HTML omitted -->
-— &lt;!-- raw HTML omitted -->Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;!-- raw HTML omitted -->&lt;/p>
+&lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br>
+— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="tables">Tables&lt;/h2>
 &lt;p>Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p>
@@ -471,11 +471,11 @@ alt="https://librarian.nl.go.kr/LI/contents/L10202000000.do">
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark&lt;/h2>
-&lt;p>&lt;!-- raw HTML omitted -->GIF&lt;!-- raw HTML omitted --> is a bitmap image format.&lt;/p>
-&lt;p>H&lt;!-- raw HTML omitted -->2&lt;!-- raw HTML omitted -->O&lt;/p>
-&lt;p>X&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted --> + Y&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted --> = Z&lt;!-- raw HTML omitted -->n&lt;!-- raw HTML omitted -->&lt;/p>
-&lt;p>Press &lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->CTRL&lt;!-- raw HTML omitted -->+&lt;!-- raw HTML omitted -->ALT&lt;!-- raw HTML omitted -->+&lt;!-- raw HTML omitted -->Delete&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted --> to end the session.&lt;/p>
-&lt;p>Most &lt;!-- raw HTML omitted -->salamanders&lt;!-- raw HTML omitted --> are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p>
+&lt;p>&lt;abbr title="Graphics Interchange Format">GIF&lt;/abbr> is a bitmap image format.&lt;/p>
+&lt;p>H&lt;sub>2&lt;/sub>O&lt;/p>
+&lt;p>X&lt;sup>n&lt;/sup> + Y&lt;sup>n&lt;/sup> = Z&lt;sup>n&lt;/sup>&lt;/p>
+&lt;p>Press &lt;kbd>&lt;kbd>CTRL&lt;/kbd>+&lt;kbd>ALT&lt;/kbd>+&lt;kbd>Delete&lt;/kbd>&lt;/kbd> to end the session.&lt;/p>
+&lt;p>Most &lt;mark>salamanders&lt;/mark> are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p>
 &lt;section class="footnotes" role="doc-endnotes">
 &lt;hr>
 &lt;ol>
@@ -497,7 +497,7 @@ title="YouTube Video"
 >
 &lt;/iframe>
 &lt;/div>
-&lt;!-- raw HTML omitted -->
+&lt;br>
 &lt;hr>
 &lt;h2 id="twitter-simple-shortcode">Twitter Simple Shortcode&lt;/h2>
 &lt;style type="text/css">
@@ -517,7 +517,7 @@ text-decoration: underline;
 }
 &lt;/style>
 &lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">“In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”&lt;br>— Jan Tschichold &lt;a href="https://t.co/gcv7SrhvJb">pic.twitter.com/gcv7SrhvJb&lt;/a>&lt;/p>&amp;mdash; Graphic Design History (@DesignReviewed) &lt;a href="https://twitter.com/DesignReviewed/status/1085870671291310081?ref_src=twsrc%5Etfw">January 17, 2019&lt;/a>&lt;/blockquote>
-&lt;!-- raw HTML omitted -->
+&lt;br>
 &lt;hr>
 &lt;h2 id="vimeo-simple-shortcode">Vimeo Simple Shortcode&lt;/h2>
 &lt;style>
@@ -576,7 +576,8 @@ $$&lt;/p></description></item><item><title>Emoji Support</title><link>https://yu
 >Inline Shortcodes&lt;/a>.&lt;/p>
 &lt;p>To enable emoji globally, set &lt;code>enableEmoji&lt;/code> to &lt;code>true&lt;/code> in your site&amp;rsquo;s &lt;a class="link" href="https://gohugo.io/getting-started/configuration/" target="_blank" rel="noopener"
 >configuration&lt;/a> and then you can type emoji shorthand codes directly in content files; e.g.&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;p>&lt;span class="nowrap">&lt;span class="emojify">🙈&lt;/span> &lt;code>:see_no_evil:&lt;/code>&lt;/span> &lt;span class="nowrap">&lt;span class="emojify">🙉&lt;/span> &lt;code>:hear_no_evil:&lt;/code>&lt;/span> &lt;span class="nowrap">&lt;span class="emojify">🙊&lt;/span> &lt;code>:speak_no_evil:&lt;/code>&lt;/span>&lt;/p>
+&lt;br>
 &lt;p>The &lt;a class="link" href="http://www.emoji-cheat-sheet.com/" target="_blank" rel="noopener"
 >Emoji cheat sheet&lt;/a> is a useful reference for emoji shorthand codes.&lt;/p>
 &lt;hr>
