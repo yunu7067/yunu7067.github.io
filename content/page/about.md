@@ -16,20 +16,28 @@ menu:
 comments: false
 ---
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+# 공부한 블로그
 
-Hugo makes use of a variety of open source projects including:
+해당 연도에 새로 배운 기술들과 언어들입니다.
 
-- https://github.com/yuin/goldmark
-- https://github.com/alecthomas/chroma
-- https://github.com/muesli/smartcrop
-- https://github.com/spf13/cobra
-- https://github.com/spf13/viper
+## 2020년
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+**새로 배운 기술**
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+1. 스프링부트와 타임리프, Mybatis를 이용한 MVC 웹 페이지 제작
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+## 2021년
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+**새로 배운 언어**
+
+1. Kotlin
+
+2. TypeScript
+
+**새로 배운 기술**
+
+1. 스프링부트와 JPA를 이용한 코틀린 기반 백엔드 서버
+
+2. 스프링부트와 타임리프, JPA, 스프링 시큐리티를 이용한 코틀린 기반 MVC 웹 페이지 제작
+
+3. [npm](https://www.npmjs.com/)에 자바스크립트/타입스크립트 Node 모듈 배포
