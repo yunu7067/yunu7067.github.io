@@ -34,8 +34,8 @@ params:
     customText:
 
   dateFormat:
-    published: 2006년 01월 02일 15:04 MST
-    lastUpdated: 2006년 01월 02일 15:04 MST
+    published: 2006년 01월 2일
+    lastUpdated: 2006년 1월 2일, 15:04 MST
 
   sidebar:
     emoji: 😿
@@ -51,7 +51,7 @@ params:
     readingTime: true
     license:
       enabled: true
-      default: Licensed under CC BY-NC-SA 4.0
+      default: CC BY-NC-SA 4.0
 
   comments:
     enabled: true
