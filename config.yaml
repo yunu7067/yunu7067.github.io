@@ -14,6 +14,10 @@ googleAnalytics:
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
 DefaultContentLanguage: ko
 
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: true
+
 permalinks:
   post: /p/:slug/
   page: /:slug/
@@ -34,27 +38,36 @@ params:
     lastUpdated: 2006년 01월 02일 15:04 MST
 
   sidebar:
-    emoji:
+    emoji: 😿
     subtitle: 공부하는 블로그
     avatar:
+      enabled: true
       local: true
       src: img/avatar.jpg
 
   article:
     math: false
     toc: true
+    readingTime: true
     license:
       enabled: true
       default: Licensed under CC BY-NC-SA 4.0
 
   comments:
     enabled: true
-    provider: utterances
+    provider: giscus
+
+    disqusjs:
+      shortname:
+      apiUrl:
+      apiKey:
+      admin:
+      adminLabel:
 
     utterances:
-      repo:
+      repo: yunu7067/yunu7067.github.io
       issueTerm: pathname
-      label:
+      label: utterances
 
     remark42:
       host:
@@ -67,6 +80,7 @@ params:
       repo:
       clientId:
       clientSecret:
+      autoCreateIssue: false
 
     # Waline client configuration see: https://waline.js.org/en/reference/client.html
     waline:
@@ -83,6 +97,34 @@ params:
       placeholder:
       locale:
         admin: Admin
+
+    twikoo:
+      envId:
+      region:
+      path:
+      lang:
+
+    giscus:
+      repo: yunu7067/yunu7067.github.io
+      repoID: MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ=
+      category: giscus
+      categoryID: DIC_kwDOFQ_uFM4CADJ2
+      mapping: pathname
+      lightTheme: light
+      darkTheme: dark
+      reactionsEnabled: 1
+      emitMetadata: 0
+
+    gitalk:
+      owner:
+      admin:
+      repo:
+      clientID:
+      clientSecret:
+
+    cusdis:
+      host:
+      id:
 
   widgets:
     enabled:
@@ -132,7 +174,23 @@ menu:
       name: Home
       url: /
       weight: -100
-      pre: home
+      params:
+        ### For demonstration purpose, the home link will be open in a new tab
+        newTab: false
+        icon: home
+
+  social:
+    - identifier: github
+      name: GitHub
+      url: https://github.com/yunu7067
+      params:
+        icon: brand-github
+
+    - identifier: npm
+      name: npm
+      url: https://www.npmjs.com/~yunu7067
+      params:
+        icon: package
 
 related:
   includeNewer: true
@@ -146,6 +204,10 @@ related:
       weight: 200
 
 markup:
+  goldmark:
+    renderer:
+      ## Set to true if you have HTML content inside Markdown
+      unsafe: false
   tableOfContents:
     endLevel: 4
     ordered: true
