@@ -2,11 +2,11 @@
 title: "Sveltekit Endpoints"
 description: "스벨트 킷 엔드포인트"
 date: 2021-12-19T00:34:04+09:00
-image:
+image: "svelte-kit-horizontal.svg"
 math:
 hidden: false
 comments: true
-draft: true
+draft: false
 categories:
   - Frontend
   - Svelte
