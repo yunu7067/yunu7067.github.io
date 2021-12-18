@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 27 Jun 2021 15:40:14 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Hugo Memo" />&lt;h2 id="hugo-메모">Hugo 메모&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 19 Dec 2021 00:34:04 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Sveltekit Endpoints</title><link>https://yunu7067.github.io/p/sveltekit-endpoints/</link><pubDate>Sun, 19 Dec 2021 00:34:04 +0900</pubDate><guid>https://yunu7067.github.io/p/sveltekit-endpoints/</guid><description>&lt;img src="https://yunu7067.github.io/p/sveltekit-endpoints/svelte-kit-horizontal.svg" alt="Featured image of post Sveltekit Endpoints" />&lt;p>스벨트 킷의 서버 사이드 기능 중 하나인 &lt;strong>엔드포인트&lt;/strong>에 대해서 설명합니다.&lt;/p>
+&lt;h2 id="endpoints">Endpoints&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ts" data-lang="ts">&lt;span class="cm">/* [slug].json.ts */&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="nx">db&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/database&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">RequestHandler&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;@sveltejs/kit&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">Locals&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/types&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">export&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="kr">get&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nx">RequestHandler&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">Locals&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">({&lt;/span> &lt;span class="nx">params&lt;/span> &lt;span class="p">})&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="c1">// the `slug` parameter is available because this file
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// is called [slug].json.ts
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">slug&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">params&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">const&lt;/span> &lt;span class="nx">article&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="nx">db&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kr">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">slug&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">article&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">body&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">article&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;span class="p">},&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>스벨트 킷은 &lt;code>.js&lt;/code> 및 &lt;code>.ts&lt;/code> 파일을 엔드포인트로 인식합니다. &lt;code>/todos/index.json.ts&lt;/code>와 같은 엔드포인트는 index가 생략되어 &lt;code>/todos.json&lt;/code>와 같이 접근하며, 동적 경로는 &lt;code>[id].ts&lt;/code>와 같은 형식으로 사용할 수 있습니다.&lt;/p>
+&lt;p>함수명을 &lt;code>get&lt;/code>, &lt;code>post&lt;/code>, &lt;code>patch&lt;/code>와 같이 HTTP 메서드명과 동일하게 작성해줍니다. &lt;code>delete&lt;/code>의 경우 자바스크립트에서 이미 사용중인 예약어이기 때문에 &lt;code>del&lt;/code>로 축약하여 사용합니다.&lt;/p>
+&lt;h3 id="request">Request&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ts" data-lang="ts">&lt;span class="cm">/* [slug].json.ts */&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="nx">db&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/database&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">RequestHandler&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;@sveltejs/kit&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">Locals&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/types&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="hl">&lt;span class="kr">export&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="kr">get&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nx">RequestHandler&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">Locals&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">({&lt;/span> &lt;span class="nx">params&lt;/span> &lt;span class="p">})&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span> &lt;span class="c1">// the `slug` parameter is available because this file
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// is called [slug].json.ts
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">slug&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">params&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">const&lt;/span> &lt;span class="nx">article&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="nx">db&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kr">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">slug&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">article&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">body&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">article&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;span class="p">},&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>request에는 params 말고도 body, locals, method, host, path, query, headers, rawBody 객체가 존재합니다.&lt;/p>
+&lt;ul>
+&lt;li>params: Record&amp;lt;string, string&amp;gt; - &lt;code>[slug].json.ts&lt;/code>에서 slug와 같이 변수로 설정한 페이지 동적 경로.&lt;/li>
+&lt;li>body: ParameterizedBody&lt;Body> - 요청 바디&lt;/li>
+&lt;li>locals: Locals - ./src/hooks.ts에서 저장한 데이터&lt;/li>
+&lt;li>method : string - HTTP 메서드 종류 (GET, POST, PATCH 등)&lt;/li>
+&lt;li>host: string - 요청 호스트 도메인&lt;/li>
+&lt;li>path: string - 요청 경로&lt;/li>
+&lt;li>query: URLSearchParams - URL 쿼리&lt;/li>
+&lt;li>headers: RequestHeaders - HTTP 헤더 데이터&lt;/li>
+&lt;li>rawBody: RawBody - Uint8Array 타입의 가공되지 않은 요청 바디&lt;/li>
+&lt;/ul>
+&lt;p>body의 파싱은 아래 내용을 따릅니다.&lt;/p>
+&lt;ul>
+&lt;li>content-type이 &lt;code>text/plain&lt;/code>일 경우 &lt;code>string&lt;/code> 형식으로 변환됩니다.&lt;/li>
+&lt;li>content-type이 &lt;code>application/json&lt;/code>일 경우 &lt;code>JSONValue&lt;/code> 형식(&lt;code>object&lt;/code>, &lt;code>Array&lt;/code>, primitive)으로 변환됩니다.&lt;/li>
+&lt;li>content-type이 &lt;code>application/x-www-form-urlencoded&lt;/code> 또는 multipart/form-data일 경우 읽기 전용인 &lt;code>FormData&lt;/code> 객체로 변환됩니다.&lt;/li>
+&lt;li>다른 모든 경우 &lt;code>Uint8Array&lt;/code>로 변환됩니다.&lt;/li>
+&lt;/ul>
+&lt;h3 id="response">Response&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ts" data-lang="ts">&lt;span class="cm">/* [slug].json.ts */&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="nx">db&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/database&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">RequestHandler&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;@sveltejs/kit&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">import&lt;/span> &lt;span class="kr">type&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">Locals&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/types&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">export&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="kr">get&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nx">RequestHandler&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">Locals&lt;/span>&lt;span class="p">&amp;gt;&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">({&lt;/span> &lt;span class="nx">params&lt;/span> &lt;span class="p">})&lt;/span> &lt;span class="o">=&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="c1">// the `slug` parameter is available because this file
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// is called [slug].json.ts
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">slug&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">params&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kr">const&lt;/span> &lt;span class="nx">article&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="nx">db&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kr">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">slug&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">article&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="hl"> &lt;span class="k">return&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;span class="hl"> &lt;span class="nx">body&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;span class="hl"> &lt;span class="nx">article&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;span class="hl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;span class="hl"> &lt;span class="p">};&lt;/span>
+&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>엔드포인트의 반환 객체는 status, header, body 이렇게 세 가지 속성으로 구성됩니다. Body에 객체가 들어갈 경우 headers의 Content-Type에 &amp;lsquo;application/json&amp;rsquo;을 명시해주지 않아도 자동으로 Json 객체로 변환됩니다.&lt;/p>
+&lt;ul>
+&lt;li>status?: number - &lt;a class="link" href="https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C" target="_blank" rel="noopener"
+>HTTP 상태 코드&lt;/a>를 명시 (200, 301, 400, 404 등)&lt;/li>
+&lt;li>headers?: ResponseHeaders - HTTP 헤더 데이터 (Content-Type 등)을 명시&lt;/li>
+&lt;li>body?: Body - 응답 바디 데이터&lt;/li>
+&lt;/ul>
+&lt;h2 id="references">References&lt;/h2>
+&lt;p>&lt;a class="link" href="https://kit.svelte.dev/docs" target="_blank" rel="noopener"
+>스벨트 킷 공식문서&lt;/a>&lt;/p></description></item><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Hugo Memo" />&lt;h2 id="hugo-메모">Hugo 메모&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>site 생성
