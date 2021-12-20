@@ -127,4 +127,4 @@ export const get: RequestHandler<Locals> = ({ params }) => {
 
 ## References
 
-[스벨트 킷 공식문서](https://kit.svelte.dev/docs)
+[스벨트 킷 공식문서](https://kit.svelte.dev/docs#routing-endpoints)
