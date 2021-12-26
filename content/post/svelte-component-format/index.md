@@ -2,7 +2,7 @@
 title: "스벨트: 컴포넌트 구조"
 description: "Svelte: Component Format"
 date: 2021-12-26T21:02:35+09:00
-image:
+image: svelte-horizontal.png
 math:
 hidden: false
 comments: true
