@@ -1,4 +1,163 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 26 Dec 2021 21:02:35 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>스벨트: 컴포넌트 구조</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</link><pubDate>Sun, 26 Dec 2021 21:02:35 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</guid><description>&lt;h2 id="기본-구조">기본 구조&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 26 Dec 2021 21:53:14 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>스벨트: 변수</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</link><pubDate>Sun, 26 Dec 2021 21:53:14 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/svelte-horizontal.svg" alt="Featured image of post 스벨트: 변수" />&lt;h2 id="변수">변수&lt;/h2>
+&lt;h3 id="기본적인-선언-및-사용">기본적인 선언 및 사용&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln">1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln">2&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;span class="ln">3&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">4&lt;/span>
+&lt;span class="ln">5&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln">6&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>count : &lt;span class="p">{&lt;/span>&lt;span class="nx">count&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;span class="ln">7&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>변수의 선언은 2번째 줄과 같이, &lt;code>&amp;lt;script&amp;gt;&lt;/code> 태그 안에서 일반 자바스크립트 변수 선언하듯이 선언합니다. 사용하는 방법은 10번째 줄관 같이 &lt;code>{변수명}&lt;/code>과 같이 사용합니다.&lt;/p>
+&lt;h3 id="export를-사용한-변수">export를 사용한 변수&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln">1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln">2&lt;/span> &lt;span class="kr">export&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">foo&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;span class="ln">3&lt;/span> &lt;span class="kr">export&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="nx">bar&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;readonly&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln">4&lt;/span>
+&lt;span class="ln">5&lt;/span> &lt;span class="c1">// Values that are passed in as props
+&lt;/span>&lt;span class="ln">6&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">// are immediately available
+&lt;/span>&lt;span class="ln">7&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="nx">console&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">log&lt;/span>&lt;span class="p">({&lt;/span> &lt;span class="nx">foo&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;span class="ln">8&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>만약 변수 선언할 때 &lt;code>export&lt;/code>를 붙였다면, 해당 변수는 이 컴포넌트를 사용한 곳에서 읽을 수 있게 됩니다. 자바스크립트 모듈에서 export를 붙인 것과 동일합니다.&lt;/p>
+&lt;p>만약 변수 선언 시 &lt;code>let&lt;/code>이 아닌 &lt;code>const&lt;/code>를 사용하였다면, 이 변수는 읽기 전용이 됩니다.&lt;/p>
+&lt;h3 id="반응형-변수">반응형 변수&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln"> 1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 2&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 3&lt;/span>
+&lt;span class="hl">&lt;span class="ln"> 4&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">addOne&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;span class="hl">&lt;span class="ln"> 5&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;span class="hl">&lt;span class="ln"> 6&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;span class="ln"> 7&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 8&lt;/span>
+&lt;span class="ln"> 9&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">10&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>count : &lt;span class="p">{&lt;/span>&lt;span class="nx">count&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln">11&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">button&lt;/span> &lt;span class="na">on:click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">addOne&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>&lt;span class="s">add&lt;/span> &lt;span class="na">one&lt;/span>&lt;span class="err">&amp;lt;/&lt;/span>&lt;span class="na">button&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;span class="ln">12&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>스벨트는 리액트와 다르게 useState와 같은 메서드를 이용하여 선언을 할 필요가 없습니다. 그냥 일반 변수처럼 선언한 후, 핸들링하는 함수를 만들고 사용하기만 하면 됩니다. 4-6번째 줄과 같이 &lt;code>&amp;lt;script&amp;gt;&lt;/code> 태그 안에 1을 더해주는 함수 addOne()을 만들어 주고 11번째 줄의 &lt;code>&amp;lt;button&amp;gt;&lt;/code> 태그에 onclick 이벤트로 달아주면 됩니다.&lt;/p>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 171;
+flex-basis: 410px"
+>
+&lt;a href="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%98.gif" data-size="243x142">
+&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%98.gif"
+width="243"
+height="142"
+srcset="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%98_hu7978b80808a77ad525acb48d4e6bec75_82358_480x0_resize_box.gif 480w, https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%98_hu7978b80808a77ad525acb48d4e6bec75_82358_1024x0_resize_box.gif 1024w"
+loading="lazy"
+alt="반응형 변수 테스트 (이미지를 클릭하면 움직입니다)">
+&lt;/a>
+&lt;figcaption>반응형 변수 테스트 (이미지를 클릭하면 움직입니다)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="-구문을-이용하여-반응형-업데이트">&lt;code>$:&lt;/code> 구문을 이용하여 반응형 업데이트&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln"> 1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 2&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 3&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">b&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 4&lt;/span>
+&lt;span class="ln"> 5&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">add&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="ln"> 6&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="nx">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 7&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="ln"> 8&lt;/span>
+&lt;span class="hl">&lt;span class="ln"> 9&lt;/span> &lt;span class="nx">$&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nx">sum&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">add&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;span class="ln">10&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">11&lt;/span>
+&lt;span class="ln">12&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">13&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">input&lt;/span> &lt;span class="na">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;number&amp;#34;&lt;/span> &lt;span class="na">bind:value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">a&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="s">/&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">14&lt;/span> +
+&lt;span class="ln">15&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">input&lt;/span> &lt;span class="na">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;number&amp;#34;&lt;/span> &lt;span class="na">bind:value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">b&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="s">/&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">16&lt;/span> =
+&lt;span class="hl">&lt;span class="ln">17&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;{&lt;/span>&lt;span class="nx">sum&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;span class="ln">18&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>위 예시는 &lt;code>a&lt;/code>와 &lt;code>b&lt;/code>를 더하는 코드입니다. input으로 &lt;code>a&lt;/code>값과 &lt;code>b&lt;/code>값을 받아서 값을 저장한 후 더해서 &lt;code>sum&lt;/code>으로 보여줍니다. &lt;code>bind:value&lt;/code>는 일단 모르셔도 됩니다. input의 value를 뒤의 변수와 연결시켜주는 역할을 한다는 정도만 이해하시면 됩니다.여기서 &lt;code>$:&lt;/code> 다음에 나오는 변수들은 스벨트에서 자동으로 관찰(Observe)하고 있다, 변경이 감지되면 즉각적으로 뒤에 있는 코드 &lt;code>add(a, b)&lt;/code>를 실행하게 됩니다.&lt;/p>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 598;
+flex-basis: 1437px"
+>
+&lt;a href="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%982.gif" data-size="503x84">
+&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%982.gif"
+width="503"
+height="84"
+srcset="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%982_hu1af3d75d10d494a91ac456fad02752ed_223114_480x0_resize_box.gif 480w, https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%982_hu1af3d75d10d494a91ac456fad02752ed_223114_1024x0_resize_box.gif 1024w"
+loading="lazy"
+alt="$: 구문을 이용한 반응형 변수 테스트 (이미지를 클릭하면 움직입니다)">
+&lt;/a>
+&lt;figcaption>$: 구문을 이용한 반응형 변수 테스트 (이미지를 클릭하면 움직입니다)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln">5&lt;/span> function add(b) &lt;span class="p">{&lt;/span>
+&lt;span class="ln">6&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="nx">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln">7&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="ln">8&lt;/span>
+&lt;span class="ln">9&lt;/span> $: sum = add(b);
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>만약 코드 중 일부가 위와 같이 바뀌면 어떻게 될까요? &lt;code>$:&lt;/code> 뒤에 변수가 &lt;code>b&lt;/code>만 존재하므로 &lt;code>a&lt;/code>의 값이 변경될 때는 &lt;code>sum&lt;/code>이 업데이트되지 않습니다. 오로지 &lt;code>b&lt;/code>의 값이 변경될 때만 &lt;code>sum&lt;/code>값이 업데이트되게 됩니다.&lt;/p>
+&lt;p>그럼 &lt;code>$:&lt;/code>를 안 쓰면 어떻게 될까요?&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln"> 1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 2&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">a&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 3&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">b&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln"> 4&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 5&lt;/span>
+&lt;span class="ln"> 6&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 7&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">input&lt;/span> &lt;span class="na">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;number&amp;#34;&lt;/span> &lt;span class="na">bind:value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">a&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="s">/&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 8&lt;/span> +
+&lt;span class="ln"> 9&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">input&lt;/span> &lt;span class="na">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;number&amp;#34;&lt;/span> &lt;span class="na">bind:value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">b&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="s">/&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">10&lt;/span> =
+&lt;span class="ln">11&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;{&lt;/span>&lt;span class="nx">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nx">b&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">12&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">13&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>$:&lt;/code> 구문을 사용했을 때와 크게 다르지 않습니다. &lt;code>$:&lt;/code> 구문을 사용하면 별도의 변수로 선언할 수 있고, 원하는 변수가 변경됐을 때만 업데이트 하게 만들 수 있다는 장점이 있을 것으로 보입니다.&lt;/p>
+&lt;h3 id="-접두사를-이용한-sveltestore-사용">&lt;code>$&lt;/code> 접두사를 이용한 svelte/store 사용&lt;/h3>
+&lt;p>svelte/store는 다른 컴포넌트에서 해당 변수를 반응형을 유지하면서 쉽게 접근할 수 있게 만들어주는 svlete 모듈입니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-javascript" data-lang="javascript">&lt;span class="ln">1&lt;/span>&lt;span class="cm">/* count.js */&lt;/span>
+&lt;span class="ln">2&lt;/span>&lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">writable&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s2">&amp;#34;svelte/store&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="ln">3&lt;/span>
+&lt;span class="ln">4&lt;/span>&lt;span class="kr">export&lt;/span> &lt;span class="kr">const&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">writable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln"> 1&lt;/span>&lt;span class="c">&amp;lt;!-- index.svelte --&amp;gt;&lt;/span>
+&lt;span class="ln"> 2&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln"> 3&lt;/span> &lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="nx">count&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s1">&amp;#39;./count.js&amp;#39;&lt;/span>
+&lt;/span>&lt;span class="ln"> 4&lt;/span>
+&lt;span class="ln"> 5&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">addOne&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="hl">&lt;span class="ln"> 6&lt;/span> &lt;span class="nx">$count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">$count&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;span class="ln"> 7&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="ln"> 8&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 9&lt;/span>
+&lt;span class="ln">10&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">11&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">a&lt;/span> &lt;span class="na">href&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/test&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>move&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">a&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln">12&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">br&lt;/span> &lt;span class="p">/&amp;gt;&lt;/span>
+&lt;span class="ln">13&lt;/span>
+&lt;span class="hl">&lt;span class="ln">14&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">button&lt;/span> &lt;span class="na">on:click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">addOne&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>&lt;span class="s">count&lt;/span> &lt;span class="na">is&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="nx">$count&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="err">&amp;lt;/&lt;/span>&lt;span class="na">button&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;span class="ln">15&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln"> 1&lt;/span>&lt;span class="c">&amp;lt;!-- test.svelte --&amp;gt;&lt;/span>
+&lt;span class="ln"> 2&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="hl">&lt;span class="ln"> 3&lt;/span> &lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="nx">count&lt;/span>&lt;span class="p">}&lt;/span> &lt;span class="nx">from&lt;/span> &lt;span class="s1">&amp;#39;./count.js&amp;#39;&lt;/span>
+&lt;/span>&lt;span class="ln"> 4&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 5&lt;/span>
+&lt;span class="ln"> 6&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 7&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">a&lt;/span> &lt;span class="na">href&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;/&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>back&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">a&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="ln"> 8&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">br&lt;/span> &lt;span class="p">/&amp;gt;&lt;/span>
+&lt;span class="ln"> 9&lt;/span>
+&lt;span class="hl">&lt;span class="ln">10&lt;/span> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>count is &lt;span class="p">{&lt;/span>&lt;span class="nx">$count&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;span class="ln">11&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>위의 예제 코드에서는 &lt;code>count.js&lt;/code>에서 변수를 선언한 후, &lt;code>index.svelte&lt;/code>와 &lt;code>test.svelte&lt;/code>에서 사용하는 예시입니다. store된 변수에 접근할 때는 예시처럼 변수명 앞에 &lt;code>$&lt;/code> 접두사를 붙여야 합니다.&lt;/p>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 149;
+flex-basis: 359px"
+>
+&lt;a href="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%983.gif" data-size="355x237">
+&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%983.gif"
+width="355"
+height="237"
+srcset="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%983_hu3bcf68abb2cd27b863e3cb30e8cb0423_232193_480x0_resize_box.gif 480w, https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EB%B0%98%EC%9D%91%ED%98%95_%EB%B3%80%EC%88%983_hu3bcf68abb2cd27b863e3cb30e8cb0423_232193_1024x0_resize_box.gif 1024w"
+loading="lazy"
+alt="$ 접두사를 이용한 store 테스트 (이미지를 클릭하면 움직입니다)">
+&lt;/a>
+&lt;figcaption>$ 접두사를 이용한 store 테스트 (이미지를 클릭하면 움직입니다)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h2 id="references">References&lt;/h2>
+&lt;p>&lt;a class="link" href="https://svelte.dev/docs#component-format-script" target="_blank" rel="noopener"
+>스벨트 공식문서&lt;/a>&lt;/p></description></item><item><title>스벨트: 컴포넌트 구조</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</link><pubDate>Sun, 26 Dec 2021 21:02:35 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg" alt="Featured image of post 스벨트: 컴포넌트 구조" />&lt;h2 id="기본-구조">기본 구조&lt;/h2>
 &lt;p>스벨트 파일는 &lt;code>.svelte&lt;/code> 확장자를 가집니다. 스벨트 파일에는 scirpt, style, 마크업 이렇게 세 가지 블록이 존재합니다. 이 세 가지 섹션은 필수가 아닌 선택요소입니다.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="c1">// 로직이 위치하는 부분
@@ -13,11 +172,11 @@
 &lt;li>컴포넌트 prop을 생성하는 export&lt;/li>
 &lt;li>&amp;lsquo;리액티브&amp;rsquo;한 할당&lt;/li>
 &lt;li>리액티브를 위한 &lt;code>$:&lt;/code> 구문&lt;/li>
-&lt;li>값에 접근하기 위한 &lt;code>$&lt;/code> 접두사&lt;/li>
+&lt;li>svelte/store를 편하게 사용하기 위한 &lt;code>$&lt;/code> 접두사&lt;/li>
 &lt;/ol>
 &lt;p>&lt;code>&amp;lt;script&amp;gt;&lt;/code> 태그에 &lt;code>context=&amp;quot;module&amp;quot;&lt;/code> 속성값이 추가되면 처음 한 번만 실행됩니다.&lt;/p>
 &lt;h3 id="style">&amp;lt;style&amp;gt;&lt;/h3>
-&lt;p>&lt;code>style&lt;/code> 블록은 스타일을 작성하는 부분입니다. 스타일을 전역으로 적용하고 싶다면 &lt;code>:global(...)&lt;/code> 수정자를 사용합니다. 만약 키프레임을 전역으로 적용하고 싶다면 이름 앞에 &lt;code>-global-&lt;/code>을 붙여줍니다. &lt;code>&amp;lt;style&amp;gt;&lt;/code> 블록은 &lt;code>&amp;lt;script&amp;gt;&lt;/code>와 다르게 문서에 한 개의 블록만 존재해야 합니다. 마크업 태그 안에는 존재할 수 있지만, 스벨트에서 지원하는 전역 스타일 같은 기능이 지원되지 않고 일반 HTML 문서와 같이 처리됩니다.&lt;/p>
+&lt;p>&lt;code>style&lt;/code> 블록은 스타일을 작성하는 부분입니다. 스타일을 전역으로 적용하고 싶다면 &lt;code>:global(...)&lt;/code> 수정자를 사용합니다. 만약 키프레임을 전역으로 적용하고 싶다면 이름 앞에 &lt;code>-global-&lt;/code>을 붙여줍니다. &lt;code>&amp;lt;style&amp;gt;&lt;/code> 블록은 문서에 한 개의 블록만 존재해야 합니다. 마크업 태그 안에는 존재할 수 있지만, 스벨트에서 지원하는 전역 스타일 같은 기능이 지원되지 않고 일반 HTML 문서와 같이 처리됩니다.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="c">/* 버튼 스타일 예시 */&lt;/span>
 &lt;span class="nt">button&lt;/span> &lt;span class="p">{&lt;/span>
@@ -117,7 +276,92 @@
 &lt;/ul>
 &lt;h2 id="references">References&lt;/h2>
 &lt;p>&lt;a class="link" href="https://kit.svelte.dev/docs#routing-endpoints" target="_blank" rel="noopener"
->스벨트 킷 공식문서&lt;/a>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
+>스벨트 킷 공식문서&lt;/a>&lt;/p></description></item><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Hugo Memo" />&lt;h2 id="hugo-메모">Hugo 메모&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>site 생성
+&lt;code>hugo new site site_name&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>theme 추가 (atack 테마 기준)
+&lt;code>git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>(선택사항)&lt;/p>
+&lt;ul>
+&lt;li>config.toml 삭제&lt;/li>
+&lt;li>themes/themename/exampleSite 내용물을 site 폴더로 복사&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>포스트 추가
+&lt;code>hugo new post/first-post/index.md&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 66;
+flex-basis: 160px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg" data-size="667x1000">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
+width="667"
+height="1000"
+srcset="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Photo by Florian Klauer on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Florian Klauer on Unsplash&lt;/figcaption>
+&lt;/figure>
+&lt;figure
+class="gallery-image"
+style="
+flex-grow: 149;
+flex-basis: 359px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg" data-size="1000x667">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
+width="1000"
+height="667"
+srcset="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Photo by Luca Bravo on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Luca Bravo on Unsplash&lt;/figcaption>
+&lt;/figure>
+&lt;figure
+class="gallery-image"
+style="
+flex-grow: 133;
+flex-basis: 320px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" data-size="1000x750">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
+width="1000"
+height="750"
+srcset="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Photo by Helena Hertz on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Helena Hertz on Unsplash&lt;/figcaption>
+&lt;/figure>
+&lt;figure
+class="gallery-image"
+style="
+flex-grow: 66;
+flex-basis: 160px"
+>
+&lt;a href="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg" data-size="667x1000">
+&lt;img src="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
+width="667"
+height="1000"
+srcset="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Photo by Hudai Gayiran on Unsplash">
+&lt;/a>
+&lt;figcaption>Photo by Hudai Gayiran on Unsplash&lt;/figcaption>
+&lt;/figure>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
 &lt;p>&lt;figure
 class="gallery-image"
 style="
