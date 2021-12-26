@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 19 Dec 2021 00:34:04 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Sveltekit Endpoints</title><link>https://yunu7067.github.io/p/sveltekit-endpoints/</link><pubDate>Sun, 19 Dec 2021 00:34:04 +0900</pubDate><guid>https://yunu7067.github.io/p/sveltekit-endpoints/</guid><description>&lt;img src="https://yunu7067.github.io/p/sveltekit-endpoints/svelte-kit-horizontal.svg" alt="Featured image of post Sveltekit Endpoints" />&lt;p>스벨트 킷의 서버 사이드 기능 중 하나인 &lt;strong>엔드포인트&lt;/strong>에 대해서 설명합니다.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 26 Dec 2021 21:02:35 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>스벨트: 컴포넌트 구조</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</link><pubDate>Sun, 26 Dec 2021 21:02:35 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/</guid><description>&lt;h2 id="기본-구조">기본 구조&lt;/h2>
+&lt;p>스벨트 파일는 &lt;code>.svelte&lt;/code> 확장자를 가집니다. 스벨트 파일에는 scirpt, style, 마크업 이렇게 세 가지 블록이 존재합니다. 이 세 가지 섹션은 필수가 아닌 선택요소입니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="c1">// 로직이 위치하는 부분
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="c">&amp;lt;!-- 0개 이상의 마크업 태그가 위치하는 부분 --&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="c">/* 스타일이 위치하는 부분 */&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="script">&amp;lt;script&amp;gt;&lt;/h3>
+&lt;p>&lt;code>&amp;lt;script&amp;gt;&lt;/code> 블록은 자바스크립트(혹은 타입스크립트)를 작성하는 부분입니다. 페이지의 로직이 위치하며 일반적으로 최상위에 위치합니다. 스크립트 블록에는 네 가지 규칙이 있습니다.&lt;/p>
+&lt;ol>
+&lt;li>컴포넌트 prop을 생성하는 export&lt;/li>
+&lt;li>&amp;lsquo;리액티브&amp;rsquo;한 할당&lt;/li>
+&lt;li>리액티브를 위한 &lt;code>$:&lt;/code> 구문&lt;/li>
+&lt;li>값에 접근하기 위한 &lt;code>$&lt;/code> 접두사&lt;/li>
+&lt;/ol>
+&lt;p>&lt;code>&amp;lt;script&amp;gt;&lt;/code> 태그에 &lt;code>context=&amp;quot;module&amp;quot;&lt;/code> 속성값이 추가되면 처음 한 번만 실행됩니다.&lt;/p>
+&lt;h3 id="style">&amp;lt;style&amp;gt;&lt;/h3>
+&lt;p>&lt;code>style&lt;/code> 블록은 스타일을 작성하는 부분입니다. 스타일을 전역으로 적용하고 싶다면 &lt;code>:global(...)&lt;/code> 수정자를 사용합니다. 만약 키프레임을 전역으로 적용하고 싶다면 이름 앞에 &lt;code>-global-&lt;/code>을 붙여줍니다. &lt;code>&amp;lt;style&amp;gt;&lt;/code> 블록은 &lt;code>&amp;lt;script&amp;gt;&lt;/code>와 다르게 문서에 한 개의 블록만 존재해야 합니다. 마크업 태그 안에는 존재할 수 있지만, 스벨트에서 지원하는 전역 스타일 같은 기능이 지원되지 않고 일반 HTML 문서와 같이 처리됩니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="c">/* 버튼 스타일 예시 */&lt;/span>
+&lt;span class="nt">button&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">background-color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">gray&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c">/* 버튼 전역 스타일 예시 */&lt;/span>
+&lt;span class="p">:&lt;/span>&lt;span class="nd">global&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="nt">button&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">color&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="kc">white&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="c">/* 키프레임 전역 예시 */&lt;/span>
+&lt;span class="p">@&lt;/span>&lt;span class="k">keyframes&lt;/span> &lt;span class="nt">-global-my-animation-name&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="o">...&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">style&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="references">References&lt;/h2>
+&lt;p>&lt;a class="link" href="https://svelte.dev/docs#component-format" target="_blank" rel="noopener"
+>스벨트 공식문서&lt;/a>&lt;/p></description></item><item><title>스벨트 킷: 엔드포인트</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%ED%82%B7-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8/</link><pubDate>Sun, 19 Dec 2021 00:34:04 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%ED%82%B7-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%ED%82%B7-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8/svelte-kit-horizontal.svg" alt="Featured image of post 스벨트 킷: 엔드포인트" />&lt;p>스벨트 킷의 서버 사이드 기능 중 하나인 &lt;strong>엔드포인트&lt;/strong>에 대해서 설명합니다.&lt;/p>
 &lt;h2 id="endpoints">Endpoints&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-ts" data-lang="ts">&lt;span class="cm">/* [slug].json.ts */&lt;/span>
 &lt;span class="kr">import&lt;/span> &lt;span class="nx">db&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;$lib/database&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
@@ -83,90 +117,7 @@
 &lt;/ul>
 &lt;h2 id="references">References&lt;/h2>
 &lt;p>&lt;a class="link" href="https://kit.svelte.dev/docs#routing-endpoints" target="_blank" rel="noopener"
->스벨트 킷 공식문서&lt;/a>&lt;/p></description></item><item><title>Hugo Memo</title><link>https://yunu7067.github.io/p/hugo-memo/</link><pubDate>Sun, 27 Jun 2021 15:40:14 +0900</pubDate><guid>https://yunu7067.github.io/p/hugo-memo/</guid><description>&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Hugo Memo" />&lt;h2 id="hugo-메모">Hugo 메모&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>site 생성
-&lt;code>hugo new site site_name&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>theme 추가 (atack 테마 기준)
-&lt;code>git clone https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>(선택사항)&lt;/p>
-&lt;ul>
-&lt;li>config.toml 삭제&lt;/li>
-&lt;li>themes/themename/exampleSite 내용물을 site 폴더로 복사&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>포스트 추가
-&lt;code>hugo new post/first-post/index.md&lt;/code>&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;figure
-class="gallery-image"
-style="
-flex-grow: 66;
-flex-basis: 160px"
->
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg" data-size="667x1000">
-&lt;img src="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash.jpg"
-width="667"
-height="1000"
-srcset="https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w"
-loading="lazy"
-alt="Photo by Florian Klauer on Unsplash">
-&lt;/a>
-&lt;figcaption>Photo by Florian Klauer on Unsplash&lt;/figcaption>
-&lt;/figure> &lt;figure
-class="gallery-image"
-style="
-flex-grow: 149;
-flex-basis: 359px"
->
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg" data-size="1000x667">
-&lt;img src="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash.jpg"
-width="1000"
-height="667"
-srcset="https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/luca-bravo-alS7ewQ41M8-unsplash_hu0a3f1163de68d0b9471979ebf0ecf11e_32400_1024x0_resize_q75_box.jpg 1024w"
-loading="lazy"
-alt="Photo by Luca Bravo on Unsplash">
-&lt;/a>
-&lt;figcaption>Photo by Luca Bravo on Unsplash&lt;/figcaption>
-&lt;/figure>&lt;/p>
-&lt;p>&lt;figure
-class="gallery-image"
-style="
-flex-grow: 133;
-flex-basis: 320px"
->
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg" data-size="1000x750">
-&lt;img src="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash.jpg"
-width="1000"
-height="750"
-srcset="https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w"
-loading="lazy"
-alt="Photo by Helena Hertz on Unsplash">
-&lt;/a>
-&lt;figcaption>Photo by Helena Hertz on Unsplash&lt;/figcaption>
-&lt;/figure> &lt;figure
-class="gallery-image"
-style="
-flex-grow: 66;
-flex-basis: 160px"
->
-&lt;a href="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg" data-size="667x1000">
-&lt;img src="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg"
-width="667"
-height="1000"
-srcset="https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://yunu7067.github.io/p/hugo-memo/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w"
-loading="lazy"
-alt="Photo by Hudai Gayiran on Unsplash">
-&lt;/a>
-&lt;figcaption>Photo by Hudai Gayiran on Unsplash&lt;/figcaption>
-&lt;/figure>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
+>스벨트 킷 공식문서&lt;/a>&lt;/p></description></item><item><title>Content Security Policy</title><link>https://yunu7067.github.io/p/content-security-policy/</link><pubDate>Thu, 29 Apr 2021 10:13:01 +0900</pubDate><guid>https://yunu7067.github.io/p/content-security-policy/</guid><description>&lt;img src="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png" alt="Featured image of post Content Security Policy" />&lt;h2 id="문제점">문제점&lt;/h2>
 &lt;p>&lt;figure
 class="gallery-image"
 style="
