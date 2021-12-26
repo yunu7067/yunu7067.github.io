@@ -1,6 +1,6 @@
 ---
-title: "Sveltekit Endpoints"
-description: "스벨트 킷 엔드포인트"
+title: "스벨트 킷: 엔드포인트"
+description: "Sveltekit: Endpoints"
 date: 2021-12-19T00:34:04+09:00
 image: "svelte-kit-horizontal.svg"
 math:
