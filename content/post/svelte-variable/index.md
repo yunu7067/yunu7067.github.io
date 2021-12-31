@@ -13,7 +13,6 @@ categories:
 tags:
   - Frontend
   - Svelte
-  - SvelteKit
 ---
 
 ## 변수
