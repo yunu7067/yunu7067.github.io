@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sun, 26 Dec 2021 21:53:14 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>스벨트: 변수</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</link><pubDate>Sun, 26 Dec 2021 21:53:14 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/svelte-horizontal.svg" alt="Featured image of post 스벨트: 변수" />&lt;h2 id="변수">변수&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>YUN</title><link>https://yunu7067.github.io/</link><description>Recent content on YUN</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Sat, 01 Jan 2022 02:13:07 +0900</lastBuildDate><atom:link href="https://yunu7067.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>스벨트: 제어문</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/</link><pubDate>Sat, 01 Jan 2022 02:13:07 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/svelte-horizontal.svg" alt="Featured image of post 스벨트: 제어문" />&lt;h2 id="제어문">제어문&lt;/h2>
+&lt;p>스벨트 템플릿 문법에서 흐름을 제어하는 방법은 if, each, await, key 이렇게 4가지가 있습니다. 이 템플릿들의 시작은 &lt;code>{# ...}&lt;/code>이며, 끝은 &lt;code>{/ ...}&lt;/code>로 표시합니다.&lt;/p>
+&lt;h3 id="if-">{#if &amp;hellip;}&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">{&lt;/span>&lt;span class="err">#&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="err">표현식&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- ... --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">:else&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="err">표현식&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- ... --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- ... --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="err">/ if&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>사용 방법은 일반 if문과 동일합니다. 중괄호 안의 &lt;code>#&lt;/code>이나 &lt;code>:&lt;/code>, &lt;code>/&lt;/code>을 주의해서 사용해주시면 됩니`다.&lt;/p>
+&lt;h3 id="each-">{#each &amp;hellip;}&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">{&lt;/span>&lt;span class="k">#each&lt;/span> &lt;span class="nx">expression&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">index&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">key&lt;/span>&lt;span class="p">)}&lt;/span>
+&lt;span class="c">&amp;lt;!-- ... --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/each&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>자바스크립트의 &lt;code>Array.prototype.map()&lt;/code>과 사용법이 유사합니다. 첫 번째 인자로 배열 내부의 변수의 이름을, 두 번째 인자로 해당 인자의 index값을 받습니다. &lt;code>(key)&lt;/code>는 Svelte가 요소의 변경을 감지하고 수정할 수 있도록 도와주는 키값입니다. React에서는 이러한 반복문 안에서 컴포넌트들에게 key값을 넘겨주는 것이 필수이지만, Svelte에서는 에러가 나지 않습니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">{&lt;/span>&lt;span class="k">#each&lt;/span> &lt;span class="nx">items&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="nx">id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">...&lt;/span>&lt;span class="nx">rest&lt;/span>&lt;span class="p">}}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;{&lt;/span>&lt;span class="nx">id&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">MyComponent&lt;/span> &lt;span class="na">values&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">rest&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="s">/&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/each&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>또한 이렇게 내부에서 구조 분해 할당이나 나머지 연산자를 사용할 수도 있습니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">{&lt;/span>&lt;span class="k">#each&lt;/span> &lt;span class="nx">todos&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="nx">todo&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;{&lt;/span>&lt;span class="nx">todo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">text&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>No tasks today!&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/each&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>값이 없을 경우 &lt;code>{:else}&lt;/code> 블록을 이용하여 해당 내용을 렌더링 할 수도 있습니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="kd">let&lt;/span> &lt;span class="nx">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[];&lt;/span>
+&lt;span class="kd">function&lt;/span> &lt;span class="nx">addValue&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="kr">const&lt;/span> &lt;span class="nx">copiedC&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">c&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">slice&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="nx">copiedC&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">push&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">Math&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">ceil&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">Math&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">random&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;span class="nx">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">copiedC&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kd">function&lt;/span> &lt;span class="nx">cleanAll&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="nx">c&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[];&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">button&lt;/span> &lt;span class="na">on:click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">addValue&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>&lt;span class="s">add&lt;/span> &lt;span class="na">value&lt;/span>&lt;span class="err">&amp;lt;/&lt;/span>&lt;span class="na">button&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">button&lt;/span> &lt;span class="na">on:click&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nx">cleanAll&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="err">&amp;gt;&lt;/span>&lt;span class="s">clear&amp;lt;/button&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">ul&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#each&lt;/span> &lt;span class="nx">c&lt;/span> &lt;span class="kr">as&lt;/span> &lt;span class="nx">item&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">index&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nx">index&lt;/span>&lt;span class="p">)}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;{&lt;/span>&lt;span class="nx">index&lt;/span>&lt;span class="p">}&lt;/span> : &lt;span class="p">{&lt;/span>&lt;span class="nx">item&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>list is empty.&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">li&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/each&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">ul&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>간단한 반복문의 예제 코드입니다.&lt;/p>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 133;
+flex-basis: 319px"
+>
+&lt;a href="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B0%98%EB%B3%B5%EB%AC%B8.gif" data-size="398x299">
+&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B0%98%EB%B3%B5%EB%AC%B8.gif"
+width="398"
+height="299"
+srcset="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B0%98%EB%B3%B5%EB%AC%B8_huc9f358880566346fd0fa59f9f6792378_102461_480x0_resize_box.gif 480w, https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B0%98%EB%B3%B5%EB%AC%B8_huc9f358880566346fd0fa59f9f6792378_102461_1024x0_resize_box.gif 1024w"
+loading="lazy"
+alt="반복문 테스트 (이미지를 클릭하면 움직입니다)">
+&lt;/a>
+&lt;figcaption>반복문 테스트 (이미지를 클릭하면 움직입니다)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="await-">{#await &amp;hellip;}&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="c">&amp;lt;!-- 전체 제어문 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#await&lt;/span> &lt;span class="nx">expression&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- 보류 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">:then&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- 성공 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">:catch&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- 실패 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/await&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="c">&amp;lt;!-- 보류 상태와 성공 상태를 한 문장으로 처리한 제어문 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#await&lt;/span> &lt;span class="nx">expression&lt;/span> &lt;span class="k">then&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- 성공 시에만 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/await&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="c">&amp;lt;!-- 보류 상태와 실패 상태를 한 문장으로 처리한 제어문 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#await&lt;/span> &lt;span class="nx">expression&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="nx">name&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- 실패 시에만 --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/await&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Svelte는 비동기 문법에 대한 제어문도 지원합니다. React에서는 동일한 기능을 구현하려면 useState로 새로운 상태 객체를 만들어야 했지만, Svelte에서는 문법적으로 지원합니다. &lt;code>Promise&lt;/code>는 &lt;code>pending(보류)&lt;/code>, &lt;code>fulfilled(성공)&lt;/code>, &lt;code>rejected(실패)&lt;/code> 이렇게 3가지 상태를 가질 수 있습니다.
+보류와 성공 상태를 하나로 묶거나, 보류와 실패 상태를 하나로 묶어 처리할 수도 있습니다. 이 제어문은 SSR 모드에서도 사용할 수 있는데, 이때 보류 상태만 서버에서 렌더링됩니다.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="kd">let&lt;/span> &lt;span class="nx">resolve_promise&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">resolvePromise&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="kd">let&lt;/span> &lt;span class="nx">reject_promise&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nx">rejectPromise&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="kr">async&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">resolvePromise&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="nb">Promise&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">resolve&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Hello svelte!&amp;#39;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kr">async&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">rejectPromise&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="nb">Promise&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">reject&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="nx">message&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;내부 에러&amp;#34;&lt;/span>&lt;span class="p">});&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#await&lt;/span> &lt;span class="nx">resolve_promise&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>대기 중...&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">:then&lt;/span> &lt;span class="nx">value&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>값: &lt;span class="p">{&lt;/span>&lt;span class="nx">value&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">:catch&lt;/span> &lt;span class="nx">error&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>처리 실패: &lt;span class="p">{&lt;/span>&lt;span class="nx">error&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">message&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/await&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">hr&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">#await&lt;/span> &lt;span class="nx">reject_promise&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="nx">error&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>처리 실패: &lt;span class="p">{&lt;/span>&lt;span class="nx">error&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">message&lt;/span>&lt;span class="p">}&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/await&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>간단한 예시코드입니다. resolve만 하는 Promise 함수(resolvePromise)와 reject만 하는 Promise 함수(rejectPromise)를 렌더링하는 코드입니다.&lt;/p>
+&lt;p>&lt;figure
+class="gallery-image"
+style="
+flex-grow: 133;
+flex-basis: 319px"
+>
+&lt;a href="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B9%84%EB%8F%99%EA%B8%B0%EB%AC%B8.gif" data-size="398x299">
+&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B9%84%EB%8F%99%EA%B8%B0%EB%AC%B8.gif"
+width="398"
+height="299"
+srcset="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B9%84%EB%8F%99%EA%B8%B0%EB%AC%B8_hudb2a1cbc2f104f2525c5c155518100a8_8338_480x0_resize_box.gif 480w, https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/%EC%8A%A4%EB%B2%A8%ED%8A%B8_%EC%A0%9C%EC%96%B4%EB%AC%B8_%EB%B9%84%EB%8F%99%EA%B8%B0%EB%AC%B8_hudb2a1cbc2f104f2525c5c155518100a8_8338_1024x0_resize_box.gif 1024w"
+loading="lazy"
+alt="비동기 구문 테스트 (이미지를 클릭하면 움직입니다)">
+&lt;/a>
+&lt;figcaption>비동기 구문 테스트 (이미지를 클릭하면 움직입니다)&lt;/figcaption>
+&lt;/figure>&lt;/p>
+&lt;h3 id="key-">{#key &amp;hellip;}&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="p">{&lt;/span>&lt;span class="k">#key&lt;/span> &lt;span class="nx">expression&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c">&amp;lt;!-- ... --&amp;gt;&lt;/span>
+&lt;span class="p">{&lt;/span>&lt;span class="k">/key&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>키 블록은 표현식의 값이 변경될 때 내용을 지우고 재생성합니다. 값이 변경될 때 요소의 애니메이션을 재생하고 싶을 때 유용합니다.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;p>&lt;a class="link" href="https://svelte.dev/docs#component-format" target="_blank" rel="noopener"
+>스벨트 공식문서&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener"
+>자바스크립트 Promise 문서&lt;/a>&lt;/p></description></item><item><title>스벨트: 변수</title><link>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</link><pubDate>Sun, 26 Dec 2021 21:53:14 +0900</pubDate><guid>https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/</guid><description>&lt;img src="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/svelte-horizontal.svg" alt="Featured image of post 스벨트: 변수" />&lt;h2 id="변수">변수&lt;/h2>
 &lt;h3 id="기본적인-선언-및-사용">기본적인 선언 및 사용&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-svelte" data-lang="svelte">&lt;span class="ln">1&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
 &lt;span class="hl">&lt;span class="ln">2&lt;/span> &lt;span class="kd">let&lt;/span> &lt;span class="nx">count&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
