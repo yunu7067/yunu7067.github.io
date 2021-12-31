@@ -1,5 +1,5 @@
 ---
-title: "스벨트: 제어문"
+title: "스벨트③: 제어문"
 description: "Svelte: Control Block"
 date: 2022-01-01T02:13:07+09:00
 image: svelte-horizontal.svg

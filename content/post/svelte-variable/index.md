@@ -1,5 +1,5 @@
 ---
-title: "스벨트: 변수"
+title: "스벨트②: 변수"
 description: "Svelte: Variable"
 date: 2021-12-26T21:53:14+09:00
 image: svelte-horizontal.svg
