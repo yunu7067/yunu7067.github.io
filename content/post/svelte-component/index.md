@@ -84,3 +84,9 @@ Svelte에서는 export를 선언한 변수가 속성 혹은 prop으로 사용됩
 ```
 
 이렇게 구조분해할당을 사용하여 값을 넘겨줘도 됩니다.
+
+## Reference
+
+[스벨트 공식문서](https://svelte.dev/docs#component-format-script-1-export-creates-a-component-prop)
+
+[스벨트 공식 튜토리얼](https://svelte.dev/tutorial/declaring-props)
