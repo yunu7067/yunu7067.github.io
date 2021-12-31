@@ -13,7 +13,6 @@ categories:
 tags:
   - Frontend
   - Svelte
-  - SvelteKit
 ---
 
 ## 기본 구조
