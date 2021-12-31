@@ -1,12 +1,12 @@
 ---
-title: "스벨트⑤: 요소 지시문"
-description: "Svelte: Element Directives"
-date: 2022-01-01T03:42:02+09:00
+title: "스벨트: 이벤트 핸들링"
+description: "Svelte: Event Handling"
+date: 2022-01-01T04:18:54+09:00
 image: svelte-horizontal.svg
 math:
 hidden: false
 comments: true
-draft: flase
+draft: true
 categories:
   - Frontend
   - Svelte
@@ -15,9 +15,7 @@ tags:
   - Svelte
 ---
 
-## 요소 지시문
-
-속성과 마찬가지로, 요소에는 요소의 동작을 제어하는 지시문이 있을 수 있습니다.
+## 이벤트 핸들링
 
 ### on:이벤트명
 
@@ -70,56 +68,6 @@ on:eventname|modifiers={handler}
 ```
 
 수정자는 위와 같이 `|`를 붙인 후 사용하며, 여러개의 수정자를 사용할 수 있습니다. 여러개의 수정자를 사용할 경우도 `on:click|once|capture={...}`처럼 각 수정자 사이를 `|`로 연결하여 사용합니다.
-
-### bind:property
-
-```svelte
-
-```
-
-### bind:group
-
-```svelte
-
-```
-
-### bind:this
-
-```svelte
-
-```
-
-### class:name
-
-```svelte
-
-```
-
-### use:action
-
-```svelte
-
-```
-
-### transition:fn
-
-```svelte
-
-```
-
-### in:fn/out:fn
-
-```svelte
-
-```
-
-### animate:fn
-
-```svelte
-
-```
-
-## Reference
 
 [스벨트 공식문서](https://svelte.dev/docs#template-syntax-element-directives)
 
