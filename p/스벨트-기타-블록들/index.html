@@ -1,15 +1,15 @@
 <!doctype html><html lang=ko-kr>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Svelte: Component Format"><title>스벨트①: 컴포넌트 구조</title>
-<link rel=canonical href=https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>
-<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="스벨트①: 컴포넌트 구조">
-<meta property="og:description" content="Svelte: Component Format">
-<meta property="og:url" content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Svelte: Etc Block"><title>스벨트④: 기타 블록들</title>
+<link rel=canonical href=https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>
+<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="스벨트④: 기타 블록들">
+<meta property="og:description" content="Svelte: Etc Block">
+<meta property="og:url" content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/">
 <meta property="og:site_name" content="YUN">
-<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Frontend"><meta property="article:tag" content="Svelte"><meta property="article:published_time" content="2021-12-26T21:02:35+09:00"><meta property="article:modified_time" content="2021-12-26T21:02:35+09:00"><meta property="og:image" content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg">
-<meta name=twitter:title content="스벨트①: 컴포넌트 구조">
-<meta name=twitter:description content="Svelte: Component Format"><meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Frontend"><meta property="article:tag" content="Svelte"><meta property="article:published_time" content="2022-01-01T03:15:01+09:00"><meta property="article:modified_time" content="2022-01-01T03:15:01+09:00"><meta property="og:image" content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg">
+<meta name=twitter:title content="스벨트④: 기타 블록들">
+<meta name=twitter:description content="Svelte: Etc Block"><meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://yunu7067.github.io/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg">
 </head>
 <body class="article-page has-toc">
 <script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
@@ -24,8 +24,8 @@ extended">
 <article class="has-image main-article">
 <header class=article-header>
 <div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트①: 컴포넌트 구조">
+<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>
+<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트④: 기타 블록들">
 </a>
 </div>
 <div class=article-details>
@@ -38,14 +38,14 @@ Svelte
 </a>
 </header>
 <h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>스벨트①: 컴포넌트 구조</a>
+<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>스벨트④: 기타 블록들</a>
 </h2>
 <h3 class=article-subtitle>
-Svelte: Component Format
+Svelte: Etc Block
 </h3>
 <footer class=article-time>
 <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2021년 12월 26일</time>
+<time class=article-time--published>2022년 01월 1일</time>
 </div>
 <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <time class=article-time--reading>
@@ -56,45 +56,32 @@ Svelte: Component Format
 </div>
 </header>
 <section class=article-content>
-<h2 id=기본-구조>기본 구조</h2>
-<p>스벨트 파일는 <code>.svelte</code> 확장자를 가집니다. 스벨트 파일에는 scirpt, style, 마크업 이렇게 세 가지 블록이 존재합니다. 이 세 가지 섹션은 필수가 아닌 선택요소입니다.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
-	<span class=c1>// 로직이 위치하는 부분
-</span><span class=c1></span><span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+<h2 id=기타-블록들>기타 블록들</h2>
+<h3 id=텍스트-표현식>텍스트 표현식</h3>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>{</span><span class=err>표현식</span><span class=p>}</span>
+</code></pre></div><p>텍스트 표현식에는 자바스크립트 표현식도 포함될 수 있습니다. 다만 정규식(RegExp)을 사용할 때는 괄호로 묶어서 사용해야 합니다.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;{(</span><span class=sr>/^[A-Za-z ]+$/</span><span class=p>).</span><span class=nx>test</span><span class=p>(</span><span class=nx>value</span><span class=p>)</span> <span class=o>?</span> <span class=nx>x</span> : <span class=kt>y</span><span class=p>}&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</code></pre></div><h3 id=주석>주석</h3>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=c>&lt;!-- 이 블록이 주석입니다. --&gt;</span>
+</code></pre></div><p>Svetle의 주석은 HTML 주석과 동일합니다. 무시하고 싶은 오류나 경고를 비활성화 할 때 사용하는 <code>svelte-ignore</code>을 추가해 주고 싶을 때도 이 주석 블록을 사용합니다.</p>
+<h3 id=html->{@html &mldr;}</h3>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>{</span><span class=k>@html</span> <span class=nx>expression</span><span class=p>}</span>
+</code></pre></div><p><code>{@html ...}</code> 표현식은 React의 <code>dangerouslySetInnerHTML</code>와 유사합니다. Svelte는 텍스트 표현식에서 <code>&lt;</code>나 <code>></code>와 같은 문자를 제거하고 표시하지만 이 표현식을 사용했을 경우에는 그렇지 않습니다. 따라서 XSS 공격에 매우 취약하므로 사용에 주의해야 합니다. 또한 이 내부에 오는 코드들은 Svelte가 컴파일하지 않습니다.</p>
+<h3 id=debug->{@debug &mldr;}</h3>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>{</span><span class=k>@debug</span><span class=p>}</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=nx>var1</span><span class=p>,</span> <span class=nx>var2</span><span class=p>,</span> <span class=p>...,</span> <span class=nx>varN</span><span class=p>}</span>
+</code></pre></div><p><code>console.log(...)</code>를 사용하는 대신 이 표현식을 사용합니다. 만약 devtools가 열려있다면 코드 실행을 중단하는 중단점 역할을 합니다. 이 블럭은 쉼표로 구별된 변수명만 허용되며, 임의의 표현식을 사용할 수 없습니다.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=c>&lt;!-- 컴파일 됨 --&gt;</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=nx>user</span><span class=p>}</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=nx>user1</span><span class=p>,</span> <span class=nx>user2</span><span class=p>,</span> <span class=nx>user3</span><span class=p>}</span>
 
-<span class=c>&lt;!-- 0개 이상의 마크업 태그가 위치하는 부분 --&gt;</span>
-
-<span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
-	<span class=c>/* 스타일이 위치하는 부분 */</span>
-<span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
-</code></pre></div><h3 id=script>&lt;script></h3>
-<p><code>&lt;script></code> 블록은 자바스크립트(혹은 타입스크립트)를 작성하는 부분입니다. 페이지의 로직이 위치하며 일반적으로 최상위에 위치합니다. 스크립트 블록에는 네 가지 규칙이 있습니다.</p>
-<ol>
-<li>컴포넌트 prop을 생성하는 export</li>
-<li>&lsquo;리액티브&rsquo;한 할당</li>
-<li>리액티브를 위한 <code>$:</code> 구문</li>
-<li>svelte/store를 편하게 사용하기 위한 <code>$</code> 접두사</li>
-</ol>
-<p><code>&lt;script></code> 태그에 <code>context="module"</code> 속성값이 추가되면 처음 한 번만 실행됩니다.</p>
-<h3 id=style>&lt;style></h3>
-<p><code>style</code> 블록은 스타일을 작성하는 부분입니다. 스타일을 전역으로 적용하고 싶다면 <code>:global(...)</code> 수정자를 사용합니다. 만약 키프레임을 전역으로 적용하고 싶다면 이름 앞에 <code>-global-</code>을 붙여줍니다. <code>&lt;style></code> 블록은 문서에 한 개의 블록만 존재해야 합니다. 마크업 태그 안에는 존재할 수 있지만, 스벨트에서 지원하는 전역 스타일 같은 기능이 지원되지 않고 일반 HTML 문서와 같이 처리됩니다.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-svelte data-lang=svelte><span class=p>&lt;</span><span class=nt>style</span><span class=p>&gt;</span>
-    <span class=c>/* 버튼 스타일 예시 */</span>
-    <span class=nt>button</span> <span class=p>{</span>
-        <span class=k>background-color</span><span class=p>:</span> <span class=kc>gray</span><span class=p>;</span>
-    <span class=p>}</span>
-
-    <span class=c>/* 버튼 전역 스타일 예시 */</span>
-    <span class=p>:</span><span class=nd>global</span><span class=o>(</span><span class=nt>button</span><span class=o>)</span> <span class=p>{</span>
-        <span class=k>color</span><span class=p>:</span> <span class=kc>white</span><span class=p>;</span>
-    <span class=p>}</span>
-
-    <span class=c>/* 키프레임 전역 예시 */</span>
-    <span class=p>@</span><span class=k>keyframes</span> <span class=nt>-global-my-animation-name</span> <span class=p>{</span><span class=o>...</span><span class=p>}</span>
-<span class=p>&lt;/</span><span class=nt>style</span><span class=p>&gt;</span>
-
-</code></pre></div><h2 id=references>References</h2>
-<p><a class=link href=https://svelte.dev/docs#component-format target=_blank rel=noopener>스벨트 공식문서</a></p>
+<span class=c>&lt;!-- 컴파일 되지 않음 --&gt;</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=nx>user</span><span class=p>.</span><span class=nx>firstname</span><span class=p>}</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=nx>myArray</span><span class=p>[</span><span class=mi>0</span><span class=p>]}</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=o>!</span><span class=nx>isReady</span><span class=p>}</span>
+<span class=p>{</span><span class=k>@debug</span> <span class=k>typeof</span> <span class=nx>user</span> <span class=o>===</span> <span class=s1>&#39;object&#39;</span><span class=p>}</span>
+</code></pre></div><h2 id=reference>Reference</h2>
+<p><a class=link href=https://svelte.dev/docs#template-syntax-html target=_blank rel=noopener>스벨트 공식문서</a></p>
 </section>
 <footer class=article-footer>
 <section class=article-tags>
@@ -110,16 +97,6 @@ Svelte: Component Format
 <h2 class=section-title>관련 글</h2>
 <div class=related-contents>
 <div class="flex article-list--tile">
-<article class=has-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>
-<div class=article-image>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg loading=lazy data-key data-hash=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg>
-</div>
-<div class=article-details>
-<h2 class=article-title>스벨트④: 기타 블록들</h2>
-</div>
-</a>
-</article>
 <article class=has-image>
 <a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/>
 <div class=article-image>
@@ -137,6 +114,16 @@ Svelte: Component Format
 </div>
 <div class=article-details>
 <h2 class=article-title>스벨트②: 변수</h2>
+</div>
+</a>
+</article>
+<article class=has-image>
+<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>
+<div class=article-image>
+<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg loading=lazy data-key data-hash=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg>
+</div>
+<div class=article-details>
+<h2 class=article-title>스벨트①: 컴포넌트 구조</h2>
 </div>
 </a>
 </article>
@@ -211,13 +198,15 @@ Svelte: Component Format
 <div class=widget--toc>
 <nav id=TableOfContents>
 <ol>
-<li><a href=#기본-구조>기본 구조</a>
+<li><a href=#기타-블록들>기타 블록들</a>
 <ol>
-<li><a href=#script>&lt;script></a></li>
-<li><a href=#style>&lt;style></a></li>
+<li><a href=#텍스트-표현식>텍스트 표현식</a></li>
+<li><a href=#주석>주석</a></li>
+<li><a href=#html->{@html &mldr;}</a></li>
+<li><a href=#debug->{@debug &mldr;}</a></li>
 </ol>
 </li>
-<li><a href=#references>References</a></li>
+<li><a href=#reference>Reference</a></li>
 </ol>
 </nav>
 </div>
