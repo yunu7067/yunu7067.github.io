@@ -1,0 +1,3 @@
+[submodule "tololo"]
+	path = tololo
+	url = https://github.com/yunu7067/astro-blog

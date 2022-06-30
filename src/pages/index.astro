@@ -1,0 +1,42 @@
+---
+import { btn } from '@coms/classes';
+import BaseLayout from '@lays/BaseLayout.astro';
+import PostPreview from '@coms/PostPreview.astro';
+import LargeHeader from '@coms/LargeHeader.astro';
+import AboutContainer from '@coms/AboutContainer.astro';
+import { ArrowRightCircleLine } from '@coms/icons';
+import config from '../../blog.config.js';
+
+const {
+	title,
+	description,
+	avatar,
+	social
+} = config;
+let canonicalURL = Astro.canonicalURL;
+
+let allPosts = await Astro.glob('./p/**/*.md');
+allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+let firstPage = allPosts.slice(0, 3);
+---
+
+<BaseLayout config={config} seo={{ title: title, description: description, image:allPosts[0].frontmatter.image,
+	canonical: canonicalURL.toString() }}>
+	<LargeHeader avatar={avatar} title={title} description={description} socials={social} />
+
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<AboutContainer author={config.author} />
+			{firstPage.map((post) => (
+			<PostPreview post={post} />
+			))}
+			<div class="text-right tracking-tight">
+				<a href="/page/" class={btn}>
+					All Posts
+					<ArrowRightCircleLine />
+				</a>
+			</div>
+		</div>
+	</main>
+
+</BaseLayout>

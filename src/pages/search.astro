@@ -1,0 +1,42 @@
+---
+import { AstroSeoProps } from "@coms/AstroSeo";
+import BaseLayout from '@lays/BaseLayout.astro';
+import config from '../../blog.config.js';
+import BlogHeader from "@coms/BlogHeader.astro";
+import BlogSearch from "src/utils/BlogSearch";
+import Search from "@coms/Search";
+
+let allPosts = await Astro.glob('./p/**/*.md');
+const posts = allPosts.map(p => {
+	return {
+		id: p.url,
+		title: p.frontmatter.title,
+		description: p.frontmatter?.description || '',
+		tags: p.frontmatter?.tags || []
+	};
+});
+
+await BlogSearch({ posts });
+const flexSearchIndexKeys = [
+	"reg",
+	"title.cfg", "title.map", "title.ctx",
+	"tags.cfg", "tags.map", "tags.ctx",
+	"description.cfg", "description.map", "description.ctx",
+	"tag", "store"
+];
+
+const seo: AstroSeoProps = {
+	title: "Search"
+}
+---
+
+<BaseLayout config={config} seo={seo}>
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader config={config} />
+
+
+			<Search client:only keys={flexSearchIndexKeys} />
+		</div>
+	</main>
+</BaseLayout>

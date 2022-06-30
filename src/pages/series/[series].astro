@@ -1,0 +1,71 @@
+---
+import { MarkdownInstance } from 'astro';
+import BaseLayout from '@lays/BaseLayout.astro';
+import { AstroSeoProps } from '@coms/AstroSeo';
+import BlogHeader from '@coms/BlogHeader.astro';
+import PostPreview from '@coms/PostPreview.astro';
+import config from '../../../blog.config.js';
+
+interface SeriesProps {
+	count: number;
+	posts: MarkdownInstance<Record<string, unknown>>[];
+};
+
+const { series } = Astro.params;
+const { count, posts } = Astro.props as SeriesProps;
+
+const allPosts = await Astro.glob('../p/**/*.md');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+
+
+
+export async function getStaticPaths({ paginate }) {
+	const allPosts = await Astro.glob('../p/**/*.md');
+	const seriesData: { [key: string]: SeriesProps } = {};
+	const seriesList = [];
+
+	allPosts.map((post) => {
+		const { series } = post.frontmatter;
+		if (series) {
+			if (seriesData[series]) {
+				seriesData[series].count = seriesData[series].count + 1;
+				seriesData[series].posts.push(post);
+			} else {
+				seriesList.push(series);
+				seriesData[series] = {
+					count: 1,
+					posts: [post]
+				};
+			}
+		}
+	});
+
+	return seriesList.map((series) => {
+		return { params: { series: series }, props: seriesData[series] }
+	});
+}
+
+const seo: AstroSeoProps = {
+	title: `Series : ${series}`
+};
+---
+
+<BaseLayout config={config} seo={seo}>
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader config={config} />
+
+			<main>
+				<h2 class="mt-8 mb-1 text-5xl tracking-tight text-center">{seo.title}</h2>
+				<small class="block text-base text-center mb-6">{count} Posts</small>
+
+				{posts.map((post) => (
+				<PostPreview post={post} />
+				))}
+			</main>
+
+
+		</div>
+	</main>
+
+</BaseLayout>
