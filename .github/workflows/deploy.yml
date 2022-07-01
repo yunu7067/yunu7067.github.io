@@ -38,4 +38,4 @@ jobs:
           # `./dist` is the default Astro build directory.
           # If you changed that, update it here too.
           publish_dir: ./dist
-          publish_branch: release  # default: gh-pages
+          # publish_branch: release  # default: gh-pages

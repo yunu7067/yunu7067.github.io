@@ -1,15 +1,11 @@
 ---
-title: "Dublin Core™ Metadata Initiative"
-description: "표준화된 메타데이터 요소 집합"
-date: "2021-04-28T13:20:00+09:00"
-lastmod: "2021-04-28T13:20:00+09:00"
-image: dublin_core_block.png
+setup: |
+  import Layout from '@lays/BlogPost.astro'
+title: 'Dublin Core™ Metadata Initiative'
+description: '표준화된 메타데이터 요소 집합'
+publishDate: '2021-04-28T13:20:00+09:00'
 draft: false
-categories:
-  -
-tags:
-  -
-  -
+tags: ['Dublin Core']
 ---
 
 - [DCMI Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/)
@@ -37,8 +33,8 @@ tags:
 - 상위 속성 (Refines) - 해당 용어가 속한 상위 속성
 - 상위 클래스 (Broader Than) - 해당 용어가 속한 상위클래스
 
-  \* DCMI 클래스는 \<Agent>, \<AgentClass>, \<BibliographicResource> 등 22개로 구성
-  (http://www.dublincore.org/documents/dcmi-terms/#section-6 를 참고하세요.)
+  - DCMI 클래스는 `<Agent>`, `<AgentClass>`, `<BibliographicResource>` 등 22개로 구성
+    (http://www.dublincore.org/documents/dcmi-terms/#section-6 를 참고하세요.)
 
 - 하위 클래스 (Narrower Than) - 해당 용어에 속한 하위클래스
 - 사용 도메인 (Has Domain) - 해당 용어가 사용되는 상위 도메인(인스턴스)

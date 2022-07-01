@@ -1,14 +1,12 @@
 ---
+setup: |
+  import Layout from '@lays/BlogPost.astro'
 title: Content Security Policy
-description: "Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"
-date: 2021-04-29T10:13:01+09:00
-image: blob_err_resolve.png
+description: 'Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨'
+publishDate: 2021-04-29T10:13:01+09:00
 draft: false
-categories:
-    - Web
-tags:
-    - Nginx
-    - Error
+categories: 'Web'
+tags: ['Nginx', 'Error']
 ---
 
 ## 문제점
