@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ko-KR" class="bg-transparent ">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml">
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- Codeblock theme -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css" /> -->
+	<!-- Flex Search -->
+	<script defer src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.2/dist/flexsearch.bundle.js"></script>
+
+	<title data-hk="0-0">스벨트 &amp; 스벨트 킷</title><meta data-hk="0-1" name="description" content="Svelte와 Sveltekit"><meta data-hk="0-2" name="robots" content="index,follow"><meta data-hk="0-3" property="og:title" content="스벨트 &amp; 스벨트 킷"><meta data-hk="0-4" property="og:description" content="Svelte와 Sveltekit"><script>let configTheme = "auto";
+
+		(function () {
+			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+			if (configTheme === " system") {
+				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
+					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
+			} /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
+				(configTheme === "auto") {
+					const theme = window.localStorage.getItem("theme"); const
+						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
+			} /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script></head>
+
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script><body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
+			<header class="py-5 w-full flex flex-row items-center justify-between">
+	<h1 class="m-0 text-2xl">
+		<a href="/" aria-label="Home">
+			<span>tololo://</span>
+		</a>
+	</h1>
+	<nav class="flex-none flex flex-row gap-2">
+
+		<a href="/p/about/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="About">
+			About
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+				<path fill="none" d="M0 0h24v24H0z"></path>
+				<path fill="currentColor" d="M7.291 20.824L2 22l1.176-5.291A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.956 9.956 0 0 1-4.709-1.176zm.29-2.113l.653.35A7.955 7.955 0 0 0 12 20a8 8 0 1 0-8-8c0 1.334.325 2.618.94 3.766l.349.653-.655 2.947 2.947-.655zM7 12h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"></path>
+			</svg>
+		</a>
+		<astro-island uid="UW0Q6" component-url="/ThemeButton.35d3495e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;config&quot;:[0,{&quot;baseurl&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;title&quot;:[0,&quot;tololo://&quot;],&quot;description&quot;:[0,&quot;YUNU7067&#39;s log&quot;],&quot;locale&quot;:[0,{&quot;languageCode&quot;:[0,&quot;ko-KR&quot;]}],&quot;author&quot;:[0,{&quot;name&quot;:[0,&quot;YUNU7067&quot;],&quot;comment&quot;:[0,&quot;끊임없이 공부하는 사람이 되고싶은 개발자.&quot;]}],&quot;avatar&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;src&quot;:[0,&quot;/public/assets/profile/avatar.jpeg&quot;]}],&quot;social&quot;:[1,&quot;[[0,{\&quot;identifier\&quot;:[0,\&quot;github\&quot;],\&quot;name\&quot;:[0,\&quot;GitHub\&quot;],\&quot;url\&quot;:[0,\&quot;https://github.com/yunu7067/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;discord\&quot;],\&quot;name\&quot;:[0,\&quot;Discord\&quot;],\&quot;url\&quot;:[0,\&quot;https://discordapp.com/users/태규#6493/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;npmjs\&quot;],\&quot;name\&quot;:[0,\&quot;Npmjs\&quot;],\&quot;url\&quot;:[0,\&quot;https://www.npmjs.com/~yunu7067\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;email\&quot;],\&quot;name\&quot;:[0,\&quot;Email\&quot;],\&quot;url\&quot;:[0,\&quot;mailto:yunu7067@gmail.com\&quot;]}]]&quot;],&quot;theme&quot;:[0,&quot;auto&quot;],&quot;comments&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;provider&quot;:[0,&quot;giscus&quot;],&quot;giscus&quot;:[0,{&quot;repo&quot;:[0,&quot;yunu7067/astro-blog&quot;],&quot;repoId&quot;:[0,&quot;R_kgDOG92tFg&quot;],&quot;category&quot;:[0,&quot;giscus&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOG92tFs4CP4r0&quot;],&quot;mapping&quot;:[0,&quot;pathname&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;0&quot;],&quot;inputPosition&quot;:[0,&quot;bottom&quot;],&quot;lang&quot;:[0,&quot;ko&quot;],&quot;loading&quot;:[0,&quot;lazy &quot;],&quot;lightTheme&quot;:[0,&quot;light&quot;],&quot;darkTheme&quot;:[0,&quot;dark_dimmed&quot;]}]}]}]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;ThemeButton&quot;,&quot;value&quot;:true}"><button data-hk="0-0" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="dark mode toggle"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></svg></button></astro-island>
+		<a href="/series/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Series">
+			<!-- Series -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"></path></svg>
+		</a>
+		<a href="/search/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Search">
+			<!-- Search -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg>
+		</a>
+	</nav>
+</header>
+			<div class="layout astro-3AN7XC2S">
+	<article class="content astro-3AN7XC2S">
+		<div class="astro-3AN7XC2S">
+			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center  astro-3AN7XC2S">
+				
+				<p class="m-0 astro-3AN7XC2S">2021. 12. 18.</p>
+				<h1 class="m-0 mb-1 text-4xl font-bold leading-normal astro-3AN7XC2S">스벨트 &amp; 스벨트 킷</h1>
+				<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Frontend">#<!--#-->Frontend<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Svelte">#<!--#-->Svelte<!--/--></a></li><li data-hk="0-3-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/SvelteKit">#<!--#-->SvelteKit<!--/--></a></li></ul>
+			</header>
+			<main id="article-container" class="astro-3AN7XC2S">
+				<div class="bg-gray-200 dark:bg-gray-700 rounded-sm py-7 px-10 mb-8 astro-CJONULMH" aria-label="Table of Contents">
+	<div class="text-xl mb-2.5 font-bold astro-CJONULMH">목차</div>
+	<div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-CJONULMH">
+		<a href="#스벨트" class="astro-CJONULMH">스벨트</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#기본-구조" class="astro-CJONULMH">기본 구조</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#ltscriptgt" class="astro-CJONULMH">&lt;script&gt;</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#ltstylegt" class="astro-CJONULMH">&lt;style&gt;</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#변수" class="astro-CJONULMH">변수</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#기본적인-선언-및-사용" class="astro-CJONULMH">기본적인 선언 및 사용</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#export를-사용한-변수" class="astro-CJONULMH">export를 사용한 변수</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#반응형-변수" class="astro-CJONULMH">반응형 변수</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#-구문을-이용하여-반응형-업데이트" class="astro-CJONULMH">$: 구문을 이용하여 반응형 업데이트</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#-접두사를-이용한-sveltestore-사용" class="astro-CJONULMH">$ 접두사를 이용한 svelte/store 사용</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#제어문" class="astro-CJONULMH">제어문</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#if-" class="astro-CJONULMH">{#if ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#each-" class="astro-CJONULMH">{#each ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#await-" class="astro-CJONULMH">{#await ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#key-" class="astro-CJONULMH">{#key ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#기타-블록들" class="astro-CJONULMH">기타 블록들</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#텍스트-표현식" class="astro-CJONULMH">텍스트 표현식</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#주석" class="astro-CJONULMH">주석</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#html-" class="astro-CJONULMH">{@html ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#debug-" class="astro-CJONULMH">{@debug ...}</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#컴포넌트" class="astro-CJONULMH">컴포넌트</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#요소의-이벤트-핸들링" class="astro-CJONULMH">요소의 이벤트 핸들링</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#on이벤트명" class="astro-CJONULMH">on:이벤트명</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#컴포넌트의-이벤트-핸들링" class="astro-CJONULMH">컴포넌트의 이벤트 핸들링</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#직접-전달" class="astro-CJONULMH">직접 전달</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#createeventdispatcher" class="astro-CJONULMH">createEventDispatcher</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-CJONULMH">
+		<a href="#스벨트-킷" class="astro-CJONULMH">스벨트 킷</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#endpoints" class="astro-CJONULMH">Endpoints</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#request" class="astro-CJONULMH">Request</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-CJONULMH">
+		<a href="#response" class="astro-CJONULMH">Response</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-CJONULMH">
+		<a href="#references" class="astro-CJONULMH">References</a>
+	</div>
+</div><h1 id="스벨트">스벨트</h1><h2 id="기본-구조">기본 구조</h2><p>스벨트 파일는 <code>.svelte</code> 확장자를 가집니다. 스벨트 파일에는 scirpt, style, 마크업 이렇게 세 가지 블록이 존재합니다. 이 세 가지 섹션은 필수가 아닌 선택요소입니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// 로직이 위치하는 부분</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">&lt;!-- 0개 이상의 마크업 태그가 위치하는 부분 --&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">/* 스타일이 위치하는 부분 */</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><h3 id="ltscriptgt"><code>&lt;script&gt;</code></h3><p><code>&lt;script&gt;</code> 블록은 자바스크립트(혹은 타입스크립트)를 작성하는 부분입니다. 페이지의 로직이 위치하며 일반적으로 최상위에 위치합니다. 스크립트 블록에는 네 가지 규칙이 있습니다.</p><ol>
+<li>컴포넌트 prop을 생성하는 export</li>
+<li>‘리액티브’한 할당</li>
+<li>리액티브를 위한 <code>$:</code> 구문</li>
+<li>svelte/store를 편하게 사용하기 위한 <code>$</code> 접두사</li>
+</ol><p><code>&lt;script&gt;</code> 태그에 <code>context="module"</code> 속성값이 추가되면 처음 한 번만 실행됩니다.</p><h3 id="ltstylegt"><code>&lt;style&gt;</code></h3><p><code>style</code> 블록은 스타일을 작성하는 부분입니다. 스타일을 전역으로 적용하고 싶다면 <code>:global(...)</code> 수정자를 사용합니다. 만약 키프레임을 전역으로 적용하고 싶다면 이름 앞에 <code>-global-</code>을 붙여줍니다. <code>&lt;style&gt;</code> 블록은 문서에 한 개의 블록만 존재해야 합니다. 마크업 태그 안에는 존재할 수 있지만, 스벨트에서 지원하는 전역 스타일 같은 기능이 지원되지 않고 일반 HTML 문서와 같이 처리됩니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">/* 버튼 스타일 예시 */</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">background-color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">gray</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">/* 버튼 전역 스타일 예시 */</span></span>
+<span class="line"><span style="color: #C9D1D9">    :global(</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">color</span><span style="color: #C9D1D9">: </span><span style="color: #79C0FF">white</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">/* 키프레임 전역 예시 */</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">@keyframes</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">-global-my-animation-name</span><span style="color: #C9D1D9"> {...}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">style</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><h2 id="변수">변수</h2><h3 id="기본적인-선언-및-사용">기본적인 선언 및 사용</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> count </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;count : {count}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>변수의 선언은 2번째 줄과 같이, <code>&lt;script&gt;</code> 태그 안에서 일반 자바스크립트 변수 선언하듯이 선언합니다. 사용하는 방법은 10번째 줄관 같이 <code>{변수명}</code>과 같이 사용합니다.</p><h3 id="export를-사용한-변수">export를 사용한 변수</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> foo;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">bar</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;readonly&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// Values that are passed in as props</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #8B949E">// are immediately available</span></span>
+<span class="line"><span style="color: #C9D1D9">	console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">({ foo });</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>만약 변수 선언할 때 <code>export</code>를 붙였다면, 해당 변수는 이 컴포넌트를 사용한 곳에서 읽을 수 있게 됩니다. 자바스크립트 모듈에서 export를 붙인 것과 동일합니다.</p><p>만약 변수 선언 시 <code>let</code>이 아닌 <code>const</code>를 사용하였다면, 이 변수는 읽기 전용이 됩니다.</p><h3 id="반응형-변수">반응형 변수</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> count </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">addOne</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    count </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> count </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;count : {count}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={addOne}&gt;add one&lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>스벨트는 리액트와 다르게 useState와 같은 메서드를 이용하여 선언을 할 필요가 없습니다. 그냥 일반 변수처럼 선언한 후, 핸들링하는 함수를 만들고 사용하기만 하면 됩니다. 4-6번째 줄과 같이 <code>&lt;script&gt;</code> 태그 안에 1을 더해주는 함수 addOne()을 만들어 주고 11번째 줄의 <code>&lt;button&gt;</code> 태그에 onclick 이벤트로 달아주면 됩니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-86740014 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-86740014 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-86740014::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-86740014 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-86740014::after {
+          background-size: cover;
+          background-image: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAuUlEQVQokc2SywrCMBBF+/+/I7jTbkQrbly40gq10EfS2CY1VTf2iG60IGpEwQs3zJBwOTPE48vyfhLYtu3Np1Onv79/K7B98fDdoA7h8bBnWwhKpUjjmKoqsbUhiTfuhAA7o4nWK6IwZLlYoKTA1hqZZ38ysrUWpRRSyqsvdaEKtNbuhABlVTIPpgz6PWaTEYHvMx76CCmdKb3L0TQNWZqSZxlSCITISZMEY8xngc/kvMPOp35gV8IzcoGxTiSJQjsAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-86740014"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/svelte_var1@243w.5eb7238a.webp"
+            sizes="(min-width: 243px) 243px, 100vw"
+            width="243"
+            height="142"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/svelte_var1@243w.0952277"
+    alt="반응형 변수 테스트"
+    srcset="/assets/svelte_var1@243w.0952277c.gif"
+    sizes="(min-width: 243px) 243px, 100vw"
+    width="243"
+    height="142"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><h3 id="-구문을-이용하여-반응형-업데이트"><code>$:</code> 구문을 이용하여 반응형 업데이트</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> a </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> b </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">add</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">a</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">b</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> a </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">$</span><span style="color: #C9D1D9">: sum </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">add</span><span style="color: #C9D1D9">(a, b);</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">input</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;number&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">bind</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">value</span><span style="color: #C9D1D9">={a} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  +</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">input</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;number&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">bind</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">value</span><span style="color: #C9D1D9">={b} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  =</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;{sum}&lt;/</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>위 예시는 <code>a</code>와 <code>b</code>를 더하는 코드입니다. input으로 <code>a</code>값과 <code>b</code>값을 받아서 값을 저장한 후 더해서 <code>sum</code>으로 보여줍니다. <code>bind:value</code>는 일단 모르셔도 됩니다. input의 value를 뒤의 변수와 연결시켜주는 역할을 한다는 정도만 이해하시면 됩니다.여기서 <code>$:</code> 다음에 나오는 변수들은 스벨트에서 자동으로 관찰(Observe)하고 있다, 변경이 감지되면 즉각적으로 뒤에 있는 코드 <code>add(a, b)</code>를 실행하게 됩니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-298B0D05 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-298B0D05 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-298B0D05::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-298B0D05 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-298B0D05::after {
+          background-size: cover;
+          background-image: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAVUlEQVQImY2O2wqAMAxD9//fuvkwujWySyTuSVExcAikJW2Yc7K1zt6fGWOcvM2FOrQjBQVbSnR3OrD8RoqROWcC+yUHwFIrzYyl2CpU+9f1vx9K8gPrPuvW0VSw4AAAAABJRU5ErkJggg==");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-298B0D05"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/svelte_var2@320w.f865929b.webp 320w, /assets/svelte_var2@503w.dbb1180e.webp 503w"
+            sizes="(min-width: 503px) 503px, 100vw"
+            width="503"
+            height="84"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/svelte_var2@503w.31f3ce97.gif"
+    alt="$: 구문을 이용한 반응형 변수 테스트"
+    srcset="/assets/svelte_var2@320w.779ade8a.gif 320w, /assets/svelte_var2@503w.31f3ce97.gif 503w"
+    sizes="(min-width: 503px) 503px, 100vw"
+    width="503"
+    height="84"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">  function add(b) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> a </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  $: sum = add(b);</span></span></code></pre><p>만약 코드 중 일부가 위와 같이 바뀌면 어떻게 될까요? <code>$:</code> 뒤에 변수가 <code>b</code>만 존재하므로 <code>a</code>의 값이 변경될 때는 <code>sum</code>이 업데이트되지 않습니다. 오로지 <code>b</code>의 값이 변경될 때만 <code>sum</code>값이 업데이트되게 됩니다.</p><p>그럼 <code>$:</code>를 안 쓰면 어떻게 될까요?</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> a </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> b </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">input</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;number&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">bind</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">value</span><span style="color: #C9D1D9">={a} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  +</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">input</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">type</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;number&quot;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">bind</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">value</span><span style="color: #C9D1D9">={b} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  =</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;{a </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> b}&lt;/</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span></code></pre><p><code>$:</code> 구문을 사용했을 때와 크게 다르지 않습니다. <code>$:</code> 구문을 사용하면 별도의 변수로 선언할 수 있고, 원하는 변수가 변경됐을 때만 업데이트 하게 만들 수 있다는 장점이 있을 것으로 보입니다.</p><h3 id="-접두사를-이용한-sveltestore-사용"><code>$</code> 접두사를 이용한 svelte/store 사용</h3><p>svelte/store는 다른 컴포넌트에서 해당 변수를 반응형을 유지하면서 쉽게 접근할 수 있게 만들어주는 svlete 모듈입니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">/* count.js */</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> {writable} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;svelte/store&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">count</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">writable</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">);</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- index.svelte  --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> {count} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./count.js&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">addOne</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    $count </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> $count </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">href</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;/test&quot;</span><span style="color: #C9D1D9">&gt;move&lt;/</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">br</span><span style="color: #C9D1D9"> /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={addOne}&gt;count is {$count}&lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- test.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> {count} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./count.js&#39;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">href</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;/&quot;</span><span style="color: #C9D1D9">&gt;back&lt;/</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">br</span><span style="color: #C9D1D9"> /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;count is {$count}&lt;/</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>위의 예제 코드에서는 <code>count.js</code>에서 변수를 선언한 후, <code>index.svelte</code>와 <code>test.svelte</code>에서 사용하는 예시입니다. store된 변수에 접근할 때는 예시처럼 변수명 앞에 <code>$</code> 접두사를 붙여야 합니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-E6B2B748 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-E6B2B748 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-E6B2B748::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-E6B2B748 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-E6B2B748::after {
+          background-size: cover;
+          background-image: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABTElEQVQ4ja2Sh07DMBRF8/8/BlSIggStqFq6cLOnk3jE9kV2mw5GVFU86SRx/HJ1bMermxZSCDRNiyRNESUp8iKHH4SgdQ1bxpgjtlTXgVYVSlrjdfKODQmwC2OQIIYnpHSNXacgpYTsOmitIYSAtiHYh/Tl3hgDpRSsTBgnSPMCWVEiLUp4nHOkaeaaGBfgjCMMIhc6Xyyx3hCsVgTT6QLzxRbrLcHsY4kwyVDVjcOa9njWijHmAuwz5wKU1uiUQhjFiJMMQRCDkBC+fxhHMfKycoa0bi7wbFC/BKU1zsdDZXtsr/6Gt5+w+3Tit8afnA7KnHE0lFKjZRqM2fGwxRCevdj6JBRPLwkm7zkY4xBcHJff36/B6wP93Q6j+zEe7sZ4HD1j8jaD7ORtgcYYZ0Rpg6Zu3U9uLW8yNIcPhk7y2rALw782+SbD/+QLe9P5k6Eby/UAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-E6B2B748"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/svelte_var3@355w.915b7594.webp"
+            sizes="(min-width: 355px) 355px, 100vw"
+            width="355"
+            height="237"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/svelte_var3@355w.0d10d95"
+    alt="$ 접두사를 이용한 store 테스트"
+    srcset="/assets/svelte_var3@355w.0d10d951.gif"
+    sizes="(min-width: 355px) 355px, 100vw"
+    width="355"
+    height="237"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><h2 id="제어문">제어문</h2><p>스벨트 템플릿 문법에서 흐름을 제어하는 방법은 if, each, await, key 이렇게 4가지가 있습니다. 이 템플릿들의 시작은 <code>{# ...}</code>이며, 끝은 <code>{/ ...}</code>로 표시합니다.</p><h3 id="if-"><code>{#if ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{# if 표현식}</span></span>
+<span class="line"><span style="color: #C9D1D9"> </span><span style="color: #8B949E">&lt;!-- ... --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{:</span><span style="color: #FF7B72">else if</span><span style="color: #C9D1D9"> 표현식}</span></span>
+<span class="line"><span style="color: #C9D1D9"> </span><span style="color: #8B949E">&lt;!-- ... --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{:</span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9"> </span><span style="color: #8B949E">&lt;!-- ... --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/ if}</span></span></code></pre><p>사용 방법은 일반 if문과 동일합니다. 중괄호 안의 <code>#</code>이나 <code>:</code>, <code>/</code>을 주의해서 사용해주시면 됩니`다.</p><h3 id="each-"><code>{#each ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9"> expression </span><span style="color: #FF7B72">as</span><span style="color: #C9D1D9"> name, index (key)}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- ... --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9">}</span></span></code></pre><p>자바스크립트의 <code>Array.prototype.map()</code>과 사용법이 유사합니다. 첫 번째 인자로 배열 내부의 변수의 이름을, 두 번째 인자로 해당 인자의 index값을 받습니다. <code>(key)</code>는 Svelte가 요소의 변경을 감지하고 수정할 수 있도록 도와주는 키값입니다. React에서는 이러한 반복문 안에서 컴포넌트들에게 key값을 넘겨주는 것이 필수이지만, Svelte에서는 에러가 나지 않습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9"> items </span><span style="color: #FF7B72">as</span><span style="color: #C9D1D9"> {id, </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">rest}}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;{id}&lt;/</span><span style="color: #7EE787">span</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">MyComponent</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">values</span><span style="color: #C9D1D9">={rest}/&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9">}</span></span></code></pre><p>또한 이렇게 내부에서 구조 분해 할당이나 나머지 연산자를 사용할 수도 있습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9"> todos </span><span style="color: #FF7B72">as</span><span style="color: #C9D1D9"> todo}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;{todo.text}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{:</span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;No tasks today!&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9">}</span></span></code></pre><p>값이 없을 경우 <code>{:else}</code> 블록을 이용하여 해당 내용을 렌더링 할 수도 있습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">addValue</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">copiedC</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> c.</span><span style="color: #D2A8FF">slice</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">    copiedC.</span><span style="color: #D2A8FF">push</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">Math</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">ceil</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">Math</span><span style="color: #C9D1D9">.</span><span style="color: #79C0FF">random</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">*</span><span style="color: #79C0FF">10</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #C9D1D9">    c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> copiedC;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">cleanAll</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    c </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [];</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={addValue}&gt;add value&lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={cleanAll}&gt;clear&lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {#</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9"> c </span><span style="color: #FF7B72">as</span><span style="color: #C9D1D9"> item, index (index)}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;{index} : {item}&lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {:</span><span style="color: #FF7B72">else</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;list is empty.&lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {/</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>간단한 반복문의 예제 코드입니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-46A9C646 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-46A9C646 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-46A9C646::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-46A9C646 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-46A9C646::after {
+          background-size: cover;
+          background-image: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAsUlEQVQ4je2RzQ7CIBCEef/H8u9g+wbE6kVID7Ym9rBLgTGLbW9GSDg6ye4SMvkyLCrGiF/K8axS0kLwYGYQE9gxnHNwjtPdPM8bNAespE3TC21zRts2OJ2O0Fqju2gc9jtYa8uBIYQl1acklfc+nWWuwByp1chEeI4jrLnjMQzo+x63awdjzAbLShgXk6QM3qd0UpKOiNIei4DINBY/OS5L/1ZFCWtKVaXhD6yh6p/yBo/apInJdY5ZAAAAAElFTkSuQmCC");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-46A9C646"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/svelte_each@398w.271571cf.webp"
+            sizes="(min-width: 398px) 398px, 100vw"
+            width="398"
+            height="299"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/svelte_each@398w.33c3ab7"
+    alt="반복문 테스트"
+    srcset="/assets/svelte_each@398w.33c3ab7b.gif"
+    sizes="(min-width: 398px) 398px, 100vw"
+    width="398"
+    height="299"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><h3 id="await-"><code>{#await ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- 전체 제어문 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> expression}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 보류 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{:</span><span style="color: #FF7B72">then</span><span style="color: #C9D1D9"> name}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 성공 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{:</span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> name}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 실패 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- 보류 상태와 성공 상태를 한 문장으로 처리한 제어문 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> expression </span><span style="color: #FF7B72">then</span><span style="color: #C9D1D9"> name}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 성공 시에만 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9">}</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- 보류 상태와 실패 상태를 한 문장으로 처리한 제어문 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> expression </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> name}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 실패 시에만 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9">}</span></span></code></pre><p>Svelte는 비동기 문법에 대한 제어문도 지원합니다. React에서는 동일한 기능을 구현하려면 useState로 새로운 상태 객체를 만들어야 했지만, Svelte에서는 문법적으로 지원합니다. <code>Promise</code>는 <code>pending(보류)</code>, <code>fulfilled(성공)</code>, <code>rejected(실패)</code> 이렇게 3가지 상태를 가질 수 있습니다.
+보류와 성공 상태를 하나로 묶거나, 보류와 실패 상태를 하나로 묶어 처리할 수도 있습니다. 이 제어문은 SSR 모드에서도 사용할 수 있는데, 이때 보류 상태만 서버에서 렌더링됩니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> resolve_promise </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">resolvePromise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> reject_promise </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">rejectPromise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">resolvePromise</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Promise</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">resolve</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;Hello svelte!&#39;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">rejectPromise</span><span style="color: #C9D1D9">() {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Promise</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">reject</span><span style="color: #C9D1D9">({message: </span><span style="color: #A5D6FF">&quot;내부 에러&quot;</span><span style="color: #C9D1D9">});</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {#</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> resolve_promise}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;대기 중...&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {:</span><span style="color: #FF7B72">then</span><span style="color: #C9D1D9"> value}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;값: {value}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {:</span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> error}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;처리 실패: {error.message}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {/</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">hr</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {#</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> reject_promise </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> error}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;처리 실패: {error.message}&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {/</span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>간단한 예시코드입니다. resolve만 하는 Promise 함수(resolvePromise)와 reject만 하는 Promise 함수(rejectPromise)를 렌더링하는 코드입니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-65E75533 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-65E75533 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-65E75533::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-65E75533 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-65E75533::after {
+          background-size: cover;
+          background-image: url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAd0lEQVQ4je2RQQuAIAyF9/9/p3nJSx40a/OFkVCgUOqxB98Og71tPAKAGOODe++rqDTUYpRFqTDvWKyFcw7Oe5Sufgul4S2sUFpjNgZq0ugRpSIiEGbwRQihGcrvZbPEuaAR6gmg+nJsDKAaykjRUDf8hiM0PJQDQ46oHDSEt8cAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-65E75533"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/svelte_await@398w.450391d0.webp"
+            sizes="(min-width: 398px) 398px, 100vw"
+            width="398"
+            height="299"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/svelte_await@398w.8ae3c08"
+    alt="비동기 구문 테스트"
+    srcset="/assets/svelte_await@398w.8ae3c089.gif"
+    sizes="(min-width: 398px) 398px, 100vw"
+    width="398"
+    height="299"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><h3 id="key-"><code>{#key ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{#</span><span style="color: #FF7B72">key</span><span style="color: #C9D1D9"> expression}</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- ... --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{/</span><span style="color: #FF7B72">key</span><span style="color: #C9D1D9">}</span></span></code></pre><p>키 블록은 표현식의 값이 변경될 때 내용을 지우고 재생성합니다. 값이 변경될 때 요소의 애니메이션을 재생하고 싶을 때 유용합니다.</p><h2 id="기타-블록들">기타 블록들</h2><h3 id="텍스트-표현식">텍스트 표현식</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{표현식}</span></span></code></pre><p>텍스트 표현식에는 자바스크립트 표현식도 포함될 수 있습니다. 다만 정규식(RegExp)을 사용할 때는 괄호로 묶어서 사용해야 합니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;{(</span><span style="color: #A5D6FF">/</span><span style="color: #FF7B72">^</span><span style="color: #79C0FF">[A-Za-z ]</span><span style="color: #FF7B72">+$</span><span style="color: #A5D6FF">/</span><span style="color: #C9D1D9">).</span><span style="color: #D2A8FF">test</span><span style="color: #C9D1D9">(value) </span><span style="color: #FF7B72">?</span><span style="color: #C9D1D9"> x </span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> y}&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><h3 id="주석">주석</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- 이 블록이 주석입니다. --&gt;</span></span></code></pre><p>Svetle의 주석은 HTML 주석과 동일합니다. 무시하고 싶은 오류나 경고를 비활성화 할 때 사용하는 <code>svelte-ignore</code>을 추가해 주고 싶을 때도 이 주석 블록을 사용합니다.</p><h3 id="html-"><code>{@html ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">html</span><span style="color: #C9D1D9"> expression}</span></span></code></pre><p><code>{@html ...}</code> 표현식은 React의 <code>dangerouslySetInnerHTML</code>와 유사합니다. Svelte는 텍스트 표현식에서 <code>&lt;</code>나 <code>&gt;</code>와 같은 문자를 제거하고 표시하지만 이 표현식을 사용했을 경우에는 그렇지 않습니다. 따라서 XSS 공격에 매우 취약하므로 사용에 주의해야 합니다. 또한 이 내부에 오는 코드들은 Svelte가 컴파일하지 않습니다.</p><h3 id="debug-"><code>{@debug ...}</code></h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> var1, var2, ..., varN}</span></span></code></pre><p><code>console.log(...)</code>를 사용하는 대신 이 표현식을 사용합니다. 만약 devtools가 열려있다면 코드 실행을 중단하는 중단점 역할을 합니다. 이 블럭은 쉼표로 구별된 변수명만 허용되며, 임의의 표현식을 사용할 수 없습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- 컴파일 됨 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> user}</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> user1, user2, user3}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">&lt;!-- 컴파일 되지 않음 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> user.firstname}</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> myArray[0]}</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> !isReady}</span></span>
+<span class="line"><span style="color: #C9D1D9">{@</span><span style="color: #FF7B72">debug</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">typeof</span><span style="color: #C9D1D9"> user === &#39;object&#39;}</span></span></code></pre><h2 id="컴포넌트">컴포넌트</h2><p>Svelte의 컴포넌트는 약간 이질적일 수 있습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- List.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> textContent </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&quot;&quot;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;{textContent}&lt;/</span><span style="color: #7EE787">li</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- index.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> List </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./List.svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> list </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span><span style="color: #A5D6FF">&#39;a&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39;b&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39;c&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39;d&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39;e&#39;</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {#</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9"> list </span><span style="color: #FF7B72">as</span><span style="color: #C9D1D9"> textContent}</span></span>
+<span class="line"><span style="color: #C9D1D9">    &lt;</span><span style="color: #7EE787">List</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">{</span><span style="color: #C9D1D9">textContent</span><span style="color: #79C0FF">}</span><span style="color: #C9D1D9"> /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  {/</span><span style="color: #FF7B72">each</span><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>Svelte에서는 export를 선언한 변수가 속성 혹은 prop으로 사용됩니다. 변수에 기본값 설정도 가능합니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- Info.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> name;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> version;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> speed;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> website;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">code</span><span style="color: #C9D1D9">&gt;{name}&lt;/</span><span style="color: #7EE787">code</span><span style="color: #C9D1D9">&gt; 패키지의 속도는 {speed} 빠릅니다.</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">href</span><span style="color: #C9D1D9">=</span><span style="color: #A5D6FF">&quot;https://www.npmjs.com/package/{</span><span style="color: #C9D1D9">name</span><span style="color: #A5D6FF">}&quot;</span><span style="color: #C9D1D9">&gt;npm&lt;/</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9">&gt;에서 {version} 버전을 받을 수 있고</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">href</span><span style="color: #C9D1D9">={website}&gt;여기서 더 자세한 내용을 확인&lt;/</span><span style="color: #7EE787">a</span><span style="color: #C9D1D9">&gt;할 수 있습니다.</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">p</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- index.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> Info </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./Info.svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">pkg</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">		name: </span><span style="color: #A5D6FF">&#39;svelte&#39;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">		version: </span><span style="color: #79C0FF">3</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">		speed: </span><span style="color: #A5D6FF">&#39;엄청나게&#39;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">		website: </span><span style="color: #A5D6FF">&#39;https://svelte.dev&#39;</span></span>
+<span class="line"><span style="color: #C9D1D9">	};</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">Info</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">name</span><span style="color: #C9D1D9">={pkg.name} </span><span style="color: #79C0FF">version</span><span style="color: #C9D1D9">={pkg.version} </span><span style="color: #79C0FF">speed</span><span style="color: #C9D1D9">={pkg.speed} </span><span style="color: #79C0FF">website</span><span style="color: #C9D1D9">={pkg.website}/&gt;</span></span></code></pre><p>이렇게 여러개의 속성값을 넘길 때는 하나하나 작성해도 되지만</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">Info</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">{</span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">pkg</span><span style="color: #79C0FF">}</span><span style="color: #C9D1D9">/&gt;</span></span></code></pre><p>이렇게 구조분해할당을 사용하여 값을 넘겨줘도 됩니다.</p><h2 id="요소의-이벤트-핸들링">요소의 이벤트 핸들링</h2><h3 id="on이벤트명">on:이벤트명</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">on:eventname={handler}</span></span>
+<span class="line"><span style="color: #C9D1D9">on:eventname|modifiers={handler}</span></span></code></pre><p><code>on:</code> 지시문을 사용하여 태그의 이벤트를 제어할 수 있습니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> count </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">	</span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">handleClick</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">event</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">		count </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">	}</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 변수 선언 후 사용 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={handleClick}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    count: {count}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">&lt;!-- 인라인으로 사용 --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={() </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> count </span><span style="color: #FF7B72">+=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    count: {count}</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">div</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>함수를 만들어 함수명을 명시하거나, 성능 저하 없이 화살표 함수를 이용하여 인라인으로 사용할 수도 있습니다.</p><p>또한 다음과 같은 수정자(modifier)를 사용할 수도 있습니다.</p><ul>
+<li>preventDefault - 핸들러 실행 전에 <code>event.preventDefault()</code> 호출.</li>
+<li>stopPropagation - <code>event.stopPropagation()</code> 호출하여 이벤트 전파 방지.</li>
+<li>passive - 터치/휠 이벤트에 대한 스크롤 성능 향상.</li>
+<li>nonpassive - <code>pssive: false</code>를 명시적으로 설정.</li>
+<li>capture - 캡처링 단계에서 핸들러 실행.</li>
+<li>once - 핸들러가 처음 실행된 후 제거.</li>
+<li>self - <code>event.target</code>일 경우에만 핸들러 실행</li>
+<li>trusted -<code>event.isTrusted</code>가 <code>true</code>일 경우에만 실행.</li>
+</ul><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">form</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">submit</span><span style="color: #C9D1D9">|</span><span style="color: #79C0FF">preventDefault</span><span style="color: #C9D1D9">={handleSubmit}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">&lt;!-- the `submit` event&#39;s default is prevented, so the page won&#39;t reload --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">form</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>수정자는 위와 같이 <code>|</code>를 붙인 후 사용하며, 여러개의 수정자를 사용할 수 있습니다. 여러개의 수정자를 사용할 경우도 <code>on:click|once|capture={...}</code>처럼 각 수정자 사이를 <code>|</code>로 연결하여 사용합니다.</p><h2 id="컴포넌트의-이벤트-핸들링">컴포넌트의 이벤트 핸들링</h2><p>컴포넌트에서 이벤트를 전달하는 방법에는 두 가지가 있습니다. 첫 번째는 이벤트 핸들러를 직접 전달하여 사용하는 방법이고, 두 번째는 <a href="https://svelte.dev/docs#run-time-svelte-createeventdispatcher">createEventDispatcher</a>를 사용하는 방법입니다.</p><h3 id="직접-전달">직접 전달</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- Button.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> { createEventDispatcher } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> click;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">dispatch</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createEventDispatcher</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={() </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">click</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;test&#39;</span><span style="color: #C9D1D9">)}&gt; click! &lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- index.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> Button </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./Button.svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">callbackFunction</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">detail</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">alert</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">`Notify fired! Detail: ${</span><span style="color: #C9D1D9">detail</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">Button</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">click</span><span style="color: #C9D1D9">={callbackFunction} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>전달받은 함수를 컴포넌트에서 직접 호출하는 방법입니다.</p><h3 id="createeventdispatcher">createEventDispatcher</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- Button.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> { createEventDispatcher } </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">dispatch</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createEventDispatcher</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">click</span><span style="color: #C9D1D9">={() </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">dispatch</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;notify&#39;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39;detail value&#39;</span><span style="color: #C9D1D9">)}&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  click!</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">button</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">&lt;!-- index.svelte --&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> Button </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;./Button.svelte&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">callbackFunction</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">event</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">alert</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">`Notify fired! Detail: ${</span><span style="color: #C9D1D9">event</span><span style="color: #A5D6FF">.</span><span style="color: #C9D1D9">detail</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">script</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">&lt;</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">  &lt;</span><span style="color: #7EE787">Button</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">on</span><span style="color: #C9D1D9">:</span><span style="color: #FFA657">notify</span><span style="color: #C9D1D9">={callbackFunction} /&gt;</span></span>
+<span class="line"><span style="color: #C9D1D9">&lt;/</span><span style="color: #7EE787">ul</span><span style="color: #C9D1D9">&gt;</span></span></code></pre><p>createEventDispatcher 함수를 이용하여 함수를 받아오는 방식입니다. <code>dispatch(type, detail)</code>로 함수를 호출하며 <code>on:이벤트명</code>에서 이벤트명이 <code>type</code>에 해당되고, <code>detail</code>이 <code>event.detail</code>의 값으로 들어가게 됩니다.</p><h1 id="스벨트-킷">스벨트 킷</h1><h2 id="endpoints">Endpoints</h2><p>스벨트 킷의 서버 사이드 기능 중 하나인 <strong>엔드포인트</strong>에 대해서 설명합니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">/* [slug].json.ts */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> db </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/database&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {RequestHandler} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;@sveltejs/kit&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {Locals} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/types&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">get</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">RequestHandler</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Locals</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span><span style="color: #FFA657">params</span><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// the `slug` parameter is available because this file</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// is called [slug].json.ts</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> {</span><span style="color: #79C0FF">slug</span><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">article</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> db.</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(slug);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (article) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      body: {</span></span>
+<span class="line"><span style="color: #C9D1D9">        article,</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span></code></pre><p>스벨트 킷은 <code>.js</code> 및 <code>.ts</code> 파일을 엔드포인트로 인식합니다. <code>/todos/index.json.ts</code>와 같은 엔드포인트는 index가 생략되어 <code>/todos.json</code>와 같이 접근하며, 동적 경로는 <code>[id].ts</code>와 같은 형식으로 사용할 수 있습니다.</p><p>함수명을 <code>get</code>, <code>post</code>, <code>patch</code>와 같이 HTTP 메서드명과 동일하게 작성해줍니다. <code>delete</code>의 경우 자바스크립트에서 이미 사용중인 예약어이기 때문에 <code>del</code>로 축약하여 사용합니다.</p><h3 id="request">Request</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">/* [slug].json.ts */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> db </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/database&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {RequestHandler} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;@sveltejs/kit&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {Locals} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/types&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">get</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">RequestHandler</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Locals</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span><span style="color: #FFA657">params</span><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// the `slug` parameter is available because this file</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// is called [slug].json.ts</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> {</span><span style="color: #79C0FF">slug</span><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">article</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> db.</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(slug);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (article) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      body: {</span></span>
+<span class="line"><span style="color: #C9D1D9">        article,</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span></code></pre><p>request에는 params 말고도 body, locals, method, host, path, query, headers, rawBody 객체가 존재합니다.</p><ul>
+<li>params: <code>Record&lt;string, string&gt;</code> - <code>[slug].json.ts</code>에서 slug와 같이 변수로 설정한 페이지 동적 경로.</li>
+<li>body: <code>ParameterizedBody&lt;Body&gt;</code>- 요청 바디</li>
+<li>locals: <code>Locals</code> - ./src/hooks.ts에서 저장한 데이터</li>
+<li>method : <code>string</code> - HTTP 메서드 종류 (GET, POST, PATCH 등)</li>
+<li>host: <code>string</code> - 요청 호스트 도메인</li>
+<li>path: <code>string</code> - 요청 경로</li>
+<li>query: <code>URLSearchParams</code> - URL 쿼리</li>
+<li>headers: <code>RequestHeaders</code> - HTTP 헤더 데이터</li>
+<li>rawBody: <code>RawBody</code> - Uint8Array 타입의 가공되지 않은 요청 바디</li>
+</ul><p>body의 파싱은 아래 내용을 따릅니다.</p><ul>
+<li>content-type이 <code>text/plain</code>일 경우 <code>string</code> 형식으로 변환됩니다.</li>
+<li>content-type이 <code>application/json</code>일 경우 <code>JSONValue</code> 형식(<code>object</code>, <code>Array</code>, primitive)으로 변환됩니다.</li>
+<li>content-type이 <code>application/x-www-form-urlencoded</code> 또는 multipart/form-data일 경우 읽기 전용인 <code>FormData</code> 객체로 변환됩니다.</li>
+<li>다른 모든 경우 <code>Uint8Array</code>로 변환됩니다.</li>
+</ul><h3 id="response">Response</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">/* [slug].json.ts */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> db </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/database&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {RequestHandler} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;@sveltejs/kit&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">import</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> {Locals} </span><span style="color: #FF7B72">from</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;$lib/types&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">get</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">RequestHandler</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Locals</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span><span style="color: #FFA657">params</span><span style="color: #C9D1D9">}) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// the `slug` parameter is available because this file</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// is called [slug].json.ts</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> {</span><span style="color: #79C0FF">slug</span><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">article</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> db.</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(slug);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (article) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      body: {</span></span>
+<span class="line"><span style="color: #C9D1D9">        article,</span></span>
+<span class="line"><span style="color: #C9D1D9">      },</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span></code></pre><p>엔드포인트의 반환 객체는 status, header, body 이렇게 세 가지 속성으로 구성됩니다. Body에 객체가 들어갈 경우 headers의 Content-Type에 ‘application/json’을 명시해주지 않아도 자동으로 Json 객체로 변환됩니다.</p><ul>
+<li>status?: <code>number</code> - <a href="https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C">HTTP 상태 코드</a>를 명시 (200, 301, 400, 404 등)</li>
+<li>headers?: <code>ResponseHeaders</code> - HTTP 헤더 데이터 (Content-Type 등)을 명시</li>
+<li>body?: <code>Body</code> - 응답 바디 데이터</li>
+</ul><h1 id="references">References</h1><ul>
+<li><a href="https://svelte.dev/docs">스벨트 공식문서</a></li>
+<li><a href="https://svelte.dev/tutorial/basics">스벨트 공식 튜토리얼</a></li>
+<li><a href="https://kit.svelte.dev/docs">스벨트 킷 공식문서</a></li>
+<li><a href="https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#eventlisteneroptions">WICG - EventListenerOptions</a></li>
+</ul>
+			</main>
+		</div>
+	</article>
+</div>
+			<div class="">
+				<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()};var a;{const l={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t)},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,i]=s;return e in l?l[e](i):void 0};customElements.get("astro-island")||customElements.define("astro-island",(a=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement?.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},i=this.querySelectorAll("template[data-astro-template]");for(const r of i)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove());for(const r of s)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML);const n=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,n,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}async connectedCallback(){window.addEventListener("astro:hydrate",this.hydrate),await import(this.getAttribute("before-hydration-url"));const s=JSON.parse(this.getAttribute("opts"));Astro[this.getAttribute("client")](async()=>{const e=this.getAttribute("renderer-url"),[i,{default:n}]=await Promise.all([import(this.getAttribute("component-url")),e?import(e):()=>()=>{}]);return this.Component=i[this.getAttribute("component-export")||"default"],this.hydrator=n,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},a.observedAttributes=["props"],a))}</script><astro-island uid="ZvtNFr" component-url="/BlogViews.9b3d7b7e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;namespace&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;key&quot;:[0,&quot;/p/svelte-and-sveltekit/&quot;]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;BlogViews&quot;,&quot;value&quot;:true}"><div data-hk="0-0"><!--#-->loading...<!--/--> </div></astro-island>
+			</div>
+			<div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
+	<div class="flex-auto flex flex-col">
+		Author
+		<h3 class="text-xl mb-1">@YUNU7067</h3>
+		<p class="flex-auto font-light line-clamp-2">끊임없이 공부하는 사람이 되고싶은 개발자.</p>
+	</div>
+	<div class="flex-none">
+		<div class="w-fit shadow-sm  overflow-hidden">
+			<style >
+    
+
+    .astro-imagetools-picture-ABC0A182 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-ABC0A182 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-ABC0A182::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-ABC0A182 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-ABC0A182::after {
+          background-size: cover;
+          background-image: url("data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwAF/8QAKBAAAgIABQMCBwAAAAAAAAAAAQMCBAAFBhEhBxJBFJETIiMxMlGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwX/xAAcEQACAgIDAAAAAAAAAAAAAAAAAQIDBBETFDH/2gAMAwEAAhEDEQA/AELp6gXdD5LYsWa8XMRGEYmR3mR8vvxjSR6a1FhqvS+K5lcyqYmIyH3BI84HNDdQq+VaPrUmU3Mt0PjMSRL6cieR3Enf22xlaH1pepIs5XlKKtIXrgbJoX3yhKfBI3PjbgeMUqsmT1tgTqS8G0sRJ71gnuTPsmO08HYS/khiwPT6k5rlx9Lk8lrqQJ2m9QY1xJJLJkn8j+hwMWF7kQ+I/9k=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-ABC0A182"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/avatar@145w.d313cc34.webp"
+            sizes="(min-width: 145px) 145px, 100vw"
+            width="145"
+            height="104"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/avatar@145w.339f66f7"
+    alt="YUNU7067"
+    srcset="/assets/avatar@145w.339f66f7.jpeg"
+    sizes="(min-width: 145px) 145px, 100vw"
+    width="145"
+    height="104"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
+		</div>
+	</div>
+</div>
+			<div id="blog-comment" class="giscus mt-12 mb-8"></div>
+
+<script client:load src="https://giscus.app/client.js" data-repo="yunu7067/astro-blog" data-repo-id="R_kgDOG92tFg" data-category="giscus" data-category-id="DIC_kwDOG92tFs4CP4r0" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="ko" data-loading="lazy " crossorigin="anonymous" async>
+	</script>
+		</div>
+	</main>
+
+	<footer data-hk="0-0" class="w-full text-center py-4 px-2"><div class="max-w-3xl mx-auto text-gray-500 font-light">©YUNU7067, Built with Astro</div></footer>
+</body></html>

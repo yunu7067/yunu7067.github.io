@@ -1,335 +1,195 @@
-<!doctype html><html lang=ko-kr>
+<!DOCTYPE html>
+<html lang="ko-KR" class="bg-transparent ">
+
 <head>
-<meta name=generator content="Hugo 0.91.2"><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="공부하는 블로그"><title>YUN</title>
-<link rel=canonical href=https://yunu7067.github.io/>
-<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="YUN">
-<meta property="og:description" content="공부하는 블로그">
-<meta property="og:url" content="https://yunu7067.github.io/">
-<meta property="og:site_name" content="YUN">
-<meta property="og:type" content="website"><meta property="og:updated_time" content=" 2022-01-01T03:42:02+09:00 ">
-<meta name=twitter:title content="YUN">
-<meta name=twitter:description content="공부하는 블로그"><link rel=alternate type=application/rss+xml href=https://yunu7067.github.io/index.xml>
-</head>
-<body>
-<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
-<button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="메뉴 여닫기">
-<span class=hamburger-box>
-<span class=hamburger-inner></span>
-</span>
-</button>
-<header class=site-info>
-<figure class=site-avatar>
-<img src=/img/avatar_hu62b2fbfb74f42da1e24488f0b9c6dfda_44601_300x0_resize_q75_box.jpg width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-<span class=emoji>😿</span>
-</figure>
-<h1 class=site-name><a href=/>YUN</a></h1>
-<h2 class=site-description>공부하는 블로그</h2><ol class=social-menu>
-<li>
-<a href=https://github.com/yunu7067 target=_blank title=GitHub><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-</a>
-</li>
-<li>
-<a href=https://www.npmjs.com/~yunu7067 target=_blank title=npm><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-package" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"/><line x1="12" y1="12" x2="20" y2="7.5"/><line x1="12" y1="12" x2="12" y2="21"/><line x1="12" y1="12" x2="4" y2="7.5"/><line x1="16" y1="5.25" x2="8" y2="9.75"/></svg>
-</a>
-</li>
-</ol></header>
-<ol class=menu id=main-menu>
-<li>
-<a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span>
-</a>
-</li>
-<li>
-<a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>About</span>
-</a>
-</li>
-<li>
-<a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>Archives</span>
-</a>
-</li>
-<li>
-<a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>Search</span>
-</a>
-</li>
-<li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>다크 모드</span>
-</li>
-</ol>
-</aside>
-<main class="main full-width">
-<section class=article-list>
-<article class=has-image>
-<header class=article-header>
-<div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%ED%99%94/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%ED%99%94/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트⑤: 컴포넌트화">
-</a>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml">
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- Codeblock theme -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css" /> -->
+	<!-- Flex Search -->
+	<script defer src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.2/dist/flexsearch.bundle.js"></script>
+
+	<title data-hk="0-0">tololo://</title><meta data-hk="0-1" name="description" content="YUNU7067's log"><meta data-hk="0-2" name="robots" content="index,follow"><link data-hk="0-3" rel="canonical" href="http://localhost:3000/"><meta data-hk="0-4" property="og:title" content="tololo://"><meta data-hk="0-5" property="og:description" content="YUNU7067's log"><meta data-hk="0-6" property="og:url" content="http://localhost:3000/"><script>let configTheme = "auto";
+
+		(function () {
+			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+			if (configTheme === " system") {
+				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
+					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
+			} /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
+				(configTheme === "auto") {
+					const theme = window.localStorage.getItem("theme"); const
+						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
+			} /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script></head>
+
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script><body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
+	<header class="w-full">
+	<div class="max-w-3xl w-full my-4 flex flex-col items-center mx-auto font-light text-gray-700 dark:text-gray-200">
+		<div class="w-fit shadow-sm">
+	<style >
+    
+
+    .astro-imagetools-picture-30FF9D7D {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-30FF9D7D img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-30FF9D7D::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-30FF9D7D img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-30FF9D7D::after {
+          background-size: cover;
+          background-image: url("data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAYHBAj/xAAnEAACAgAFAwMFAAAAAAAAAAABAwIEAAUGESEHEjETQWEUIjKBgv/EABUBAQEAAAAAAAAAAAAAAAAAAAME/8QAGxEAAwACAwAAAAAAAAAAAAAAAAEDAhQxYfD/2gAMAwEAAhEDEQA/AH3pk+g3QOQ+oXta2BSJiQ2gYyIIPwOMa9NZ1Q1JUt2suhYCa1idaZevs+6IBO3xziZaEzW9X6VW2qsSDKv1HoSIBKvH47+POEnSuaX7jl07F2xKrZuKDlBhiGdxAO+3uR74vhfJ8vyDpNI6FoMnmIe6oqLasWmCmxnwwADcj+u4frBiE6qu246jzGtC1YhXqPnWQqDZRitcZERiADwBgwu30E5H/9k=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-30FF9D7D"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/avatar@200w.b5319ac3.webp"
+            sizes="(min-width: 200px) 200px, 100vw"
+            width="200"
+            height="112"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/avatar@200w.28442f3e"
+    alt="avatar"
+    srcset="/assets/avatar@200w.28442f3e.jpeg"
+    sizes="(min-width: 200px) 200px, 100vw"
+    width="200"
+    height="112"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
 </div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/frontend/ style=background-color:#039be5;color:#fff>
-Frontend
-</a>
-<a href=/categories/svelte/ style=background-color:#ff3e00;color:#fff>
-Svelte
-</a>
-</header>
-<h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%ED%99%94/>스벨트⑤: 컴포넌트화</a>
-</h2>
-<h3 class=article-subtitle>
-Svelte: Component
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2022년 01월 1일</time>
+		<h1 class="mt-2 text-3xl">tololo://</h1>
+		<p class="dark:text-gray-300">YUNU7067&#39;s log</p>
+		<div class="p-1 flex flex-row flex-wrap text-xl">
+			<a data-hk="0-0" href="https://github.com/yunu7067/" title="GitHub" class="p-1"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z" fill="currentColor"></path></svg></a><a data-hk="0-0" href="https://discordapp.com/users/태규#6493/" title="Discord" class="p-1"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M13.914 14.58a8.998 8.998 0 0 1-.484.104 7.06 7.06 0 0 1-2.664-.01c-.154-.03-.372-.083-.653-.158l-.921 1.197c-2.273-.073-3.137-1.596-3.137-1.596 0-3.381 1.481-6.122 1.481-6.122 1.481-1.133 2.89-1.102 2.89-1.102l.403.525a1.12 1.12 0 0 1 .112-.01 8.527 8.527 0 0 1 2.314.01l.442-.525s1.41-.031 2.89 1.103c0 0 1.482 2.74 1.482 6.121 0 0-.875 1.522-3.148 1.596l-1.007-1.134zM10.076 11C9.475 11 9 11.45 9 12s.485 1 1.076 1c.6 0 1.075-.45 1.075-1 .01-.55-.474-1-1.075-1zm3.848 0c-.6 0-1.075.45-1.075 1s.485 1 1.075 1c.601 0 1.076-.45 1.076-1s-.475-1-1.076-1zM21 23l-4.99-5H19V4H5v14h11.003l.57 2H5a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v19z"></path></svg></a><a data-hk="0-0" href="https://www.npmjs.com/~yunu7067" title="Npmjs" class="p-1"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20 3c.552 0 1 .448 1 1v16c0 .552-.448 1-1 1H4c-.552 0-1-.448-1-1V4c0-.552.448-1 1-1h16zm-1 2H5v14h14V5zm-2 2v10h-2.5V9.5H12V17H7V7h10z"></path></svg></a><a data-hk="0-0" href="mailto:yunu7067@gmail.com" title="Email" class="p-1"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20 12a8 8 0 1 0-3.562 6.657l1.11 1.664A9.953 9.953 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10v1.5a3.5 3.5 0 0 1-6.396 1.966A5 5 0 1 1 15 8H17v5.5a1.5 1.5 0 0 0 3 0V12zm-8-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"></path></svg></a>
+		</div>
+	</div>
+</header><main class="w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<div class="mb-8 px-8 py-8 rounded-md bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100">
+	<article class="mb-2 flex flex-col items-start justify-center text-start">
+		<a href="/p/about/" aria-label="About">
+			<h1 class="text-4xl font-bold mb-3">About Me</h1>
+		</a>
+		<main>
+			<p class="mb-2">끊임없이 공부하는 사람이 되고싶은 개발자.</p>
+			<a href="/p/about/" aria-label="About">Read more</a>
+		</main>
+	</article>
 </div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-1 분 정도
-</time>
+<div class="mb-1 text-right">
+	<a class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" href="/series/">
+		Series
+		<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"></path></svg>
+	</a>
+	<a class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100 ml-4" href="/search/">
+		Search
+		<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg>
+	</a>
 </div>
-</footer>
-</div>
-</header>
+			<article class="mb-8 tracking-tight">
+	<header class="mb-3 flex flex-col items-start justify-center gap-1 text-start">
+		<a href="/p/about">
+			<h1 class="text-4xl font-bold">About Me</h1>
+		</a>
+		<p class="text-sm font-light text-gray-700 dark:text-gray-300">
+			<span class="after:content-['|'] after:mx-2">2022. 7. 1.</span>
+			<span>2 min read</span>
+		</p>
+	</header>
+	<main>
+		<p class="line-clamp-3 mb-3">공부하는 블로그에 대하여</p>
+		<!-- <a class="underline decoration-dotted" href={post?.url || "#error" }>Read more</a> -->
+		<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"></ul>
+	</main>
+</article><article class="mb-8 tracking-tight">
+	<header class="mb-3 flex flex-col items-start justify-center gap-1 text-start">
+		<a href="/p/markdown-syntax">
+			<h1 class="text-4xl font-bold">Markdown Syntax Guide</h1>
+		</a>
+		<p class="text-sm font-light text-gray-700 dark:text-gray-300">
+			<span class="after:content-['|'] after:mx-2">2022. 6. 1.</span>
+			<span>4 min read</span>
+		</p>
+	</header>
+	<main>
+		<p class="line-clamp-3 mb-3">Sample article showcasing basic Markdown syntax and formatting for HTML elements.</p>
+		<!-- <a class="underline decoration-dotted" href={post?.url || "#error" }>Read more</a> -->
+		<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/markdown">#<!--#-->markdown<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/css">#<!--#-->css<!--/--></a></li><li data-hk="0-3-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/html">#<!--#-->html<!--/--></a></li><li data-hk="0-4-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/themes">#<!--#-->themes<!--/--></a></li></ul>
+	</main>
+</article><article class="mb-8 tracking-tight">
+	<header class="mb-3 flex flex-col items-start justify-center gap-1 text-start">
+		<a href="/p/svelte-and-sveltekit">
+			<h1 class="text-4xl font-bold">스벨트 &amp; 스벨트 킷</h1>
+		</a>
+		<p class="text-sm font-light text-gray-700 dark:text-gray-300">
+			<span class="after:content-['|'] after:mx-2">2021. 12. 18.</span>
+			<span>22 min read</span>
+		</p>
+	</header>
+	<main>
+		<p class="line-clamp-3 mb-3">Svelte와 Sveltekit</p>
+		<!-- <a class="underline decoration-dotted" href={post?.url || "#error" }>Read more</a> -->
+		<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Frontend">#<!--#-->Frontend<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Svelte">#<!--#-->Svelte<!--/--></a></li><li data-hk="0-3-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/SvelteKit">#<!--#-->SvelteKit<!--/--></a></li></ul>
+	</main>
 </article>
-<article class=has-image>
-<header class=article-header>
-<div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트④: 기타 블록들">
-</a>
-</div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/frontend/ style=background-color:#039be5;color:#fff>
-Frontend
-</a>
-<a href=/categories/svelte/ style=background-color:#ff3e00;color:#fff>
-Svelte
-</a>
-</header>
-<h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EA%B8%B0%ED%83%80-%EB%B8%94%EB%A1%9D%EB%93%A4/>스벨트④: 기타 블록들</a>
-</h2>
-<h3 class=article-subtitle>
-Svelte: Etc Block
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2022년 01월 1일</time>
-</div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-1 분 정도
-</time>
-</div>
-</footer>
-</div>
-</header>
-</article>
-<article class=has-image>
-<header class=article-header>
-<div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트③: 제어문">
-</a>
-</div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/frontend/ style=background-color:#039be5;color:#fff>
-Frontend
-</a>
-<a href=/categories/svelte/ style=background-color:#ff3e00;color:#fff>
-Svelte
-</a>
-</header>
-<h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%A0%9C%EC%96%B4%EB%AC%B8/>스벨트③: 제어문</a>
-</h2>
-<h3 class=article-subtitle>
-Svelte: Control Block
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2022년 01월 1일</time>
-</div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-3 분 정도
-</time>
-</div>
-</footer>
-</div>
-</header>
-</article>
-<article class=has-image>
-<header class=article-header>
-<div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트②: 변수">
-</a>
-</div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/frontend/ style=background-color:#039be5;color:#fff>
-Frontend
-</a>
-<a href=/categories/svelte/ style=background-color:#ff3e00;color:#fff>
-Svelte
-</a>
-</header>
-<h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EB%B3%80%EC%88%98/>스벨트②: 변수</a>
-</h2>
-<h3 class=article-subtitle>
-Svelte: Variable
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2021년 12월 26일</time>
-</div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-3 분 정도
-</time>
-</div>
-</footer>
-</div>
-</header>
-</article>
-<article class=has-image>
-<header class=article-header>
-<div class=article-image>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>
-<img src=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/svelte-horizontal.svg loading=lazy alt="Featured image of post 스벨트①: 컴포넌트 구조">
-</a>
-</div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/frontend/ style=background-color:#039be5;color:#fff>
-Frontend
-</a>
-<a href=/categories/svelte/ style=background-color:#ff3e00;color:#fff>
-Svelte
-</a>
-</header>
-<h2 class=article-title>
-<a href=/p/%EC%8A%A4%EB%B2%A8%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%A1%B0/>스벨트①: 컴포넌트 구조</a>
-</h2>
-<h3 class=article-subtitle>
-Svelte: Component Format
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2021년 12월 26일</time>
-</div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-1 분 정도
-</time>
-</div>
-</footer>
-</div>
-</header>
-</article>
-</section>
-<nav class=pagination>
-<span class="page-link current">1</span>
-<a class=page-link href=/page/2/>2</a>
-<a class=page-link href=/page/3/>3</a>
-</nav>
-<footer class=site-footer>
-<section class=copyright>
-&copy;
-2020 -
-2021 YUN
-</section>
-<section class=powerby>
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>로 만듦 <br>
-<a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>의 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.5.0>Stack</a></b> 테마 사용 중
-</section>
-</footer>
-</main>
-<aside class="sidebar right-sidebar sticky">
-<form action=/search/ class="search-form widget">
-<p>
-<label>검색</label>
-<input name=keyword required placeholder="검색어를 입력하세요...">
-<button title=검색><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-</button>
-</p>
-</form>
-<section class="widget archives">
-<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M9.828 9.172a4 4 0 100 5.656A10 10 0 0012 12a10 10 0 012.172-2.828 4 4 0 110 5.656A10 10 0 0112 12 10 10 0 009.828 9.172"/></svg>
-</div>
-<h2 class="widget-title section-title">보관함</h2>
-<div class=widget-archive--list>
-<div class=archives-year>
-<a href=/archives/#2022>
-<span class=year>2022</span>
-<span class=count>3</span>
-</a>
-</div>
-<div class=archives-year>
-<a href=/archives/#2021>
-<span class=year>2021</span>
-<span class=count>6</span>
-</a>
-</div>
-<div class=archives-year>
-<a href=/archives/#2019>
-<span class=year>2019</span>
-<span class=count>4</span>
-</a>
-</div>
-</div>
-</section>
-<section class="widget tagCloud">
-<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
-</div>
-<h2 class="widget-title section-title">태그</h2>
-<div class=tagCloud-tags>
-<a href=/tags/frontend/ class=font_size_6>
-Frontend
-</a>
-<a href=/tags/svelte/ class=font_size_6>
-Svelte
-</a>
-<a href=/tags/css/ class=font_size_1>
-css
-</a>
-<a href=/tags/emoji/ class=font_size_1>
-emoji
-</a>
-<a href=/tags/error/ class=font_size_1>
-Error
-</a>
-<a href=/tags/html/ class=font_size_1>
-html
-</a>
-<a href=/tags/hugo/ class=font_size_1>
-Hugo
-</a>
-<a href=/tags/markdown/ class=font_size_1>
-markdown
-</a>
-<a href=/tags/memo/ class=font_size_1>
-Memo
-</a>
-<a href=/tags/nginx/ class=font_size_1>
-Nginx
-</a>
-</div>
-</section>
-</aside>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
-<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
-</body>
-</html>
+			<div class="text-right tracking-tight">
+				<a href="/page/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100">
+					All Posts
+					<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M12 11V8l4 4-4 4v-3H8v-2h4zm0-9c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8z"></path></svg>
+				</a>
+			</div>
+		</div>
+	</main>
+
+	<footer data-hk="0-0" class="w-full text-center py-4 px-2"><div class="max-w-3xl mx-auto text-gray-500 font-light">©YUNU7067, Built with Astro</div></footer>
+</body></html>

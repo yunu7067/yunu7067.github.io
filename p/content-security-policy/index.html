@@ -1,154 +1,307 @@
-<!doctype html><html lang=ko-kr>
-<head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><title>Content Security Policy</title>
-<link rel=canonical href=https://yunu7067.github.io/p/content-security-policy/>
-<link rel=stylesheet href=/scss/style.min.css><meta property="og:title" content="Content Security Policy">
-<meta property="og:description" content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨">
-<meta property="og:url" content="https://yunu7067.github.io/p/content-security-policy/">
-<meta property="og:site_name" content="YUN">
-<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Nginx"><meta property="article:tag" content="Error"><meta property="article:published_time" content="2021-04-29T10:13:01+09:00"><meta property="article:modified_time" content="2021-04-29T10:13:01+09:00"><meta property="og:image" content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png">
-<meta name=twitter:title content="Content Security Policy">
-<meta name=twitter:description content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://yunu7067.github.io/p/content-security-policy/blob_err_resolve.png">
-</head>
-<body class="article-page has-toc">
-<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
-<div class="container main-container flex
-extended">
-<div id=article-toolbar>
-<a href=/ class=back-home><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
-<span>뒤로가기</span>
-</a>
-</div>
-<main class="main full-width">
-<article class="has-image main-article">
-<header class=article-header>
-<div class=article-image>
-<a href=/p/content-security-policy/>
-<img src=/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_3.png srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_800x0_resize_box_3.png 800w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1600x0_resize_box_3.png 1600w" width=800 height=159 loading=lazy alt="Featured image of post Content Security Policy">
-</a>
-</div>
-<div class=article-details>
-<header class=article-category>
-<a href=/categories/web/>
-Web
-</a>
+<!DOCTYPE html>
+<html lang="ko-KR" class="bg-transparent ">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml">
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- Codeblock theme -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css" /> -->
+	<!-- Flex Search -->
+	<script defer src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.2/dist/flexsearch.bundle.js"></script>
+
+	<title data-hk="0-0">Content Security Policy</title><meta data-hk="0-1" name="description" content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><meta data-hk="0-2" name="robots" content="index,follow"><meta data-hk="0-3" property="og:title" content="Content Security Policy"><meta data-hk="0-4" property="og:description" content="Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨"><script>let configTheme = "auto";
+
+		(function () {
+			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+			if (configTheme === " system") {
+				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
+					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
+			} /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
+				(configTheme === "auto") {
+					const theme = window.localStorage.getItem("theme"); const
+						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
+			} /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script></head>
+
+<link rel="stylesheet" href="/assets/95785387.7a3a7213.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script><body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
+			<header class="py-5 w-full flex flex-row items-center justify-between">
+	<h1 class="m-0 text-2xl">
+		<a href="/" aria-label="Home">
+			<span>tololo://</span>
+		</a>
+	</h1>
+	<nav class="flex-none flex flex-row gap-2">
+
+		<a href="/p/about/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="About">
+			About
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+				<path fill="none" d="M0 0h24v24H0z"></path>
+				<path fill="currentColor" d="M7.291 20.824L2 22l1.176-5.291A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.956 9.956 0 0 1-4.709-1.176zm.29-2.113l.653.35A7.955 7.955 0 0 0 12 20a8 8 0 1 0-8-8c0 1.334.325 2.618.94 3.766l.349.653-.655 2.947 2.947-.655zM7 12h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"></path>
+			</svg>
+		</a>
+		<astro-island uid="UW0Q6" component-url="/ThemeButton.35d3495e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;config&quot;:[0,{&quot;baseurl&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;title&quot;:[0,&quot;tololo://&quot;],&quot;description&quot;:[0,&quot;YUNU7067&#39;s log&quot;],&quot;locale&quot;:[0,{&quot;languageCode&quot;:[0,&quot;ko-KR&quot;]}],&quot;author&quot;:[0,{&quot;name&quot;:[0,&quot;YUNU7067&quot;],&quot;comment&quot;:[0,&quot;끊임없이 공부하는 사람이 되고싶은 개발자.&quot;]}],&quot;avatar&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;src&quot;:[0,&quot;/public/assets/profile/avatar.jpeg&quot;]}],&quot;social&quot;:[1,&quot;[[0,{\&quot;identifier\&quot;:[0,\&quot;github\&quot;],\&quot;name\&quot;:[0,\&quot;GitHub\&quot;],\&quot;url\&quot;:[0,\&quot;https://github.com/yunu7067/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;discord\&quot;],\&quot;name\&quot;:[0,\&quot;Discord\&quot;],\&quot;url\&quot;:[0,\&quot;https://discordapp.com/users/태규#6493/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;npmjs\&quot;],\&quot;name\&quot;:[0,\&quot;Npmjs\&quot;],\&quot;url\&quot;:[0,\&quot;https://www.npmjs.com/~yunu7067\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;email\&quot;],\&quot;name\&quot;:[0,\&quot;Email\&quot;],\&quot;url\&quot;:[0,\&quot;mailto:yunu7067@gmail.com\&quot;]}]]&quot;],&quot;theme&quot;:[0,&quot;auto&quot;],&quot;comments&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;provider&quot;:[0,&quot;giscus&quot;],&quot;giscus&quot;:[0,{&quot;repo&quot;:[0,&quot;yunu7067/astro-blog&quot;],&quot;repoId&quot;:[0,&quot;R_kgDOG92tFg&quot;],&quot;category&quot;:[0,&quot;giscus&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOG92tFs4CP4r0&quot;],&quot;mapping&quot;:[0,&quot;pathname&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;0&quot;],&quot;inputPosition&quot;:[0,&quot;bottom&quot;],&quot;lang&quot;:[0,&quot;ko&quot;],&quot;loading&quot;:[0,&quot;lazy &quot;],&quot;lightTheme&quot;:[0,&quot;light&quot;],&quot;darkTheme&quot;:[0,&quot;dark_dimmed&quot;]}]}]}]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;ThemeButton&quot;,&quot;value&quot;:true}"><button data-hk="0-0" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="dark mode toggle"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></svg></button></astro-island>
+		<a href="/series/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Series">
+			<!-- Series -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"></path></svg>
+		</a>
+		<a href="/search/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Search">
+			<!-- Search -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg>
+		</a>
+	</nav>
 </header>
-<h2 class=article-title>
-<a href=/p/content-security-policy/>Content Security Policy</a>
-</h2>
-<h3 class=article-subtitle>
-Content Security Policy: 페이지 설정에 의해 리소스 로드가 차단됨
-</h3>
-<footer class=article-time>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>2021년 04월 29일</time>
+			<div class="layout astro-3AN7XC2S">
+	<article class="content astro-3AN7XC2S">
+		<div class="astro-3AN7XC2S">
+			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center  astro-3AN7XC2S">
+				
+				<p class="m-0 astro-3AN7XC2S">2021. 4. 29.</p>
+				<h1 class="m-0 mb-1 text-4xl font-bold leading-normal astro-3AN7XC2S">Content Security Policy</h1>
+				<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Nginx">#<!--#-->Nginx<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Error">#<!--#-->Error<!--/--></a></li></ul>
+			</header>
+			<main id="article-container" class="astro-3AN7XC2S">
+				<div class="bg-gray-200 dark:bg-gray-700 rounded-sm py-7 px-10 mb-8 astro-CJONULMH" aria-label="Table of Contents">
+	<div class="text-xl mb-2.5 font-bold astro-CJONULMH">목차</div>
+	<div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#문제점" class="astro-CJONULMH">문제점</a>
+	</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-CJONULMH">
+		<a href="#해결방안" class="astro-CJONULMH">해결방안</a>
+	</div>
+</div><h2 id="문제점">문제점</h2><p><style >
+    
+
+    .astro-imagetools-picture-A8F4219E {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-A8F4219E img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-A8F4219E::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-A8F4219E img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-A8F4219E::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAPElEQVQImR2JSRIAIQjE5v9vdFBxewHgrS36lEryxeqIrbAhsP7D01cjTQX5XQX3DJJPBd4KX3rMSs/+AMcPSmUylMYRAAAAAElFTkSuQmCC");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-A8F4219E"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/blob_err_msg@320w.80530233.webp 320w, /assets/blob_err_msg@604w.0f29a13e.webp 604w, /assets/blob_err_msg@793w.141c4779.webp 793w, /assets/blob_err_msg@888w.bdc71333.webp 888w"
+            sizes="(min-width: 888px) 888px, 100vw"
+            width="888"
+            height="32"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/blob_err_msg@888w.bcc8f1a8.png"
+    alt="에러 메시지"
+    srcset="/assets/blob_err_msg@320w.7a7bd04d.png 320w, /assets/blob_err_msg@604w.67a47cf0.png 604w, /assets/blob_err_msg@793w.4349889c.png 793w, /assets/blob_err_msg@888w.bcc8f1a8.png 888w"
+    sizes="(min-width: 888px) 888px, 100vw"
+    width="888"
+    height="32"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
+Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:<a href="https://example.com">https://example.com</a> (“script-src”)</p><h2 id="해결방안">해결방안</h2><p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 <code>worker-src blob:</code>을 추가해주면 된다.</p><p><style >
+    
+
+    .astro-imagetools-picture-6093D797 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-6093D797 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-6093D797::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-6093D797 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-6093D797::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAsElEQVQYlXWMy27CQBAEe4mzu+MHNgLbWBhHIHFAKKfA/39aRWttJC45lLqnNDO6/7wod0fq/UjdzzTjQnU4rX1lOGPbnjq2mLX4ssPilmAdn9ZRpowNwdrV6Xm/cSoKrhaZQuAaA3PwXIJnCZ5zDPQbx5fEXmKUOEjrnPqSe8pZQt/TRCVxzIuJdJiykWgzXfa77Ie8MziHOUeUsPTwcnugouLDGxsJ94Yy7/7P/ccv2LpYvAtopz4AAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-6093D797"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/blob_err_resolve@320w.1333876c.webp 320w, /assets/blob_err_resolve@600w.50ba84b7.webp 600w"
+            sizes="(min-width: 600px) 600px, 100vw"
+            width="600"
+            height="119"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/blob_err_resolve@600w.e0660773.png"
+    alt="nginx config에 추가"
+    srcset="/assets/blob_err_resolve@320w.d29a990e.png 320w, /assets/blob_err_resolve@600w.e0660773.png 600w"
+    sizes="(min-width: 600px) 600px, 100vw"
+    width="600"
+    height="119"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p>
+			</main>
+		</div>
+	</article>
 </div>
-<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>
-1 분 정도
-</time>
+			<div class="">
+				<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()};var a;{const l={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t)},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,i]=s;return e in l?l[e](i):void 0};customElements.get("astro-island")||customElements.define("astro-island",(a=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement?.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},i=this.querySelectorAll("template[data-astro-template]");for(const r of i)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove());for(const r of s)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML);const n=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,n,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}async connectedCallback(){window.addEventListener("astro:hydrate",this.hydrate),await import(this.getAttribute("before-hydration-url"));const s=JSON.parse(this.getAttribute("opts"));Astro[this.getAttribute("client")](async()=>{const e=this.getAttribute("renderer-url"),[i,{default:n}]=await Promise.all([import(this.getAttribute("component-url")),e?import(e):()=>()=>{}]);return this.Component=i[this.getAttribute("component-export")||"default"],this.hydrator=n,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},a.observedAttributes=["props"],a))}</script><astro-island uid="Z1meg5p" component-url="/BlogViews.9b3d7b7e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;namespace&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;key&quot;:[0,&quot;/p/content-security-policy/&quot;]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;BlogViews&quot;,&quot;value&quot;:true}"><div data-hk="0-0"><!--#-->loading...<!--/--> </div></astro-island>
+			</div>
+			<div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
+	<div class="flex-auto flex flex-col">
+		Author
+		<h3 class="text-xl mb-1">@YUNU7067</h3>
+		<p class="flex-auto font-light line-clamp-2">끊임없이 공부하는 사람이 되고싶은 개발자.</p>
+	</div>
+	<div class="flex-none">
+		<div class="w-fit shadow-sm  overflow-hidden">
+			<style >
+    
+
+    .astro-imagetools-picture-ABC0A182 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-ABC0A182 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-ABC0A182::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-ABC0A182 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-ABC0A182::after {
+          background-size: cover;
+          background-image: url("data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwAF/8QAKBAAAgIABQMCBwAAAAAAAAAAAQMCBAAFBhEhBxJBFJETIiMxMlGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwX/xAAcEQACAgIDAAAAAAAAAAAAAAAAAQIDBBETFDH/2gAMAwEAAhEDEQA/AELp6gXdD5LYsWa8XMRGEYmR3mR8vvxjSR6a1FhqvS+K5lcyqYmIyH3BI84HNDdQq+VaPrUmU3Mt0PjMSRL6cieR3Enf22xlaH1pepIs5XlKKtIXrgbJoX3yhKfBI3PjbgeMUqsmT1tgTqS8G0sRJ71gnuTPsmO08HYS/khiwPT6k5rlx9Lk8lrqQJ2m9QY1xJJLJkn8j+hwMWF7kQ+I/9k=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-ABC0A182"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/avatar@145w.d313cc34.webp"
+            sizes="(min-width: 145px) 145px, 100vw"
+            width="145"
+            height="104"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/avatar@145w.339f66f7"
+    alt="YUNU7067"
+    srcset="/assets/avatar@145w.339f66f7.jpeg"
+    sizes="(min-width: 145px) 145px, 100vw"
+    width="145"
+    height="104"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
+		</div>
+	</div>
 </div>
-</footer>
-</div>
-</header>
-<section class=article-content>
-<h2 id=문제점>문제점</h2>
-<p><figure class=gallery-image style=flex-grow:2775;flex-basis:6660px>
-<a href=/p/content-security-policy/blob_err_msg.png data-size=888x32>
-<img src=/p/content-security-policy/blob_err_msg.png width=888 height=32 srcset="/p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_480x0_resize_box_3.png 480w, /p/content-security-policy/blob_err_msg_hu3012dadcd193163c97440933862dbe48_4877_1024x0_resize_box_3.png 1024w" loading=lazy alt="에러 메시지">
-</a>
-<figcaption>에러 메시지</figcaption>
-</figure>
-Content Security Policy : 페이지 설정에 의해 리소스 로드가 차단됨: blob:https://example.com (&ldquo;script-src&rdquo;)</p>
-<h2 id=해결방안>해결방안</h2>
-<p>nginx 설정파일에서 Content Security Policy 정책을 사용하는 경우, blob 리소스가 차단될 수 있다. 이러한 경우 Content-Security-Policy 맨 뒤에 <code>worker-src blob:</code>을 추가해주면 된다.</p>
-<p><figure class=gallery-image style=flex-grow:504;flex-basis:1210px>
-<a href=/p/content-security-policy/blob_err_resolve.png data-size=600x119>
-<img src=/p/content-security-policy/blob_err_resolve.png width=600 height=119 srcset="/p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_480x0_resize_box_3.png 480w, /p/content-security-policy/blob_err_resolve_hub831fd60a385e4121e4eac0a072b992a_11111_1024x0_resize_box_3.png 1024w" loading=lazy alt="nginx config에 추가">
-</a>
-<figcaption>nginx config에 추가</figcaption>
-</figure></p>
-</section>
-<footer class=article-footer>
-<section class=article-tags>
-<a href=/tags/nginx/>Nginx</a>
-<a href=/tags/error/>Error</a>
-</section>
-<section class=article-copyright><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
-<span>CC BY-NC-SA 4.0</span>
-</section>
-</footer>
-</article>
-<aside class=related-contents--wrapper>
-</aside>
-<script src=https://giscus.app/client.js data-repo=yunu7067/yunu7067.github.io data-repo-id="MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ=" data-category=giscus data-category-id=DIC_kwDOFQ_uFM4CADJ2 data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=light crossorigin=anonymous async></script>
-<script>function setGiscusTheme(b){let a=document.querySelector('iframe.giscus-frame');a&&a.contentWindow.postMessage({giscus:{setConfig:{theme:b}}},"https://giscus.app")}(function(){addEventListener('message',b=>{if(event.origin!=='https://giscus.app')return;a()}),window.addEventListener('onColorSchemeChange',a);function a(){document.documentElement.dataset.scheme==="light"?setGiscusTheme('light'):setGiscusTheme('dark')}})()</script>
-<footer class=site-footer>
-<section class=copyright>
-&copy;
-2020 -
-2021 YUN
-</section>
-<section class=powerby>
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a>로 만듦 <br>
-<a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a>의 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.5.0>Stack</a></b> 테마 사용 중
-</section>
-</footer>
-<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
-<div class=pswp__bg></div>
-<div class=pswp__scroll-wrap>
-<div class=pswp__container>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-</div>
-<div class="pswp__ui pswp__ui--hidden">
-<div class=pswp__top-bar>
-<div class=pswp__counter></div>
-<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-<div class=pswp__preloader>
-<div class=pswp__preloader__icn>
-<div class=pswp__preloader__cut>
-<div class=pswp__preloader__donut></div>
-</div>
-</div>
-</div>
-</div>
-<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-<div class=pswp__share-tooltip></div>
-</div>
-<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-</button>
-<div class=pswp__caption>
-<div class=pswp__caption__center></div>
-</div>
-</div>
-</div>
-</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css integrity="sha256-c0uckgykQ9v5k+IqViZOZKc47Jn7KQil4/MP3ySA3F8=" crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE=" crossorigin=anonymous>
-</main>
-<aside class="sidebar right-sidebar sticky">
-<section class="widget archives">
-<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
-</div>
-<h2 class="widget-title section-title">목차</h2>
-<div class=widget--toc>
-<nav id=TableOfContents>
-<ol>
-<li><a href=#문제점>문제점</a></li>
-<li><a href=#해결방안>해결방안</a></li>
-</ol>
-</nav>
-</div>
-</section>
-</aside>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g=" crossorigin=anonymous defer></script><script type=text/javascript src=/ts/main.js defer></script>
-<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
-</body>
-</html>
+			<div id="blog-comment" class="giscus mt-12 mb-8"></div>
+
+<script client:load src="https://giscus.app/client.js" data-repo="yunu7067/astro-blog" data-repo-id="R_kgDOG92tFg" data-category="giscus" data-category-id="DIC_kwDOG92tFs4CP4r0" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="ko" data-loading="lazy " crossorigin="anonymous" async>
+	</script>
+		</div>
+	</main>
+
+	<footer data-hk="0-0" class="w-full text-center py-4 px-2"><div class="max-w-3xl mx-auto text-gray-500 font-light">©YUNU7067, Built with Astro</div></footer>
+</body></html>
