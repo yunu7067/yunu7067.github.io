@@ -40,7 +40,7 @@ export default async function BlogSearch(props: BlogSearchProps) {
     }
     return index.export((key, data) => {
       // indexedData[key] = data;
-      // console.debug({key});
+      console.debug({uri: `${searchIndexPath}${key}.json`, key});
       fs.writeFileSync(`${searchIndexPath}${key}.json`, data !== undefined ? data : '');
     });
   }
