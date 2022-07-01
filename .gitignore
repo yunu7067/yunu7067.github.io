@@ -1,40 +1,63 @@
-# Hugo default output directory
-/public
-/resources/_gen/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-## OS Files
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+# used Zero-Install
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+package-lock.json
 
-# OSX
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
+*.pem
 
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Folders
-_obj
-_test
+# local env files
+*.env
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
+# vercel
+.vercel
 
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
+# typescript
+*.tsbuildinfo
 
-_testmain.go
+# ignore top-level vscode settings
+/.vscode/settings.json
 
-*.exe
-*.test
+# exclude IntelliJ/WebStorm stuff
+.idea
 
-/public
-.DS_Store
+# astro
+dist/
+_site/
+scripts/smoke/*-main/
+scripts/memory/project/src/pages/
+*.log
+
+packages/astro/src/**/*.prebuilt.ts
+!packages/astro/vendor/vite/dist
+packages/integrations/**/.netlify/
+
+/public/search-index/**/*

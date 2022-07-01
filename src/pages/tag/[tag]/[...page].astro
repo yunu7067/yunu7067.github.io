@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@lays/BaseLayout.astro';
+import BlogPostPreview from '@coms/PostPreview.astro';
+import Pagination from '@coms/Pagination.astro';
+import { AstroSeoProps } from '@coms/AstroSeo';
+import BlogHeader from '@coms/BlogHeader.astro';
+import config from '../../../../blog.config.js';
+
+export async function getStaticPaths({ paginate }) {
+	const allPosts = await Astro.glob('../../p/**/*.md');
+	const allTagsSet = new Set();
+
+	allPosts.map((post) => {
+		const tags = post.frontmatter.tags || [];
+		tags.map((tag) => allTagsSet.add(tag));
+	})
+
+	return Array.from(allTagsSet).map((tag) => {
+		const filteredPosts = allPosts
+			.filter((post) => {
+				// console.debug({ tags: post.frontmatter.tags });
+				return post.frontmatter.tags?.includes(tag)
+			})
+			.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+
+		return paginate(filteredPosts, {
+			params: { tag },
+			pageSize: 7
+		});
+	});
+}
+// page
+const { page } = Astro.props;
+const { tag } = Astro.params;
+const seo: AstroSeoProps = {
+	title: `TAG: ${tag}`
+};
+---
+
+<BaseLayout config={config} seo={seo}>
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto">
+			<BlogHeader config={config} />
+
+			<main>
+				<h2 class="mt-8 mb-1 text-5xl tracking-tight text-center">TAG : #{tag}</h2>
+				<small class="block text-base text-center mb-6">{page.start + 1}–{page.end + 1} of {page.total}</small>
+				{page.data.map((post) =>
+				<BlogPostPreview post={post} />)}
+			</main>
+
+			<footer>
+				<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+			</footer>
+
+		</div>
+	</main>
+
+</BaseLayout>
