@@ -44,6 +44,16 @@ export default async function BlogSearch(props: BlogSearchProps) {
     return index.export((key, data) => {
       console.debug({uri: `${searchIndexPath}${key}.json`, key});
       fs.writeFileSync(`${searchIndexPath}${key}.json`, data !== undefined ? data : '');
+
+      fs.readdir(searchIndexPath, {withFileTypes: true}, (err, files) => {
+        console.log('\nCurrent directory files:');
+        if (err) console.log(err);
+        else {
+          files.forEach(file => {
+            console.log(file);
+          });
+        }
+      });
     });
   }
   props.posts.map(post => {
