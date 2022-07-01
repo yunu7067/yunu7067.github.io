@@ -1,15 +1,44 @@
 # astro 정적 블로그
 
-## 구현 기능
+## 기능
 
 - [x] 게시글 태그
 - [x] 게시글 검색
-- [x] 조회수
+- [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
 - [x] 게시글 시리즈
 - [x] 다크모드
   - [x] 고정 테마(라이트/다크)
   - [x] 가변 테마(자동/시스템)
-- [ ] 모바일 디바이스 스타일링
+- [x] 모바일 디바이스 스타일링
+
+## 사용법
+
+이 저장소는 `yarn berry`를 사용합니다. 따라서 실행 전에 `npm install -g yarn` 명령어를 사용하여 `yarn`을 사용할 수 있도록 준비합니다.
+
+| 명령어       | 동작                                                                   |
+| :----------- | :--------------------------------------------------------------------- |
+| yarn install | Install dependencies.                                                  |
+| yarn dev     | Runs Astro’s dev server. server                                        |
+| yarn build   | Builds your site for production.                                       |
+| yarn preview | Starts a local static file server to serve your built dist/ directory. |
+
+더 자세한 사용법은 [Astro 공식 문서](https://docs.astro.build/en/reference/cli-reference/#astro-preview)를 참조합니다.
+
+## 게시글 작성
+
+새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
+
+이미지 파일도 같은 폴더에 넣어둘 수 있습니다.
+
+## 주의사항
+
+### About 페이지
+
+about 페이지는 `/src/pages/p/about/index.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
+
+### 마크다운 작성 시
+
+Astro는 마크다운에서 태그를 인식하기 때문에 `<Tag />`와 유사한 형태를 사용할 경우 오류가 발생합니다. `&lt;` `&gt;`을 사용해도 오류가 발생합니다!
 
 ## Credits
 

@@ -3,9 +3,10 @@ import Tags from '@coms/Tags';
 import { MarkdownInstance } from 'astro';
 import readingTime from 'reading-time';
 import { timeFormatter } from '@utils';
+import { PostMetadata } from '@types';
 
 export interface Props {
-	post: MarkdownInstance<Record<string, unknown>>
+	post: MarkdownInstance<PostMetadata>
 }
 
 const { post } = Astro.props as Props;

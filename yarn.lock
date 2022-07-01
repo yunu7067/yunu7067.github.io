@@ -15,10 +15,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^0.17.0":
-  version: 0.17.0
-  resolution: "@astrojs/compiler@npm:0.17.0"
-  checksum: 79992b4023cb3be5fa31cbf36b02f00deba5b575a16da4ca4583e04b55e001f1efe0ffa188536da116615bdae3b04265e67f9a136ab5f02e4422a8bbfa2c266a
+"@astrojs/compiler@npm:^0.17.1":
+  version: 0.17.1
+  resolution: "@astrojs/compiler@npm:0.17.1"
+  checksum: e14b2346b622f91202712baaecc3a7e079f4541a9f96a595b5eb2d87245140b519f03b3499c5dc6acff213ef73fed51743df29db781eeb0d7af13e2d0eacbcb9
   languageName: node
   linkType: hard
 
@@ -100,13 +100,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@astrojs/sitemap@npm:0.2.3"
+"@astrojs/sitemap@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "@astrojs/sitemap@npm:0.2.4"
   dependencies:
     sitemap: ^7.1.1
     zod: ^3.17.3
-  checksum: 55238cd79bff9eb467d9d035295172de6eea605f2ae4f5aff0577d72078ad5abc841e3f87a27f178ee1014408957652b9074832db123ed527a7cdc234f97ae87
+  checksum: 28bfb3991cd23fa997a7e58c141ff9392b3f97983f9293936c7304254533cb0e7e2b94b24be32a398eb123847712f8a820ccfa3303082fb7263a4f9d20163e8a
   languageName: node
   linkType: hard
 
@@ -143,9 +143,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/telemetry@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "@astrojs/telemetry@npm:0.2.2"
+"@astrojs/telemetry@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@astrojs/telemetry@npm:0.2.3"
   dependencies:
     ci-info: ^3.3.1
     debug: ^4.3.4
@@ -156,7 +156,7 @@ __metadata:
     is-docker: ^3.0.0
     is-wsl: ^2.2.0
     node-fetch: ^3.2.5
-  checksum: 3ed1dec8f28802e0c85e35b4ed786cfbcacf1bb987acdee1ddb52bc437711760beb361bb7cfd60e1aa01bae9734bd4a2b00b5a42fd1f6c7909e86ffc3933bcaf
+  checksum: 33e85b8861675c012fb576485ffc6e25aae4fd20dbb9ef6660a28e6b6608459216f705c1069572b9502a3c1362beabeba456ba3e67eb380ec2d5e7e3bb5819ab
   languageName: node
   linkType: hard
 
@@ -1446,13 +1446,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "astro-blog@workspace:."
   dependencies:
-    "@astrojs/sitemap": ^0.2.3
+    "@astrojs/sitemap": ^0.2.4
     "@astrojs/solid-js": 0.2.0
     "@astrojs/tailwind": ^0.2.2
     "@astropub/webapi": ^0.10.14
     "@tailwindcss/line-clamp": ^0.4.0
     "@types/flexsearch": ^0.7.3
-    astro: ^1.0.0-beta.59
+    astro: ^1.0.0-beta.62
     astro-imagetools: ^0.6.10
     flexsearch: ^0.7.21
     node-html-parser: ^5.3.3
@@ -1482,15 +1482,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.59":
-  version: 1.0.0-beta.59
-  resolution: "astro@npm:1.0.0-beta.59"
+"astro@npm:^1.0.0-beta.62":
+  version: 1.0.0-beta.62
+  resolution: "astro@npm:1.0.0-beta.62"
   dependencies:
-    "@astrojs/compiler": ^0.17.0
+    "@astrojs/compiler": ^0.17.1
     "@astrojs/language-server": ^0.13.4
     "@astrojs/markdown-remark": ^0.11.3
     "@astrojs/prism": 0.4.1
-    "@astrojs/telemetry": ^0.2.2
+    "@astrojs/telemetry": ^0.2.3
     "@astrojs/webapi": ^0.12.0
     "@babel/core": ^7.18.2
     "@babel/generator": ^7.18.2
@@ -1543,7 +1543,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 208256f4022b60e8be237c02674c5b8d3b505c2f4b687bda6f6f6278bf1757b8680f038083227fc469c9041c4ecb56c05f1de57666f6f46be5a74fdd49bccc0e
+  checksum: db2c562e1b08163aad33b547f5adf8456778708e182770233b482191dacf5427c809f127703289b21b8b9e6d0dea2afb86d6250f0dfd646651a61566f097c4da
   languageName: node
   linkType: hard
 

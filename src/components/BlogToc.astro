@@ -8,10 +8,10 @@ export interface Props {
 const { contents } = Astro.props as Props;
 ---
 
-<div class="bg-gray-200 dark:bg-gray-700 rounded-sm p-4 mb-8" aria-label="Table of Contents">
-	<div class="text-xl mb-2 font-bold">목차</div>
+<div class="bg-gray-200 dark:bg-gray-700 rounded-sm py-7 px-10 mb-8" aria-label="Table of Contents">
+	<div class="text-xl mb-2.5 font-bold">목차</div>
 	{ contents.map((el)=> (
-	<div class={`toc mb-1 ${el.tagName.replace(`H`, `depth` )}`}>
+	<div class={`toc text-gray-800 dark:text-gray-300 mb-1.5 ${el.tagName.replace(`H`, `depth` )}`}>
 		<a href={`#${el.id}`}>{el.textContent}</a>
 	</div>
 	)) }
@@ -21,6 +21,10 @@ const { contents } = Astro.props as Props;
 	.toc.depth1 {}
 
 	.toc.depth2 {
-		padding-left: 2rem;
+		padding-left: 1.25rem;
+	}
+
+	.toc.depth3 {
+		padding-left: 2.75rem;
 	}
 </style>

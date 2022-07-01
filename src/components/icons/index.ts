@@ -7,6 +7,7 @@ export {default as Facebook} from './Facebook';
 export {default as GitHub} from './GitHub';
 export {default as Instagram} from './Instagram';
 export {default as LinkedIn} from './LinkedIn';
+export {default as LinkLine} from './LinkLine';
 export {default as Mail} from './Mail';
 export {default as MoonLine} from './MoonLine';
 export {default as Npmjs} from './Npmjs';
