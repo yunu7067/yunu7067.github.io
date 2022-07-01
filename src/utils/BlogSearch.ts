@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'path';
 import FlexSearch from 'flexsearch';
 /*
  * 위에 module import 오류난 거 아님
@@ -38,10 +39,21 @@ export default async function BlogSearch(props: BlogSearchProps) {
     if (!fs.existsSync(searchIndexPath)) {
       fs.mkdirSync(searchIndexPath, {recursive: true});
     }
+
+    console.debug({root: path.resolve(searchIndexPath)});
     return index.export((key, data) => {
-      // indexedData[key] = data;
-      // console.debug({key});
+      console.debug({uri: `${searchIndexPath}${key}.json`, key});
       fs.writeFileSync(`${searchIndexPath}${key}.json`, data !== undefined ? data : '');
+
+      fs.readdir(searchIndexPath, {withFileTypes: true}, (err, files) => {
+        console.log('\nCurrent directory files:');
+        if (err) console.log(err);
+        else {
+          files.forEach(file => {
+            console.log(file);
+          });
+        }
+      });
     });
   }
   props.posts.map(post => {
