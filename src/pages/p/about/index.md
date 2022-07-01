@@ -1,7 +1,7 @@
 ---
 setup: |
   import Layout from '@lays/BlogPost.astro'
-  import { GitHub } from '@coms/icons';
+  import { LinkLine } from '@coms/icons';
 title: 'About Me'
 description: '공부하는 블로그에 대하여'
 publishDate: 2022-07-01
@@ -13,7 +13,7 @@ publishDate: 2022-07-01
 
 **최윤혁 (Yunhyeok Choi)**
 
-[<i class="inline-block"><GitHub /></i> GitHub](https://github.com/yunu7067)
+[<i class="inline-block"><LinkLine /></i> GitHub](https://github.com/yunu7067)
 
 다재다능한 풀 스택 개발자를 지향합니다
 
