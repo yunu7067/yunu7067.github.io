@@ -34,6 +34,34 @@ publishDate: 2022-07-01
 - TypeScript
 - Kotlin
 
+## 기술 스택
+
+### 백엔드
+
+[![Spring](https://img.shields.io/badge/Spring-6db33f?style=for-the-badge&logo=spring&logoColor=white)](https://spring.io/) [![Spring Boot](https://img.shields.io/badge/Spring_Boot-6db33f?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot) [![Django](https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+
+### 데이터베이스
+
+![MariaDB](https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white) [![MyBatis 3](https://img.shields.io/badge/MyBatis-251d1d?style=for-the-badge&logoColor=white)](https://mybatis.org/mybatis-3/) [![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6db33f?style=for-the-badge&logoColor=white)](https://spring.io/projects/spring-data-jpa)
+
+### 프론트엔드
+
+[![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005f0f?style=for-the-badge&logo=thymeleaf&logoColor=white)](https://www.thymeleaf.org/)
+
+[![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://ko.reactjs.org/) [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/) [![styled-components](https://img.shields.io/badge/styled--components-d676c3?style=for-the-badge&logo=styledcomponents&logoColor=white)](https://styled-components.com/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/) [![Headless UI](https://img.shields.io/badge/Headless_UI-6c99fc?style=for-the-badge&logo=headlessui&logoColor=white)](https://headlessui.com/) [![react-i18next](https://img.shields.io/badge/react--i18next-019688?style=for-the-badge&logo=i18next&logoColor=white)](https://react.i18next.com/) [![next-intl](https://img.shields.io/badge/next--intl-5fc3e7?style=for-the-badge&logoColor=white)](https://next-intl-docs.vercel.app/)
+
+### 인증
+
+![Firebase / Firebase Admin / Firestore](https://img.shields.io/badge/Firebase/Firebase_Admin/Firestore-ffa816?style=for-the-badge&logo=firebase&logoColor=white)
+
+### CI/CD
+
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088ff?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
+
+### 운영
+
+[![Amazon EC2](https://img.shields.io/badge/Amazon_EC2-fb9402?style=for-the-badge&logo=amazonec2&logoColor=white)](https://aws.amazon.com/ko/ec2/) [![Amazon Lambda](https://img.shields.io/badge/AWS_Lambda-fb9402?style=for-the-badge&logo=awslambda&logoColor=white)](https://aws.amazon.com/ko/lambda/) [![Amazon S3](https://img.shields.io/badge/Amazon_S3-fb9402?style=for-the-badge&logo=amazons3&logoColor=white)](https://aws.amazon.com/ko/s3/) [![PM2](https://img.shields.io/badge/PM2-5402bb?style=for-the-badge&logo=pm2&logoColor=white)](https://pm2.keymetrics.io/)
+
 ## 그동안 배운 프로그래밍 기술
 
 | 연도 | 언어               | 기술                                                                                                                                                                                                                                                                                                                                                 |
