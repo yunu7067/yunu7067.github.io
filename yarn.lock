@@ -1452,7 +1452,7 @@ __metadata:
     "@astropub/webapi": ^0.10.14
     "@tailwindcss/line-clamp": ^0.4.0
     "@types/flexsearch": ^0.7.3
-    astro: ^1.0.0-beta.62
+    astro: ^1.0.0-beta.63
     astro-imagetools: ^0.6.10
     flexsearch: ^0.7.21
     node-html-parser: ^5.3.3
@@ -1482,9 +1482,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^1.0.0-beta.62":
-  version: 1.0.0-beta.62
-  resolution: "astro@npm:1.0.0-beta.62"
+"astro@npm:^1.0.0-beta.63":
+  version: 1.0.0-beta.63
+  resolution: "astro@npm:1.0.0-beta.63"
   dependencies:
     "@astrojs/compiler": ^0.17.1
     "@astrojs/language-server": ^0.13.4
@@ -1543,7 +1543,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: db2c562e1b08163aad33b547f5adf8456778708e182770233b482191dacf5427c809f127703289b21b8b9e6d0dea2afb86d6250f0dfd646651a61566f097c4da
+  checksum: 4db4f64f3a636a6a64c829526be82aeae004e06261e18a84e0a17b849659635b29b1476d2e9ccfe4eca2a91a55d7faa57c56fb9a91bb17d80e07a32e1b663882
   languageName: node
   linkType: hard
 
