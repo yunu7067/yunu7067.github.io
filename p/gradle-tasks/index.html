@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko-KR" class="bg-transparent ">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml">
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- Codeblock theme -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css" /> -->
+	<!-- Flex Search -->
+	<script defer src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.2/dist/flexsearch.bundle.js"></script>
+
+	<title data-hk="0-0">Gradle Task 톺아보기</title><meta data-hk="0-1" name="description" content="Gradle Tasks가 어떻게 구성되어있는지 궁금해서 쓰는 글."><meta data-hk="0-2" name="robots" content="index,follow"><meta data-hk="0-3" property="og:title" content="Gradle Task 톺아보기"><meta data-hk="0-4" property="og:description" content="Gradle Tasks가 어떻게 구성되어있는지 궁금해서 쓰는 글."><script>let configTheme = "auto";
+
+		(function () {
+			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+			if (configTheme === " system") {
+				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
+					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
+			} /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
+				(configTheme === "auto") {
+					const theme = window.localStorage.getItem("theme"); const
+						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
+			} /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
+<link rel="stylesheet" href="/assets/069df61b.96c54721.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script></head>
+
+<link rel="stylesheet" href="/assets/069df61b.96c54721.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script><body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
+			<header class="py-5 w-full flex flex-row items-center justify-between">
+	<h1 class="m-0 text-2xl">
+		<a href="/" aria-label="Home">
+			<span>tololo://</span>
+		</a>
+	</h1>
+	<nav class="flex-none flex flex-row gap-2">
+
+		<a href="/p/about/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="About">
+			About
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+				<path fill="none" d="M0 0h24v24H0z"></path>
+				<path fill="currentColor" d="M7.291 20.824L2 22l1.176-5.291A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.956 9.956 0 0 1-4.709-1.176zm.29-2.113l.653.35A7.955 7.955 0 0 0 12 20a8 8 0 1 0-8-8c0 1.334.325 2.618.94 3.766l.349.653-.655 2.947 2.947-.655zM7 12h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"></path>
+			</svg>
+		</a>
+		<astro-island uid="1PmkRx" component-url="/ThemeButton.35d3495e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;config&quot;:[0,{&quot;baseurl&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;title&quot;:[0,&quot;tololo://&quot;],&quot;description&quot;:[0,&quot;YUNU7067&#39;s log&quot;],&quot;locale&quot;:[0,{&quot;languageCode&quot;:[0,&quot;ko-KR&quot;]}],&quot;author&quot;:[0,{&quot;name&quot;:[0,&quot;YUNU7067&quot;],&quot;comment&quot;:[0,&quot;끊임없이 공부하는 사람이 되고싶은 개발자.&quot;]}],&quot;avatar&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;src&quot;:[0,&quot;/public/assets/profile/avatar.jpeg&quot;]}],&quot;social&quot;:[1,&quot;[[0,{\&quot;identifier\&quot;:[0,\&quot;github\&quot;],\&quot;name\&quot;:[0,\&quot;GitHub\&quot;],\&quot;url\&quot;:[0,\&quot;https://github.com/yunu7067/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;discord\&quot;],\&quot;name\&quot;:[0,\&quot;Discord\&quot;],\&quot;url\&quot;:[0,\&quot;https://discordapp.com/users/태규#6493/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;npmjs\&quot;],\&quot;name\&quot;:[0,\&quot;Npmjs\&quot;],\&quot;url\&quot;:[0,\&quot;https://www.npmjs.com/~yunu7067\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;email\&quot;],\&quot;name\&quot;:[0,\&quot;Email\&quot;],\&quot;url\&quot;:[0,\&quot;mailto:yunu7067@gmail.com\&quot;]}]]&quot;],&quot;theme&quot;:[0,&quot;auto&quot;],&quot;comments&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;provider&quot;:[0,&quot;giscus&quot;],&quot;giscus&quot;:[0,{&quot;repo&quot;:[0,&quot;yunu7067/yunu7067.github.io&quot;],&quot;repoId&quot;:[0,&quot;MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ&quot;],&quot;category&quot;:[0,&quot;giscus&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOFQ_uFM4CADJ2&quot;],&quot;mapping&quot;:[0,&quot;pathname&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;0&quot;],&quot;inputPosition&quot;:[0,&quot;bottom&quot;],&quot;lang&quot;:[0,&quot;ko&quot;],&quot;loading&quot;:[0,&quot;lazy &quot;],&quot;lightTheme&quot;:[0,&quot;light&quot;],&quot;darkTheme&quot;:[0,&quot;dark_dimmed&quot;]}]}]}]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;ThemeButton&quot;,&quot;value&quot;:true}"><button data-hk="0-0" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="dark mode toggle"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></svg></button></astro-island>
+		<a href="/series/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Series">
+			<!-- Series -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"></path></svg>
+		</a>
+		<a href="/search/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Search">
+			<!-- Search -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg>
+		</a>
+	</nav>
+</header>
+			<div class="layout astro-3AN7XC2S">
+	<article class="content astro-3AN7XC2S">
+		<div class="astro-3AN7XC2S">
+			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center  astro-3AN7XC2S">
+				
+				<p class="m-0 astro-3AN7XC2S">2022. 6. 30.</p>
+				<h1 class="m-0 mb-1 text-4xl font-bold leading-normal astro-3AN7XC2S">Gradle Task 톺아보기</h1>
+				<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Backend">#<!--#-->Backend<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/gradle">#<!--#-->gradle<!--/--></a></li></ul>
+			</header>
+			<main id="article-container" class="astro-3AN7XC2S">
+				<details class="bg-gray-200 dark:bg-gray-700 rounded-sm py-7 px-10 mb-8 astro-NL6IKFTU" aria-label="Table of Contents" open>
+	<summary class="text-xl font-bold astro-NL6IKFTU">목차</summary>
+	<div class="mt-2.5 astro-NL6IKFTU">
+		<div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-NL6IKFTU">
+			<a href="#tasks" class="astro-NL6IKFTU">Tasks</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#application" class="astro-NL6IKFTU">application</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#bootrun" class="astro-NL6IKFTU">bootRun</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#build" class="astro-NL6IKFTU">build</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#bootjar" class="astro-NL6IKFTU">bootJar</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#build-1" class="astro-NL6IKFTU">build</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#clean" class="astro-NL6IKFTU">clean</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#jar" class="astro-NL6IKFTU">jar</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#verification" class="astro-NL6IKFTU">verification</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#check" class="astro-NL6IKFTU">check</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#test" class="astro-NL6IKFTU">test</a>
+		</div>
+	</div>
+</details><h1 id="tasks">Tasks</h1><h2 id="application">application</h2><h3 id="bootrun">bootRun</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">오후 3:36:16: Executing &#39;bootRun&#39;...</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootRunMainClassName</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootRun</span></span>
+<span class="line"><span style="color: #c9d1d9">(중략)</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 6s</span></span>
+<span class="line"><span style="color: #c9d1d9">4 actionable tasks: 4 executed</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:36:23: Execution finished &#39;bootRun&#39;.</span></span></code></pre><h2 id="build">build</h2><h3 id="bootjar">bootJar</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">오후 3:35:19: Executing &#39;bootJar&#39;...</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootJarMainClassName</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootJar</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 4s</span></span>
+<span class="line"><span style="color: #c9d1d9">4 actionable tasks: 4 executed</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:35:24: Execution finished &#39;bootJar&#39;.</span></span></code></pre><h3 id="build-1">build</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">오후 3:34:49: Executing &#39;build&#39;...</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootJarMainClassName</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :bootJar</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :jar</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :assemble</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileTestJava</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processTestResources NO-SOURCE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :testClasses</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :test</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :check</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :build</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 7s</span></span>
+<span class="line"><span style="color: #c9d1d9">7 actionable tasks: 7 executed</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:34:57: Execution finished &#39;build&#39;.</span></span></code></pre><h3 id="clean">clean</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">오후 3:35:57: Executing &#39;clean&#39;...</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :clean</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 289ms</span></span>
+<span class="line"><span style="color: #c9d1d9">1 actionable task: 1 executed</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:35:58: Execution finished &#39;clean&#39;.</span></span></code></pre><h3 id="jar">jar</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">오후 3:44:50: Executing &#39;jar&#39;...</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :jar</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 3s</span></span>
+<span class="line"><span style="color: #c9d1d9">3 actionable tasks: 3 executed</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:44:54: Execution finished &#39;jar&#39;.</span></span></code></pre><h2 id="verification">verification</h2><h3 id="check">check</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileTestJava UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processTestResources NO-SOURCE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :testClasses UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :test</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :check</span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 1s</span></span>
+<span class="line"><span style="color: #c9d1d9">4 actionable tasks: 1 executed, 3 up-to-date</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:40:47: Execution finished &#39;check&#39;.</span></span></code></pre><h3 id="test">test</h3><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">&gt; Task :compileJava UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processResources UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :classes UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :compileTestJava UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :processTestResources NO-SOURCE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :testClasses UP-TO-DATE</span></span>
+<span class="line"><span style="color: #c9d1d9">&gt; Task :test</span></span>
+<span class="line"><span style="color: #c9d1d9">BUILD SUCCESSFUL in 2s</span></span>
+<span class="line"><span style="color: #c9d1d9">4 actionable tasks: 1 executed, 3 up-to-date</span></span>
+<span class="line"><span style="color: #c9d1d9">오후 3:40:12: Execution finished &#39;test&#39;.</span></span></code></pre>
+			</main>
+		</div>
+	</article>
+</div>
+			<div class="">
+				<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()};var a;{const l={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t)},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,i]=s;return e in l?l[e](i):void 0};customElements.get("astro-island")||customElements.define("astro-island",(a=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement?.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},i=this.querySelectorAll("template[data-astro-template]");for(const r of i)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove());for(const r of s)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML);const n=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,n,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}async connectedCallback(){window.addEventListener("astro:hydrate",this.hydrate),await import(this.getAttribute("before-hydration-url"));const s=JSON.parse(this.getAttribute("opts"));Astro[this.getAttribute("client")](async()=>{const e=this.getAttribute("renderer-url"),[i,{default:n}]=await Promise.all([import(this.getAttribute("component-url")),e?import(e):()=>()=>{}]);return this.Component=i[this.getAttribute("component-export")||"default"],this.hydrator=n,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},a.observedAttributes=["props"],a))}</script><astro-island uid="KcPVi" component-url="/BlogViews.9b3d7b7e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;namespace&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;key&quot;:[0,&quot;/p/gradle-tasks/&quot;]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;BlogViews&quot;,&quot;value&quot;:true}"><div data-hk="0-0"><!--#-->loading...<!--/--> </div></astro-island>
+			</div>
+			<div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
+	<div class="flex-auto flex flex-col">
+		Author
+		<h3 class="text-xl mb-1">@YUNU7067</h3>
+		<p class="flex-auto font-light line-clamp-2">끊임없이 공부하는 사람이 되고싶은 개발자.</p>
+	</div>
+	<div class="flex-none">
+		<div class="w-fit shadow-sm  overflow-hidden">
+			<style >
+    
+
+    .astro-imagetools-picture-7EF09B0A {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-7EF09B0A img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-7EF09B0A::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-7EF09B0A img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-7EF09B0A::after {
+          background-size: cover;
+          background-image: url("data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwAF/8QAKBAAAgIABQMCBwAAAAAAAAAAAQMCBAAFBhEhBxJBFJETIiMxMlGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwX/xAAcEQACAgIDAAAAAAAAAAAAAAAAAQIDBBETFDH/2gAMAwEAAhEDEQA/AELp6gXdD5LYsWa8XMRGEYmR3mR8vvxjSR6a1FhqvS+K5lcyqYmIyH3BI84HNDdQq+VaPrUmU3Mt0PjMSRL6cieR3Enf22xlaH1pepIs5XlKKtIXrgbJoX3yhKfBI3PjbgeMUqsmT1tgTqS8G0sRJ71gnuTPsmO08HYS/khiwPT6k5rlx9Lk8lrqQJ2m9QY1xJJLJkn8j+hwMWF7kQ+I/9k=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-7EF09B0A"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/avatar@145w.d313cc34.webp"
+            sizes="(min-width: 145px) 145px, 100vw"
+            width="145"
+            height="104"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/avatar@145w.339f66f7"
+    alt="YUNU7067"
+    srcset="/assets/avatar@145w.339f66f7.jpeg"
+    sizes="(min-width: 145px) 145px, 100vw"
+    width="145"
+    height="104"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
+		</div>
+	</div>
+</div>
+			<div id="blog-comment" class="giscus mt-12 mb-8"></div>
+
+<script client:load src="https://giscus.app/client.js" data-repo="yunu7067/yunu7067.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ" data-category="giscus" data-category-id="DIC_kwDOFQ_uFM4CADJ2" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="ko" data-loading="lazy " crossorigin="anonymous" async>
+	</script>
+		</div>
+	</main>
+
+	<footer data-hk="0-0" class="w-full text-center py-4 px-2"><div class="max-w-3xl mx-auto text-gray-500 font-light">©YUNU7067, Built with Astro</div></footer>
+</body></html>

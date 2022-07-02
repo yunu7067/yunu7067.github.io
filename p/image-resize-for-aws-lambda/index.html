@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ko-KR" class="bg-transparent ">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml">
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml">
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- Codeblock theme -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-lucario.css" /> -->
+	<!-- Flex Search -->
+	<script defer src="https://rawcdn.githack.com/nextapps-de/flexsearch/0.7.2/dist/flexsearch.bundle.js"></script>
+
+	<title data-hk="0-0">AWS 람다, S3를 이용한 이미지 리사이징</title><meta data-hk="0-1" name="description" content="AWS 서비스를 이용하여 이미지를 리사이즈하고 저장하는 방법."><meta data-hk="0-2" name="robots" content="index,follow"><meta data-hk="0-3" property="og:title" content="AWS 람다, S3를 이용한 이미지 리사이징"><meta data-hk="0-4" property="og:description" content="AWS 서비스를 이용하여 이미지를 리사이즈하고 저장하는 방법."><script>let configTheme = "auto";
+
+		(function () {
+			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+			if (configTheme === " system") {
+				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
+					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
+			} /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
+				(configTheme === "auto") {
+					const theme = window.localStorage.getItem("theme"); const
+						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
+			} /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
+<link rel="stylesheet" href="/assets/069df61b.96c54721.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script></head>
+
+<link rel="stylesheet" href="/assets/069df61b.96c54721.css" /><script type="module">const{classList:e}=document.documentElement,A=e.add.bind(e);A("jpeg");A("png");const g=(B,d)=>{const a=new Image;a.src=`data:image/${B};base64,${d}`,a.onload=A(B)};g("webp","UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==");g("avif","AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=");
+</script><body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
+	<main class="w-full">
+		<div class="max-w-3xl w-full mx-auto px-4 md:px-3 lg:px-0">
+			<header class="py-5 w-full flex flex-row items-center justify-between">
+	<h1 class="m-0 text-2xl">
+		<a href="/" aria-label="Home">
+			<span>tololo://</span>
+		</a>
+	</h1>
+	<nav class="flex-none flex flex-row gap-2">
+
+		<a href="/p/about/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="About">
+			About
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+				<path fill="none" d="M0 0h24v24H0z"></path>
+				<path fill="currentColor" d="M7.291 20.824L2 22l1.176-5.291A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.956 9.956 0 0 1-4.709-1.176zm.29-2.113l.653.35A7.955 7.955 0 0 0 12 20a8 8 0 1 0-8-8c0 1.334.325 2.618.94 3.766l.349.653-.655 2.947 2.947-.655zM7 12h2a3 3 0 0 0 6 0h2a5 5 0 0 1-10 0z"></path>
+			</svg>
+		</a>
+		<astro-island uid="1PmkRx" component-url="/ThemeButton.35d3495e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;config&quot;:[0,{&quot;baseurl&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;title&quot;:[0,&quot;tololo://&quot;],&quot;description&quot;:[0,&quot;YUNU7067&#39;s log&quot;],&quot;locale&quot;:[0,{&quot;languageCode&quot;:[0,&quot;ko-KR&quot;]}],&quot;author&quot;:[0,{&quot;name&quot;:[0,&quot;YUNU7067&quot;],&quot;comment&quot;:[0,&quot;끊임없이 공부하는 사람이 되고싶은 개발자.&quot;]}],&quot;avatar&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;src&quot;:[0,&quot;/public/assets/profile/avatar.jpeg&quot;]}],&quot;social&quot;:[1,&quot;[[0,{\&quot;identifier\&quot;:[0,\&quot;github\&quot;],\&quot;name\&quot;:[0,\&quot;GitHub\&quot;],\&quot;url\&quot;:[0,\&quot;https://github.com/yunu7067/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;discord\&quot;],\&quot;name\&quot;:[0,\&quot;Discord\&quot;],\&quot;url\&quot;:[0,\&quot;https://discordapp.com/users/태규#6493/\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;npmjs\&quot;],\&quot;name\&quot;:[0,\&quot;Npmjs\&quot;],\&quot;url\&quot;:[0,\&quot;https://www.npmjs.com/~yunu7067\&quot;]}],[0,{\&quot;identifier\&quot;:[0,\&quot;email\&quot;],\&quot;name\&quot;:[0,\&quot;Email\&quot;],\&quot;url\&quot;:[0,\&quot;mailto:yunu7067@gmail.com\&quot;]}]]&quot;],&quot;theme&quot;:[0,&quot;auto&quot;],&quot;comments&quot;:[0,{&quot;enabled&quot;:[0,true],&quot;provider&quot;:[0,&quot;giscus&quot;],&quot;giscus&quot;:[0,{&quot;repo&quot;:[0,&quot;yunu7067/yunu7067.github.io&quot;],&quot;repoId&quot;:[0,&quot;MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ&quot;],&quot;category&quot;:[0,&quot;giscus&quot;],&quot;categoryId&quot;:[0,&quot;DIC_kwDOFQ_uFM4CADJ2&quot;],&quot;mapping&quot;:[0,&quot;pathname&quot;],&quot;reactionsEnabled&quot;:[0,&quot;1&quot;],&quot;emitMetadata&quot;:[0,&quot;0&quot;],&quot;inputPosition&quot;:[0,&quot;bottom&quot;],&quot;lang&quot;:[0,&quot;ko&quot;],&quot;loading&quot;:[0,&quot;lazy &quot;],&quot;lightTheme&quot;:[0,&quot;light&quot;],&quot;darkTheme&quot;:[0,&quot;dark_dimmed&quot;]}]}]}]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;ThemeButton&quot;,&quot;value&quot;:true}"><button data-hk="0-0" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="dark mode toggle"><svg data-hk="0-1-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"></path></svg></button></astro-island>
+		<a href="/series/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Series">
+			<!-- Series -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05l8.083-4.85zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.65l-9.285-5.571a.5.5 0 0 1 0-.858l1.202-.721L12 15.35l8.083-4.85zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 13 2.715 7.429a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0zM12 3.332L5.887 7 12 10.668 18.113 7 12 3.332z"></path></svg>
+		</a>
+		<a href="/search/" class="px-4 py-2 inline-flex flex-row items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:bg-slate-700 text-gray-900 dark:text-gray-100" aria-label="Search">
+			<!-- Search -->
+			<svg data-hk="0-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg>
+		</a>
+	</nav>
+</header>
+			<div class="layout astro-3AN7XC2S">
+	<article class="content astro-3AN7XC2S">
+		<div class="astro-3AN7XC2S">
+			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center  astro-3AN7XC2S">
+				
+				<p class="m-0 astro-3AN7XC2S">2022. 4. 7.</p>
+				<h1 class="m-0 mb-1 text-4xl font-bold leading-normal astro-3AN7XC2S">AWS 람다, S3를 이용한 이미지 리사이징</h1>
+				<ul data-hk="0-0" class="flex flex-row gap-2 flex-wrap"><li data-hk="0-1-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/Backend">#<!--#-->Backend<!--/--></a></li><li data-hk="0-2-0" class="py-0.5 px-2.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 text-sm text-slate-800"><a href="/tag/AWS">#<!--#-->AWS<!--/--></a></li></ul>
+			</header>
+			<main id="article-container" class="astro-3AN7XC2S">
+				<details class="bg-gray-200 dark:bg-gray-700 rounded-sm py-7 px-10 mb-8 astro-NL6IKFTU" aria-label="Table of Contents" open>
+	<summary class="text-xl font-bold astro-NL6IKFTU">목차</summary>
+	<div class="mt-2.5 astro-NL6IKFTU">
+		<div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-NL6IKFTU">
+			<a href="#도입-이유" class="astro-NL6IKFTU">도입 이유</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-NL6IKFTU">
+			<a href="#도입-방법" class="astro-NL6IKFTU">도입 방법</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#s3-버킷-생성" class="astro-NL6IKFTU">S3 버킷 생성</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#역할-설정" class="astro-NL6IKFTU">역할 설정</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#정책-생성" class="astro-NL6IKFTU">정책 생성</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth3 astro-NL6IKFTU">
+			<a href="#역할-생성" class="astro-NL6IKFTU">역할 생성</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#람다-생성" class="astro-NL6IKFTU">람다 생성</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#람다-설정-편집" class="astro-NL6IKFTU">람다 설정 편집</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth2 astro-NL6IKFTU">
+			<a href="#트리거-추가" class="astro-NL6IKFTU">트리거 추가</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-NL6IKFTU">
+			<a href="#문제점" class="astro-NL6IKFTU">문제점</a>
+		</div><div class="toc text-gray-800 dark:text-gray-300 mb-1.5 depth1 astro-NL6IKFTU">
+			<a href="#참고문헌" class="astro-NL6IKFTU">참고문헌</a>
+		</div>
+	</div>
+</details><h1 id="도입-이유">도입 이유</h1><p>처음에는 스프링 내에서 리사이즈 라이브러리(net.coobird의 thumbnailator)를 이용하여 이미지를 small/medium/large 3개의 사이즈로 리사이즈 하려고 했었습니다. 하지만 AWS EC2의 프리티어급 인스턴스(t2.micro)는 기껏해야 1 v코어와 1 GB의 메모리밖에 되지 않아 이미지 리사이징이라는 무거운 프로세스를 서비스를 제공하면서 돌리기엔 무리가 있었습니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-FBFA1349 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-FBFA1349 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-FBFA1349::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-FBFA1349 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-FBFA1349::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAA7DAAAOwwHHb6hkAAADa0lEQVRIia2VWW/bRhSF6YaLRGrhMiIp7hRFSaYWx45TPzVWkQRuEfSxyEMQoP//T3zFjCV4E9ok7cPBvbwzczicOedSGw6HnMJoNGLq+wxk/qjujscMHQdfCKIoIo5jNe4OHMaeQDNNk+fQDYORM2AmBK90Hcuyns6xLAzDQNd1hWPNNA20Xq/HcximifA81nXxYuzfoJ0kNEx832W3Kun3emqH/43QNAl8l+2qVM/fSmhZ1ktCWXQcmygO2F2U9PtPCY+5jEf0/mmH8nMDMSbNQ87XmSLs9/uH2MO273Nb1o4vOVzWaULdZBJ7ZHXMaldgGDrzdkHXbairlg+/vieKM/rDMXVdU5Y17z98pKpyRXqC0EDEgqTOmG8b8qri+uqK9dWGT1/v+PLXO77++Quf9zdsFi3OaMQsTdm2rdKu9vgsJAxdJwgDpmVG3TU07YKmKnGFR7OuWaymrJcZXZnSlQWjwYBcBFy2La7rosVZTJxGJEWCzMMkpFpUzLqWxa6lKEuWcie2gzvyCMMpQoQEIuLtZkNdFKRJwma1wvNcNGfg8ICBuoAwjUhnBe22RUwEeZ7jeR5CCJIkUZabTCYkaaqimEyI4khZ8+GTzfuov9IJooBplTLfNOoF0mbqjA8WPK55nFsH+Zy8ZRF5JFXEfJ3R6z/o76kev1HYhpRN6JJXEetN/kLY320907QYDB3iRJx0yg952TTvm8N6ed9tfpjQOixU9vNdLs7/x24jPI/d/Pu6TU8SPneKcotp4g5HzMJQde9Tc07CNNGkzmzbVuwyOo6jtCfzeDymZ9sqVzXHUeMyHnfUP9Rtx8YeSOtJ1QeBcoN0gu95TONYOUL+gCZCKDcod/i+Ghd+QJrllNJ2aUrg++qIJpMQTRq/m824urykWyxIJyHdckm7WFDWNXkcUeYF682O87JglkwJhiPW2x1vLl/z880NVZGTei4iiNCur9+y398ShoJus+PmMEGdpWEoCdnOgNv9nt9+v6OpS7Szn9R5nZ1p7C4uuL3dU5cZfiDQpIdd3yOb5eRFyW67Zd40FGWBadx3YYmqyni9WyACT/0isiRiOUsUosClqXL++HSHJheNvTHTYkpVNbyRzbTrqMpS7dCSl+XYxHnC9btriianZ1qMx0OGjs3I81Rtmk0RQcDfoKJry3MfUhgAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-FBFA1349"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162099081-1ddc11fa-1726-479e-b8d4-1b55e7f2fdd6.png.1f32fefd7b8680c339d84b97b48dc714@249w.cad20c65.webp"
+            sizes="(min-width: 249px) 249px, 100vw"
+            width="249"
+            height="328"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162099081-1ddc11fa-1726-479e-b8d4-1b55e7f2fdd6.png.1f32fefd7b8680c339d84b97b48dc714@249w.81d4558"
+    alt="btop"
+    srcset="/assets/162099081-1ddc11fa-1726-479e-b8d4-1b55e7f2fdd6.png.1f32fefd7b8680c339d84b97b48dc714@249w.81d45586.png"
+    sizes="(min-width: 249px) 249px, 100vw"
+    width="249"
+    height="328"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>btop으로 모니터링해보니 cpu와 메모리를 꽉꽉 채워져 이내 인스턴스가 멈춰버리는 불상사가 발생해버렸습니다. 그래서 AWS Lambda와 AWS S3를 이용하여 이미지 리사이징 동작만을 분리하였습니다.</p><h1 id="도입-방법">도입 방법</h1><h2 id="s3-버킷-생성">S3 버킷 생성</h2><p><style >
+    
+
+    .astro-imagetools-picture-30749E09 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-30749E09 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-30749E09::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-30749E09 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-30749E09::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABFUlEQVQokaVQ2VLDMBDL/38ifSIwND7iK47vVMxuJ9Ay8MSDZu21Vit5Ukrj5XLBaj10SGit/QtTCAHLskBpDaFXWGsZxhgYa+B8wLsOmFXAq96gQkJvFaVW1F8wxX1HCBtCjNhihN827CnxQC4FpRQkRkXM90pO6h+YSJCQckbK5UvsMUYfHa03jDHuYqcjPv8QzDkzUUoJax2fiVzKdwzqE++6CAghudd7f1paz8jk5txMtVRyM4DbDcdxMGiY3oy1UEpBKsXVOQ+z0j979D6YO1HU1jtfbseBmCuE22FjYRHCXXTAOodFCMzzG+Z5xiIkrh9XCCk57iBBFwL8A+i+0mbnn/r85j2s9+yU4RwvoXpyPgHBvmsNOfJEPgAAAABJRU5ErkJggg==");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-30749E09"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162099448-2f8dbcc2-d006-4982-b864-0a753676a86c.png.10a911786c69e99ced6f0d2b57fd8a46@320w.0d523397.webp 320w, /assets/162099448-2f8dbcc2-d006-4982-b864-0a753676a86c.png.10a911786c69e99ced6f0d2b57fd8a46@638w.41d84f97.webp 638w"
+            sizes="(min-width: 638px) 638px, 100vw"
+            width="638"
+            height="265"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162099448-2f8dbcc2-d006-4982-b864-0a753676a86c.png.10a911786c69e99ced6f0d2b57fd8a46@638w.f8827d98.png"
+    alt="image"
+    srcset="/assets/162099448-2f8dbcc2-d006-4982-b864-0a753676a86c.png.10a911786c69e99ced6f0d2b57fd8a46@320w.d1105542.png 320w, /assets/162099448-2f8dbcc2-d006-4982-b864-0a753676a86c.png.10a911786c69e99ced6f0d2b57fd8a46@638w.f8827d98.png 638w"
+    sizes="(min-width: 638px) 638px, 100vw"
+    width="638"
+    height="265"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>버킷은 기본적으로 파일이 저장되는 버킷(bucketname-s3)과 리사이즈된 이미지가 저장되는 버킷((bucketname-s3-resized)를 생성해야합니다. 나중에 서비스에서 접근하기 위해 액세스는 퍼블릭으로 주었습니다.</p><h2 id="역할-설정">역할 설정</h2><h3 id="정책-생성">정책 생성</h3><p>IAM 정책에서 <code>AWSLambdaS3Policy</code>라는 이름의 정책을 생성한 후, 아래 json 코드로 역할을 줍니다. S3 IO 권한과 CloudWatch Logs 권한을 줍니다.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #C9D1D9">{</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;Version&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;2012-10-17&quot;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #79C0FF">&quot;Statement&quot;</span><span style="color: #C9D1D9">: [</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Sid&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;VisualEditor0&quot;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Effect&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;Allow&quot;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Action&quot;</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">&quot;logs:CreateLogStream&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;logs:CreateLogGroup&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;logs:PutLogEvents&quot;</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Resource&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;arn:aws:logs:*:*:*&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">    },</span></span>
+<span class="line"><span style="color: #C9D1D9">    {</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Sid&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;VisualEditor1&quot;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Effect&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;Allow&quot;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Action&quot;</span><span style="color: #C9D1D9">: [</span><span style="color: #A5D6FF">&quot;s3:PutObject&quot;</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&quot;s3:GetObject&quot;</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">      </span><span style="color: #79C0FF">&quot;Resource&quot;</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">&quot;*&quot;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">  ]</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre><p><style >
+    
+
+    .astro-imagetools-picture-14228F2C {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-14228F2C img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-14228F2C::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-14228F2C img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-14228F2C::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABcElEQVQ4jZ2TiW6DMBBE+f8PDI1aIDSBCAg22NzXVLMpNImqJqqlJ9hde7wHOMuyYAGE2/Vo/7UWanzjiKfKgWnEMAwoywJlWUrQWiu+eZpQFAWsraC1xjzP6LpOfHXd3Ik7Xd/BpBFqa9D3Paw1qKpKDnEzBadpEvG6rmGs3QTpa5pWLqdPMmSg7Qc5eFsCRdaN6zvhon0VwLZ3xWEgPATwPB++70tZ4zj+G4eZhWEonE4nJGmKPM+hlIJSGpdLLj1l79gKtoVVPdK2rSAlszc0+GRfjClFhBhjxKd1sb1TeMXa6u4ihyK8fT28HmKW9HOSjK1Za63ubKWu9pYhjTRNhSAIBJZ/9WVbLMuyjd/sJEkEh1lEUYQoOsF1Xbi7Hfb7N8RRhHMc4xwz9joOR83pcPxVZWHqAcr0yIoWmW6Q6RbD+PPZPEN6yOkSz/Pg+Qe8ewd8+CE8P5Tn5/G47XmGfDYcBHvJYfBPeWSNv8IXJ2XmZlNDRZUAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-14228F2C"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162100556-a410dabb-1630-455d-9d26-283b0487ac11.png.ca4ccbf433a0a907089f7acb0ce65fe6@320w.29a87c1a.webp 320w, /assets/162100556-a410dabb-1630-455d-9d26-283b0487ac11.png.ca4ccbf433a0a907089f7acb0ce65fe6@565w.74437b33.webp 565w"
+            sizes="(min-width: 565px) 565px, 100vw"
+            width="565"
+            height="358"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162100556-a410dabb-1630-455d-9d26-283b0487ac11.png.ca4ccbf433a0a907089f7acb0ce65fe6@565w.dc22266e.png"
+    alt="image"
+    srcset="/assets/162100556-a410dabb-1630-455d-9d26-283b0487ac11.png.ca4ccbf433a0a907089f7acb0ce65fe6@320w.036d2664.png 320w, /assets/162100556-a410dabb-1630-455d-9d26-283b0487ac11.png.ca4ccbf433a0a907089f7acb0ce65fe6@565w.dc22266e.png 565w"
+    sizes="(min-width: 565px) 565px, 100vw"
+    width="565"
+    height="358"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>생성된 권한 정책.</p><h3 id="역할-생성">역할 생성</h3><p><code>lambda-s3-role</code>이란 역할을 생성하고, 위에서 만든 정책을 연결합니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-F2B95E87 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-F2B95E87 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-F2B95E87::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-F2B95E87 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-F2B95E87::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAElEQVQokZ1SW3LDIAzk/ofpSfrVK+SnqbExiJcNZjuixbEdJ5PJzuyHBKykFaKXEkQEpQZoPcIYg2VZwCilVDa0eJsvm3OGuF5/MAwDuk4ixoh5nu8uHeNneXGRhO/RoaMJvc+IqYDIwHuPEEJlzhla60ouyrntFFsISRG9jVA+QccFcc6r2DRNtWN+zLFzrsYtdypojIHWZteNtRaj+vMzhLg+3mPvZ/mnUEqtVZkppUoWYXHmowWcQbAvTYhHZI+YZ9VfoSCyVWxOtw5bN28Jyr6v/7AZzl0e/+Ejrm6W213hnK1L2I7Jgs/YvD3d8m5vL451vJ/ygo/PDl8Xi1+o5WKBdRP62wAAAABJRU5ErkJggg==");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-F2B95E87"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@320w.42136a3a.webp 320w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@644w.2e2c5e9c.webp 644w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@903w.567c9e25.webp 903w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1098w.83d307c2.webp 1098w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1227w.22ed5af6.webp 1227w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1292w.05083898.webp 1292w"
+            sizes="(min-width: 1292px) 1292px, 100vw"
+            width="1292"
+            height="687"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1292w.5877c4a1.png"
+    alt="image"
+    srcset="/assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@320w.00a74ff4.png 320w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@644w.0b513d55.png 644w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@903w.37275b65.png 903w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1098w.4e4cb221.png 1098w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1227w.2ab52b4a.png 1227w, /assets/162103365-a7447ffe-b013-4ea7-9901-97a93f545a5e.png.ee3dbcde553dc80fc725ac1117ef3904@1292w.5877c4a1.png 1292w"
+    sizes="(min-width: 1292px) 1292px, 100vw"
+    width="1292"
+    height="687"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p><style >
+    
+
+    .astro-imagetools-picture-A664F166 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-A664F166 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-A664F166::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-A664F166 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-A664F166::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA9klEQVQokXVSW46EIBDk/teaS+z+uyICMoIvUKlJ4+o4hCGpdKer3zQzxiCEAHoxxg/k727/xrOu6zDPM7ZtS9j3/cJpy7lTX9cV4zii73s455KNtW0LSmqtvYhpmhKo8xMUTLZhGLAsS2qCYK0FTSmlTD6saRrwuobWGqRXVQWtFJRSyfEOKkx+p/7BaQ3v/ZGw+qvRSg0pFTjnEKKFECIFU2KSJRCnbnxK6JyF6R3008H793ilHZb2vF97PeSxQxrj/3NoP1TpLnNQwfI1RLBvp1E6i9JpUWeL9/jhE8wYwHKH/NbKOJLvMSKEFdYNePw+UZsFL/RdvIGYoFRMAAAAAElFTkSuQmCC");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-A664F166"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@320w.b6d99b4f.webp 320w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@650w.27bb7d82.webp 650w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@915w.4ce0db86.webp 915w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1113w.870445c8.webp 1113w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1245w.2f52af67.webp 1245w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1311w.cbc41e95.webp 1311w"
+            sizes="(min-width: 1311px) 1311px, 100vw"
+            width="1311"
+            height="563"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1311w.8998fcfa.png"
+    alt="image"
+    srcset="/assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@320w.7e93f161.png 320w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@650w.44a9ee34.png 650w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@915w.8a24267e.png 915w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1113w.fbcb6c84.png 1113w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1245w.e1c1c3d8.png 1245w, /assets/162100786-2b220a2c-9bd0-4723-93b0-919064b37c19.png.51b939c8f5f9fd969facfc9cf160c10e@1311w.8998fcfa.png 1311w"
+    sizes="(min-width: 1311px) 1311px, 100vw"
+    width="1311"
+    height="563"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><h2 id="람다-생성">람다 생성</h2><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// dependencies</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">AWS</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">require</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;aws-sdk&#39;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">util</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">require</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;util&#39;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">sharp</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">require</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;sharp&#39;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// get reference to S3 client</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">s3</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">AWS</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">S3</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79C0FF">exports</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">handler</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">event</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">context</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">callback</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Read options from the event parameter.</span></span>
+<span class="line"><span style="color: #C9D1D9">  console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;Reading options from event:</span><span style="color: #79C0FF">\n</span><span style="color: #A5D6FF">&#39;</span><span style="color: #C9D1D9">, util.</span><span style="color: #D2A8FF">inspect</span><span style="color: #C9D1D9">(event, {depth: </span><span style="color: #79C0FF">5</span><span style="color: #C9D1D9">}));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">srcBucket</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> event.Records[</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">].s3.bucket.name;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Object key may have spaces or unicode non-ASCII characters.</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">srcKey</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">decodeURIComponent</span><span style="color: #C9D1D9">(event.Records[</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">].s3.object.key.</span><span style="color: #D2A8FF">replace</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">/</span><span style="color: #7EE787; font-weight: bold">\+</span><span style="color: #A5D6FF">/</span><span style="color: #FF7B72">g</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">&#39; &#39;</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">dstBucket</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> srcBucket </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;-resized&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Infer the image type from the file suffix.</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">typeMatch</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> srcKey.</span><span style="color: #D2A8FF">match</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">/</span><span style="color: #7EE787; font-weight: bold">\.</span><span style="color: #A5D6FF">(</span><span style="color: #79C0FF">[</span><span style="color: #FF7B72">^</span><span style="color: #79C0FF">.]</span><span style="color: #FF7B72">*</span><span style="color: #A5D6FF">)</span><span style="color: #FF7B72">$</span><span style="color: #A5D6FF">/</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (</span><span style="color: #FF7B72">!</span><span style="color: #C9D1D9">typeMatch) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;Could not determine the image type.&#39;</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Check that the image type is supported</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">imageType</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> typeMatch[</span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">].</span><span style="color: #D2A8FF">toLowerCase</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">if</span><span style="color: #C9D1D9"> (imageType </span><span style="color: #FF7B72">!=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;jpg&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">&amp;&amp;</span><span style="color: #C9D1D9"> imageType </span><span style="color: #FF7B72">!=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;png&#39;</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">`Unsupported image type: ${</span><span style="color: #C9D1D9">imageType</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Download the image from the S3 source bucket.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">params</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      Bucket: srcBucket,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Key: srcKey,</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> origimage </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> s3.</span><span style="color: #D2A8FF">getObject</span><span style="color: #C9D1D9">(params).</span><span style="color: #D2A8FF">promise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// set thumbnail width. Resize will set the height automatically to maintain aspect ratio.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">/**</span></span>
+<span class="line"><span style="color: #8B949E">   * SMALL (width 368)</span></span>
+<span class="line"><span style="color: #8B949E">   */</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">smallWidth</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">368</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">smallDstKey</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;small-&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> srcKey;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Use the sharp module to resize the image and save in a buffer.</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> buffer </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">sharp</span><span style="color: #C9D1D9">(origimage.Body)</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">resize</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        width: smallWidth,</span></span>
+<span class="line"><span style="color: #C9D1D9">        withoutEnlargement: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      })</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">toBuffer</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Upload the thumbnail image to the destination bucket</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">destparams</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      Bucket: dstBucket,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Key: smallDstKey,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Body: buffer,</span></span>
+<span class="line"><span style="color: #C9D1D9">      ContentType: </span><span style="color: #A5D6FF">&#39;image&#39;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">putResult</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> s3.</span><span style="color: #D2A8FF">putObject</span><span style="color: #C9D1D9">(destparams).</span><span style="color: #D2A8FF">promise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">/**</span></span>
+<span class="line"><span style="color: #8B949E">   * MEDIUM (width 720)</span></span>
+<span class="line"><span style="color: #8B949E">   */</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">mediumWidth</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">720</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">mediumDstKey</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;medium-&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> srcKey;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Use the sharp module to resize the image and save in a buffer.</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> buffer </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">sharp</span><span style="color: #C9D1D9">(origimage.Body)</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">resize</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        width: mediumWidth,</span></span>
+<span class="line"><span style="color: #C9D1D9">        withoutEnlargement: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      })</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">toBuffer</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Upload the thumbnail image to the destination bucket</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">destparams</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      Bucket: dstBucket,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Key: mediumDstKey,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Body: buffer,</span></span>
+<span class="line"><span style="color: #C9D1D9">      ContentType: </span><span style="color: #A5D6FF">&#39;image&#39;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">putResult</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> s3.</span><span style="color: #D2A8FF">putObject</span><span style="color: #C9D1D9">(destparams).</span><span style="color: #D2A8FF">promise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">/**</span></span>
+<span class="line"><span style="color: #8B949E">   * LARGE (width 1440)</span></span>
+<span class="line"><span style="color: #8B949E">   */</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">largeWidth</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1440</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">largeDstKey</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;large-&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> srcKey;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Use the sharp module to resize the image and save in a buffer.</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">var</span><span style="color: #C9D1D9"> buffer </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">sharp</span><span style="color: #C9D1D9">(origimage.Body)</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">resize</span><span style="color: #C9D1D9">({</span></span>
+<span class="line"><span style="color: #C9D1D9">        width: largeWidth,</span></span>
+<span class="line"><span style="color: #C9D1D9">        withoutEnlargement: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">      })</span></span>
+<span class="line"><span style="color: #C9D1D9">      .</span><span style="color: #D2A8FF">toBuffer</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #8B949E">// Upload the thumbnail image to the destination bucket</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">try</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">destparams</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">      Bucket: dstBucket,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Key: largeDstKey,</span></span>
+<span class="line"><span style="color: #C9D1D9">      Body: buffer,</span></span>
+<span class="line"><span style="color: #C9D1D9">      ContentType: </span><span style="color: #A5D6FF">&#39;image&#39;</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">putResult</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">await</span><span style="color: #C9D1D9"> s3.</span><span style="color: #D2A8FF">putObject</span><span style="color: #C9D1D9">(destparams).</span><span style="color: #D2A8FF">promise</span><span style="color: #C9D1D9">();</span></span>
+<span class="line"><span style="color: #C9D1D9">  } </span><span style="color: #FF7B72">catch</span><span style="color: #C9D1D9"> (error) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(error);</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">  console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">&#39;Successfully resized &#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> srcBucket </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;/&#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> srcKey </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39; and uploaded to &#39;</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> dstBucket);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span></code></pre><p><code>sharp</code> 라이브러리를 사용하여 이미지를 리사이즈 하는 코드를 람다에 업로드해줍니다. 리사이징되는 이미지 사이즈는 서비스를 고려하여 LARGE (width 1440), MEDIUM (width 720), SMALL (width 368)로 설정하였습니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-33D4A2D6 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-33D4A2D6 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-33D4A2D6::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-33D4A2D6 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-33D4A2D6::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABRUlEQVQokZWTy26DMBBF/f9f1UVX/YAuEtEdEPADvwHb5LY2CaFp1KZIR8ie8cEzGkgvJDouQcUALgQ6SiGVgjYGSut/Q+qmxbGqUFUfOByOaNoTjHNFeI95sKfvIFJKNHWDtuth/Yh5nldCwBwXhBAQY7zt/wFx3m+LfDiELIuYR4tZdXDOQ2uNaZqKOOc8EoUQkF3E+xFLOu+CE0I6w/Maw/sLlPGw1hZZfq7C/TvGWMh5RFsNrilSTIhpDaQUMc0Byq63TykhXG43jre25LUfR2htSgVKKZCTaPF2fEWYrrK0sSwLYkoleS/5VqZzGKQsYs45iLUORtsyMt77cvietbcrt17/LFlKmXvot414CZakneQ39rfNHydSDhCcoWccjAv0lIKLAZRxUMbAOC+D/iyEMYa+77dJf/SXGGuf42uwPwHZQVI5gQ6LJAAAAABJRU5ErkJggg==");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-33D4A2D6"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@320w.3250330f.webp 320w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@619w.8cdc1654.webp 619w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@843w.9a548418.webp 843w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@992w.2685162e.webp 992w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@1067w.54fc9d36.webp 1067w"
+            sizes="(min-width: 1067px) 1067px, 100vw"
+            width="1067"
+            height="601"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@1067w.396089b2.png"
+    alt="image"
+    srcset="/assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@320w.307a3e4e.png 320w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@619w.47244693.png 619w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@843w.2b8acaa3.png 843w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@992w.28b534f9.png 992w, /assets/162099914-2afb25e8-94ca-4601-a09b-8e4c783932b7.png.bfcda3daf262f6d4ca46c5339a00c55e@1067w.396089b2.png 1067w"
+    sizes="(min-width: 1067px) 1067px, 100vw"
+    width="1067"
+    height="601"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>생성된 람다. 왼쪽 아래 S3 버킷은 이 시점에서는 아직 없어야 합니다.</p><h2 id="람다-설정-편집">람다 설정 편집</h2><p><style >
+    
+
+    .astro-imagetools-picture-4F8947FF {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-4F8947FF img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-4F8947FF::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-4F8947FF img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-4F8947FF::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB8UlEQVQ4jZ1U7XLbIBDUQ/cB+jz51yfqD6eObSEs4A4ESNrOnSL5I3aTlJkbBJKWvd3jGuc92raF6Sw8MWKM4P+IGCOIGY33HrvdDn8OR1AqqLWglO9HrRVpGNAoekp6gryY5xnTNGGSeZ51/ZWQIaBNSgNyzssp44hxjWnStXx0E+veOCrIfA/IzDBdDxsicilbCP3x6qdH4yFDYsbheEIgRiCC8wGtMRDm14D3P1/P8zWg6CdO984jcFI9hd2/xgLwBJCY4ZyHsWf0tBiT85KyxKBzhksFlhfT7mWYbzSMUdMUZkSktWS6DjEmra9hyItB04QyTp8DRgF0HikldXvIeXNdGMpHj1O+NeaGIcekTCQ92VzN+Gzcs61LHSZI6QirtdYE8KvFPN8zPJ09fu/22O/fYM+96hYCqYaqK7Ou1TzO6Em05g8ltQGGlGH7pUEcj60C9s5p+t8dVVOOUV31gW5uiQCuJmkDqHWTpZTLVSxaZu/7ypAIxhic2lZvSs6DgkhIymvzkANEBjlM9oglE69SbIeWgoZTwuuxw1trcfYMGipcWPri+F532n2uOpA0Bil+0bLWS0XUCcKQ4SjCa8gzo/cBPoSN3bO4sGVEewDZAxq5x9JkZV6ffbis+2fhnL6XTm9MC/vyA/bXT/wF0K7NK1zhAqYAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-4F8947FF"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@320w.edc6c37d.webp 320w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@571w.9d905d9b.webp 571w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@738w.3f7dffd3.webp 738w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@821w.56ba6fda.webp 821w"
+            sizes="(min-width: 821px) 821px, 100vw"
+            width="821"
+            height="777"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@821w.66828ec0.png"
+    alt="image"
+    srcset="/assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@320w.eb66c489.png 320w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@571w.e97758cb.png 571w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@738w.6f533ae1.png 738w, /assets/162100222-112bda93-d6b3-427a-ae0e-366e9d8b4d2c.png.b346eba000102b631a0421369e8ecf19@821w.66828ec0.png 821w"
+    sizes="(min-width: 821px) 821px, 100vw"
+    width="821"
+    height="777"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>메모리는 1024MB, 임시 스토리지는 512MB(최솟값), 제한시간은 30초로 설정하고 위에서 생성한 역할을 설정해두었습니다.</p><h2 id="트리거-추가">트리거 추가</h2><p>위에서 생성된 S3 버킷중 기본 버킷(<code>bucketname-s3</code>으로 만든)의 속성으로 들어가줍니다.</p><p><style >
+    
+
+    .astro-imagetools-picture-CA126F8A {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-CA126F8A img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-CA126F8A::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-CA126F8A img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-CA126F8A::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5ElEQVQYlVWR22rEMAxE/f8/2W361N1sbcsXybdMkRND1nDQIMRYjMz39oMQAnLOyMyI+UREwCIf9a51dmGdw+/zBU8Es+9vxJSmqXUeu49wSVBLQbnBzBDVtU6txqtfyvUZM4y6W+vQxwARwTk7B3rvH6hZaxXHGAiB4L0/dcywkUFZIEVgtm3D1+MBay0ohDnoPSHGONHNg+qU4CLjLzBePuFNCTtlRFajCk/nrMmaV5GZYUppmqhu12arKrWPkzbQ+kBpHWMMHMcBfa01mKTHyHweZaEZTTSXxdWTi6Vvx1GvfxSf0YhKHTsdAAAAAElFTkSuQmCC");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-CA126F8A"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@320w.603df934.webp 320w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@646w.85f787c2.webp 646w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@906w.e3a05ec2.webp 906w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1102w.26c120e6.webp 1102w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1232w.6d802881.webp 1232w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1297w.438dfee9.webp 1297w"
+            sizes="(min-width: 1297px) 1297px, 100vw"
+            width="1297"
+            height="362"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1297w.15de29c1.png"
+    alt="image"
+    srcset="/assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@320w.5ccc0b57.png 320w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@646w.240c5573.png 646w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@906w.1b4c76f9.png 906w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1102w.30b19390.png 1102w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1232w.8ba7abcb.png 1232w, /assets/162101115-111a94d6-ee79-4dd1-b58c-c0705c770b49.png.790420cae9f69dde88e9db5e7f3b4933@1297w.15de29c1.png 1297w"
+    sizes="(min-width: 1297px) 1297px, 100vw"
+    width="1297"
+    height="362"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>중간에 <code>이벤트 알림</code>에서 <code>이벤트 알림 생성</code>을 클릭.</p><p><style >
+    
+
+    .astro-imagetools-picture-45A031DE {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-45A031DE img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-45A031DE::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-45A031DE img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-45A031DE::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABC0lEQVQokaVS2W6EMAzk/7+vywdUaoU4qsROnAuYylnYspTuSy1ZjmxnxldjiTBOE/phABHBi8B5/1L9lU8ExIzGksWtbfF2a9F1XU221oKZQUz1rURqraX6Nubu0xxm3mIW3gsa5xyYXWUREcQYEUJ42CsVucdTSggxQja/VtkoiDEG3nn8V1LOaL5Y8N4bjH2PYZxqKyrrulZV0eq1i5wz5nl+iq+HvJQyGi15nhfEmCrDHjwmhhDhvI4jvQbMG+BZjqAquijdoObmUn4RrleAV4y71SUQuWr105n8zwrPQLtl5/Dx2dWz0nvVEehmS/lp/wGoAb2lGJ4rPSYuy1Jnt2sppbau/jPgNxxlDp2DmBXjAAAAAElFTkSuQmCC");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-45A031DE"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@320w.46272fd5.webp 320w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@582w.c8fe434f.webp 582w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@757w.884e97e4.webp 757w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@844w.704cc4c0.webp 844w"
+            sizes="(min-width: 844px) 844px, 100vw"
+            width="844"
+            height="417"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@844w.93be8f7d.png"
+    alt="image"
+    srcset="/assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@320w.c36cfc71.png 320w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@582w.37f20fb3.png 582w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@757w.dab8a782.png 757w, /assets/162101189-66d74a9e-7cea-419f-8431-1aaf1180821b.png.6c9a635315ec67ab5235886b7e06f678@844w.93be8f7d.png 844w"
+    sizes="(min-width: 844px) 844px, 100vw"
+    width="844"
+    height="417"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p><strong>이벤트 유형</strong>은 <code>모든 객체 생성 이벤트</code> 체크.</p><p><style >
+    
+
+    .astro-imagetools-picture-D6E4D4FA {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-D6E4D4FA img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-D6E4D4FA::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-D6E4D4FA img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-D6E4D4FA::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB2UlEQVQ4jZ2TyY4TMRRF63PZs+Jf2CHBb7BmAUugO00GakiNiafnoWxfZBcZ1HQCwtIpT8+3/Hzt4nhk2LcdpFJQiqBy/Zxb4+oCEaRUKIQQOEwTgvcIIdwlxnhn3sMYg0KQQUcB5chRTwJVYhS5XyUmjvogUQ4Mu+6AcmQ5JsWW53iOhhGEcSiY0mhUwKoZ8Vj1eGoGPNUDvm0bPPxs8FB2WNUDHqtuGStbrOoe617g+57j655jPUq0woJphyKdXRIlDygXMtIFCLugPc6YcGmfoDlm1Byh7ZwECcN0AOcc6Tw1EZQ2GIVBLwzIeuQSY/rcAfDeo+Bk0B8FqrqGEBLWuny4zrnFOaLFkKwZb5LKPHsU1lkwxlDVTRbIImpBSAWtzfL/q4XPSzwJ+t+CWmt0XQ/GOYg0hJS5zbjId/C04J8EhSL004RhGMAYh7X2xft3K814nXISTA7vpyOqqsK+adH2PXwIL+7k1s7itaA2GlIKHA7H7FIyw59exR0TLgTE4IEYMDuHIpkwjCParssppxSTYBL3PtXXLM/TuRnG2j92PAOLIGl9dpj00v8bihSktqBuA/rxCbT9ArX5jGJXVvgftrsdVmWLzcf3WL99hc2711h/eINfXEKINZJTZmoAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-D6E4D4FA"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@320w.6d4654ea.webp 320w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@574w.bbb94246.webp 574w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@743w.32644cf4.webp 743w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@828w.eed13423.webp 828w"
+            sizes="(min-width: 828px) 828px, 100vw"
+            width="828"
+            height="639"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@828w.c3e84db2.png"
+    alt="image"
+    srcset="/assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@320w.26dd41c1.png 320w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@574w.5bd8f1f2.png 574w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@743w.412f6a16.png 743w, /assets/162101207-95431cde-d01c-4be4-94c9-9550fe0c96dd.png.90b7f4a831a51f1a2d6399e944022b89@828w.c3e84db2.png 828w"
+    sizes="(min-width: 828px) 828px, 100vw"
+    width="828"
+    height="639"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p><strong>대상</strong>은 Lambda 함수에 위에서 생성한 람다 함수 연결.</p><p><style >
+    
+
+    .astro-imagetools-picture-F848F7A0 {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-F848F7A0 img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-F848F7A0::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-F848F7A0 img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-F848F7A0::after {
+          background-size: cover;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABK0lEQVQokZ2RW0/CQBCF+///kPHNKMbok0jLHSpBINhSu+3eZrvbo11oABMi8eHL2Un2TObMBOvNBqPxGLN5jOFwhPh9gaIs/02QM4bl8gPL1RpfBYdSClrrA6fv6wiEECBNvjBkYIyBIdpTuWPd6B8QEQLRfHYWxu4hrxWMqyH6N2DZFlnJwYoCdV17WvOpmrYhn85QhQOoqA8VHtHRAGnnHtnzC/R4AmstnHPe1KylbUC0T6fUIXLycIen8BY6Z3BCwnIBK4TXiktUSkG+dqG2n9DWetPvqVhRIElTCCERZJ1HLOIRdqs1ynQHYgz6AOU5iHOo7hsoSWCc8/tsJ2s5jzyPYXp9yF4EFUbQURP3hF4IPZledZSGoFQKzWEkkdeLSOkjeb3ET+RvVM6y0Da5EiMAAAAASUVORK5CYII=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-F848F7A0"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@320w.b7b9bd87.webp 320w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@672w.6c20013d.webp 672w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@907w.9e14f04b.webp 907w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@1024w.7caf4eb1.webp 1024w"
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            width="1024"
+            height="467"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@1024w.ac2ff9e2.png"
+    alt="image"
+    srcset="/assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@320w.e82f629f.png 320w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@672w.66f8ed78.png 672w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@907w.356a0a1b.png 907w, /assets/162101459-f2356e50-9cc2-466b-aaec-9e707ce2ce71.png.9eb14246aed9bd96a29f48a13a5c7f4f@1024w.ac2ff9e2.png 1024w"
+    sizes="(min-width: 1024px) 1024px, 100vw"
+    width="1024"
+    height="467"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+</p><p>다 했으면 람다의 트리거 부분에 아까 말했던 S3 버킷이 생기게 됩니다.</p><h1 id="문제점">문제점</h1><ul>
+<li>
+<p>람다 실행 속도
+현재는 이미지 크기 제한과 런타임을 최대 30초로 제한을 해둔 상태입니다. 따라서 전체 서비스에서 이미지 리사이즈 속도를 고려해줘야하는 비효율적이고 번거로운 작업이 추가됩니다.</p>
+<p>-> 몇 초 간격으로 체크를 하는 동작이 추가되어야하나?</p>
+<p>-> 런타임을 Node.js가 아닌 Go나 .NET을 사용하면 속도가 좀 더 빨라질 지도?</p>
+</li>
+</ul><h1 id="참고문헌">참고문헌</h1><ul>
+<li><a href="https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/with-s3-tutorial.html">https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/with-s3-tutorial.html</a></li>
+</ul>
+			</main>
+		</div>
+	</article>
+</div>
+			<div class="">
+				<style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()};var a;{const l={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t)},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,i]=s;return e in l?l[e](i):void 0};customElements.get("astro-island")||customElements.define("astro-island",(a=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement?.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},i=this.querySelectorAll("template[data-astro-template]");for(const r of i)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove());for(const r of s)!r.closest(this.tagName)?.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML);const n=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,n,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}async connectedCallback(){window.addEventListener("astro:hydrate",this.hydrate),await import(this.getAttribute("before-hydration-url"));const s=JSON.parse(this.getAttribute("opts"));Astro[this.getAttribute("client")](async()=>{const e=this.getAttribute("renderer-url"),[i,{default:n}]=await Promise.all([import(this.getAttribute("component-url")),e?import(e):()=>()=>{}]);return this.Component=i[this.getAttribute("component-export")||"default"],this.hydrator=n,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},a.observedAttributes=["props"],a))}</script><astro-island uid="ZigCiG" component-url="/BlogViews.9b3d7b7e.js" component-export="default" renderer-url="/client.4ca19528.js" props="{&quot;namespace&quot;:[0,&quot;https://yunu7067.github.io&quot;],&quot;key&quot;:[0,&quot;/p/image-resize-for-aws-lambda/&quot;]}" ssr="" client="load" before-hydration-url="data:text/javascript;charset=utf-8,//[no before-hydration script]" opts="{&quot;name&quot;:&quot;BlogViews&quot;,&quot;value&quot;:true}"><div data-hk="0-0"><!--#-->loading...<!--/--> </div></astro-island>
+			</div>
+			<div class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
+	<div class="flex-auto flex flex-col">
+		Author
+		<h3 class="text-xl mb-1">@YUNU7067</h3>
+		<p class="flex-auto font-light line-clamp-2">끊임없이 공부하는 사람이 되고싶은 개발자.</p>
+	</div>
+	<div class="flex-none">
+		<div class="w-fit shadow-sm  overflow-hidden">
+			<style >
+    
+
+    .astro-imagetools-picture-7EF09B0A {
+      --opacity: 1;
+      --z-index: 0;
+    }
+
+    
+            .astro-imagetools-picture-7EF09B0A img {
+              z-index: 1;
+              position: relative;
+            }
+          
+
+    .astro-imagetools-picture-7EF09B0A::after {
+      inset: 0;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: opacity 1s;
+      opacity: var(--opacity);
+      z-index: var(--z-index);
+    }
+  
+        .astro-imagetools-picture-7EF09B0A img {
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+
+        .astro-imagetools-picture-7EF09B0A::after {
+          background-size: cover;
+          background-image: url("data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwAF/8QAKBAAAgIABQMCBwAAAAAAAAAAAQMCBAAFBhEhBxJBFJETIiMxMlGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwX/xAAcEQACAgIDAAAAAAAAAAAAAAAAAQIDBBETFDH/2gAMAwEAAhEDEQA/AELp6gXdD5LYsWa8XMRGEYmR3mR8vvxjSR6a1FhqvS+K5lcyqYmIyH3BI84HNDdQq+VaPrUmU3Mt0PjMSRL6cieR3Enf22xlaH1pepIs5XlKKtIXrgbJoX3yhKfBI3PjbgeMUqsmT1tgTqS8G0sRJ71gnuTPsmO08HYS/khiwPT6k5rlx9Lk8lrqQJ2m9QY1xJJLJkn8j+hwMWF7kQ+I/9k=");
+          background-position: 50% 50%;
+        }
+      </style><picture
+    
+    class="astro-imagetools-picture astro-imagetools-picture-7EF09B0A"
+    style="position: relative; display: inline-block; ; max-width: 100%; height: auto;"
+    ><source
+            srcset="/assets/avatar@145w.d313cc34.webp"
+            sizes="(min-width: 145px) 145px, 100vw"
+            width="145"
+            height="104"
+            type="image/webp"
+            
+          />
+<img
+    
+    src="/assets/avatar@145w.339f66f7"
+    alt="YUNU7067"
+    srcset="/assets/avatar@145w.339f66f7.jpeg"
+    sizes="(min-width: 145px) 145px, 100vw"
+    width="145"
+    height="104"
+    loading="lazy"
+    decoding="async"
+    class="astro-imagetools-img"
+    style="display: inline-block; overflow: hidden; vertical-align: middle; ; max-width: 100%; height: auto;"
+    onload="parentElement.style.setProperty('--z-index', 1);parentElement.style.setProperty('--opacity', 0);"
+  />
+  </picture>
+
+		</div>
+	</div>
+</div>
+			<div id="blog-comment" class="giscus mt-12 mb-8"></div>
+
+<script client:load src="https://giscus.app/client.js" data-repo="yunu7067/yunu7067.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkzNTMzNjU1MjQ" data-category="giscus" data-category-id="DIC_kwDOFQ_uFM4CADJ2" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="ko" data-loading="lazy " crossorigin="anonymous" async>
+	</script>
+		</div>
+	</main>
+
+	<footer data-hk="0-0" class="w-full text-center py-4 px-2"><div class="max-w-3xl mx-auto text-gray-500 font-light">©YUNU7067, Built with Astro</div></footer>
+</body></html>
