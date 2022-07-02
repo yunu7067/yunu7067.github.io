@@ -84,7 +84,7 @@ export default function Search({keys}: {keys: string[]}) {
         <div>
           {searchResult() &&
             searchResult().map(({id, doc}) => (
-              <div class='p-8 border rounded-md mb-2x dark:border-gray-600'>
+              <div class='p-8 border rounded-md mb-2 dark:border-gray-600'>
                 <a href={id as unknown as string}>
                   <h1 class='mb-1.5 text-2xl font-bold hover:underline hover:underline-offset-1'>{doc.title}</h1>
                 </a>
