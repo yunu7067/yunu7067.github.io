@@ -51,12 +51,12 @@
 	--theme-code-bg: var(--color-gray-700);
 }
 
-body {
+/* body {
 	background: var(--theme-bg);
 	color: var(--theme-text);
-}
+} */
 
-:root.theme-dark {
+/* :root.theme-dark {
 	color-scheme: dark;
 	--theme-accent-opacity: 0.3;
 	--theme-divider: var(--color-gray-900);
@@ -68,7 +68,7 @@ body {
 	--theme-code-inline-bg: var(--color-gray-800);
 	--theme-code-text: var(--color-gray-200);
 	--theme-code-bg: var(--color-gray-900);
-}
+} */
 
 ::selection {
 	color: var(--theme-accent);
@@ -85,12 +85,12 @@ body {
 	--max-width: calc(100% - 2rem);
 }
 
-@media (min-width: 50em) {
+/* @media (min-width: 50em) {
 	:root {
 		--max-width: 40em;
 	}
-}
-
+} */
+/* 
 body {
 	font-family: var(--font-body);
 	font-size: 1rem;
@@ -110,7 +110,7 @@ small,
 }
 
 a {
-	/* color: var(--theme-accent); */
+	color: var(--theme-accent);
 	font-weight: 400;
 	text-underline-offset: 0.08em;
 	text-decoration: none;
@@ -151,4 +151,4 @@ a:focus {
 strong {
 	font-weight: 600;
 	color: inherit;
-}
+} */
