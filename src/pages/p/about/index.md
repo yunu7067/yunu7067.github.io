@@ -17,8 +17,6 @@ publishDate: 2022-07-01
 
 다재다능한 풀 스택 개발자를 지향합니다
 
-## 타임라인
-
 - 2015.03. ~ 2021.02. : 전주대학교 컴퓨터공학과 재학
 - 2020.12. ~ 2022.06. : 무형문화연구원 시스템 팀 재직
 
@@ -33,6 +31,15 @@ publishDate: 2022-07-01
 
 - TypeScript
 - Kotlin
+
+## 그동안 배운 프로그래밍 기술
+
+| 연도 | 언어               | 기술                                                                                                                                                                                                                                                                                                                                                 |
+| :--: | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2019 | 추가중             | 추가중                                                                                                                                                                                                                                                                                                                                               |
+| 2020 | -                  | 1. 스프링부트와 Mybatis, 타임리프를 이용한 MVC 웹 페이지 제작                                                                                                                                                                                                                                                                                        |
+| 2021 | Kotlin, TypeScript | 1. 스프링부트와 JPA를 이용한 코틀린 기반 백엔드 서버 제작<br>2. 스프링부트와 JPA, 스프링 시큐리티, 타임리프를 이용한 코틀린 기반 MVC 웹 페이지 제작<br>3. [React](https://ko.reactjs.org/), [Next.js](https://nextjs.org/)를 이용하여 CSR, SSR 웹 페이지 개발<br>4. [npm](https://www.npmjs.com/)에 사용할 수 있는 JavaScript/TypeScript 패키지 배포 |
+| 2022 | Python, Julia      | 예정                                                                                                                                                                                                                                                                                                                                                 |
 
 ## 기술 스택
 
@@ -107,9 +114,12 @@ publishDate: 2022-07-01
 
 ### 인증
 
-<!-- ![Firebase / Firebase Admin / Firestore](https://img.shields.io/badge/Firebase/Firebase_Admin/Firestore-ffa816?style=for-the-badge&logo=firebase&logoColor=white) -->
+<!-- ![Firebase / Firebase Admin / Firestore](https://img.shields.io/badge/Firebase/Firebase_Admin/Firestore-ffa816?style=for-the-badge&logo=firebase&logoColor=white) [![Spring Security](https://img.shields.io/badge/Spring_Security-6db33f?style=for-the-badge&logo=springsecurity&logoColor=white)](https://spring.io/projects/spring-security) -->
 
 <p>
+  <a class="inline-block mr-2" href="https://spring.io/projects/spring-security" target="_blank" alt="Spring Security">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="166.75" height="28" role="img" aria-label="SPRING SECURITY"><title>SPRING SECURITY</title><g shape-rendering="crispEdges"><rect width="166.75" height="28" fill="#6db33f"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100"><image x="9" y="7" width="14" height="14" xlink:href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSJ3aGl0ZSIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPlNwcmluZyBTZWN1cml0eTwvdGl0bGU+PHBhdGggZD0iTTIwLjU5IDIuMDY2IDExLjk5MyAwIDMuNDEgMi4wNjZ2Ni42MTJoNC41NTdhMy44MDQgMy44MDQgMCAwIDAgMCAuOTU0SDMuNDF2My4xMDZDMy40MSAxOS44NjcgMTEuOTk0IDI0IDExLjk5NCAyNHM4LjU4Mi00LjEzMyA4LjU4Mi0xMS4yNThWOS42MzVoLTQuNTQ1YTMuNjE2IDMuNjE2IDAgMCAwIDAtLjk1NGg0LjU1OHpNMTIgMTIuMjYyaC0uMDA2YTMuMTA5IDMuMTA5IDAgMSAxIC4wMDYgMHptLS4wMDYtNC41NzlhLjgwNC44MDQgMCAwIDAtLjM3IDEuNTJ2LjIwOGwuMjM4LjIzN3YuMTU5bC4xNTkuMTU5di4xNTlsLS4xNC4xNC4xNS4yNDZ2LjE1OWwtLjE2LjE4OS4yMjMuMjIyLjI0Ni0uMjQ2VjkuMjE4YS44MDQuODA0IDAgMCAwLS4zNDYtMS41MzV6bTAgLjgzNmEuMjk5LjI5OSAwIDEgMSAuMjk4LS4yOTkuMjk5LjI5OSAwIDAgMS0uMjk4LjN6Ii8+PC9zdmc+"/><text transform="scale(.1)" x="933.75" y="175" textLength="1227.5" fill="#fff" font-weight="bold">SPRING SECURITY</text></g></svg>
+  </a>
   <a class="inline-block" href="https://spring.io/projects/spring-data-jpa" target="_blank" alt="Firebase / Firebase Admin / Firestore">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="317.25" height="28" role="img" aria-label="FIREBASE/FIREBASE ADMIN/FIRESTORE"><title>FIREBASE/FIREBASE ADMIN/FIRESTORE</title><g shape-rendering="crispEdges"><rect width="317.25" height="28" fill="#ffa816"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="100"><image x="9" y="7" width="14" height="14" xlink:href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSJ3aGl0ZSIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPkZpcmViYXNlPC90aXRsZT48cGF0aCBkPSJNMy44OSAxNS42NzJMNi4yNTUuNDYxQS41NDIuNTQyIDAgMDE3LjI3LjI4OGwyLjU0MyA0Ljc3MXptMTYuNzk0IDMuNjkybC0yLjI1LTE0YS41NC41NCAwIDAwLS45MTktLjI5NUwzLjMxNiAxOS4zNjVsNy44NTYgNC40MjdhMS42MjEgMS42MjEgMCAwMDEuNTg4IDB6TTE0LjMgNy4xNDdsLTEuODItMy40ODJhLjU0Mi41NDIgMCAwMC0uOTYgMEwzLjUzIDE3Ljk4NHoiLz48L3N2Zz4="/><text transform="scale(.1)" x="1686.25" y="175" textLength="2732.5" fill="#333" font-weight="bold">FIREBASE/FIREBASE ADMIN/FIRESTORE</text></g></svg>
   </a>
@@ -147,11 +157,34 @@ publishDate: 2022-07-01
   </a>
 </p>
 
-## 그동안 배운 프로그래밍 기술
+# 포트폴리오
 
-| 연도 | 언어               | 기술                                                                                                                                                                                                                                                                                                                                                 |
-| :--: | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2019 | 추가중             | 추가중                                                                                                                                                                                                                                                                                                                                               |
-| 2020 | -                  | 1. 스프링부트와 Mybatis, 타임리프를 이용한 MVC 웹 페이지 제작                                                                                                                                                                                                                                                                                        |
-| 2021 | Kotlin, TypeScript | 1. 스프링부트와 JPA를 이용한 코틀린 기반 백엔드 서버 제작<br>2. 스프링부트와 JPA, 스프링 시큐리티, 타임리프를 이용한 코틀린 기반 MVC 웹 페이지 제작<br>3. [React](https://ko.reactjs.org/), [Next.js](https://nextjs.org/)를 이용하여 CSR, SSR 웹 페이지 개발<br>4. [npm](https://www.npmjs.com/)에 사용할 수 있는 JavaScript/TypeScript 패키지 배포 |
-| 2022 | 예정               | 예정                                                                                                                                                                                                                                                                                                                                                 |
+1. 무형문화연구원 웹사이트
+
+<video controls="" autoplay="" name="media">
+  <source src="/assets/test.webm" type="video/webm" />
+  <source src="/assets/test.mp4" type="video/mp4">
+  <p>To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.</p>
+</video>
+
+- 기술 스택
+  - Backend : Spring Boot, Spring Data JPA, Firebase Admin
+  - Frontend : Next.js(React), styled-components, Firebase/Firebase Admin
+  - Database : MariaDB
+  - CI/CD : GitHub Actions(프론트엔드에서만 사용)
+  - Image resizing : AWS Lambda, AWS S3
+  - Ops : Amazon EC2, PM2
+
+2. 무형유산학회 웹사이트
+
+  <video controls preload="auto">
+    <source src="/assets/test.webm" type="video/webm" />
+    <source src="/assets/test.mp4" type="video/mp4">
+    <p>To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.</p>
+  </video>
+
+- 기술 스택
+  - Frontend : Next.js(React), Tailwind CSS, Firebase/Firebase Admin
+  - Database : MariaDB
+  - CI/CD : GitHub Actions(프론트엔드에서만 사용)
+  - Ops : Amazon EC2, PM2

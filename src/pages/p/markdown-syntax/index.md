@@ -2,7 +2,7 @@
 setup: |
   import Layout from '@lays/BlogPost.astro'
 title: 'Markdown Syntax Guide'
-publishDate: 2022-06-01
+publishDate: 2000-01-01
 description: 'Sample article showcasing basic Markdown syntax and formatting for HTML elements.'
 tags: ['markdown', 'css', 'html', 'themes']
 series: 'Blog Guide'
