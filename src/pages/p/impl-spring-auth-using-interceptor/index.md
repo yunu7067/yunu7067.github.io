@@ -27,7 +27,13 @@ series: 'Spring'
 
 ### @Authentication
 
-`@Authentication` 어노테이션은 매개변수 없이 작성만 하도록 구현하였습니다.
+`@Authentication` 어노테이션은 매개변수 없이 작성만 하도록 구현하였습니다. 이하는 클래스 위에 붙은 어노테이션들에 대한 설명입니다.
+
+`@Target`은 이 어노테이션을 사용할 수 있는 타깃을 지정합니다. `AnnotationTarget.FUNCTION`이라 했으므로 이 어노테이션은 함수(Function)에서만 사용 가능합니다. 클래스나 매개변수 등에서는 사용이 불가능합니다. ([AnnotationTarget](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-target/) 문서 참조)
+
+`@Retention`은 이 어노테이션이 컴파일 클래스에도 유지되는지, 런타임 시 리플렉션으로 표현되는지 관한 것으로 자바에서는 `SOURCE|CLASS|RUNTIME` 이렇게 세 가지가 있습니다. `SOURCE`로 설정할 경우 컴파일 레벨에서 이 어노테이션은 버려지고, `CLASS`로 설정할 경우 유지는 되지만 JVM에서 실행될 때 포함되지는 않습니다. 마지막으로 `RUNTIME`으로 설정할 경우 런타임까지 코드가 살아있으며 실행됩니다. 코틀린에서는 이름이 조금 다른데, `CLASS`가 `BINARY`로 바뀌어 `SOURCE|BINARY|RUNTIME`로 사용합니다. 동작은 동일합니다. ([AnnotationRetention](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.annotation/-annotation-retention/) 문서 참조)
+
+`@MustBeDocumented`은 public API 문서에 포함되는지 여부를 나타냅니다.
 
 ```kotlin
 /* Authentication.kt */
@@ -40,7 +46,7 @@ annotation class Authentication
 
 ### @RoleGuard
 
-`@RoleGuard` 어노테이션에서는 에서는 여러 역할을 체크할 수 있도록 배열 형식의 매개변수를 추가하였습니다.
+`@RoleGuard` 어노테이션에서는 에서는 여러 역할을 체크할 수 있도록 배열 형식의 매개변수를 추가하였습니다. 클래스 위의 어노테이션은 위와 동일합니다.
 
 ```kotlin
 /* RoleGuard.kt */
@@ -194,4 +200,5 @@ class ScheduleApiController(
 
 # 참고문헌
 
+- [Annotations | Kotlin](https://kotlinlang.org/docs/annotations.html)
 - [HTTP 상태 코드 - HTTP | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
