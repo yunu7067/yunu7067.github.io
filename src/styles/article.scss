@@ -1,4 +1,13 @@
+/* 다크 모드 */
+html.dark {
+  main#article-container {
+    p a:not([data-footnote-backref]) {
+      color: rgb(83, 155, 245) ;
+    }
+  }
+}
 
+/* 라이트 모드 */
 main#article-container {
   /* Typography */
   :is(h1, h2, h3, h4, h5, h6) {
@@ -40,13 +49,21 @@ main#article-container {
       margin-bottom: 2em;
   }
 
+  /* Anchor */
+  p a:not([data-footnote-backref]) {
+    color: rgb(9, 105, 218);
+  }
+  p a:not([data-footnote-backref]):hover {
+    text-decoration: underline;
+  }
+
   /* Table */
   table {
     display: block;
     width: 100%;
     // white-space: nowrap;
     // table-layout: auto;
-    overflow-x: scroll;
+    overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
     padding-bottom: 1rem;
@@ -175,6 +192,7 @@ main#article-container {
   }
 
   blockquote {
+    background: lightblue;
     font-size: 1.5rem;
     --padding-block: 1rem;
     --padding-inline: 1.25rem;
