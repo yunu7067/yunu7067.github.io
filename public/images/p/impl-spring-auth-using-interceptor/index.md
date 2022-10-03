@@ -17,7 +17,7 @@ series: 'Spring'
 
 <!-- mermaid 원본 코드 : https://github.com/yunu7067/yunu7067.github.io/discussions/20 -->
 
-![FlowChart](/images/p/impl-spring-auth-using-interceptor/flowchart.png)
+![FlowChart](./flowchart.png)
 
 # 구현
 

@@ -109,7 +109,7 @@ tags: ['Frontend', 'Svelte', 'SvelteKit']
 
 스벨트는 리액트와 다르게 useState와 같은 메서드를 이용하여 선언을 할 필요가 없습니다. 그냥 일반 변수처럼 선언한 후, 핸들링하는 함수를 만들고 사용하기만 하면 됩니다. 4-6번째 줄과 같이 `<script>` 태그 안에 1을 더해주는 함수 addOne()을 만들어 주고 11번째 줄의 `<button>` 태그에 onclick 이벤트로 달아주면 됩니다.
 
-![반응형 변수 테스트](/images/p/svelte-and-sveltekit/svelte_var1.gif)
+![반응형 변수 테스트](svelte_var1.gif)
 
 ### `$:` 구문을 이용하여 반응형 업데이트
 
@@ -136,7 +136,7 @@ tags: ['Frontend', 'Svelte', 'SvelteKit']
 
 위 예시는 `a`와 `b`를 더하는 코드입니다. input으로 `a`값과 `b`값을 받아서 값을 저장한 후 더해서 `sum`으로 보여줍니다. `bind:value`는 일단 모르셔도 됩니다. input의 value를 뒤의 변수와 연결시켜주는 역할을 한다는 정도만 이해하시면 됩니다.여기서 `$:` 다음에 나오는 변수들은 스벨트에서 자동으로 관찰(Observe)하고 있다, 변경이 감지되면 즉각적으로 뒤에 있는 코드 `add(a, b)`를 실행하게 됩니다.
 
-![`$:` 구문을 이용한 반응형 변수 테스트](/images/p/svelte-and-sveltekit/svelte_var2.gif)
+![`$:` 구문을 이용한 반응형 변수 테스트](./svelte_var2.gif)
 
 ```svelte {linenos=inline,linenostart=5}
   function add(b) {
@@ -213,7 +213,7 @@ export const count = writable(0);
 
 위의 예제 코드에서는 `count.js`에서 변수를 선언한 후, `index.svelte`와 `test.svelte`에서 사용하는 예시입니다. store된 변수에 접근할 때는 예시처럼 변수명 앞에 `$` 접두사를 붙여야 합니다.
 
-![$ 접두사를 이용한 store 테스트](/images/p/svelte-and-sveltekit/svelte_var3.gif)
+![$ 접두사를 이용한 store 테스트](./svelte_var3.gif)
 
 ## 제어문
 
@@ -294,7 +294,7 @@ export const count = writable(0);
 
 간단한 반복문의 예제 코드입니다.
 
-![반복문 테스트](/images/p/svelte-and-sveltekit/svelte_each.gif)
+![반복문 테스트](./svelte_each.gif)
 
 ### `{#await ...}`
 
@@ -358,7 +358,7 @@ Svelte는 비동기 문법에 대한 제어문도 지원합니다. React에서�
 
 간단한 예시코드입니다. resolve만 하는 Promise 함수(resolvePromise)와 reject만 하는 Promise 함수(rejectPromise)를 렌더링하는 코드입니다.
 
-![비동기 구문 테스트](/images/p/svelte-and-sveltekit/svelte_await.gif)
+![비동기 구문 테스트](./svelte_await.gif)
 
 ### `{#key ...}`
 
