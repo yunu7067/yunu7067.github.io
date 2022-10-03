@@ -1,65 +1,74 @@
 ---
 import BaseLayout from '@lays/BaseLayout.astro';
-import { AstroSeoProps } from '@coms/AstroSeo';
+import type {AstroSeoProps} from '@coms/AstroSeo';
 import SeriesPreview from '@coms/SeriesPreview';
 import BlogHeader from '@coms/BlogHeader.astro';
-import { PostMetadata } from '@types';
+import type {PostMetadata} from '@types';
 import config from '../../../blog.config.js';
 
-const allPosts = await Astro.glob('../p/**/*.md');
+const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
-const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+);
 
 const seriesData: {
-	[key: string]: { count: number, lastUpdated: number }
+  [key: string]: {count: number; lastUpdated: number};
 } = {};
 const seriesList = [];
 
-sortedPosts.map((post) => {
-	const { publishDate, series } = post.frontmatter as PostMetadata;
-	const currentPostPublishDate = new Date(publishDate).getTime();
-	if (series) {
-		// 이미 데이터가 있으면 seriesData에서 게시글 카운트만 올리고, 
-		// 없으면 해당 시리즈를 seriesList에 추가한 다음에 seriesData에 게시글 카운트 추가함.
-		if (seriesData[series]) {
-			seriesData[series] = {
-				count: seriesData[series].count + 1,
-				lastUpdated: seriesData[series].lastUpdated > currentPostPublishDate ? seriesData[series].lastUpdated : currentPostPublishDate
-			};
-		} else {
-			seriesList.push(series);
-			seriesData[series] = {
-				count: 1,
-				lastUpdated: new Date(publishDate).getTime()
-			};
-		}
-	}
+sortedPosts.map(post => {
+  const {publishDate, series} = post.frontmatter as PostMetadata;
+  const currentPostPublishDate = new Date(publishDate).getTime();
+  if (series) {
+    // 이미 데이터가 있으면 seriesData에서 게시글 카운트만 올리고,
+    // 없으면 해당 시리즈를 seriesList에 추가한 다음에 seriesData에 게시글 카운트 추가함.
+    if (seriesData[series]) {
+      seriesData[series] = {
+        count: seriesData[series].count + 1,
+        lastUpdated:
+          seriesData[series].lastUpdated > currentPostPublishDate
+            ? seriesData[series].lastUpdated
+            : currentPostPublishDate,
+      };
+    } else {
+      seriesList.push(series);
+      seriesData[series] = {
+        count: 1,
+        lastUpdated: new Date(publishDate).getTime(),
+      };
+    }
+  }
 });
 
 const seo: AstroSeoProps = {
-	title: `Series`,
+  title: `Series`,
 };
 ---
 
 <BaseLayout config={config} seo={seo}>
-	<main class="w-full">
-		<div class="max-w-3xl w-full mx-auto">
-			<BlogHeader config={config} />
+  <main class='w-full'>
+    <div class='max-w-3xl w-full mx-auto'>
+      <BlogHeader config={config} />
 
-			<main>
-				<h2 class="mt-8 mb-6 text-5xl tracking-tight text-center">Series</h2>
-				<!-- <small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small> -->
-				{seriesList.map((series) => (
-				<SeriesPreview series={series} count={seriesData[series].count} lastUpdated={seriesData[series].lastUpdated}
-					locale={config.locale.languageCode} />
-				))}
-			</main>
+      <main>
+        <h2 class='mt-8 mb-6 text-5xl tracking-tight text-center'>Series</h2>
+        <!-- <small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small> -->
+        {
+          seriesList.map(series => (
+            <SeriesPreview
+              series={series}
+              count={seriesData[series].count}
+              lastUpdated={seriesData[series].lastUpdated}
+              locale={config.locale.languageCode}
+            />
+          ))
+        }
+      </main>
 
-			<footer>
-				<!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
-			</footer>
-
-		</div>
-	</main>
-
+      <footer>
+        <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
+      </footer>
+    </div>
+  </main>
 </BaseLayout>

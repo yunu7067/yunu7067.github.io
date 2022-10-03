@@ -1,14 +1,14 @@
 ---
-import { Picture } from "astro-imagetools/components";
+import {Image} from '@astrojs/image/components';
 
 export interface Props {
-	src: string;
-	alt: string;
+  src: string;
+  alt: string;
 }
 
-const props = Astro.props as Props;
+const {src, alt} = Astro.props as Props;
 ---
 
-<div class="w-fit shadow-sm">
-	<Picture {...props} w={200} h={112} />
+<div class='w-fit shadow-sm'>
+  <Image src={src} alt={alt} format='webp' width={200} height={112} />
 </div>

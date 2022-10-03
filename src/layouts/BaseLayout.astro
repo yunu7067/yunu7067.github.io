@@ -1,51 +1,60 @@
 ---
 import Head from '../components/Head.astro';
-import AstroSeo, { AstroSeoProps } from '../components/AstroSeo';
-import { BlogConfigType } from '../types';
+import AstroSeo, {AstroSeoProps} from '../components/AstroSeo';
+import {BlogConfigType} from '../types';
 import Footer from '../components/Footer';
 // import '../styles/global.css';
 
 export interface Props {
-	seo?: AstroSeoProps,
-	config: BlogConfigType
+  seo?: AstroSeoProps;
+  config: BlogConfigType;
 }
 
 const props = Astro.props as Props;
 const defaultSeo: AstroSeoProps = {
-	title: props.config.title  || '',
-	description: props.config.description || '',
+  title: props.config.title || '',
+  description: props.config.description || '',
 };
 const blogTheme = () => {
-	if (props.config.theme === 'light' || props.config.theme === 'dark')
-		return props.config.theme;
-	else
-		return '';
-}
+  if (props.config.theme === 'light' || props.config.theme === 'dark') return props.config.theme;
+  else return '';
+};
 ---
 
-<html lang={props.config?.locale.languageCode || 'ko' } class={"bg-transparent " + blogTheme()}>
+<html lang={props.config?.locale.languageCode || 'ko'} class={'bg-transparent ' + blogTheme()}>
+  <Head>
+    <AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
+    <script define:vars={{configTheme: props.config.theme}}>
+      (function () {
+        /* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
+        if (configTheme === ' system') {
+          const htmlEl = document.getElementsByTagName('html')[0];
+          /* 시스템 테마가 다크이면 */ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            htmlEl.classList.add('dark');
+          } /* 그 외엔 지정 안함 */
+        } /*
+	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if (
+          configTheme === 'auto'
+        ) {
+          const theme = window.localStorage.getItem('theme');
+          const htmlEl = document.getElementsByTagName('html')[0];
+          theme && htmlEl.classList.add(theme);
+          // console.log({theme});
+        } /*
+	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */
+      })();
+    </script>
+    <link
+      rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css'
+      integrity='sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ'
+      crossorigin='anonymous'
+    />
+  </Head>
 
-<Head>
-	<AstroSeo {...{...defaultSeo, ...(props?.seo || {})}} />
-	<script define:vars={{ configTheme : props.config.theme }}>
-		(function () {
-			/* theme 설정이 'system'인 경우는 prefers-color-scheme 미디어 쿼리를 인식하여 설정한다 */
-			if (configTheme === " system") {
-				const htmlEl = document.getElementsByTagName('html')[0]; /* 시스템 테마가 다크이면 */ if
-					(window.matchMedia("(prefers-color-scheme: dark)").matches) { htmlEl.classList.add("dark"); } /* 그 외엔 지정 안함 */
-			} /*
-	theme 설정이 'auto' 인 경우는 브라우저 localStorage에 저장된 값이 있는지 확인하고, 있으면 그 값을 없으면 'light' 로 설정한다. */ else if
-				(configTheme === "auto") {
-					const theme = window.localStorage.getItem("theme"); const
-						htmlEl = document.getElementsByTagName('html')[0]; (theme) && htmlEl.classList.add(theme); console.log({ theme });
-			} /*
-	theme 설정이 'light' 혹은 'dark' 인 경우는 astro에서 처리한다. */ })(); </script>
-</Head>
+  <body class='w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50'>
+    <slot />
 
-<body class="w-full px-5 lg:px-0 overflow-y-scroll dark:bg-slate-900 dark:text-gray-50">
-	<slot />
-
-	<Footer />
-</body>
-
+    <Footer />
+  </body>
 </html>

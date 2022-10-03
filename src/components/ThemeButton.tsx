@@ -10,7 +10,7 @@ export default function ThemeButton({config}: ThemeButtonProps) {
   const [isDarkMode, setDarkMode] = createSignal(false);
 
   createEffect(() => {
-    console.log('create effect');
+    // console.log('create effect');
     const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {src: string};
     const theme = window.localStorage.getItem('theme');
     console.log({theme});

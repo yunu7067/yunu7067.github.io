@@ -1,5 +1,5 @@
 ---
-layout: '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: '어노테이션과 인터셉터로 인증 구현하기'
 publishDate: 2022-07-04
 description: '스프링 시큐리티를 사용하지 않고 어노테이션과 인터셉터를 사용하여 인증 전략을 구현하는 방법에 대해 기술합니다.'
@@ -17,7 +17,7 @@ series: 'Spring'
 
 <!-- mermaid 원본 코드 : https://github.com/yunu7067/yunu7067.github.io/discussions/20 -->
 
-![FlowChart](./flowchart.png)
+![FlowChart](/images/p/impl-spring-auth-using-interceptor/flowchart.png)
 
 # 구현
 

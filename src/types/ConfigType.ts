@@ -34,6 +34,7 @@ export interface BlogConfigType {
   description?: string;
   baseurl: string;
   locale: LocaleConfigType;
+  rss: boolean;
   author: AuthorConfigType;
   avatar: AvatarConfigType;
   social?: SocialConfigType[];

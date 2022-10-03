@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: 'Dublin Core™ Metadata Initiative'
 description: '표준화된 메타데이터 요소 집합'
 publishDate: '2021-04-28T13:20:00+09:00'
@@ -75,7 +74,7 @@ abstract, accessRights, accrualMethod, accrualPeriodicity, accrualPolicy, altern
 초기의 더블린 코어 요소. 15개의 요소로 구성되어 있고 모든 요소가 평면적이기 때문에 계층성이 없고, 선택적(Optional)이며 반복 가능하고 어떤 순서로든 사용할 수 있다.
 해당 속성(Property)는 `/elements/1.1/` 네임스페이스에 기술되어 있다.
 
-![https://librarian.nl.go.kr/LI/contents/L10202000000.do](dublin_core_block.png)
+![https://librarian.nl.go.kr/LI/contents/L10202000000.do](/images/p/dublincore/dublin_core_block.png)
 
 - Content (내용)
 

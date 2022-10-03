@@ -1,34 +1,48 @@
-# astro 정적 블로그
+# BlogWalk
 
-## 기능
+## Features
 
-- [x] 사이트 맵 xml (Using by @astrojs/sitemap)
-- [x] 이미지 자동 최적화 (Using by [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools))
+- [x] Support Markdown/MDX  
+  - [x] Optimize the Images (MDX Only) (Using by [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) with [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/))
+  - [x] MDX 
+  - [x] KaTeX math notation 
+  - [ ] mermaid
+  
 - [x] 게시글 태그
-- [x] 게시글 검색
+- [x] 게시글 검색 (Using by flexsearch)
 - [x] 조회수 (Using by [CountAPI](https://countapi.xyz/))
 - [x] 게시글 시리즈
 - [x] 다크모드
   - [x] 고정 테마(라이트/다크)
   - [x] 가변 테마(자동/시스템)
 - [x] 모바일 디바이스 스타일링
+- [x] Sitemap xml (Using by @astrojs/sitemap)
+- [x] RSS (Using by @astrojs/rss)
 
-### 검토중인 기능
+### Plan
+- [ ] JSON Feed
 
-- [ ] [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)을 [@astrojs/image](https://github.com/withastro/astro/tree/main/packages/integrations/image) 로 변경
-- [ ] rss 제공
+## Changelog
 
-## 사용법
+#### 1.0.9
+- Support for rss.
+- Support for MDX using `@astrojs/image`
+- Support for KaTeX math notation in Markdown/MDX.
+- Add right side Table of Contents.
+- Change image optimization library from `astro-imagetools` to `@astrojs/image`.
+  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
 
-1. `yarn` 패키지 매니저 설치
-   이 저장소는 `yarn berry`를 사용합니다. 따라서 실행 전에 `npm install -g yarn` 명령어를 사용하여 `yarn`을 사용할 수 있도록 준비합니다.
+## How to use
+
+1. `pnpm` 패키지 매니저 설치
+   이 저장소는 `pnpm`를 사용합니다. 따라서 실행 전에 `npm install -g pnpm` 명령어를 사용하여 `pnpm`을 사용할 수 있도록 준비합니다.
 
    | 명령어       | 동작                                                                   |
    | :----------- | :--------------------------------------------------------------------- |
-   | yarn install | Install dependencies.                                                  |
-   | yarn dev     | Runs Astro’s dev server. server                                        |
-   | yarn build   | Builds your site for production.                                       |
-   | yarn preview | Starts a local static file server to serve your built dist/ directory. |
+   | pnpm install | Install dependencies.                                                  |
+   | pnpm dev     | Runs Astro’s dev server. server                                        |
+   | pnpm build   | Builds your site for production.                                       |
+   | pnpm preview | Starts a local static file server to serve your built dist/ directory. |
 
    더 자세한 사용법은 [Astro 공식 문서](https://docs.astro.build/en/reference/cli-reference/#astro-preview)를 참조합니다.
 
@@ -38,13 +52,14 @@
    cd your-name.github.io
    ```
    `your-name.github.io` 폴더를 생성한 후 이동하니다.
+
 3. git 서브모듈로 레포지토리 가져오기
 
    ```sh
    git submodule add https://github.com/yunu7067/astro-blog ./astro-blog
    ```
 
-   astro-blog라는서브모듈로 이 레포지토리를 가져옵니다
+   astro-blog 라는 서브모듈로 이 레포지토리를 가져옵니다
 
 4. 내용물 프로젝트 폴더 루트로 복사
    ```sh
@@ -52,7 +67,7 @@
    ```
    서브모듈의 astro-blog 내용물을 프로젝트 폴더의 최상단에 복사합니다.
 
-### astro-blog 업데이트
+### Update astro-blog
 
 ```sh
 cd ./astro-blog
@@ -61,21 +76,30 @@ git pull
 
 서브모듈 폴더로 들어가 `git pull` 명령어를 이용해 최신 커밋을 받아옵니다. 그리고 `./src/pages`와 `./blog.config.js`파일 (그리고 그 이외에 개인이 수정한 파일들)을 제외한 나머지 파일을 프로젝트 폴더의 최상단에 덮어쓰기해줍니다.
 
+### About Page
+
+about 페이지는 `/src/pages/about.mdx`에 작성합니다.
+
 ### 게시글 작성
 
 새로운 게시글은 `/src/pages/p/`에 `./[slug].md` 혹은 `./[slug]/index.md` 파일명으로 작성한 후 서버를 재시작시켜줍니다.
 
-이미지 파일도 같은 폴더에 넣어둘 수 있습니다.
+#### Frontmatter
 
-## 주의사항
+| Attribute   | Type     | required | Description       |
+| :---------- | -------- | -------- | :---------------- |
+| title       | string   | true     | post title        |
+| publishDate | string   | true     | post publish date |
+| description | string   | true     | post description  |
+| heroImage   | string   | false    | hero image        |
+| tags        | string[] | false    | tag name list     |
+| series      | string   | false    | series name       |
 
-### About 페이지
+### RSS
 
-about 페이지는 `/src/pages/p/about/index.md`에 작성합니다. 이 폴더를 지우면 안 됩니다!
+default : true
 
-### 마크다운 작성 시
-
-Astro는 마크다운에서 태그를 인식하기 때문에 `<Tag />`와 유사한 형태를 사용할 경우 오류가 발생합니다. `&lt;` `&gt;`을 사용해도 오류가 발생합니다!
+rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
 
 ## Credits
 

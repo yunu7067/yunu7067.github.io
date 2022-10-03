@@ -1,47 +1,53 @@
 ---
-import { Picture } from "astro-imagetools/components";
-import { PostMetadata } from '@types';
-import { timeFormatter } from '@utils';
+import {Image} from '@astrojs/image/components';
+import type {PostMetadata} from '@types';
+import {timeFormatter} from '@utils';
 import Tags from './Tags';
 import 'src/styles/article.scss';
+import type {MarkdownHeading} from 'astro';
+import RightSidebar from '@coms/RightSidebar/RightSidebar.astro';
 
 export interface Props extends PostMetadata {
-	locale: string;
-};
+  locale: string;
+  headings: MarkdownHeading[];
+}
 
-const { title, publishDate, locale, description, heroImage, tags } = Astro.props as Props;
+const {title, publishDate, locale, description, heroImage, tags, headings} = Astro.props as Props;
 ---
 
-<div class="layout">
-	<article class="content">
-		<div>
-			<header class="pb-8 mb-8 flex flex-col items-center justify-center text-center ">
-				{heroImage &&
-				<div class="mt-8 mb-16 rounded-sm shadow-sm overflow-hidden">
-					<Picture w={768} h={324} src={heroImage} alt="HeroImage" objectFit={"cover"} objectPosition="center" />
-				</div>
-				}
-				<p class="m-0">{timeFormatter(publishDate, locale || "ko-KR")}</p>
-				<h1 class="m-0 mb-1 text-4xl font-bold leading-normal">{title}</h1>
-				<Tags tags={tags} />
-			</header>
-			<main id="article-container">
-				<slot />
-			</main>
-		</div>
-	</article>
+<div class='layout'>
+  <article class='content flex flex-row gap-8'>
+    <div class='max-w-3xl w-full'>
+      <header class='pb-8 mb-8 flex flex-col items-center justify-center text-center'>
+        {
+          heroImage && (
+            <div class='mt-8 mb-16 rounded-sm shadow-sm overflow-hidden'>
+              <Image src={heroImage} alt='HeroImage' width={768} height={324} format='webp' />
+            </div>
+          )
+        }
+        <p class='m-0'>{timeFormatter(publishDate, locale || 'ko-KR')}</p>
+        <h1 class='m-0 mb-1 text-4xl font-bold leading-normal'>{title}</h1>
+        <Tags tags={tags} />
+      </header>
+      <main id='article-container'>
+        <slot />
+      </main>
+    </div>
+    <RightSidebar headings={headings} />
+  </article>
 </div>
 
 <style>
-	.content {
-		margin-bottom: 4rem;
-	}
+  .content {
+    margin-bottom: 4rem;
+  }
 
-	.content :global(main > * + *) {
-		margin-top: 1rem;
-	}
+  .content :global(main > * + *) {
+    margin-top: 1rem;
+  }
 
-	.content :global(h2) {
-		margin-top: 4rem;
-	}
+  .content :global(h2) {
+    margin-top: 4rem;
+  }
 </style>

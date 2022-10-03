@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: 'Markdown Syntax Guide'
 publishDate: 2000-01-01
 description: 'Sample article showcasing basic Markdown syntax and formatting for HTML elements.'
@@ -134,4 +133,4 @@ Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and ot
 
 [![Google](https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png)](https://google.com)
 
-![test image](./test.png)
+![test image](/images/p/markdown-syntax/test.png)
