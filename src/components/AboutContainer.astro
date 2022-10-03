@@ -1,33 +1,33 @@
 ---
-import { SearchLine, StackLine } from "./icons";
-import { btn } from '@coms/classes';
-import { AuthorConfigType } from "@types";
+import {SearchLine, StackLine} from './icons';
+import {btn} from '@coms/classes';
+import type {AuthorConfigType} from '@types';
 
 export interface Props {
-	author: AuthorConfigType;
-};
+  author: AuthorConfigType;
+}
 
-const { author } = Astro.props as Props;
+const {author} = Astro.props as Props;
 ---
 
-<div class="mb-8 px-8 py-8 rounded-md bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-	<article class="mb-2 flex flex-col items-start justify-center text-start">
-		<a href="/p/about/" aria-label="About">
-			<h1 class="text-4xl font-bold mb-3">About Me</h1>
-		</a>
-		<main>
-			<p class="mb-2">{author.comment}</p>
-			<a href="/p/about/" aria-label="About">Read more</a>
-		</main>
-	</article>
+<div class='mb-8 px-8 py-8 rounded-md bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100'>
+  <article class='mb-2 flex flex-col items-start justify-center text-start'>
+    <a href='/about/' aria-label='About'>
+      <h1 class='text-4xl font-bold mb-3'>About Me</h1>
+    </a>
+    <main>
+      <p class='mb-2'>{author.comment}</p>
+      <a href='/about/' aria-label='About'>Read more</a>
+    </main>
+  </article>
 </div>
-<div class="mb-3 text-right">
-	<a class={btn } href="/series/">
-		Series
-		<StackLine />
-	</a>
-	<a class={btn + " ml-4" } href="/search/">
-		Search
-		<SearchLine />
-	</a>
+<div class='mb-3 text-right'>
+  <a class={btn} href='/series/'>
+    Series
+    <StackLine />
+  </a>
+  <a class={btn + ' ml-4'} href='/search/'>
+    Search
+    <SearchLine />
+  </a>
 </div>

@@ -1,6 +1,5 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: 'Markdown Syntax Guide'
 publishDate: 2000-01-01
 description: 'Sample article showcasing basic Markdown syntax and formatting for HTML elements.'

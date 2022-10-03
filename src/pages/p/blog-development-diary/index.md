@@ -1,5 +1,5 @@
 ---
-layout: '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: '블로그 개발일지'
 description: ''
 publishDate: 2021-07-02

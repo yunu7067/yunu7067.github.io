@@ -8,13 +8,14 @@ const blogConfig = {
   locale: {
     languageCode: 'ko-KR',
   },
+  rss: false,
   author: {
     name: 'YUNU7067',
     comment: '끊임없이 공부하는 사람이 되고싶은 개발자.',
   },
   avatar: {
     enabled: true,
-    src: '/public/assets/profile/avatar.jpeg',
+    src: '/images/avatar.jpeg',
   },
   social: [
     {identifier: 'github', name: 'GitHub', url: 'https://github.com/yunu7067/'},

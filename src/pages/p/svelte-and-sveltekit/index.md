@@ -1,5 +1,5 @@
 ---
-layout: '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: '스벨트 & 스벨트 킷'
 description: 'Svelte와 Sveltekit'
 publishDate: 2021-12-19T00:34:04+09:00

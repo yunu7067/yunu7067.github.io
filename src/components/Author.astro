@@ -1,28 +1,32 @@
 ---
-import { Picture } from "astro-imagetools/components";
-import { AvatarConfigType } from "../types";
+import {Image} from '@astrojs/image/components';
+import type {AvatarConfigType} from '../types';
 
 export interface Props {
-	avatar: AvatarConfigType;
-	name: string;
-	href?: string;
-	description?: string;
+  avatar: AvatarConfigType;
+  name: string;
+  href?: string;
+  description?: string;
 }
 
-const { avatar, name, href = '', description = '' } = Astro.props as Props;
+const {avatar, name, href = '', description = ''} = Astro.props as Props;
 ---
 
 <div
-	class="my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm">
-	<div class="flex-auto flex flex-col">
-		Author
-		<h3 class="text-xl mb-1">@{name}</h3>
-		<p class="flex-auto font-light line-clamp-2">{description}</p>
-	</div>
-	<div class="flex-none">
-		{avatar?.enabled &&
-		<div class="w-fit shadow-sm  overflow-hidden">
-			<Picture src={avatar.src} alt={name} w={145} h={104} />
-		</div>}
-	</div>
+  class='my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm'
+>
+  <div class='flex-auto flex flex-col'>
+    Author
+    <h3 class='text-xl mb-1'>@{name}</h3>
+    <p class='flex-auto font-light line-clamp-2'>{description}</p>
+  </div>
+  <div class='flex-none'>
+    {
+      avatar?.enabled && (
+        <div class='w-fit shadow-sm  overflow-hidden'>
+          <Image src={avatar.src} width={145} height={104} format='webp' alt={name} />
+        </div>
+      )
+    }
+  </div>
 </div>

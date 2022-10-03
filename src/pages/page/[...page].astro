@@ -2,39 +2,38 @@
 import BlogPostPreview from '@coms/PostPreview.astro';
 import Pagination from '@coms/Pagination.astro';
 import BaseLayout from '@lays/BaseLayout.astro';
-import { AstroSeoProps } from '@coms/AstroSeo';
+import type {AstroSeoProps} from '@coms/AstroSeo';
 import BlogHeader from '@coms/BlogHeader.astro';
 import config from '../../../blog.config.js';
 
-export async function getStaticPaths({ paginate }) {
-	let allPosts = await Astro.glob('../p/**/*.md');
-	const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+export async function getStaticPaths({paginate}) {
+  let allPosts = await Astro.glob('../p/**/*.{md,mdx}');
+  const sortedPosts = allPosts.sort(
+    (a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+  );
 
-	// Return a paginated collection of paths for all posts
-	return paginate(sortedPosts, { pageSize: 7 });
+  // Return a paginated collection of paths for all posts
+  return paginate(sortedPosts, {pageSize: 7});
 }
 // page
-const { page } = Astro.props;
+const {page} = Astro.props;
 const seo: AstroSeoProps = {};
 ---
 
 <BaseLayout config={config} seo={seo}>
-	<main class="w-full">
-		<div class="max-w-3xl w-full mx-auto">
-			<BlogHeader config={config} />
+  <main class='w-full'>
+    <div class='max-w-3xl w-full mx-auto'>
+      <BlogHeader config={config} />
 
-			<main class="">
-				<h2 class="mt-8 mb-1 text-5xl tracking-tight text-center">All Posts</h2>
-				<small class="block text-base text-center mb-6">{page.start + 1}–{page.end + 1} of {page.total}</small>
-				{page.data.map((post) =>
-				<BlogPostPreview post={post} />)}
-			</main>
+      <main class=''>
+        <h2 class='mt-8 mb-1 text-5xl tracking-tight text-center'>All Posts</h2>
+        <small class='block text-base text-center mb-6'>{page.start + 1}–{page.end + 1} of {page.total}</small>
+        {page.data.map(post => <BlogPostPreview post={post} />)}
+      </main>
 
-			<footer>
-				<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-			</footer>
-
-		</div>
-	</main>
-
+      <footer>
+        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      </footer>
+    </div>
+  </main>
 </BaseLayout>

@@ -1,12 +1,11 @@
 ---
-setup: |
-  import Layout from '@lays/BlogPost.astro'
-  import { LinkLine } from '@coms/icons';
+layout: '@lays/ContentLayout.astro'
 title: 'About Me'
 description: '공부하는 블로그에 대하여'
 publishDate: 2022-07-01
 ---
 
+import { LinkLine } from '@coms/icons';
 # About Me
 
 ![1](/public/assets/hero3.jpeg)

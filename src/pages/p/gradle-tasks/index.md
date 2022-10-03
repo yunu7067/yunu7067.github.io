@@ -1,5 +1,5 @@
 ---
-layout: '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: 'Gradle Task 톺아보기'
 publishDate: 2022-06-30
 description: 'Gradle Tasks가 어떻게 구성되어있는지 궁금해서 쓰는 글.'

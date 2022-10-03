@@ -1,5 +1,5 @@
 ---
-layout: '@lays/BlogPost.astro'
+layout: '@lays/ContentLayout.astro'
 title: 'AWS 람다, S3를 이용한 이미지 리사이징'
 publishDate: 2022-04-07
 description: 'AWS 서비스를 이용하여 이미지를 리사이즈하고 저장하는 방법.'

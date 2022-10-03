@@ -150,9 +150,9 @@ main#article-container {
     word-break: break-word;
   }
 
-  pre.astro-code>code {
-    all: unset;
-  }
+  // pre.astro-code>code {
+  //   all: unset;
+  // }
 
   pre {
     margin: 0.5rem 0 16px;
@@ -177,6 +177,22 @@ main#article-container {
     border-radius: 0.3em;
     white-space: pre-wrap;
   }
+
+  /* Code Block line numbers*/
+	code {
+		counter-reset: step;
+		counter-increment: step 0;
+	}
+
+	code .line::before {
+		content: counter(step);
+		counter-increment: step;
+		width: 1rem;
+		margin-right: 1.5rem;
+		display: inline-block;
+		text-align: right;
+		color: rgba(115, 138, 148, .4);
+	}
 
   @media (min-width: 37.75em) {
     pre {
