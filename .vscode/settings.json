@@ -17,7 +17,7 @@
     "editor.tabSize": 2
   },
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "astro-build.astro-vscode",
     "editor.tabSize": 2,
     "editor.detectIndentation": false
   },

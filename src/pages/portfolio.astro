@@ -2,6 +2,7 @@
 import MainLayout from '$lays/MainLayout.astro';
 import config from '$config';
 import Hero from '$coms/layout/Hero.astro';
+import '$styles/article.scss';
 
 const {title, description, avatar, social} = config;
 const canonicalURL = Astro.url.toString();
@@ -34,7 +35,46 @@ const props = {
     <Hero category={'Section'} title={'Portfolio'} subtitle={''} />
 
     <div class='flex flex-col'>
-      <article class='max-w-4xl w-full mx-auto px-5 pt-8 pb-32'>portfolio list...</article>
+      <article id='article-container' class='max-w-4xl w-full mx-auto px-5 pt-8 pb-32'>
+        <h3>1. 무형문화연구원 웹사이트</h3>
+
+        <video class='mb-2' controls preload='auto'>
+          <source src='/assets/test.webm' type='video/webm' />
+          <source src='/assets/test.mp4' type='video/mp4' />
+          <p>
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that supports HTML5 video.
+          </p>
+        </video>
+
+        <b>기술 스택</b>
+
+        <ul>
+          <li>Backend : Spring Boot, Spring Data JPA, Firebase Admin</li>
+          <li>Frontend : Next.js(React), styled-components, Firebase/Firebase Admin</li>
+          <li>Database : MariaDB</li>
+          <li>CI/CD : GitHub Actions(프론트엔드에서만 사용)</li>
+          <li>Image resizing : AWS Lambda, AWS S3</li>
+          <li>Ops : Amazon EC2, PM2</li>
+        </ul>
+
+        <h3>2. 무형유산학회 웹사이트</h3>
+        <video class='mb-2' controls preload='auto'>
+          <source src='/assets/test.webm' type='video/webm' />
+          <source src='/assets/test.mp4' type='video/mp4' />
+          <p>
+            To view this video please enable JavaScript, and consider upgrading to a web browser
+            that supports HTML5 video.
+          </p>
+        </video>
+        <b>기술 스택</b>
+        <ul>
+          <li>Frontend : Next.js(React), Tailwind CSS, Firebase/Firebase Admin</li>
+          <li>Database : MariaDB</li>
+          <li>CI/CD : GitHub Actions(프론트엔드에서만 사용)</li>
+          <li>Ops : Amazon EC2, PM2</li>
+        </ul>
+      </article>
     </div>
   </main>
 </MainLayout>
