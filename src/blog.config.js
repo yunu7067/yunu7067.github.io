@@ -11,7 +11,7 @@ const blogConfig = {
 	rss: true,
 	author: {
 		name: "YUNU7067",
-		comment: "We choose to go to the Moon;대한 간단한 설명을 기입해줍니다.",
+		comment: "We choose to go to the Moon;",
 	},
 	avatar: {
 		enabled: true,
