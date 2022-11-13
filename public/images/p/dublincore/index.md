@@ -1,5 +1,5 @@
 ---
-layout: '@lays/ContentLayout.astro'
+layout: '$lays/BlogLayout.astro'
 title: 'Dublin Core™ Metadata Initiative'
 description: '표준화된 메타데이터 요소 집합'
 publishDate: '2021-04-28T13:20:00+09:00'

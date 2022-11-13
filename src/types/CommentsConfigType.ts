@@ -1,4 +1,4 @@
-import {GiscusProps, Theme} from '@types';
+import type {GiscusProps, Theme} from '$types';
 
 export interface GiscusConfigProps extends GiscusProps {
   lightTheme: Theme;

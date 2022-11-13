@@ -1,5 +1,5 @@
-import {Component} from 'solid-js';
-import {IconProps} from './IconProps';
+import type {Component} from 'solid-js';
+import type {IconProps} from './IconProps';
 
 /**
  * @copyright Remix Icon <https://remixicon.com/>

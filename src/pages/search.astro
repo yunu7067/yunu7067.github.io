@@ -1,11 +1,11 @@
 ---
-import {AstroSeoProps} from '@coms/AstroSeo';
-import BaseLayout from '@lays/BaseLayout.astro';
-import config from '../../blog.config.js';
-import BlogHeader from '@coms/BlogHeader.astro';
+import MainLayout from '$lays/MainLayout.astro';
+import Search from '$coms/Search';
+import {file2slug} from 'src/utils/file2slug';
 import BlogSearch from 'src/utils/BlogSearch';
-import Search from '@coms/Search';
-import file2slug from 'src/utils/file2slug.js';
+import config from '$config';
+import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 let allPosts = await Astro.glob('./p/**/*.{md,mdx}');
 const posts = allPosts.map(p => {
@@ -33,17 +33,42 @@ const flexSearchIndexKeys = [
   'store',
 ];
 
-const seo: AstroSeoProps = {
-  title: 'Search',
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: 'Search',
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: true},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: false},
+  },
 };
 ---
 
-<BaseLayout config={config} seo={seo}>
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <BlogHeader config={config} />
+    <Hero
+      category={'Blog'}
+      title={'Find posts'}
+      subtitle={'Search fields: title, description, tags'}
+    />
+
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{search: true}} />
 
       <Search client:load keys={flexSearchIndexKeys} />
     </div>
   </main>
-</BaseLayout>
+</MainLayout>

@@ -1,15 +1,16 @@
 ---
-import BaseLayout from '@lays/BaseLayout.astro';
-import type {AstroSeoProps} from '@coms/AstroSeo';
-import SeriesPreview from '@coms/SeriesPreview';
-import BlogHeader from '@coms/BlogHeader.astro';
-import type {PostMetadata} from '@types';
-import config from '../../../blog.config.js';
+import SeriesPreview from '$coms/SeriesPreview';
+import MainLayout from '$lays/MainLayout.astro';
+import type {PostMetadata} from '$types';
+import config from '$config';
+import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 // 최신 게시글 먼저 탐색해 최근에 글이 추가된 시리즈가 위로 갈 수 있도록 함.
 const sortedPosts = allPosts.sort(
-  (a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
 );
 
 const seriesData: {
@@ -41,34 +42,47 @@ sortedPosts.map(post => {
   }
 });
 
-const seo: AstroSeoProps = {
-  title: `Series`,
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: 'Series',
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: false},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: true},
+  },
 };
 ---
 
-<BaseLayout config={config} seo={seo}>
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <BlogHeader config={config} />
+    <Hero category={'Blog'} title={'Series'} subtitle={'All series'} />
 
-      <main>
-        <h2 class='mt-8 mb-6 text-5xl tracking-tight text-center'>Series</h2>
-        <!-- <small class="block text-base text-center mb-3">{page.start + 1}–{page.end + 1} of {page.total}</small> -->
-        {
-          seriesList.map(series => (
-            <SeriesPreview
-              series={series}
-              count={seriesData[series].count}
-              lastUpdated={seriesData[series].lastUpdated}
-              locale={config.locale.languageCode}
-            />
-          ))
-        }
-      </main>
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{series: true}} />
 
-      <footer>
-        <!-- <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} /> -->
-      </footer>
+      {
+        seriesList.map(series => (
+          <SeriesPreview
+            series={series}
+            count={seriesData[series].count}
+            lastUpdated={seriesData[series].lastUpdated}
+            locale={config.locale.languageCode}
+          />
+        ))
+      }
     </div>
   </main>
-</BaseLayout>
+</MainLayout>

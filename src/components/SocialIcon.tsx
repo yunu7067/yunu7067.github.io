@@ -1,5 +1,5 @@
-import {Component, JSX} from 'solid-js';
-import {SocialConfigType, SocialIdentifiers} from '../types';
+import type {Component, JSX} from 'solid-js';
+import type {SocialConfigType, SocialIdentifiers} from '$types';
 import {AtLine, Discord, Earth, Facebook, GitHub, Instagram, LinkedIn, Mail, Npmjs, Twitter, YouTube} from './icons';
 
 interface SocialIconProps {

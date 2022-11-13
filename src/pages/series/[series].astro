@@ -1,10 +1,11 @@
 ---
+import type {GetStaticPathsOptions} from 'astro';
 import type {MarkdownInstance} from 'astro';
-import BaseLayout from '@lays/BaseLayout.astro';
-import type {AstroSeoProps} from '@coms/AstroSeo';
-import BlogHeader from '@coms/BlogHeader.astro';
-import PostPreview from '@coms/PostPreview.astro';
-import config from '../../../blog.config.js';
+import config from '$config';
+import MainLayout from '$lays/MainLayout.astro';
+import Hero from '$coms/layout/Hero.astro';
+import BlogPreview from '$coms/BlogPreview.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
 interface SeriesProps {
   count: number;
@@ -16,13 +17,14 @@ const {count, posts} = Astro.props as SeriesProps;
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 const sortedPosts = allPosts.sort(
-  (a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
 );
 
-export async function getStaticPaths({paginate}) {
+export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
   const seriesData: {[key: string]: SeriesProps} = {};
-  const seriesList = [];
+  const seriesList: any[] = [];
 
   allPosts.map(post => {
     const {series} = post.frontmatter;
@@ -45,22 +47,38 @@ export async function getStaticPaths({paginate}) {
   });
 }
 
-const seo: AstroSeoProps = {
-  title: `Series : ${series}`,
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: `Series : ${series}`,
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: false},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: true},
+  },
 };
 ---
 
-<BaseLayout config={config} seo={seo}>
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <BlogHeader config={config} />
+    <Hero category={'Blog'} title={props.seo.title} subtitle={`${count} Posts`} />
 
-      <main>
-        <h2 class='mt-8 mb-1 text-5xl tracking-tight text-center'>{seo.title}</h2>
-        <small class='block text-base text-center mb-6'>{count} Posts</small>
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{series: true}} />
 
-        {posts.map(post => <PostPreview post={post} />)}
-      </main>
+      <BlogPreview posts={posts} />
     </div>
   </main>
-</BaseLayout>
+</MainLayout>

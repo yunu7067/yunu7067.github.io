@@ -1,5 +1,5 @@
-import {CommentsType} from '@types';
-import {LocaleConfigType} from './LocaleConfigType';
+import type {CommentsType} from '$types';
+import type {LocaleConfigType} from './LocaleConfigType';
 
 export type SocialIdentifiers =
   | 'github'

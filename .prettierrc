@@ -5,7 +5,7 @@
   "htmlWhitespaceSensitivity": "css",
   "jsxBracketSameLine": false,
   "jsxSingleQuote": true,
-  "printWidth": 120,
+  "printWidth": 100,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "semi": true,
@@ -16,5 +16,10 @@
   "vueIndentScriptAndStyle": true,
   "rangeStart": 0,
   "requirePragma": false,
-  "insertPragma": false
+  "insertPragma": false,
+  "plugins": ["prettier-plugin-astro"],
+  "overrides": [
+    {"files": [".*", "*.json", "*.md", "*.toml", "*.yml"], "options": {"useTabs": false}},
+    {"files": ["**/*.astro"], "options": {"parser": "astro"}}
+  ]
 }

@@ -1,0 +1,22 @@
+article#article-content {
+	--link-underline-color: 147, 51, 234;
+	--link-underline-opacity: 0.7;
+	--link-underline-opacity-hover: 0.9;
+	
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.675;
+
+	p {
+		margin: 18px 0;
+	}
+
+	a {
+		text-decoration-thickness: 5px;
+		box-shadow: 0 -4px rgba(var(--link-underline-color),var(--link-underline-opacity))inset;
+		transition: all .25s ease;
+	}
+	a:hover {
+		box-shadow: 0 -10px rgba(var(--link-underline-color),var(--link-underline-opacity-hover))inset;
+	}
+}

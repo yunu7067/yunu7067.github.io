@@ -1,0 +1,152 @@
+---
+import {Image} from '@astrojs/image/components';
+import MainLayout from './MainLayout.astro';
+import {default as BlogAuthor} from '$coms/Author.astro';
+import BlogComment from '$coms/BlogComment.astro';
+import BlogViews from '$coms/BlogViews';
+import type {PostInstance} from '$types';
+import config from '$config';
+import type {MarkdownHeading} from 'astro';
+import {classes, getLongDateString} from '$utils';
+import '$styles/article.scss';
+import {Clickable, Tag} from '$coms/classes';
+
+const HERO_WIDTH = 3000;
+
+const {frontmatter, ...rest} = Astro.props as PostInstance & {
+  frontmatter: {heroImageMetadata: ImageMetadata};
+};
+
+// console.log(frontmatter);
+
+const {pathname} = Astro.url;
+
+/*
+	build buf fix
+	https://github.com/withastro/astro/issues/3373 
+ */
+const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const heroImage = frontmatter?.heroImage;
+if (heroImage) {
+  frontmatter.heroImageMetadata = await images[heroImage]();
+}
+
+const headings: MarkdownHeading[] = Astro.props.headings;
+// console.debug({headings});
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: frontmatter.title,
+    description: frontmatter?.description || '',
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: true},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: false},
+  },
+};
+---
+
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
+  <main class='w-full'>
+    <div class='max-w-3xl w-full mt-12 mb-7 mx-auto px-5 flex flex-col gap-[10px]'>
+      <h1 class='mb-2 md:text-6xl sm:text-5xl text-4xl font-bold text-gray-900 dark:text-gray-100'>
+        {frontmatter.title}
+      </h1>
+      {/* Informations */}
+      <div class='mb-3 text-gray-800 dark:text-gray-300 flex flex-wrap'>
+        {/* publication date */}
+        <div>{getLongDateString(config.locale, new Date(frontmatter.publishDate))}</div>
+
+        <div class='px-2'>·</div>
+        {/* reading time */}
+        <div>{frontmatter.minutesRead}</div>
+        <div class='px-2'>·</div>
+        {/* Views */}
+        <div>
+          <BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
+        </div>
+      </div>
+      {/* Tags */}
+      {
+        frontmatter.tags && (
+          <ul class='mb-4 flex flex-row gap-1.5 flex-wrap'>
+            {frontmatter.tags?.map(tag => (
+              <li class={classes(Clickable, Tag)}>
+                <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <BlogAuthor
+        avatar={config.avatar}
+        name={config.author.name}
+        description={config.author.comment}
+      />
+    </div>
+    {/* Hero */}
+    {
+      frontmatter.heroImageMetadata && (
+        <div class={classes('flex items-center justify-center')}>
+          <div
+            class={classes(
+              'max-w-4xl w-full max-h-[28rem] h-full m-4 overflow-hidden',
+              'rounded-md border border-zinc-300 dark:border-zinc-700',
+              // 'shadow-lg shadow-violet-200 dark:shadow-zinc-700',
+            )}
+          >
+            <Image
+              class='w-full h-full object-cover'
+              src={frontmatter.heroImageMetadata.src}
+              alt='Hero Image'
+              width={
+                frontmatter.heroImageMetadata.width > frontmatter.heroImageMetadata.height
+                  ? HERO_WIDTH
+                  : ~~(
+                      (frontmatter.heroImageMetadata.width / frontmatter.heroImageMetadata.height) *
+                      HERO_WIDTH
+                    )
+              }
+              height={
+                frontmatter.heroImageMetadata.width > frontmatter.heroImageMetadata.height
+                  ? ~~(
+                      (frontmatter.heroImageMetadata.height / frontmatter.heroImageMetadata.width) *
+                      HERO_WIDTH
+                    )
+                  : HERO_WIDTH
+              }
+              format={'webp'}
+            />
+          </div>
+        </div>
+      )
+    }
+    <div class='flex flex-col'>
+      <div class='max-w-3xl w-full mx-auto px-5'>
+        <article id='article-container'>
+          <slot />
+        </article>
+
+        {
+          frontmatter.comments !== false && (
+            <BlogComment comments={config.comments} theme={config.theme} />
+          )
+        }
+      </div>
+    </div>
+  </main>
+</MainLayout>

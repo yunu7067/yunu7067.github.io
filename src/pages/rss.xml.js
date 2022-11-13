@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import config from '../../blog.config.js';
+import config from '$config';
 
 export const get = () => {
   if (config.rss) {

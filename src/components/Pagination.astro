@@ -1,30 +1,36 @@
 ---
-import { ArrowLeftCircleLine, ArrowRightCircleLine } from "./icons";
+import {ArrowLeftCircleLine, ArrowRightCircleLine} from './icons';
 
 export interface Props {
-	prevUrl: string;
-	nextUrl: string;
+  prevUrl: string;
+  nextUrl: string;
 }
 
-const { prevUrl, nextUrl } = Astro.props;
+const {prevUrl, nextUrl} = Astro.props;
 ---
 
-<nav class="flex mx-auto py-16">
-	<a class="prev mr-auto uppercase p-2 inline-flex items-center gap-2" href={prevUrl || '#' }
-		aria-label="Previous Page">
-		<ArrowLeftCircleLine />
-		이전
-	</a>
-	<a class="next ml-auto uppercase p-2 inline-flex items-center gap-2" href={nextUrl || '#' } aria-label="Next Page">
-		다음
-		<ArrowRightCircleLine />
-	</a>
+<nav class='flex mx-auto py-16'>
+  <a
+    class='prev mr-auto uppercase p-2 inline-flex items-center gap-2'
+    href={prevUrl || '#'}
+    aria-label='Previous Page'
+  >
+    <ArrowLeftCircleLine />
+    이전
+  </a>
+  <a
+    class='next ml-auto uppercase p-2 inline-flex items-center gap-2'
+    href={nextUrl || '#'}
+    aria-label='Next Page'
+  >
+    다음
+    <ArrowRightCircleLine />
+  </a>
 </nav>
 
 <style>
-	.prev[href='#'],
-	.next[href='#'] {
-		display: none;
-
-	}
+  .prev[href='#'],
+  .next[href='#'] {
+    display: none;
+  }
 </style>

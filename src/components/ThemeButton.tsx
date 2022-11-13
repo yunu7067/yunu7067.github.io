@@ -1,54 +1,61 @@
-import {btn} from '@coms/classes';
-import {MoonLine, SunLine} from '@coms/icons';
-import {BlogConfigType} from '@types';
-import {createEffect, createSignal} from 'solid-js';
+import {Clickable, MediumButton, SmallButton} from '$coms/classes';
+import {GitHub, Loader5Line, MoonLine, SunLine} from '$coms/icons';
+import type {BlogConfigType} from '$types';
+import {classes} from '$utils';
+import {createEffect, createSignal, Match, onMount, Show, Switch} from 'solid-js';
 
 interface ThemeButtonProps {
+  class: string;
   config: BlogConfigType;
 }
-export default function ThemeButton({config}: ThemeButtonProps) {
+export default function ThemeButton(props: ThemeButtonProps) {
+  const [isLoading, setLoading] = createSignal(true);
   const [isDarkMode, setDarkMode] = createSignal(false);
 
-  createEffect(() => {
-    // console.log('create effect');
-    const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {src: string};
+  onMount(async () => {
+    const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {
+      src: string;
+    };
     const theme = window.localStorage.getItem('theme');
-    console.log({theme});
+    setDarkMode(theme === 'dark' || false);
+    setLoading(false);
+    // console.debug({theme});
 
     if (theme === 'dark') {
       commentEl &&
         (commentEl.src = commentEl.src.replace(
           /\&theme=.*\&reactionsEnabled/,
-          `&theme=${config.comments.giscus.darkTheme}&reactionsEnabled`,
+          `&theme=${props.config.comments.giscus?.darkTheme}&reactionsEnabled`,
         ));
     } else {
       commentEl &&
         (commentEl.src = commentEl.src.replace(
           /\&theme=.*\&reactionsEnabled/,
-          `&theme=${config.comments.giscus.lightTheme}&reactionsEnabled`,
+          `&theme=${props.config.comments.giscus?.lightTheme}&reactionsEnabled`,
         ));
     }
-    setDarkMode(theme === 'dark' || false);
   });
 
   const toggleTheme = () => {
-    console.log('change Theme');
+    // console.debug('change Theme');
     /* 댓글도 변경해야함 */
-    const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {src: string};
+    const commentEl = document.getElementsByClassName('giscus-frame')[0] as unknown as {
+      src: string;
+    };
     /* 현재 값이 다크모드면 */
     if (isDarkMode()) {
       document.getElementsByTagName('html')[0].classList.remove('dark');
       commentEl &&
         (commentEl.src = commentEl.src.replace(
-          `theme=${config.comments.giscus.darkTheme}`,
-          `theme=${config.comments.giscus.lightTheme}`,
+          `theme=${props.config.comments.giscus?.darkTheme}`,
+          `theme=${props.config.comments.giscus?.lightTheme}`,
         ));
     } else {
       document.getElementsByTagName('html')[0].classList.add('dark');
       commentEl &&
         (commentEl.src = commentEl.src.replace(
-          `theme=${config.comments.giscus.lightTheme}`,
-          `theme=${config.comments.giscus.darkTheme}`,
+          `theme=${props.config.comments.giscus?.lightTheme}`,
+          `theme=${props.config.comments.giscus?.darkTheme}`,
         ));
     }
     window.localStorage.setItem('theme', isDarkMode() ? 'light' : 'dark');
@@ -56,8 +63,15 @@ export default function ThemeButton({config}: ThemeButtonProps) {
   };
 
   return (
-    <button class={btn} onClick={toggleTheme} aria-label='dark mode toggle'>
-      {isDarkMode ? <SunLine /> : <MoonLine />}
+    <button class={props.class} onClick={toggleTheme} aria-label='dark mode toggle'>
+      <Switch fallback={<MoonLine />}>
+        <Match when={isLoading()}>
+          <Loader5Line class='animate-spin' />
+        </Match>
+        <Match when={isDarkMode()}>
+          <SunLine />
+        </Match>
+      </Switch>
     </button>
   );
 }

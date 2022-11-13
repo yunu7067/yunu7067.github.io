@@ -1,5 +1,5 @@
 ---
-layout: '@lays/ContentLayout.astro'
+layout: '$lays/BlogLayout.astro'
 title: 'Markdown Syntax Guide'
 publishDate: 2000-01-01
 description: 'Sample article showcasing basic Markdown syntax and formatting for HTML elements.'

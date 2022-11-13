@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "rome.rome",
     "editor.tabSize": 2
   },
   "[javascriptreact]": {
@@ -17,8 +17,11 @@
     "editor.tabSize": 2
   },
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2,
     "editor.detectIndentation": false
-  }
+  },
+  "prettier.documentSelectors": [
+    "**/*.astro"
+  ]
 }

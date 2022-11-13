@@ -1,0 +1,106 @@
+---
+import {Clickable, MediumButton, SmallButton} from '$coms/classes';
+import {BookLine, Briefcase, Home, Rss, SearchLine, StackLine} from '$coms/icons';
+import ThemeButton from '$coms/ThemeButton';
+import config from '$config';
+import {classes} from '$utils';
+
+interface ActionItemProps {
+  enabled: boolean;
+  expanded: boolean;
+}
+
+export interface Props {
+  blog: ActionItemProps;
+  home: ActionItemProps;
+  portfolio: ActionItemProps;
+  rss: ActionItemProps;
+  search: ActionItemProps;
+  series: ActionItemProps;
+  theme: ActionItemProps;
+  wide: boolean;
+}
+
+const props = Astro.props;
+const btn = classes(MediumButton, Clickable);
+---
+
+<header class='w-full py-5 flex items-center justify-center'>
+  <nav
+    class={`${
+      props.wide ? 'max-w-4xl' : 'max-w-3xl'
+    } w-full h-12 px-5 flex flex-row items-center justify-between gap-2`}
+  >
+    {/* Left */}
+    <div class='flex-auto'>
+      <h1 class='m-0 text-2xl'>
+        <a href='/' aria-label='Home' title='Home'>
+          <span>{config.title}</span>
+        </a>
+      </h1>
+    </div>
+    {/* Right */}
+    <div class='flex gap-2'>
+      {
+        /* Home */
+        props.home.enabled && (
+          <a href='/' class={btn} aria-label='Home' title='Home'>
+            {props.home.expanded && 'Home'}
+            <Home />
+          </a>
+        )
+      }
+      {
+        /* Portfolio */
+        props.portfolio.enabled && (
+          <a href='/portfolio/' class={btn} aria-label='Portfolio' title='Portfolio'>
+            {props.portfolio.expanded && 'Portfolio'}
+            <Briefcase />
+          </a>
+        )
+      }
+      {
+        /* Series */
+        props.series.enabled && (
+          <a href='/series/' class={btn} aria-label='Series' title='Series'>
+            {props.series.expanded && 'Series'}
+            <StackLine />
+          </a>
+        )
+      }
+      {
+        /* Blog */
+        props.blog.enabled && (
+          <a href='/page/' class={btn} aria-label='Blog' title='Blog'>
+            {props.blog.expanded && 'Blog'}
+            <BookLine />
+          </a>
+        )
+      }
+      {
+        /* Search */
+        props.search.enabled && (
+          <a href='/search/' class={btn} aria-label='Search' title='Search'>
+            {props.search.expanded && 'Search'}
+            <SearchLine />
+          </a>
+        )
+      }
+      {
+        /* Theme */
+        props.theme.enabled && config.theme === 'auto' && (
+          <ThemeButton client:load class={btn} config={config} />
+        )
+      }
+      {
+        /* RSS */
+        props.rss.enabled && (
+          <a href={'/rss.xml'} class={btn} target='_blank' aria-label='RSS' title='RSS'>
+            {props.rss.expanded && 'RSS'}
+            <Rss />
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</header>

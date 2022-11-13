@@ -1,12 +1,13 @@
 ---
-import BaseLayout from '@lays/BaseLayout.astro';
-import BlogPostPreview from '@coms/PostPreview.astro';
-import Pagination from '@coms/Pagination.astro';
-import type {AstroSeoProps} from '@coms/AstroSeo';
-import BlogHeader from '@coms/BlogHeader.astro';
-import config from '../../../../blog.config.js';
+import type {GetStaticPathsOptions} from 'astro';
+import Pagination from '$coms/Pagination.astro';
+import config from '$config';
+import MainLayout from '$lays/MainLayout.astro';
+import BlogPreview from '$coms/BlogPreview.astro';
+import Hero from '$coms/layout/Hero.astro';
+import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
 
-export async function getStaticPaths({paginate}) {
+export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../../p/**/*.{md,mdx}');
   const allTagsSet = new Set();
 
@@ -21,7 +22,11 @@ export async function getStaticPaths({paginate}) {
         // console.debug({ tags: post.frontmatter.tags });
         return post.frontmatter.tags?.includes(tag);
       })
-      .sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
+      .sort(
+        (a, b) =>
+          new Date(b.frontmatter.publishDate).getTime() -
+          new Date(a.frontmatter.publishDate).getTime(),
+      );
 
     return paginate(filteredPosts, {
       params: {tag},
@@ -32,25 +37,45 @@ export async function getStaticPaths({paginate}) {
 // page
 const {page} = Astro.props;
 const {tag} = Astro.params;
-const seo: AstroSeoProps = {
-  title: `TAG: ${tag}`,
+
+const canonicalURL = Astro.url.toString();
+const props = {
+  wide: false,
+  seo: {
+    title: `TAG: ${tag}`,
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: true, expanded: false},
+    portfolio: {enabled: true, expanded: false},
+    rss: {enabled: false, expanded: false},
+    search: {enabled: false, expanded: false},
+    series: {enabled: false, expanded: false},
+    theme: {enabled: true, expanded: true},
+  },
 };
 ---
 
-<BaseLayout config={config} seo={seo}>
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <BlogHeader config={config} />
+    <Hero
+      category={'Blog'}
+      title={`Articles tagged #${tag}`}
+      subtitle={`${page.start + 1}–${page.end + 1} of ${page.total}`}
+    />
 
-      <main>
-        <h2 class='mt-8 mb-1 text-5xl tracking-tight text-center'>TAG : #{tag}</h2>
-        <small class='block text-base text-center mb-6'>{page.start + 1}–{page.end + 1} of {page.total}</small>
-        {page.data.map(post => <BlogPostPreview post={post} />)}
-      </main>
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <BlogSubNavigations disabled={{}} />
 
-      <footer>
-        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-      </footer>
+      <BlogPreview posts={page.data} />
+
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     </div>
   </main>
-</BaseLayout>
+</MainLayout>

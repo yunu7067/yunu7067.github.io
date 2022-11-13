@@ -20,18 +20,12 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@coms/*": [
-        "src/components/*"
-      ],
-      "@lays/*": [
-        "src/layouts/*"
-      ],
-      "@types": [
-        "src/types"
-      ],
-      "@utils": [
-        "src/utils"
-      ]
+      "$coms/*": ["src/components/*"],
+      "$lays/*": ["src/layouts/*"],
+      "$styles/*": ["src/styles/*"],
+      "$types": ["src/types/index.ts"],
+      "$utils": ["src/utils/index.ts"],
+      "$config": ["src/blog.config.js"]
     }
   },
 }

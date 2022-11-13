@@ -1,6 +1,8 @@
 ---
 import {Image} from '@astrojs/image/components';
-import type {AvatarConfigType} from '../types';
+import type {AvatarConfigType} from '$types';
+import {User3Line} from '$coms/icons';
+import {classes} from '$utils';
 
 export interface Props {
   avatar: AvatarConfigType;
@@ -13,20 +15,26 @@ const {avatar, name, href = '', description = ''} = Astro.props as Props;
 ---
 
 <div
-  class='my-5 px-4 sm:px-8 py-6 rounded-sm bg-gray-100 dark:bg-gray-800 flex flex-col-reverse sm:flex-row gap-4 shadow-sm'
+  class={classes(
+    'px-2 py-4 flex items-center justify-start gap-4 min-[320px]:flex-row flex-col ',
+    'border-y border-zinc-300 dark:border-zinc-700',
+  )}
 >
-  <div class='flex-auto flex flex-col'>
-    Author
-    <h3 class='text-xl mb-1'>@{name}</h3>
-    <p class='flex-auto font-light line-clamp-2'>{description}</p>
-  </div>
-  <div class='flex-none'>
+  {/* Avatar  */}
+  <div class='flex-none md:w-11 w-8 md:h-11 h-8 overflow-hidden rounded-full object-cover'>
     {
-      avatar?.enabled && (
-        <div class='w-fit shadow-sm  overflow-hidden'>
-          <Image src={avatar.src} width={145} height={104} format='webp' alt={name} />
+      avatar?.enabled ? (
+        <Image src={avatar.src} width={56} height={56} format='webp' alt={name} />
+      ) : (
+        <div class='w-full h-full bg-gray-300 flex items-center justify-center text-white md:text-3xl text-xl'>
+          <User3Line />
         </div>
       )
     }
+  </div>
+  {/* Descriptions */}
+  <div class='flex-auto flex flex-col gap-1'>
+    <span class='md:text-base text-sm font-medium'>@{name}</span>
+    <span class='md:text-sm text-xs'>{description}</span>
   </div>
 </div>

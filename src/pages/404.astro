@@ -1,0 +1,76 @@
+---
+import AstroSeo, {AstroSeoProps} from '$coms/AstroSeo';
+import {classes} from '$utils';
+
+const canonicalURL = Astro.url.toString();
+const props: {seo: AstroSeoProps} = {
+  seo: {
+    title: 'Page not found.',
+    description: 'Page not found.',
+    canonical: canonicalURL,
+    noindex: true,
+    nofollow: true,
+  },
+};
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+    <AstroSeo {...props.seo} />
+
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+      }
+      body {
+        background: url('/images/404.jpg') no-repeat center/ cover;
+      }
+      body > div {
+        background-color: hsla(289, 2%, 10%, 0.45);
+      }
+    </style>
+  </head>
+  <body class='bg-black'>
+    <div class='w-full h-full flex items-center justify-center'>
+      <div class='max-w-3xl w-full p-8 inline-flex flex-col'>
+        <h1
+          class='text-white font-thin lg:text-7xl text-6xl drop-shadow-xl leading-none tracking-wide'
+        >
+          404
+        </h1>
+        <div
+          class='text-white font-medium lg:text-8xl text-7xl mb-4 drop-shadow-xl leading-none tracking-wide'
+        >
+          Lost in space.
+        </div>
+        <div class='lg:w-32 w-24 bg-white h-2 mb-4'></div>
+        <div class='mb-12 text-gray-300'>The requested URL was not found on this server.</div>
+        <div>
+          <a
+            href='/'
+            class={classes(
+              'bg-white text-black px-8 sm:py-3 py-4 rounded-lg font-medium text-lg',
+              'shadow transition-shadow hover:shadow-lg hover:shadow-violet-700',
+            )}>Go Home</a
+          >
+        </div>
+      </div>
+      <a
+        href='https://www.flickr.com/photos/nasamarshall/49142409632/in/photostream/'
+        class='absolute right-0 bottom-0.5 px-5 py-3 text-gray-500 text-sm font-thin'
+      >
+        Image by NASA on NASA's Marshall Space Flight Center
+      </a>
+    </div>
+  </body>
+</html>

@@ -22,15 +22,21 @@
 ### Plan
 - [ ] JSON Feed
 
-## Changelog
+## URL structure
 
-#### 1.0.9
-- Support for rss.
-- Support for MDX using `@astrojs/image`
-- Support for KaTeX math notation in Markdown/MDX.
-- Add right side Table of Contents.
-- Change image optimization library from `astro-imagetools` to `@astrojs/image`.
-  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+| Path                  | Query | Name      |
+| :-------------------- | :---- | :-------- |
+| /                     |       |           |
+| /portfolio/           |       | Portfolio |
+| /search/              |       | Search    |
+| /page/                |       | Page      |
+| /page/{page}          |       | Page      |
+| /p/{slug}             |       | Blog      |
+| /series/              |       | Series    |
+| /series/{series}      |       | Series    |
+| /tag/{tagname}/       |       | Tags      |
+| /tag/{tagname}/{page} |       | Tags      |
+| /rss.xml              |       | RSS       |
 
 ## How to use
 
@@ -86,20 +92,41 @@ about 페이지는 `/src/pages/about.mdx`에 작성합니다.
 
 #### Frontmatter
 
-| Attribute   | Type     | required | Description       |
-| :---------- | -------- | -------- | :---------------- |
-| title       | string   | true     | post title        |
-| publishDate | string   | true     | post publish date |
-| description | string   | true     | post description  |
-| heroImage   | string   | false    | hero image        |
-| tags        | string[] | false    | tag name list     |
-| series      | string   | false    | series name       |
+| Attribute   | Type     | required | Default | Description       |
+| :---------- | -------- | -------- | :--: | :---------------- |
+| title       | string   | true     |  |  |post title        |
+| description | string   | true     |  | post description  |
+| publishDate | string   | true     |  | post publish date |
+| toc      | boolean   | false    | `true` | show table of contents       |
+| heroImage   | string   | false    |  | hero image        |
+| tags        | string[] | false    |  | tag name list     |
+| series      | string   | false    |  | series name       |
+| comments      | boolean   | false    | `true` | show comments system      |
 
 ### RSS
 
 default : true
 
 rss를 활성화시키려면 config.js에서 rss를 true로 변경해줍니다.
+
+## Changelog
+
+**1.0.9**
+- Support for rss.
+- Support for MDX using `@astrojs/image`
+- Support for KaTeX math notation in Markdown/MDX.
+- Add right side Table of Contents.
+- Change image optimization library from `astro-imagetools` to `@astrojs/image`.
+  - Astro 1.0 버전이 되면서 마크다운에는 JSX 컴포넌트를 사용할 수 없게 변경되었음. 따라서 MDX를 사용하거나 별도의 integrations를 만들어 처리해야 함. 그렇기 때문에 일단은 이미지 최적화 기능은 비활성화시킴.
+
+
+**1.0.10**
+- Redesign the site.
+- Now automatically change the `img` to `figure` tag.
+- add MarkdownImage components.
+- remove sidebar
+- Support for RSS
+- Change package manager from `yarn` to `pnpm`.
 
 ## Credits
 

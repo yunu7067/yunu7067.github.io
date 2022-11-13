@@ -1,42 +1,67 @@
 ---
-import {btn} from '@coms/classes';
-import BaseLayout from '@lays/BaseLayout.astro';
-import PostPreview from '@coms/PostPreview.astro';
-import LargeHeader from '@coms/LargeHeader.astro';
-import AboutContainer from '@coms/AboutContainer.astro';
-import {ArrowRightCircleLine} from '@coms/icons';
-import config from '../../blog.config.js';
-import type {PostMetadata} from 'src/types/PostType.js';
+import MainLayout from '$lays/MainLayout.astro';
+import config from '$config';
+import type {PostInstance} from '$types';
+
+import '$styles/mainarticle.scss';
+import BlogPreview from '$coms/BlogPreview.astro';
+import Hero from '$coms/layout/Hero.astro';
 
 const {title, description, avatar, social} = config;
-let canonicalURL = Astro.url;
+const canonicalURL = Astro.url.toString();
 
-let allPosts = await Astro.glob<PostMetadata>('./p/**/*.{md,mdx}');
-allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime());
-let firstPage = allPosts.slice(0, 3);
----
+const allPosts = await Astro.glob<PostInstance>('./p/**/*.{md,mdx}');
+const firstPage = allPosts
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
+  )
+  .slice(0, 3);
 
-<BaseLayout
-  config={config}
-  seo={{
+const about = (await Astro.glob('/content/about.md'))[0];
+const props = {
+  wide: false,
+  seo: {
     title: title,
     description: description,
-    image: allPosts[0].frontmatter?.heroImage,
-    canonical: canonicalURL.toString(),
-  }}
->
-  <LargeHeader avatar={avatar} title={title} description={description} socials={social} />
+    canonical: canonicalURL,
+  },
+  NavigationItems: {
+    blog: {enabled: true, expanded: true},
+    home: {enabled: false, expanded: false},
+    portfolio: {enabled: true, expanded: true},
+    rss: {enabled: true, expanded: false},
+    search: {enabled: false, expanded: true},
+    series: {enabled: false, expanded: true},
+    theme: {enabled: true, expanded: false},
+  },
+};
+---
 
+<MainLayout
+  config={config}
+  seo={props.seo}
+  NavigationItems={props.NavigationItems}
+  wide={props.wide}
+>
   <main class='w-full'>
-    <div class='max-w-3xl w-full mx-auto'>
-      <AboutContainer author={config.author} />
-      {firstPage.map(post => <PostPreview post={post} />)}
-      <div class='text-right tracking-tight'>
-        <a href='/page/' class={btn}>
-          All Posts
-          <ArrowRightCircleLine />
-        </a>
+    <Hero category={''} title={config.author.name} subtitle={about.frontmatter.description} />
+
+    <div class='flex flex-col'>
+      <article
+        set:html={about.compiledContent()}
+        id='article-content'
+        class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'
+      />
+    </div>
+
+    {/* latest posts */}
+    <div class='max-w-3xl w-full mx-auto px-5 py-4'>
+      <div>
+        <h3>Last 3 Articles</h3>
+
+        <BlogPreview posts={firstPage} />
       </div>
     </div>
   </main>
-</BaseLayout>
+</MainLayout>

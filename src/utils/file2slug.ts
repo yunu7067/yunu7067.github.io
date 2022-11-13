@@ -1,6 +1,6 @@
-import {resolve} from 'path';
+import {resolve} from 'node:path';
 
-export default function file2slug(filePath: string, resolvePath: string) {
+export function file2slug(filePath: string, resolvePath: string) {
   return filePath
     .replace(resolve(resolvePath), '')
     .replace(/(.+?)(?:\/index\.md|\.md)/, '$1')

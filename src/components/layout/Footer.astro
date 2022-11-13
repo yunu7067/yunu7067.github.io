@@ -1,0 +1,27 @@
+---
+import SocialIcon from '$coms/SocialIcon.astro';
+import blogConfig from '$config';
+import {classes} from '$utils';
+
+export interface Props {
+  wide: boolean;
+}
+
+const props = Astro.props;
+const socials = blogConfig.social;
+---
+
+<footer class='mt-8 flex items-center justify-center'>
+  <div
+    class={classes(
+      props.wide ? 'max-w-4xl' : 'max-w-3xl',
+      'w-full pt-5 pb-10 px-5',
+      'flex gap-4 items-center justify-between',
+    )}
+  >
+    <span class='flex-none text-gray-500 text-sm font-light'>©YUNU7067, Built with Astro</span>
+    <div class='flex gap-2 flex-wrap'>
+      {socials && socials.map(social => <SocialIcon social={social} />)}
+    </div>
+  </div>
+</footer>

@@ -1,4 +1,4 @@
-import {timeFormatter} from '@utils';
+import {timeFormatter} from '$utils';
 
 export interface SeriesPreviewProps {
   series: string;

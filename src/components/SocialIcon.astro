@@ -1,0 +1,64 @@
+---
+import type {Component, JSX} from 'solid-js';
+import type {SocialConfigType, SocialIdentifiers} from '$types';
+import {
+  AtLine,
+  Discord,
+  Earth,
+  Facebook,
+  GitHub,
+  Instagram,
+  LinkedIn,
+  Mail,
+  Npmjs,
+  Twitter,
+  YouTube,
+} from './icons';
+import {classes} from '$utils';
+
+interface SocialIconProps {
+  social: SocialConfigType;
+}
+
+const {social} = Astro.props as SocialIconProps;
+
+const IconSwitcher = ({identifier}: {identifier: SocialIdentifiers}) => {
+  switch (identifier) {
+    case 'github':
+      return GitHub;
+    case 'facebook':
+      return Facebook;
+    case 'twitter':
+      return Twitter;
+    case 'discord':
+      return Discord;
+    case 'instagram':
+      return Instagram;
+    case 'linkedin':
+      return LinkedIn;
+    case 'npmjs':
+      return Npmjs;
+    case 'youtube':
+      return YouTube;
+    case 'email':
+      return AtLine;
+
+    default:
+      return Earth;
+  }
+};
+---
+
+<a
+  href={social.url}
+  target='_blank'
+  rel='noopener'
+  class={classes(
+    'p-2 cursor-pointer transition-colors rounded-full',
+    'text-gray-700 dark:text-gray-300',
+    'hover:bg-gray-200 dark:hover:bg-gray-700',
+  )}
+  title={social.name}
+>
+  <IconSwitcher identifier={social.identifier} />
+</a>
