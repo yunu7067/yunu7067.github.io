@@ -3,9 +3,11 @@ import type {GetStaticPathsOptions} from 'astro';
 import Pagination from '$coms/Pagination.astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
-import BlogPreview from '$coms/BlogPreview.astro';
+import BlogPreview from '$coms/blog/BlogPreview.astro';
 import Hero from '$coms/layout/Hero.astro';
-import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
+import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
+
+export interface Props {}
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../p/**/*.{md,mdx}');

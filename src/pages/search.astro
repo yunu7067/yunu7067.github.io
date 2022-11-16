@@ -5,7 +5,9 @@ import {file2slug} from 'src/utils/file2slug';
 import BlogSearch from 'src/utils/BlogSearch';
 import config from '$config';
 import Hero from '$coms/layout/Hero.astro';
-import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
+import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
+
+export interface Props {}
 
 let allPosts = await Astro.glob('./p/**/*.{md,mdx}');
 const posts = allPosts.map(p => {

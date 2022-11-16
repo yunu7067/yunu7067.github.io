@@ -1,15 +1,16 @@
 ---
+import type {PostInstance} from '$types';
 import MainLayout from '$lays/MainLayout.astro';
 import config from '$config';
-import type {PostInstance} from '$types';
-
-import '$styles/mainarticle.scss';
-import BlogPreview from '$coms/BlogPreview.astro';
+import BlogPreview from '$coms/blog/BlogPreview.astro';
 import Hero from '$coms/layout/Hero.astro';
+import '$styles/article.scss';
+// import '$styles/mainarticle.scss';
+
+export interface Props {}
 
 const {title, description, avatar, social} = config;
 const canonicalURL = Astro.url.toString();
-
 const allPosts = await Astro.glob<PostInstance>('./p/**/*.{md,mdx}');
 const firstPage = allPosts
   .sort(
@@ -17,7 +18,6 @@ const firstPage = allPosts
       new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime(),
   )
   .slice(0, 3);
-
 const about = (await Astro.glob('/content/about.md'))[0];
 const props = {
   wide: false,
@@ -49,9 +49,9 @@ const props = {
 
     <div class='flex flex-col'>
       <article
-        set:html={about.compiledContent()}
-        id='article-content'
+        id='article-container'
         class='max-w-3xl w-full mx-auto px-5 pt-8 pb-32'
+        set:html={about.compiledContent()}
       />
     </div>
 

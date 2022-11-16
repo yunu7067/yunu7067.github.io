@@ -1,8 +1,7 @@
-import {createEffect, createSignal, For, Show} from 'solid-js';
+import {createEffect, createSignal, For} from 'solid-js';
 import * as FlexSearch from 'flexsearch';
 import {classes, createDebounce} from '$utils';
 import {SearchLine} from '$coms/icons';
-import {Clickable, Tag} from '$coms/classes';
 
 export default function Search({keys}: {keys: string[]}) {
   const [keyword, setKeyword] = createSignal<string>('');
@@ -100,7 +99,7 @@ export default function Search({keys}: {keys: string[]}) {
                 <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
                   <For each={doc?.tags}>
                     {tag => (
-                      <li class={classes(Clickable, Tag)}>
+                      <li class='tag clickable dark:clickable-dark'>
                         <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                           {tag}
                         </a>

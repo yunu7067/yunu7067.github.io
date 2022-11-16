@@ -1,31 +1,30 @@
 ---
+import type {MarkdownHeading} from 'astro';
+import type {PostInstance} from '$types';
 import {Image} from '@astrojs/image/components';
 import MainLayout from './MainLayout.astro';
-import {default as BlogAuthor} from '$coms/Author.astro';
-import BlogComment from '$coms/BlogComment.astro';
-import BlogViews from '$coms/BlogViews';
-import type {PostInstance} from '$types';
-import config from '$config';
-import type {MarkdownHeading} from 'astro';
+import BlogAuthor from '$coms/blog/Author.astro';
+import BlogComment from '$coms/blog/Comment.astro';
+import TableOfContents from '$coms/blog/TableOfContents.astro';
+import BlogViews from '$coms/blog/BlogViews';
 import {classes, getLongDateString} from '$utils';
+import config from '$config';
 import '$styles/article.scss';
-import {Clickable, Tag} from '$coms/classes';
 
 const HERO_WIDTH = 3000;
 
-const {frontmatter, ...rest} = Astro.props as PostInstance & {
+export type Props = PostInstance & {
   frontmatter: {heroImageMetadata: ImageMetadata};
 };
 
-// console.log(frontmatter);
-
+const {frontmatter, ...rest} = Astro.props;
 const {pathname} = Astro.url;
 
 /*
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
-const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
 const heroImage = frontmatter?.heroImage;
 if (heroImage) {
   frontmatter.heroImageMetadata = await images[heroImage]();
@@ -83,7 +82,7 @@ const props = {
         frontmatter.tags && (
           <ul class='mb-4 flex flex-row gap-1.5 flex-wrap'>
             {frontmatter.tags?.map(tag => (
-              <li class={classes(Clickable, Tag)}>
+              <li class='tag clickable dark:clickable-dark'>
                 <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                   {tag}
                 </a>
@@ -98,6 +97,7 @@ const props = {
         description={config.author.comment}
       />
     </div>
+
     {/* Hero */}
     {
       frontmatter.heroImageMetadata && (
@@ -135,15 +135,18 @@ const props = {
         </div>
       )
     }
+
     <div class='flex flex-col'>
       <div class='max-w-3xl w-full mx-auto px-5'>
+        <TableOfContents headings={headings} />
+
         <article id='article-container'>
           <slot />
         </article>
 
         {
           frontmatter.comments !== false && (
-            <BlogComment comments={config.comments} theme={config.theme} />
+            <BlogComment client:load comments={config.comments} theme={config.theme} />
           )
         }
       </div>

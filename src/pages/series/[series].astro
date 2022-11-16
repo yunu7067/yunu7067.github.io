@@ -4,16 +4,16 @@ import type {MarkdownInstance} from 'astro';
 import config from '$config';
 import MainLayout from '$lays/MainLayout.astro';
 import Hero from '$coms/layout/Hero.astro';
-import BlogPreview from '$coms/BlogPreview.astro';
-import BlogSubNavigations from '$coms/BlogSubNavigations.astro';
+import BlogPreview from '$coms/blog/BlogPreview.astro';
+import BlogSubNavigations from '$coms/blog/SubNavigations.astro';
 
-interface SeriesProps {
+interface Props {
   count: number;
   posts: MarkdownInstance<Record<string, unknown>>[];
 }
 
 const {series} = Astro.params;
-const {count, posts} = Astro.props as SeriesProps;
+const {count, posts} = Astro.props;
 
 const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
 const sortedPosts = allPosts.sort(
@@ -23,7 +23,7 @@ const sortedPosts = allPosts.sort(
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
   const allPosts = await Astro.glob('../p/**/*.{md,mdx}');
-  const seriesData: {[key: string]: SeriesProps} = {};
+  const seriesData: {[key: string]: Props} = {};
   const seriesList: any[] = [];
 
   allPosts.map(post => {

@@ -3,20 +3,23 @@ import {Picture} from '@astrojs/image/components';
 import type {PostInstance} from '$types';
 import {classes, getLongDateString} from '$utils';
 import config from '$config';
-import {Clickable, Tag} from '$coms/classes';
 
 export interface Props {
   posts: (PostInstance & {
-    frontmatter: {heroImageMetadata: ImageMetadata};
+    frontmatter: {
+      heroImageMetadata?: ImageMetadata;
+    };
   })[];
 }
 
-const {posts} = Astro.props as Props;
+const {posts} = Astro.props;
+
 /*
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
-const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
+// console.log({images});
 for (let i = 0; i < posts.length; i++) {
   const heroImage = posts[i].frontmatter?.heroImage;
   if (heroImage) posts[i].frontmatter.heroImageMetadata = await images[heroImage]();
@@ -32,10 +35,12 @@ for (let i = 0; i < posts.length; i++) {
           <a href={post.url}>
             <div class='mb-4 w-full h-56 overflow-hidden flex items-center justify-center bg-gray-100'>
               <Picture
-                src={post.frontmatter.heroImageMetadata.src}
+                src={post.frontmatter?.heroImageMetadata?.src}
                 aspectRatio={
-                  post.frontmatter.heroImageMetadata.width /
-                  post.frontmatter.heroImageMetadata.height
+                  post.frontmatter?.heroImageMetadata
+                    ? post.frontmatter?.heroImageMetadata.width /
+                      post.frontmatter?.heroImageMetadata.height
+                    : 16 / 9
                 }
                 alt='Hero'
                 sizes=''
@@ -71,7 +76,7 @@ for (let i = 0; i < posts.length; i++) {
         {post.frontmatter.tags && (
           <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
             {post.frontmatter.tags?.map(tag => (
-              <li class={classes(Clickable, Tag)}>
+              <li class='tag clickable dark:clickable-dark'>
                 <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
                   {tag}
                 </a>

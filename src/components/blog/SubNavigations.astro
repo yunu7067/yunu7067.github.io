@@ -1,0 +1,33 @@
+---
+import {SearchLine, StackLine} from '$coms/icons';
+
+interface Props {
+  disabled: {
+    page?: boolean;
+    series?: boolean;
+    search?: boolean;
+  };
+}
+
+const {disabled} = Astro.props;
+---
+
+<div class='mb-6 flex items-center justify-end gap-2'>
+  <a {...(disabled.page ? {} : {href:'/page/'})} class='button-sm clickable dark:clickable-dark'
+    >All</a
+  >
+  <a
+    {...(disabled.series ? {} : {href:'/series/'})}
+    class='button-sm clickable dark:clickable-dark'
+  >
+    <StackLine />
+    Series
+  </a>
+  <a
+    {...(disabled.search ? {} : {href:'/search/'})}
+    class='button-sm clickable dark:clickable-dark'
+  >
+    <SearchLine />
+    Search
+  </a>
+</div>

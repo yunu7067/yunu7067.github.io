@@ -1,9 +1,8 @@
 ---
-import {Clickable, MediumButton, SmallButton} from '$coms/classes';
 import {BookLine, Briefcase, Home, Rss, SearchLine, StackLine} from '$coms/icons';
 import ThemeButton from '$coms/ThemeButton';
-import config from '$config';
 import {classes} from '$utils';
+import config from '$config';
 
 interface ActionItemProps {
   enabled: boolean;
@@ -22,7 +21,7 @@ export interface Props {
 }
 
 const props = Astro.props;
-const btn = classes(MediumButton, Clickable);
+const btn = classes('sm:button-base button-sm clickable dark:clickable-dark');
 ---
 
 <header class='w-full py-5 flex items-center justify-center'>
@@ -33,7 +32,7 @@ const btn = classes(MediumButton, Clickable);
   >
     {/* Left */}
     <div class='flex-auto'>
-      <h1 class='m-0 text-2xl'>
+      <h1 class='m-0 text-2xl font-medium'>
         <a href='/' aria-label='Home' title='Home'>
           <span>{config.title}</span>
         </a>

@@ -1,15 +1,7 @@
-article#article-content {
+article#article-container {
 	--link-underline-color: 147, 51, 234;
 	--link-underline-opacity: 0.7;
 	--link-underline-opacity-hover: 0.9;
-	
-	font-weight: 300;
-	font-size: 20px;
-	line-height: 1.675;
-
-	p {
-		margin: 18px 0;
-	}
 
 	a {
 		text-decoration-thickness: 5px;

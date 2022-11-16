@@ -1,0 +1,35 @@
+---
+import type {CommentsType, ThemeIdentifiers} from '$types';
+
+export interface Props {
+  comments: CommentsType;
+  theme: ThemeIdentifiers;
+}
+
+const {comments, theme} = Astro.props;
+
+const giscusTheme = theme === 'dark' ? comments?.giscus?.darkTheme : comments?.giscus?.lightTheme;
+---
+
+{comments.enabled && <div id='blog-comment' class='giscus mt-12 mb-8' />}
+
+{
+  comments.enabled && comments.provider == 'giscus' && (
+    <script
+      src='https://giscus.app/client.js'
+      data-repo={comments?.giscus?.repo}
+      data-repo-id={comments?.giscus?.repoId}
+      data-category={comments?.giscus?.category}
+      data-category-id={comments?.giscus?.categoryId}
+      data-mapping={comments?.giscus?.mapping || 'pathname'}
+      data-reactions-enabled={comments.giscus?.reactionsEnabled || '1'}
+      data-emit-metadata={comments.giscus?.emitMetadata || '0'}
+      data-input-position={comments.giscus?.inputPosition || 'bottom'}
+      data-theme={giscusTheme}
+      data-lang={comments.giscus?.lang || 'ko'}
+      data-loading={comments.giscus?.loading || 'lazy'}
+      crossorigin='anonymous'
+      async
+    />
+  )
+}

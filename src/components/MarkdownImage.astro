@@ -13,7 +13,7 @@ const {imgSrc, caption, ...props} = Astro.props as Props;
 	build buf fix
 	https://github.com/withastro/astro/issues/3373 
  */
-const images = import.meta.glob<ImageMetadata>('../assets/blog/**/*', {import: 'default'});
+const images = import.meta.glob<ImageMetadata>('/src/assets/blog/**/*', {import: 'default'});
 const imageMeta = await images[imgSrc]();
 
 // console.log(images);

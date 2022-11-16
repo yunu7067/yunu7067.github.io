@@ -1,5 +1,4 @@
 ---
-import type {Component, JSX} from 'solid-js';
 import type {SocialConfigType, SocialIdentifiers} from '$types';
 import {
   AtLine,
@@ -16,11 +15,11 @@ import {
 } from './icons';
 import {classes} from '$utils';
 
-interface SocialIconProps {
+export interface Props {
   social: SocialConfigType;
 }
 
-const {social} = Astro.props as SocialIconProps;
+const {social} = Astro.props as Props;
 
 const IconSwitcher = ({identifier}: {identifier: SocialIdentifiers}) => {
   switch (identifier) {

@@ -1,4 +1,4 @@
-import {MarkdownHeading} from 'astro';
+import type {MarkdownHeading} from 'astro';
 import {Component, createEffect, createSignal} from 'solid-js';
 
 interface Props {
@@ -45,7 +45,11 @@ const TableOfContents: Component<Props> = ({headings}) => {
                 : ''
             }`.trim()}
           >
-            <a class='inline-flex w-full py-1.5' href={`#${slug}`} onClick={() => setCurrentID(slug)}>
+            <a
+              class='inline-flex w-full py-1.5'
+              href={`#${slug}`}
+              onClick={() => setCurrentID(slug)}
+            >
               {text}
             </a>
           </li>

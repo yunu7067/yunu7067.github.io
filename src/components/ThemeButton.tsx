@@ -1,13 +1,12 @@
-import {Clickable, MediumButton, SmallButton} from '$coms/classes';
-import {GitHub, Loader5Line, MoonLine, SunLine} from '$coms/icons';
 import type {BlogConfigType} from '$types';
-import {classes} from '$utils';
-import {createEffect, createSignal, Match, onMount, Show, Switch} from 'solid-js';
+import {createSignal, Match, onMount, Switch} from 'solid-js';
+import {Loader5Line, MoonLine, SunLine} from '$coms/icons';
 
 interface ThemeButtonProps {
   class: string;
   config: BlogConfigType;
 }
+
 export default function ThemeButton(props: ThemeButtonProps) {
   const [isLoading, setLoading] = createSignal(true);
   const [isDarkMode, setDarkMode] = createSignal(false);
