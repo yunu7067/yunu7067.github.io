@@ -7,6 +7,7 @@ import BlogAuthor from '$coms/blog/Author.astro';
 import BlogComment from '$coms/blog/Comment.astro';
 import TableOfContents from '$coms/blog/TableOfContents.astro';
 import BlogViews from '$coms/blog/BlogViews';
+import Tags from '$coms/blog/Tags.astro';
 import {classes, getLongDateString} from '$utils';
 import config from '$config';
 import '$styles/article.scss';
@@ -77,20 +78,10 @@ const props = {
           <BlogViews client:load namespace={config.baseurl} key={decodeURI(pathname)} />
         </div>
       </div>
+
       {/* Tags */}
-      {
-        frontmatter.tags && (
-          <ul class='mb-4 flex flex-row gap-1.5 flex-wrap'>
-            {frontmatter.tags?.map(tag => (
-              <li class='tag clickable dark:clickable-dark'>
-                <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
-                  {tag}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+      <Tags tags={frontmatter.tags} />
+
       <BlogAuthor
         avatar={config.avatar}
         name={config.author.name}
@@ -101,7 +92,7 @@ const props = {
     {/* Hero */}
     {
       frontmatter.heroImageMetadata && (
-        <div class={classes('flex items-center justify-center')}>
+        <div class='flex items-center justify-center'>
           <div
             class={classes(
               'max-w-4xl w-full max-h-[28rem] h-full m-4 overflow-hidden',

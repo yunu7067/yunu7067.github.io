@@ -1,0 +1,21 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const {tags} = Astro.props;
+---
+
+{
+  tags && (
+    <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
+      {tags.map(tag => (
+        <li class='tag clickable dark:clickable-dark'>
+          <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
+            {tag}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

@@ -1,7 +1,8 @@
 ---
-import {Picture} from '@astrojs/image/components';
 import type {PostInstance} from '$types';
-import {classes, getLongDateString} from '$utils';
+import {Picture} from '@astrojs/image/components';
+import Tags from '$coms/blog/Tags.astro';
+import {getLongDateString} from '$utils';
 import config from '$config';
 
 export interface Props {
@@ -73,17 +74,7 @@ for (let i = 0; i < posts.length; i++) {
         )}
 
         {/* Tags */}
-        {post.frontmatter.tags && (
-          <ul class='mt-4 flex flex-row gap-1.5 flex-wrap'>
-            {post.frontmatter.tags?.map(tag => (
-              <li class='tag clickable dark:clickable-dark'>
-                <a class='block px-2.5 py-1.5' href={`/tag/${tag}`}>
-                  {tag}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <Tags tags={post.frontmatter.tags} />
       </section>
     ))
   }
