@@ -24,7 +24,10 @@ jobs:
         uses: withastro/action@v0
       - name: Copy Search Index Files
         run: cp -rf ./public/search-index ./dist/
-
+      - name: ReUpload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist/
   deploy:
     needs: build
     runs-on: ubuntu-latest
