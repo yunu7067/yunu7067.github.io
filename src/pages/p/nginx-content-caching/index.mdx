@@ -1,0 +1,129 @@
+---
+layout: '$lays/BlogLayout.astro'
+title: 'NGINX 콘텐츠 캐싱'
+description: '일전에 AWS의 Lambda와 S3를 이용하여 이미지 리사이즈하는 방법에 대해 소개했었습니다. 온디맨드 방식의 이러한 엣지 컴퓨팅의 단점은 여러가지가 있지만, 그중 제일 큰 단점은 역시 "비용"이 아닐까 싶습니다. AWS S3의 경우, 저장할 때 용량에 따라 비용이 1차적으로 발생하고 요청 횟수에 따라 비용이 2차적으로 발생하고 전송량에 따라 비용이 3차적으로 발생합니다. 따라서 S3에서 공개된 URI를 통해 리소스에 직접 접근할 순 있지만 이러한 방식은 필연적으로 많은 비용이 야기될 수 밖에 없습니다. S3는 비싼 서비스입니다. 이때 리소스 용량이나 업로드 요청은 어쩔 수 없지만, 전송량을 줄일 수 있는 방법은 있습니다. 바로 캐시 서버를 따로 두는 겁니다. 리사이즈된 이미지 파일을 달라는 요청이 들어올 경우 캐싱을 하는 것인데, 마침 NGINX는 이러한 캐싱 기능을 잘 지원하는 웹서버입니다.'
+publishDate: 2022-11-18
+draft: false
+tags: ['Backend', 'Nginx', 'AWS', 'S3']
+series: 'AWS'
+---
+
+
+# 서론
+
+일전에 [AWS의 Lambda와 S3를 이용하여 이미지 리사이즈하는 방법](/p/image-resize-for-aws-lambda)에 대해 소개했었습니다. 온디맨드 방식의 이러한 엣지 컴퓨팅의 단점은 여러가지가 있지만, 그중 제일 큰 단점은 역시 "비용"이 아닐까 싶습니다. AWS S3의 경우, 저장할 때 용량에 따라 비용이 1차적으로 발생하고 요청 횟수에 따라 비용이 2차적으로 발생하고 전송량에 따라 비용이 3차적으로 발생합니다.(혹시 정확한 비용이 궁금하신 분들은 [AWS 홈페이지](https://aws.amazon.com/ko/s3/pricing/?nc=sn&loc=4)를 참고하시길 바랍니다) 따라서 S3에서 공개된 URI를 통해 리소스에 직접 접근할 순 있지만 이러한 방식은 필연적으로 많은 비용이 야기될 수 밖에 없습니다. S3는 비싼 서비스입니다. 이때 리소스 용량이나 업로드 요청은 어쩔 수 없지만, 전송량을 줄일 수 있는 방법은 있습니다. 바로 캐시 서버를 따로 두는 겁니다. 리사이즈된 이미지 파일을 달라는 요청이 들어올 경우 캐싱을 하는 것인데, 마침 NGINX는 이러한 캐싱 기능을 잘 지원하는 웹서버입니다.
+
+<Image imgSrc="/src/assets/blog/nginx-content-caching/figure1.png" caption="Cache Hit" />
+
+위 이미지에서 보이는 `X-Cache-Status` 헤더를 추가하여 캐시가 적중했는지 확인할 수 있는 것 까지가 이 글의 목표가 되겠습니다.
+
+# 설계
+## 요청 흐름도
+
+<Image imgSrc="/src/assets/blog/nginx-content-caching/figure2.png" caption="파일 요청 흐름" />
+
+먼저 리소스 요청의 흐름도는 위와 같습니다. 이전 게시글([AWS 람다, S3를 이용한 이미지 리사이징](/p/image-resize-for-aws-lambda))에서 이어집니다.
+
+1. 사용자가 특정 URI로 파일 요청.
+2. Nginx에서 캐시된 파일이 존재하는지 확인.
+	- 2-1. 캐시에 파일이 존재하면 해당 파일 응답.
+	- 2-2. 캐시에 파일이 없으면 AWS S3에 파일 요청. 요청한 파일은 바로 캐싱됨.
+
+리소스를 저장하는 흐름은 아래와 같습니다.
+
+1. 사용자가 특정 URI로 파일 전송.
+2. 스프링부트 서비스 레이어에서 S3으로 파일 전송.
+3. S3에 파일이 업로드되면 자동으로 섬네일을 생성하는 AWS Lambda 함수 실행.
+	- 3-1. 업로드 된 파일이 이미지 파일(`image/gif`, `image/jpeg`, `image/png` 등)이 아니면 람다 함수 중단.
+	- 3-2. 업로드 된 파일이 이미지 파일이면 람다 함수 진행.
+4. 생성된 섬네일 이미지를 AWS S3 버킷에 저장.
+
+## 구조
+
+먼저 URI의 경로의 시작은 `large-img`, `medium-img`, `small-img` 셋 중 하나입니다. 전부 리사이즈된 이미지들의 경로이고, 이전 게시글에서 세 개의  크기로 리사이즈된 이미지들이 들어있습니다.
+또한 리사이즈된 모든 이미지를 캐싱하는 것이 아닌, 요청이 들어온 이미지만 캐싱할 것입니다.
+
+# 구현
+
+## 응답 캐시 활성화
+
+캐싱을 활성화하려면 최상위 `http {}` 컨텍스트 안에 `proxy_cache_path`를 작성해줘야 합니다.
+
+```nginx:nginx.conf
+http {
+  # 전략
+  proxy_cache_path /var/www/s3 levels=1:2 keys_zone=image_cache:30m inactive=1d max_size=128M;
+  proxy_cache_key "$host$request_uri";
+}
+```
+
+`proxy_cache_path`는 경로와 함께 캐시에 대한 기본적인 설정이 가능합니다.  첫 번째 매개변수인 `/var/www/s3`은 캐시된 콘텐츠가 저장되는 로컬 파일 시스템의 경로입니다. 이후의 매개변수 설정은 아래와 같습니다.
+
+- `levels=1:2` : 캐시의 파일 이름은 캐시의 키값으로 MD5를 이용하여 해싱된 문자열임. 캐시 파일을 몇 개의 문자열을 사용하여 폴더 레벨을 나눌 것인지 설정. 1에서 3 사이의 값이며, 1:2는 1개, 2개의 길이로 폴더를 구성.
+- `keys_zone=image_cache:30m` : 키의 이름과 용량 크기를 지정. 즉 키의 이름은 `image_cache`이며 용량은 최대 30 MiB임. 
+- `inactive=1d` : 지정된 시간만큼 엑세스되지 않으면 제거하는 설정. 여기서는 1일로 지정.
+- `max_size=128M` : 캐시의 최대 크기. 128 MiB로 설정.
+
+이외에도 여러 옵션들이 있으니 NGINX의 [ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path)에서  `proxy_cache_path`에 대한 자세한 사양을 확인하는 것이 좋습니다.
+
+## 서버 설정
+각 서버의 설정은 `cdn.example.com.conf`라는 별도의 파일로 분리하였습니다. 이렇게 설정은 분리하려면 `nginx.conf`에서 해당 설정들을 읽는 설정이 필요합니다.
+
+```nginx:cdn.example.com.conf
+server {
+  location  ~ ^/(large-img|medium-img|small-img)/.*\.(gif|png|jpg|jpeg|ico|webp)$ {
+    proxy_pass https://example-com-s3-resized.s3.ap-northeast-2.amazonaws.com;
+
+    proxy_ignore_headers "Set-Cookie";
+    proxy_hide_header "Set-Cookie";
+    proxy_set_header cookie "";
+    proxy_hide_header x-amz-id-2;
+    proxy_hide_header x-amz-request-id;
+
+    proxy_cache image_cache;
+    proxy_cache_valid 200 1h;
+
+    expires 1M;
+    add_header Pragma public;
+    add_header Cache-Control "public";
+    add_header X-Cache-Status $upstream_cache_status;
+  }
+}
+```
+
+- `location  ~ ^/(large-img|medium-img|small-img)/.*\.(gif|png|jpg|jpeg)$` : 경로가 `large-img|medium-img|small-img`으로 시작하고, 확장자가 `gif|png|jpg|jpeg`로 끝나는 자원을 이하 설정을 적용합니다. `~`는 대소문자 구별을 없애는 기호입니다.
+- `proxy_pass https://example-com-s3-resized.s3.ap-northeast-2.amazonaws.com` : s3 경로로 으로 리버스 프록시를 설정합니다.
+- `proxy_ignore_headers "Set-Cookie"` : `Set-Cookie` 응답 헤더를 무시함.
+- `proxy_hide_header "Set-Cookie"` : `Set-Cookie` 응답 헤더를 무시함.
+- `proxy_set_header cookie ""` : 쿠키를 초기화함.
+- `proxy_hide_header x-amz-id-2` : AWS S3 관련. `x-amz-id-2` 응답 헤더를 무시함.
+- `proxy_hide_header x-amz-request-id` AWS S3 관련. ` x-amz-request-id` 응답 헤더를 무시함.
+- `proxy_cache image_cache` : 사용하는 캐시의 이름. 위에서 지정한 `image_cache`임.
+- `proxy_cache_valid 200 1h` : 응답이 200일 경우, 1시간동안 캐싱함.
+- `expires 1M` : 브라우저에서 캐시되어있는 기간. `1M`은 한 달임.
+- `add_header Cache-Control "public"` : `Cache-Control`을 `public`으로 설정. 자세한 내용은 [Cache-Control](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) 참조.
+- `add_header X-Cache-Status $upstream_cache_status` : 아래서 설명함.
+
+
+## cache 상태 헤더 추가
+
+```nginx:cdn.example.com.conf
+add_header X-Cache-Status $upstream_cache_status;
+```
+`X-Cache-Status` 헤더와 NGINX의 임베디드 변수인 `$upstream_cache_status`를 사용하면 캐시의 상태를 알려줄 수 있습니다. 상태는 총 7가지(`MISS`, `BYPASS`, `EXPIRED`, `STALE`, `UPDATING`, `REVALIDATED`, `HIT`)가 있습니다.
+
+- `MISS` : 캐시에서 찾지 못했기 때문에, 원본 서버에서 치소스를 가져와 응답.
+- `BYPASS` : 요청이 우회됨. `proxy_cache_bypass`로 설정함.
+- `EXPIRED` : 캐시 만료. 원본 서버에서 가져온 새로운 리소스를 응답.
+- `STALE` : 원본 서버가 올바르게 응답하지 않고 `proxy_cache_use_stale`가 설정되어있는 경우. 단순히 캐시가 만료되었다고 오류를 반환하는 것이 아닌 오래된 캐시를 반환하게 설정할 수도 있음.
+- `UPDATING` : 현재 업데이트 되는 중인 캐시.
+- `REVALIDATED` : 헤더에 `If-Modified-Since` 와 `If-None-Match`필드가 있는 경우 재검증함.  `proxy_cache_revalidate`로 활성화해줘야함.
+- `HIT` : 캐시 적중.
+
+
+# 참고문헌
+
+- [AWS S3 비용 절감하기 (feat. 크로미움 favicon cache 버그), 2020. 6. 20. 03:24, 빨간색소년](https://sjh836.tistory.com/177)
+- [NGINX Content Caching](https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/)
+- [A Guide to Caching with NGINX and NGINX Plus, July 23, 2015, Faisal Memon of F5](https://www.nginx.com/blog/nginx-caching-guide/#var_upstream_cache_status)
+- [How to add the X-Cache-Status header to NGINX to assist with optimizing and troubleshooting cache settings, Austin Lowery](https://support.cpanel.net/hc/en-us/articles/4402904983703-How-to-add-the-X-Cache-Status-header-to-NGINX-to-assist-with-optimizing-and-troubleshooting-cache-settings)

@@ -21,6 +21,12 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": false
   },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  },
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
   "prettier.documentSelectors": [
     "**/*.astro"
   ]
